@@ -27,6 +27,12 @@
     .news-item a { font-weight:650; text-decoration:none; }
     .news-meta { color:#9ca3af; font-size:.82rem; margin-top:5px; }
     .tone { font-weight:700; }
+    .forecast-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+    .forecast-card { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:14px; }
+    .chart-wrap { position:relative; width:100%; overflow:hidden; }
+    canvas { display:block; width:100%; height:360px; background:#101a2b; border-radius:12px; }
+    .chart-legend { display:flex; flex-wrap:wrap; gap:14px; color:#9ca3af; font-size:.85rem; margin:10px 0; }
+    .chart-note { color:#9ca3af; font-size:.85rem; }
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
     a { color: #93c5fd; }
   </style>
@@ -78,6 +84,8 @@
     const d = await response.json();
     if (d.status !== 'ok') throw new Error('最近一次模型執行未成功。');
     const f = d.forecast || {}, b = d.backtest || {};
+    renderHorizons(d.forecasts || {});
+    drawCandles(d.history || []);
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
     $('direction').className = 'value ' + (f.direction === 'UP' ? 'up' : 'down');
@@ -102,6 +110,47 @@
   } catch (e) {
     $('status').textContent = '尚未取得有效預測';
     $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function renderHorizons(forecasts) {
+    const host=$('horizon-forecasts'); host.replaceChildren();
+    [1,2,3].forEach(day => {
+      const item=forecasts[day+'d'];
+      const card=document.createElement('article'); card.className='forecast-card';
+      const title=document.createElement('h3'); title.textContent='第 '+day+' 個交易日';
+      const direction=document.createElement('div'); direction.className='value '+(item?.direction==='UP'?'up':'down');
+      direction.textContent=item ? (item.direction==='UP'?'偏向上漲':'偏向下跌') : '資料不足';
+      const probability=document.createElement('p'); probability.textContent=item ? '上漲機率 '+percent(item.up_probability)+'｜下跌 '+percent(item.down_probability) : '尚無預測';
+      const accuracy=document.createElement('p'); accuracy.className='muted'; accuracy.textContent=item?.backtest ? '樣本外方向準確率 '+percent(item.backtest.accuracy)+'｜測試 '+item.backtest.n_test+' 筆' : '回測資料不足';
+      const note=document.createElement('p'); note.className='chart-note'; note.textContent=item?.target_definition || '';
+      card.append(title,direction,probability,accuracy,note); host.append(card);
+    });
+  }
+  function drawCandles(rows) {
+    const canvas=$('candlestick-chart'); if (!canvas || !rows.length) { $('chart-range').textContent='目前沒有K線資料。'; return; }
+    const ratio=window.devicePixelRatio || 1, width=Math.max(320,canvas.clientWidth), height=360;
+    canvas.width=width*ratio; canvas.height=height*ratio;
+    const ctx=canvas.getContext('2d'); ctx.scale(ratio,ratio);
+    ctx.fillStyle='#101a2b'; ctx.fillRect(0,0,width,height);
+    const left=52,right=12,top=18,priceBottom=height*0.70,volTop=height*0.78,volBottom=height-28;
+    const plotW=width-left-right, priceH=priceBottom-top;
+    const min=Math.min(...rows.map(x=>x.low)), max=Math.max(...rows.map(x=>x.high));
+    const pad=(max-min)*0.06 || 1, lo=min-pad, hi=max+pad;
+    const maxVol=Math.max(1,...rows.map(x=>x.volume || 0));
+    ctx.font='11px system-ui'; ctx.strokeStyle='#34445d'; ctx.fillStyle='#9ca3af'; ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){ const y=top+priceH*i/4; const val=hi-(hi-lo)*i/4; ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(width-right,y); ctx.stroke(); ctx.fillText(val.toFixed(1),5,y+4); }
+    const step=plotW/rows.length, candleW=Math.max(2,Math.min(10,step*0.62));
+    rows.forEach((x,i)=>{
+      const cx=left+step*(i+0.5), y=v=>top+(hi-v)/(hi-lo)*priceH;
+      const rising=x.close>=x.open; ctx.strokeStyle=rising?'#f87171':'#34d399'; ctx.fillStyle=ctx.strokeStyle;
+      ctx.beginPath(); ctx.moveTo(cx,y(x.high)); ctx.lineTo(cx,y(x.low)); ctx.stroke();
+      const bodyTop=y(Math.max(x.open,x.close)), bodyBottom=y(Math.min(x.open,x.close));
+      ctx.fillRect(cx-candleW/2,bodyTop,candleW,Math.max(1,bodyBottom-bodyTop));
+      const vh=(x.volume||0)/maxVol*(volBottom-volTop);
+      ctx.globalAlpha=0.65; ctx.fillRect(cx-candleW/2,volBottom-vh,candleW,vh); ctx.globalAlpha=1;
+    });
+    ctx.fillStyle='#9ca3af'; ctx.fillText(rows[0].date, left, height-7);
+    const last=rows[rows.length-1].date; const tw=ctx.measureText(last).width; ctx.fillText(last,width-right-tw,height-7);
+    $('chart-range').textContent='期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' 個交易日｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
   }
   function renderNews(key, group) {
     const g=group || {}; $(key+'-tone').textContent=(g.tone || '無資料')+'｜標題關鍵字分數：'+(g.keyword_score ?? 0);

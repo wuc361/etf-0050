@@ -21,6 +21,12 @@
     ul { padding-left: 22px; line-height: 1.7; }
     .status { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #25364d; font-size: .85rem; }
     .error { color: #fca5a5; }
+    .news-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+    .news-item { padding:12px 0; border-top:1px solid #29364c; }
+    .news-item:first-child { border-top:0; }
+    .news-item a { font-weight:650; text-decoration:none; }
+    .news-meta { color:#9ca3af; font-size:.82rem; margin-top:5px; }
+    .tone { font-weight:700; }
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
     a { color: #93c5fd; }
   </style>
@@ -44,6 +50,18 @@
     <p id="model-meta">—</p>
     <p id="generated" class="muted">—</p>
     <p id="source" class="muted">—</p>
+  </section>
+  <section class="card">
+    <h2>📊 預測來源與市場因素</h2>
+    <p id="explanation-summary">—</p>
+    <p id="model-interpretation">—</p>
+    <h3>市場數據觀察</h3><ul id="market-factors"><li>尚未載入。</li></ul>
+    <div class="news-grid">
+      <div><h3>🌍 國際市場新聞</h3><p id="international-tone" class="tone">—</p><div id="international-news"></div></div>
+      <div><h3>🇹🇼 台灣市場新聞</h3><p id="domestic-tone" class="tone">—</p><div id="domestic-news"></div></div>
+      <div><h3>💻 產業與半導體新聞</h3><p id="industry-tone" class="tone">—</p><div id="industry-news"></div></div>
+    </div>
+    <p id="news-method" class="muted"></p><ul id="news-limitations"></ul>
   </section>
   <section class="card">
     <h2>使用限制</h2>
@@ -74,9 +92,22 @@
     $('generated').textContent = '最後產生時間（UTC）：' + (d.generated_at_utc || '未知');
     $('source').textContent = '資料來源：' + (d.data_source || '未知');
     $('limitations').replaceChildren(...(d.limitations || []).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
+    const ex = d.explanation || {}, n = ex.news || {};
+    $('explanation-summary').textContent = ex.summary || '尚無綜合說明。';
+    $('model-interpretation').textContent = ex.model_interpretation || '尚無模型解讀。';
+    $('market-factors').replaceChildren(...(ex.market_factors || []).map(x => { const li=document.createElement('li'); li.textContent=x.name+'：'+(x.latest_return*100).toFixed(2)+'%（'+x.tone+'）'; return li; }));
+    renderNews('international', n.international); renderNews('domestic', n.domestic); renderNews('industry', n.industry);
+    $('news-method').textContent = n.method || '新聞資料尚未提供。';
+    $('news-limitations').replaceChildren(...(n.limitations || []).map(t => { const li=document.createElement('li'); li.textContent=t; return li; }));
   } catch (e) {
     $('status').textContent = '尚未取得有效預測';
     $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function renderNews(key, group) {
+    const g=group || {}; $(key+'-tone').textContent=(g.tone || '無資料')+'｜標題關鍵字分數：'+(g.keyword_score ?? 0);
+    const host=$(key+'-news'); host.replaceChildren();
+    (g.items || []).forEach(item => { const div=document.createElement('div'); div.className='news-item'; const a=document.createElement('a'); a.href=item.url; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent=item.title; const meta=document.createElement('div'); meta.className='news-meta'; meta.textContent=(item.source || '新聞來源')+'｜'+(item.published_at || '時間未提供')+'｜'+(item.keyword_score>0?'標題偏正面':item.keyword_score<0?'標題偏負面':'中性/未判定'); div.append(a,meta); host.append(div); });
+    if (!(g.items || []).length) host.textContent='目前沒有取得新聞，請稍後重新整理。';
   }
   function percent(x) { return Number.isFinite(Number(x)) ? (Number(x) * 100).toFixed(1) + '%' : 'N/A'; }
 })();

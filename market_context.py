@@ -220,10 +220,14 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
         previous = float(eligible.iloc[-2])
         latest = float(eligible.iloc[-1])
         change = latest / previous - 1 if previous else 0.0
+        is_yield = ticker in {"^TNX", "^FVX"}
         us_rows.append({
             "ticker": ticker, "name": label, "date": last_date,
             "close": latest, "previous_close": previous,
+            "display_close": f"{latest / 10:.2f}%" if is_yield else f"{latest:,.2f}",
+            "display_change": f"{(latest - previous) * 10:+.1f} bps" if is_yield else f"{change * 100:+.2f}%",
             "change_pct": round(change * 100, 3),
+            "yield_change_bps": round((latest - previous) * 10, 2) if is_yield else None,
             "tone": "偏多" if change > 0 else "偏空" if change < 0 else "中性"
         })
     actual_us_dates = [x["date"] for x in us_rows]

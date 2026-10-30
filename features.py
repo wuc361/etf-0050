@@ -63,8 +63,14 @@ def _ret(s):
 def build_features(raw):
     target = raw["0050.TW"]["Close"].rename("close").to_frame()
     # Target day D is predicted using Taiwan data through D-1 only.
-    target["target"] = (target["close"] > target["close"].shift(1)).astype(float)
-    target.loc[target["close"].shift(1).isna(), "target"] = np.nan
+    # Horizon labels: on prediction row D, features are available through D-1.
+    # 1D compares close D vs D-1; 2D compares D+1 vs D-1; 3D compares D+2 vs D-1.
+    for horizon in (1, 2, 3):
+        future_close = target["close"].shift(-(horizon - 1))
+        previous_close = target["close"].shift(1)
+        target[f"target_{horizon}d"] = (future_close > previous_close).astype(float)
+        target.loc[future_close.isna() | previous_close.isna(), f"target_{horizon}d"] = np.nan
+    target["target"] = target["target_1d"]
     X = pd.DataFrame(index=target.index)
     for ticker, df in raw.items():
         close = df["Close"].reindex(X.index).ffill()

@@ -360,3 +360,38 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
             {"name":"CBOE VIX","url":"https://www.cboe.com/tradable_products/vix/","role":"市場隱含波動率"}
         ]
     }
+
+
+def verify_twse_0050_close(expected_date: str, yahoo_close: float, tolerance: float = 0.02):
+    """Fail closed unless Yahoo's latest 0050 close matches the latest TWSE daily record."""
+    now_taipei = datetime.now(ZoneInfo("Asia/Taipei"))
+    month_start = now_taipei.replace(day=1).strftime("%Y%m%d")
+    query = urllib.parse.urlencode({
+        "response": "json", "date": month_start, "stockNo": "0050"
+    })
+    payload = _request_json("https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY?" + query)
+    rows = payload.get("data") or []
+    parsed = []
+    for row in rows:
+        try:
+            date_text = str(row[0]).replace("/", "")
+            if len(date_text) != 7:
+                continue
+            year = int(date_text[:3]) + 1911
+            date_iso = f"{year:04d}-{date_text[3:5]}-{date_text[5:7]}"
+            close_value = float(str(row[6]).replace(",", ""))
+            parsed.append((date_iso, close_value))
+        except (ValueError, TypeError, IndexError):
+            continue
+    if not parsed:
+        raise RuntimeError("TWSE官方0050日成交資訊無有效資料，已停止發布預測。")
+    official_date, official_close = max(parsed, key=lambda item: item[0])
+    if official_date != expected_date:
+        raise RuntimeError(
+            f"0050行情日期不一致：Yahoo={expected_date}，TWSE最新={official_date}；已停止發布預測，避免使用過期行情。"
+        )
+    if abs(float(yahoo_close) - official_close) > tolerance:
+        raise RuntimeError(
+            f"0050收盤價不一致：Yahoo={float(yahoo_close):.2f}，TWSE={official_close:.2f}；已停止發布預測。"
+        )
+    return {"date": official_date, "close": official_close, "source": "TWSE STOCK_DAY"}

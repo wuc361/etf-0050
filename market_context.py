@@ -239,6 +239,20 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
             "date": taiwan_data_date, "tone": "偏多" if total > 0 else "偏空" if total < 0 else "中性",
             "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
         })
+        if "0050_total_net_shares" in institutional:
+            for key, label in [
+                ("0050_foreign_net_shares", "0050外資"),
+                ("0050_trust_net_shares", "0050投信"),
+                ("0050_dealer_net_shares", "0050自營商")
+            ]:
+                shares = int(institutional.get(key, 0))
+                events.append({
+                    "group": "0050個別ETF籌碼",
+                    "title": f"{label}{'買超' if shares > 0 else '賣超' if shares < 0 else '買賣平衡'} {abs(shares):,} 股",
+                    "date": taiwan_data_date,
+                    "tone": "偏多" if shares > 0 else "偏空" if shares < 0 else "中性",
+                    "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
+                })
     else:
         events.append({
             "group": "台灣法人籌碼", "title": "尚未取得前一台灣交易日法人資料",
@@ -297,6 +311,14 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
         "us_timezone_checked_at": ny_now,
         "us_market": us_rows,
         "institutional": institutional,
+        "etf_0050_institutional": ({
+            "date": institutional.get("date"),
+            "foreign_net_shares": institutional.get("0050_foreign_net_shares"),
+            "trust_net_shares": institutional.get("0050_trust_net_shares"),
+            "dealer_net_shares": institutional.get("0050_dealer_net_shares"),
+            "total_net_shares": institutional.get("0050_total_net_shares"),
+            "source_url": institutional.get("0050_flow_source_url")
+        } if institutional and "0050_total_net_shares" in institutional else None),
         "institutional_errors": (institutional_errors or [])[:8],
         "events": events[:24],
         "us_news": us_news,
@@ -305,7 +327,8 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
         "narrative": narrative,
         "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
         "sources": [
-            {"name":"TWSE 三大法人買賣金額統計表 BFI82U","url":TWSE_REPORT_URL,"role":"官方法人買賣超"},
+            {"name":"TWSE 三大法人買賣金額統計表 BFI82U","url":TWSE_REPORT_URL,"role":"全市場法人買賣金額"},
+            {"name":"TWSE 三大法人買賣超日報 T86","url":"https://www.twse.com.tw/zh/trading/foreign/t86.html","role":"0050個別ETF法人買賣超股數"},
             {"name":"TWSE OpenAPI","url":"https://openapi.twse.com.tw/","role":"上市公司重大訊息與市場資料"},
             {"name":"TAIFEX","url":"https://www.taifex.com.tw/","role":"台指期及法人未平倉"},
             {"name":"FRED","url":"https://fred.stlouisfed.org/","role":"美國公債殖利率與總體資料"},

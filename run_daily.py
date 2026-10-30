@@ -11,7 +11,7 @@ import pandas as pd
 
 from data import load_market_data
 from features import build_features
-from model import fit_latest_model, save_report, walk_forward_evaluate
+from model import fit_latest_model, save_report, walk_forward_evaluate, evaluate_horizon
 from news import collect_news
 
 ROOT = Path(__file__).resolve().parent
@@ -78,14 +78,35 @@ def main() -> None:
     if len(labeled) < 300:
         raise RuntimeError(f"Not enough labeled observations for a meaningful run: {len(labeled)}")
 
-    report, predictions = walk_forward_evaluate(data, test_window=40)
-    save_report(report, predictions)
-
-    model, model_features = fit_latest_model(data)
-    next_row = build_next_session_row(raw, model_features)
-    probability_up = float(model.predict_proba(next_row[model_features])[:, 1][0])
+    # Train and evaluate each horizon independently. Each label is a cumulative
+    # direction from the latest close to the close after 1, 2, or 3 Taiwan sessions.
+    horizon_results = {}
+    model_features = None
+    next_row = None
+    for horizon in (1, 2, 3):
+        target_col = f"target_{horizon}d"
+        horizon_report, horizon_predictions = evaluate_horizon(data, target_col, test_window=40)
+        estimator, horizon_features = fit_latest_model(data, target_col=target_col)
+        if model_features is None:
+            model_features = horizon_features
+            next_row = build_next_session_row(raw, model_features)
+        probability = float(estimator.predict_proba(next_row[horizon_features])[:, 1][0])
+        horizon_results[f"{horizon}d"] = {
+            "direction": "UP" if probability >= 0.5 else "DOWN",
+            "up_probability": round(probability, 6),
+            "down_probability": round(1 - probability, 6),
+            "threshold": 0.5,
+            "backtest": horizon_report,
+            "target_definition": f"相對最新收盤價，未來第 {horizon} 個台灣交易日收盤方向"
+        }
+        if horizon == 1:
+            save_report(horizon_report, horizon_predictions)
+    report = horizon_results["1d"]["backtest"]
+    probability_up = horizon_results["1d"]["up_probability"]
     latest_date = pd.Timestamp(raw["0050.TW"]["Close"].dropna().index[-1]).date().isoformat()
     latest_close = float(raw["0050.TW"]["Close"].dropna().iloc[-1])
+    price_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).tail(120).copy()
+    price_frame.index = pd.to_datetime(price_frame.index)
 
     news_analysis = collect_news()
     market_factors = []
@@ -109,7 +130,8 @@ def main() -> None:
         "generated_at_utc": now.isoformat(timespec="seconds"),
         "data_as_of": latest_date,
         "latest_close": latest_close,
-        "forecast": {
+        "forecasts": horizon_results,
+        "history": [\n            {"date": pd.Timestamp(idx).date().isoformat(), "open": float(row["Open"]),\n             "high": float(row["High"]), "low": float(row["Low"]),\n             "close": float(row["Close"]), "volume": float(row["Volume"]) if pd.notna(row["Volume"]) else 0.0}\n            for idx, row in price_frame.iterrows()\n        ],\n        "forecast": {
             "direction": "UP" if probability_up >= 0.5 else "DOWN",
             "up_probability": round(probability_up, 6),
             "down_probability": round(1 - probability_up, 6),
@@ -142,7 +164,7 @@ def main() -> None:
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
             "跨市場時區與資料發布時間仍需進一步驗證。",
-            "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
+            "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",\n            "2日及3日預測為各自訓練的累積方向分類，不是逐日價格路徑；預測期限越長，不確定性通常越高。",
             "回測方向準確率不等同扣除交易成本後的投資報酬。"
         ]
     }
@@ -153,7 +175,7 @@ def main() -> None:
         "status": result["status"],
         "data_as_of": latest_date,
         "direction": result["forecast"]["direction"],
-        "up_probability": result["forecast"]["up_probability"],
+        "up_probability": result["forecast"]["up_probability"],\n        "forecasts": result["forecasts"],
         "backtest_accuracy": result["backtest"]["accuracy"],
         "output": str(OUTPUT.relative_to(ROOT))
     }, ensure_ascii=False))

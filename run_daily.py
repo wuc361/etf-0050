@@ -70,39 +70,53 @@ def main() -> None:
     raw = load_market_data(years=5)
     data = build_features(raw)
 
-    labeled = data.dropna(subset=["target"]).copy()
-    features = [col for col in labeled.columns if col.startswith("f_")]
-    if not features:
-        raise RuntimeError("No model features were generated")
-    labeled = labeled.dropna(subset=features, how="all")
+    labeled = data.dropna(subset=["target_1d"]).copy()
+    feature_columns = [col for col in labeled.columns if col.startswith("f_")]
+    labeled = labeled.dropna(subset=feature_columns, how="all")
     if len(labeled) < 300:
-        raise RuntimeError(f"Not enough labeled observations for a meaningful run: {len(labeled)}")
+        raise RuntimeError(f"Not enough labeled observations: {len(labeled)}")
 
-    # Train and evaluate each horizon independently. Each label is a cumulative
-    # direction from the latest close to the close after 1, 2, or 3 Taiwan sessions.
     horizon_results = {}
-    model_features = None
+    latest_features = None
     next_row = None
     for horizon in (1, 2, 3):
         target_col = f"target_{horizon}d"
-        horizon_report, horizon_predictions = evaluate_horizon(data, target_col, horizon=horizon, test_window=40)
-        estimator, horizon_features = fit_latest_model(data, target_col=target_col)
-        if model_features is None:
-            model_features = horizon_features
-            next_row = build_next_session_row(raw, model_features)
-        probability = float(estimator.predict_proba(next_row[horizon_features])[:, 1][0])
+        backtest, predictions = evaluate_horizon(data, target_col, horizon=horizon, test_window=40)
+        estimator, features = fit_latest_model(data, target_col=target_col)
+        if latest_features is None:
+            latest_features = features
+            next_row = build_next_session_row(raw, latest_features)
+        up = float(estimator.predict_proba(next_row[features])[:, 1][0])
         horizon_results[f"{horizon}d"] = {
-            "direction": "UP" if probability >= 0.5 else "DOWN",
-            "up_probability": round(probability, 6),
-            "down_probability": round(1 - probability, 6),
-            "threshold": 0.5,
-            "backtest": horizon_report,
+            "direction": "UP" if up >= .5 else "DOWN",
+            "up_probability": round(up, 6),
+            "down_probability": round(1 - up, 6),
+            "threshold": .5,
+            "backtest": backtest,
             "target_definition": f"相對最新收盤價，未來第 {horizon} 個台灣交易日收盤方向"
         }
         if horizon == 1:
-            save_report(horizon_report, horizon_predictions)
+            save_report(backtest, predictions)
+
+    latest = raw["0050.TW"].dropna(subset=["Close"])
+    latest_date = pd.Timestamp(latest.index[-1]).date().isoformat()
+    latest_close = float(latest["Close"].iloc[-1])
+    price_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).tail(120)
+    news_analysis = collect_news()
+    market_factors = []
+    for ticker, label in [("^SOX", "費城半導體指數"), ("^IXIC", "NASDAQ"), ("^GSPC", "S&P 500"), ("TSM", "台積電 ADR"), ("2330.TW", "台積電")]:
+        frame = raw.get(ticker)
+        if frame is not None and len(frame["Close"].dropna()) >= 2:
+            series = frame["Close"].dropna()
+            change = float(series.pct_change().dropna().iloc[-1])
+            market_factors.append({"name": label, "latest_return": round(change, 6),
+                                   "tone": "偏多" if change > 0 else "偏空" if change < 0 else "中性"})
+
+    p1 = horizon_results["1d"]["up_probability"]
+    interpretation = ("量化模型偏向上漲，但仍須觀察新聞與市場風險是否抵銷。" if p1 >= .55
+                      else "量化模型偏向下跌，需留意國際市場及台灣市場是否出現支撐訊號。" if p1 <= .45
+                      else "量化模型訊號接近中性，方向優勢不明顯。")
     report = horizon_results["1d"]["backtest"]
-    probability_up = horizon_results["1d"]["up_probability"]
     latest_date = pd.Timestamp(raw["0050.TW"]["Close"].dropna().index[-1]).date().isoformat()
     latest_close = float(raw["0050.TW"]["Close"].dropna().iloc[-1])
     price_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).tail(120).copy()
@@ -131,15 +145,22 @@ def main() -> None:
         "data_as_of": latest_date,
         "latest_close": latest_close,
         "forecasts": horizon_results,
+        "history": [
+            {"date": pd.Timestamp(idx).date().isoformat(), "open": float(row["Open"]),
+             "high": float(row["High"]), "low": float(row["Low"]), "close": float(row["Close"]),
+             "volume": float(row["Volume"]) if pd.notna(row["Volume"]) else 0.0}
+            for idx, row in price_frame.iterrows()
+        ],
+        "forecasts": horizon_results,
         "history": [\n            {"date": pd.Timestamp(idx).date().isoformat(), "open": float(row["Open"]),\n             "high": float(row["High"]), "low": float(row["Low"]),\n             "close": float(row["Close"]), "volume": float(row["Volume"]) if pd.notna(row["Volume"]) else 0.0}\n            for idx, row in price_frame.iterrows()\n        ],\n        "forecast": {
-            "direction": "UP" if probability_up >= 0.5 else "DOWN",
-            "up_probability": round(probability_up, 6),
-            "down_probability": round(1 - probability_up, 6),
+            "direction": horizon_results["1d"]["direction"],
+            "up_probability": p1,
+            "down_probability": horizon_results["1d"]["down_probability"],
             "threshold": 0.5,
             "target_session": "下一個台灣交易日（本版未接入官方交易日曆）"
         },
         "backtest": {
-            "method": "expanding-window walk-forward",
+            "method": "purged expanding-window walk-forward",
             "accuracy": report["accuracy"],
             "up_recall": report["up_recall"],
             "coverage": report["coverage"],
@@ -147,14 +168,14 @@ def main() -> None:
             "n_test": report["n_test"]
         },
         "explanation": {
-            "model_interpretation": model_interpretation,
+            "model_interpretation": interpretation,
             "market_factors": market_factors,
             "news": news_analysis,
             "summary": "交叉閱讀量化模型、國際市場、台灣市場及產業新聞；新聞目前不參與模型機率計算。"
         },
         "model": {
             "name": "Logistic Regression",
-            "feature_count": len(model_features),
+            "feature_count": len(latest_features),
             "training_rows": int(len(labeled))
         },
         "data_source": "Yahoo Finance (unofficial; verify independently)",
@@ -164,6 +185,8 @@ def main() -> None:
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
             "跨市場時區與資料發布時間仍需進一步驗證。",
+            "2日及3日預測為獨立模型的累積方向分類，不是逐日價格路徑；期限越長，不確定性通常越高。",
+            "多日回測已排除可能重疊的訓練標籤，但仍需持續檢驗模型穩定性。",
             "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",\n            "2日及3日預測為各自訓練的累積方向分類，不是逐日價格路徑；預測期限越長，不確定性通常越高。",
             "回測方向準確率不等同扣除交易成本後的投資報酬。"
         ]
@@ -175,7 +198,9 @@ def main() -> None:
         "status": result["status"],
         "data_as_of": latest_date,
         "direction": result["forecast"]["direction"],
-        "up_probability": result["forecast"]["up_probability"],\n        "forecasts": result["forecasts"],
+        "up_probability": result["forecast"]["up_probability"],
+        "forecasts": result["forecasts"],
+        "history_rows": len(result["history"]),\n        "forecasts": result["forecasts"],
         "backtest_accuracy": result["backtest"]["accuracy"],
         "output": str(OUTPUT.relative_to(ROOT))
     }, ensure_ascii=False))

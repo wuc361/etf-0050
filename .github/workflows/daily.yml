@@ -1,0 +1,68 @@
+name: 0050 AI Daily Forecast
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 00:30 UTC = 08:30 Taiwan time, Monday-Friday.
+    # Scheduled jobs may be delayed; data freshness is shown on the website.
+    - cron: "30 0 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: etf-0050-publish
+  cancel-in-progress: false
+
+jobs:
+  forecast-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run data pipeline and forecast
+        run: python run_daily.py
+
+      - name: Commit latest forecast JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/latest.json
+          if git diff --cached --quiet; then
+            echo "Forecast JSON did not change."
+          else
+            git commit -m "chore: update 0050 forecast data"
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

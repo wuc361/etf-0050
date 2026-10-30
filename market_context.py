@@ -74,6 +74,44 @@ def fetch_twse_institutional(date_text: str):
     }
 
 
+def fetch_twse_0050_flow(date_text: str):
+    """Fetch 0050's own institutional net shares from the official TWSE T86 report."""
+    query = urllib.parse.urlencode({
+        "response": "json", "date": date_text.replace("-", ""),
+        "selectType": "ALLBUT0999"
+    })
+    payload = _request_json("https://www.twse.com.tw/rwd/zh/fund/T86?" + query)
+    if str(payload.get("stat", "")).upper() not in {"OK", "OK "}:
+        return None
+    fields = payload.get("fields") or []
+    rows = payload.get("data") or []
+    if not fields or not rows:
+        return None
+    try:
+        code_idx = fields.index("證券代號")
+        foreign_idx = fields.index("外陸資買賣超股數(不含外資自營商)")
+        trust_idx = fields.index("投信買賣超股數")
+        dealer_idx = fields.index("自營商買賣超股數")
+        total_idx = fields.index("三大法人買賣超股數")
+    except ValueError:
+        return None
+    for row in rows:
+        if len(row) <= max(code_idx, foreign_idx, trust_idx, dealer_idx, total_idx):
+            continue
+        if str(row[code_idx]).strip() != "0050":
+            continue
+        def integer(value):
+            return int(str(value).replace(",", "").strip())
+        return {
+            "0050_foreign_net_shares": integer(row[foreign_idx]),
+            "0050_trust_net_shares": integer(row[trust_idx]),
+            "0050_dealer_net_shares": integer(row[dealer_idx]),
+            "0050_total_net_shares": integer(row[total_idx]),
+            "0050_flow_source": "TWSE T86",
+            "0050_flow_source_url": f"https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date={date_text.replace('-', '')}&selectType=ALLBUT0999"
+        }
+    return None
+
 def update_institutional_history(trading_dates, path: Path, backfill_sessions: int = 60):
     """Backfill recent sessions once, then append each new session to the committed JSON cache."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -83,15 +121,25 @@ def update_institutional_history(trading_dates, path: Path, backfill_sessions: i
         existing = []
     by_date = {x.get("date"): x for x in existing if x.get("date")}
     dates = [d.date().isoformat() for d in trading_dates[-backfill_sessions:]]
-    missing = [d for d in dates if d not in by_date]
+    missing = [d for d in dates if d not in by_date or "0050_total_net_shares" not in by_date[d]]
     errors = []
     for date_text in missing:
         try:
-            record = fetch_twse_institutional(date_text)
+            record = by_date.get(date_text, {})
+            if not record:
+                record = fetch_twse_institutional(date_text) or {}
+            try:
+                security_flow = fetch_twse_0050_flow(date_text)
+                if security_flow:
+                    record.update(security_flow)
+                else:
+                    errors.append(f"{date_text}: T86找不到0050資料")
+            except Exception as exc:
+                errors.append(f"{date_text}: T86 {type(exc).__name__}")
             if record:
                 by_date[date_text] = record
             else:
-                errors.append(f"{date_text}: TWSE無資料或非交易日")
+                errors.append(f"{date_text}: BFI82U無資料或非交易日")
         except Exception as exc:
             errors.append(f"{date_text}: {type(exc).__name__}")
         time.sleep(0.12)
@@ -117,6 +165,11 @@ def add_institutional_features(data, records):
         aligned = frame[col].reindex(data.index).astype(float)
         data[f"f_twse_{name}_net_100m"] = aligned.shift(1)
         data[f"f_twse_{name}_net_5d_100m"] = aligned.rolling(5).sum().shift(1)
+    for name in ("foreign", "trust", "dealer", "total"):
+        col = f"0050_{name}_net_shares"
+        if col in frame:
+            aligned = frame[col].reindex(data.index).astype(float) / 1000.0
+            data[f"f_twse_0050_{name}_net_1000shares"] = aligned.shift(1)
     return data
 
 
@@ -128,9 +181,10 @@ def latest_institutional_features(records, latest_taiwan_date):
     result = {}
     for name in ("foreign", "trust", "dealer", "total"):
         result[f"f_twse_{name}_net_100m"] = float(row.get(f"{name}_net_100m", 0))
-        history = [x for x in records if x.get("date", "") <= latest_taiwan_date]
-        history = history[-5:]
+        history = [x for x in records if x.get("date", "") <= latest_taiwan_date][-5:]
         result[f"f_twse_{name}_net_5d_100m"] = sum(float(x.get(f"{name}_net_100m", 0)) for x in history)
+    for name in ("foreign", "trust", "dealer", "total"):
+        result[f"f_twse_0050_{name}_net_1000shares"] = float(row.get(f"0050_{name}_net_shares", 0)) / 1000.0
     return result
 
 

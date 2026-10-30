@@ -72,16 +72,51 @@ def main():
     prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_date = pd.Timestamp(prices.index[-1]).date().isoformat()
     latest_close = float(prices["Close"].iloc[-1])
-    history_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).tail(120)
-    history = [
-        {"date": pd.Timestamp(i).date().isoformat(), "open": float(x["Open"]),
-         "high": float(x["High"]), "low": float(x["Low"]), "close": float(x["Close"]),
-         "volume": float(x["Volume"]) if pd.notna(x["Volume"]) else 0}
-        for i, x in history_frame.iterrows()
-    ]
+    history_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).copy()
+    close_series = history_frame["Close"].astype(float)
+    ma5 = close_series.rolling(5).mean()
+    ma20 = close_series.rolling(20).mean()
+    ma60 = close_series.rolling(60).mean()
+    delta = close_series.diff()
+    avg_gain = delta.clip(lower=0).rolling(14).mean()
+    avg_loss = (-delta.clip(upper=0)).rolling(14).mean()
+    rsi14 = 100 - 100 / (1 + avg_gain / avg_loss.replace(0, np.nan))
+    ema12 = close_series.ewm(span=12, adjust=False).mean()
+    ema26 = close_series.ewm(span=26, adjust=False).mean()
+    macd_line = ema12 - ema26
+    macd_signal = macd_line.ewm(span=9, adjust=False).mean()
+    macd_hist = macd_line - macd_signal
+    bb_mid = close_series.rolling(20).mean()
+    bb_std = close_series.rolling(20).std()
+    bb_upper, bb_lower = bb_mid + 2 * bb_std, bb_mid - 2 * bb_std
+    history_frame = history_frame.tail(120)
+    history = []
+    for idx, row in history_frame.iterrows():
+        history.append({
+            "date": pd.Timestamp(idx).date().isoformat(),
+            "open": float(row["Open"]), "high": float(row["High"]),
+            "low": float(row["Low"]), "close": float(row["Close"]),
+            "volume": float(row["Volume"]) if pd.notna(row["Volume"]) else 0.0,
+            "ma5": float(ma5.loc[idx]) if pd.notna(ma5.loc[idx]) else None,
+            "ma20": float(ma20.loc[idx]) if pd.notna(ma20.loc[idx]) else None,
+            "ma60": float(ma60.loc[idx]) if pd.notna(ma60.loc[idx]) else None,
+            "rsi14": float(rsi14.loc[idx]) if pd.notna(rsi14.loc[idx]) else None,
+            "macd": float(macd_line.loc[idx]) if pd.notna(macd_line.loc[idx]) else None,
+            "macd_signal": float(macd_signal.loc[idx]) if pd.notna(macd_signal.loc[idx]) else None,
+            "macd_hist": float(macd_hist.loc[idx]) if pd.notna(macd_hist.loc[idx]) else None,
+            "bb_upper": float(bb_upper.loc[idx]) if pd.notna(bb_upper.loc[idx]) else None,
+            "bb_mid": float(bb_mid.loc[idx]) if pd.notna(bb_mid.loc[idx]) else None,
+            "bb_lower": float(bb_lower.loc[idx]) if pd.notna(bb_lower.loc[idx]) else None
+        })
     news = collect_news()
     factors = []
-    for ticker, label in [("^SOX","費城半導體指數"),("^IXIC","NASDAQ"),("^GSPC","S&P 500"),("TSM","台積電 ADR"),("2330.TW","台積電")]:
+    for ticker, label in [
+        ("^SOX","費城半導體指數"),("^IXIC","NASDAQ"),("^GSPC","S&P 500"),
+        ("^DJI","道瓊指數"),("TSM","台積電 ADR"),("NVDA","NVIDIA"),
+        ("2330.TW","台積電"),("^TWII","台灣加權指數"),("EWT","台灣 ETF"),
+        ("TWD=X","美元兌新台幣"),("^VIX","VIX 波動率指數"),
+        ("^TNX","美國10年期公債殖利率"),("^FVX","美國5年期公債殖利率")
+    ]:
         frame = raw.get(ticker)
         if frame is not None and len(frame["Close"].dropna()) > 1:
             series = frame["Close"].dropna()
@@ -107,6 +142,14 @@ def main():
                        "news":news,"summary":"交叉閱讀量化模型、國際市場、台灣市場及產業新聞；新聞目前不參與模型機率計算。"},
         "model":{"name":"Logistic Regression","feature_count":len(feature_names),"training_rows":len(labeled)},
         "data_source":"Yahoo Finance (unofficial; verify independently)",
+        "reference_links":[
+            {"name":"TWSE 臺灣證券交易所","url":"https://www.twse.com.tw/","purpose":"上市股票、三大法人與市場統計官方來源"},
+            {"name":"TAIFEX 臺灣期貨交易所","url":"https://www.taifex.com.tw/","purpose":"台指期、法人未平倉與期貨市場資料"},
+            {"name":"FRED 聯準會經濟資料庫","url":"https://fred.stlouisfed.org/","purpose":"美國利率、殖利率與總體經濟時間序列"},
+            {"name":"CBOE VIX","url":"https://www.cboe.com/tradable_products/vix/","purpose":"市場隱含波動率參考"},
+            {"name":"0050 元大投信","url":"https://www.yuantaetfs.com/product/detail/0050/Basic_information","purpose":"ETF 官方基本資料、成分與基金資訊"},
+            {"name":"Yahoo Finance 0050","url":"https://finance.yahoo.com/quote/0050.TW/","purpose":"目前模型採用的非官方歷史行情資料"}
+        ],
         "status":"ok",
         "limitations":[
             "研究用途，不構成投資建議。",

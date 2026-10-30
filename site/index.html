@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="0050 AI 隔日方向研究儀表板">
+  <title>0050 AI 預測中心</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #0b1220; color: #e5e7eb; }
+    main { max-width: 980px; margin: 0 auto; padding: 28px 18px 56px; }
+    header { margin-bottom: 22px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    .muted { color: #9ca3af; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    .card { background: #151f32; border: 1px solid #29364c; border-radius: 16px; padding: 18px; }
+    .label { color: #9ca3af; font-size: .9rem; }
+    .value { font-size: 1.7rem; font-weight: 750; margin-top: 8px; overflow-wrap: anywhere; }
+    .up { color: #f87171; } .down { color: #34d399; }
+    section { margin-top: 18px; }
+    ul { padding-left: 22px; line-height: 1.7; }
+    .status { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #25364d; font-size: .85rem; }
+    .error { color: #fca5a5; }
+    footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
+    a { color: #93c5fd; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>📈 0050 AI 預測中心</h1>
+    <div class="muted">GitHub Actions 自動執行｜靜態網頁，不需要 Streamlit</div>
+    <p id="status" class="status">正在載入最近一次預測…</p>
+  </header>
+  <div id="error" class="error" role="alert"></div>
+  <div class="grid">
+    <article class="card"><div class="label">預測方向</div><div id="direction" class="value">—</div><p id="target" class="muted">—</p></article>
+    <article class="card"><div class="label">模型預估上漲機率</div><div id="up-prob" class="value">—</div><p id="down-prob" class="muted">下跌機率：—</p></article>
+    <article class="card"><div class="label">0050 最近收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">資料日期：—</p></article>
+    <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
+  </div>
+  <section class="card">
+    <h2>模型與資料狀態</h2>
+    <p id="model-meta">—</p>
+    <p id="generated" class="muted">—</p>
+    <p id="source" class="muted">—</p>
+  </section>
+  <section class="card">
+    <h2>使用限制</h2>
+    <ul id="limitations"><li>尚未載入資料。</li></ul>
+  </section>
+  <footer class="muted">本網站為研究與教育用途，不構成投資建議。模型機率不代表實際獲利機率；歷史表現不保證未來結果。資料來源及模型仍需獨立驗證。</footer>
+</main>
+<script>
+(async function () {
+  const $ = id => document.getElementById(id);
+  try {
+    const response = await fetch('./data/latest.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
+    const d = await response.json();
+    if (d.status !== 'ok') throw new Error('最近一次模型執行未成功。');
+    const f = d.forecast || {}, b = d.backtest || {};
+    $('status').textContent = '資料已載入';
+    $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
+    $('direction').className = 'value ' + (f.direction === 'UP' ? 'up' : 'down');
+    $('target').textContent = f.target_session || '下一交易日';
+    $('up-prob').textContent = percent(f.up_probability);
+    $('down-prob').textContent = '下跌機率：' + percent(f.down_probability);
+    $('price').textContent = Number(d.latest_close).toLocaleString('zh-TW', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    $('as-of').textContent = '資料日期：' + (d.data_as_of || '未知');
+    $('accuracy').textContent = percent(b.accuracy);
+    $('backtest-meta').textContent = '測試筆數：' + (b.n_test ?? '—') + '｜上漲命中率：' + percent(b.up_recall) + '｜上漲基準比例：' + percent(b.base_rate);
+    $('model-meta').textContent = (d.model?.name || '模型') + '｜因子數：' + (d.model?.feature_count ?? '—') + '｜訓練樣本：' + (d.model?.training_rows ?? '—');
+    $('generated').textContent = '最後產生時間（UTC）：' + (d.generated_at_utc || '未知');
+    $('source').textContent = '資料來源：' + (d.data_source || '未知');
+    $('limitations').replaceChildren(...(d.limitations || []).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
+  } catch (e) {
+    $('status').textContent = '尚未取得有效預測';
+    $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function percent(x) { return Number.isFinite(Number(x)) ? (Number(x) * 100).toFixed(1) + '%' : 'N/A'; }
+})();
+</script>
+</body>
+</html>

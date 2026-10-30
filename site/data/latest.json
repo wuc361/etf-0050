@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-10-30T17:13:34+00:00",
+  "generated_at_utc": "2026-10-30T23:14:58+00:00",
   "data_as_of": "2026-10-30",
   "latest_close": 104.95,
   "price_validation": {
@@ -18,15 +18,15 @@
   "forecasts": {
     "1d": {
       "direction": "UP",
-      "up_probability": 0.999998,
-      "down_probability": 2e-06,
+      "up_probability": 1.0,
+      "down_probability": 0.0,
       "backtest": {
-        "accuracy": 0.6656472986748216,
-        "balanced_accuracy": 0.6645559868070363,
+        "accuracy": 0.6646279306829765,
+        "balanced_accuracy": 0.6634898887260128,
         "up_recall": 0.689453125,
-        "brier_score": 0.22231777892049015,
+        "brier_score": 0.22287146131670715,
         "majority_baseline_accuracy": 0.5219164118246687,
-        "accuracy_lift_vs_baseline": 0.1437308868501529,
+        "accuracy_lift_vs_baseline": 0.1427115188583078,
         "base_rate": 0.5219164118246687,
         "n_test": 981
       },
@@ -40,7 +40,7 @@
         "accuracy": 0.5812053115423902,
         "balanced_accuracy": 0.5798331805993958,
         "up_recall": 0.5905797101449275,
-        "brier_score": 0.2613160270515033,
+        "brier_score": 0.2612226960682789,
         "majority_baseline_accuracy": 0.5638406537282942,
         "accuracy_lift_vs_baseline": 0.01736465781409602,
         "base_rate": 0.5638406537282942,
@@ -56,7 +56,7 @@
         "accuracy": 0.5496417604912999,
         "balanced_accuracy": 0.548178537675058,
         "up_recall": 0.5575221238938053,
-        "brier_score": 0.28988307376158157,
+        "brier_score": 0.28976610557284865,
         "majority_baseline_accuracy": 0.5783009211873081,
         "accuracy_lift_vs_baseline": -0.028659160696008268,
         "base_rate": 0.5783009211873081,
@@ -73,25 +73,25 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6656472986748216,
-        "balanced_accuracy": 0.6645559868070363,
-        "brier_score": 0.22231777892049015,
+        "accuracy": 0.6646279306829765,
+        "balanced_accuracy": 0.6634898887260128,
+        "brier_score": 0.22287146131670715,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.691131498470948,
-        "balanced_accuracy": 0.6900444762793176,
-        "brier_score": 0.19868375627043902,
+        "accuracy": 0.6901121304791029,
+        "balanced_accuracy": 0.6890679137793176,
+        "brier_score": 0.19863744993668114,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.6809378185524975,
-        "balanced_accuracy": 0.6786672108208955,
-        "brier_score": 0.22061211514854576,
+        "accuracy": 0.6829765545361876,
+        "balanced_accuracy": 0.6807994069829424,
+        "brier_score": 0.22064080934636518,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       }
@@ -2261,13 +2261,13 @@
   ],
   "forecast": {
     "direction": "UP",
-    "up_probability": 0.999998,
-    "down_probability": 2e-06,
+    "up_probability": 1.0,
+    "down_probability": 0.0,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.6656472986748216,
+    "accuracy": 0.6646279306829765,
     "up_recall": 0.689453125,
     "coverage": 1.0,
     "base_rate": 0.5219164118246687,
@@ -2278,37 +2278,37 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.080831,
+        "latest_return": -0.072008,
         "tone": "偏空"
       },
       {
         "name": "NASDAQ",
-        "latest_return": -0.03064,
+        "latest_return": -0.028556,
         "tone": "偏空"
       },
       {
         "name": "S&P 500",
-        "latest_return": -0.018713,
+        "latest_return": -0.018175,
         "tone": "偏空"
       },
       {
         "name": "道瓊指數",
-        "latest_return": -0.009603,
+        "latest_return": -0.010933,
         "tone": "偏空"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": -0.062342,
+        "latest_return": -0.059471,
         "tone": "偏空"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.045469,
+        "latest_return": -0.042217,
         "tone": "偏空"
       },
       {
         "name": "台積電",
-        "latest_return": -0.004124,
+        "latest_return": -0.018634,
         "tone": "偏空"
       },
       {
@@ -2318,22 +2318,22 @@
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.048731,
+        "latest_return": -0.046042,
         "tone": "偏空"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.006429,
+        "latest_return": 0.006862,
         "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": 0.199419,
+        "latest_return": 0.12907,
         "tone": "偏多"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": -0.007015,
+        "latest_return": -0.012026,
         "tone": "偏空"
       },
       {
@@ -2343,69 +2343,71 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-10-30T17:14:43+00:00",
+      "generated_at_utc": "2026-10-30T23:16:05+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -2,
-        "article_count": 15,
+        "keyword_score": -5,
+        "article_count": 11,
         "items": [
           {
             "category": "國際市場",
-            "title": "Overall a good week incrementally for markets, given FOMC, OK PCE, break in bond linkage to oil. - Fundstrat Direct",
-            "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPT2pCc0RldGVhNFE5UXRIOUt3ZGhtSmVLbG1jbVQyeC1ZT0JxR0FhNzVrUEpWMzMxdjZpQUtycnNyZkhTZThGM2lsYmFuWmpLbFJVMUI4RFI2SXBQY0ktMFRWU0ZCMEdSOWstazlwZi05WXNzN2pzZ3Q4N214TUVZU0lrRy1QaGVfWmZ5cUx2THNNWkNnY29HR3Q4SkpKZVhhLUdMOHlZTl93M0Y5WTQtMVdMSTNiS2VsaXVVTzJzeW1IeGt0QVFXeGtzWm1QU0g0Xy1xeWRRd00?oc=5",
-            "source": "Fundstrat Direct",
-            "published_at": "2026-10-30T11:50+00:00",
+            "title": "Fed Rate Decision: Hawkish Hold at 3.75%-4% in 10-2 Vote - Admirals",
+            "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcERtbXpFVjcxMnRFZ1puY29uUlZkUlhUWVFVNlBtNEk2VkRvQ1pWVkZFNmJJemxuZGJvTU5Pc3lCWVRYdjJzczZleWxQVkJxXzBneHJVY2VJMTJURXdORlVnZmtOaXY1Zl92MG5Xank5VlJtclM2S1BNYUg3Zmp4Z0o2Tl9qRmlmUkNvNHhpYU0tUDdnbmpVNnNiZ0I?oc=5",
+            "source": "Admirals",
+            "published_at": "2026-10-29T00:34+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "PCE inflation: Prices ticked higher in September, keeping expectations for a year-end Fed hike - Yahoo Finance",
-            "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdjd1bFkyUjV5TXdRMEtqbXV1THZGelRhekxHQlNqc3pQZHdZNmFOcG1HUi02SmxPOVNPMlFWYldVNWZsRUxkaG5sTVVKWGZNbmJ0NnBGTThSWm9Cbl8zMWxMY2JhMW0zY28zSGtZdmdsNHFYckRQU3JTV2ZqSTlEUkUtVzU2S1BVSGhhMTJBSmxIZE5fMW0zVjloMVBIazdCOV9YU2tqMkZBa0hud3VOZWVfY0xjSnlqVTRKTm1WNHY4X3pqUmllUDcxQjFNb01JZ04wVg?oc=5",
-            "source": "Yahoo Finance",
-            "published_at": "2026-10-29T14:30+00:00",
+            "title": "Warsh Press Conference: Fed Holds Rates in a 10-2 Vote - Admirals",
+            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNdzZEeUJfQmR5OEN2TXFUUFJralIwOHZVeE9FUDBUU1NrZlhNbFB0U2Jxek55MXlya1JoOGQzZG0wVEZLTE5pOHhJbGdnUWtoYkVlLVAzcDBra0JsZ0RUb3pxcVFmOF9CM0VFRnFkX0Fzb0NCbzhpQ0J6bVZCOEI0end0ZFk2d04wV1IxTmhB?oc=5",
+            "source": "Admirals",
+            "published_at": "2026-10-28T18:27+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "war"
+            ]
+          },
+          {
+            "category": "國際市場",
+            "title": "〈美股早盤〉SK海力士財報點火！主要指數開高 市場聚焦Fed決策與科技巨頭財報 - 鉅亨網",
+            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5HVEx5NVJoNG1BZE0yWFR2eFlSR1RrVTB6VkZZbWNPQUYzUUJWWXpnckp0R2ZkdDI0QXRUaldLSzZrNFQ4X2owS0tkNkFBSEU?oc=5",
+            "source": "鉅亨網",
+            "published_at": "2026-10-28T13:38+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation - The New York Times",
-            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQT0duQ2s1THJaQTllWHI4eXh0UEZXVjVLUkdBbUFyaHpERDhqQkxLcnhTRzVQU3k0MW5FeWF4Q25BZnJ4dHZuckZiRHZnN2V4eEljbEZDbFFxZnFZREJnQ29wTHdJSDhfV0FzYkdRQ1NkblZyZDAwTmZOdzhyZFlUc3N6M25CMWt6Y0VQMGZ3QmE?oc=5",
-            "source": "The New York Times",
-            "published_at": "2026-10-29T09:03+00:00",
+            "title": "Fed Rate Decision: The Fed leaves interest rates where they were - Stock Titan",
+            "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBFT1FlVk4yYWdpeUlSdTN5QkpjcWVld1p2WmRKaHVEck82enZJWXBpR0Uwamk3U0RTX2VHMk54S0FpdHI3d1RPdE9GeW43dEJRS2lkUkN6QmxWWnVxRG9SMkxLdHh4V2JtMVJkVnRPNmhGbzd5b1lLTA?oc=5",
+            "source": "Stock Titan",
+            "published_at": "2026-10-28T10:22+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Stock Market Today: Stocks Rise After Fed Holds Rates - STL.News",
-            "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0wT25GTzBCamZQcUViZzlJcEJUR3RUSEk2QjJtcTFxdTFLYVcxWHlVdk5SNmlRODJxRnlZXzZKY2dzYmh3bWlxcTlpT0tyRmYySHY1SE9RRDRxNk5GbE9XMXR5TGxuZ0I1THpvYm1qTVdDLW5zblFBSVp1STg3Y0k?oc=5",
-            "source": "STL.News",
-            "published_at": "2026-10-28T23:02+00:00",
+            "title": "TradingKey 每日市場簡報：630億美元Anthropic算力融資提振晶片股，博通漲4%，CRWV漲近8%，波音跌超10% - TradingKey",
+            "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPdjA2UG1UeFl5YVJTQmJlNnZtalEtWi1NVjE3VXB3M2paY1NNWkpmSFVXLVk0ZTNILTdEbUMzVlhjdllkbHFqb2x5ZG5KRzVOa05HdG1Gb3ZoRktWdFBkb3lMZ0hVOFY0cTY3ZTNjMnQ2WXNnUUxSLWtUSGRxQUxQQ3lrVE56Z19NdXN6NEpsUUYzYkc2U0NIV2paSXFCamEtVjJhZzgtTVJ4aWdXcTZWMGlCRGNrczBwZkx0Y1JBWVpURUdCd2pFNE5FLXZtbldhcGVIdmNuLUppcUVUNVFaZC1IQXRVdzMyMmJJ?oc=5",
+            "source": "TradingKey",
+            "published_at": "2026-10-28T01:08+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Federal Reserve makes interest rate decision ahead of midterms - Fox Business",
-            "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR0hLUjN3TllXcDVjaXRBaUwxOW1QcnJLRkc3ZGR3SnR1U283WVdPeWozMmw2eFlLa3ZVb011TlEtMHI0RjV6eWE0T2ZXcXRNQVR5eEIzbVhRektfTHkzLWNLbVc5U0RQaXUyRnFSZ2VCUmZNOFlpcTQyWXc5S21zRWxpb2FBSS1FSkpiVnc0VnV5S2o50gGaAUFVX3lxTE1DUFpkcUswb2dYdVhleE1XejZfZVdTSHJsbUhOelF3Z1B4UUpGdWhqUGQzTmxvTmhGbFFQZ1VNdmhNenprZE1Hbjh6bW9RUTFGN0lfYkZMZ3g4YUh1VlM2eUhGNHNpVUN5ZG12R2RrSnpxTDRKTVR6Y29oMUhHNVdMZ1N1UzFLUjF3LUNnc0pvUFNQZXA1T1JnQ0E?oc=5",
-            "source": "Fox Business",
-            "published_at": "2026-10-28T21:17+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "December Will Give Clues As to Whether the Fed ‘Really Means What It Says,’ Economists Say - Investopedia",
-            "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0yanZJaU1NTE1YVnlfdXpKSTc4UGRIbk13dkpJaDE3WnJJUFZvNGk2NFI5TndEZXFTMWZ4MU1KeXNBZXZPQ1ZiOUI5YVdTUm52eld0eVNMX01hYnVlUXZpdzFtUkdkWXRoeVE1VlJDNA?oc=5",
-            "source": "Investopedia",
-            "published_at": "2026-10-28T20:39+00:00",
+            "title": "Economic Calendar | October 26–30, 2026 for OANDA:XAUUSD by forexcitypro_leemeenal - TradingView",
+            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZmh6eFlYNlJlazJFdzdCZ2FIclFENTR1dUFxczVMQ3o3UEhtQXA0VUkwWUFCeVlTcXZ6a1F0Rmd6Y25JX19VUzcyeTdITmRPQVFfdVJZNlk5UU1BY0FwbXQ0bHczVXV5NnMxQ3kybGlGQjZMeDEzaFl6TDc1cEtpZjVxRjdIdGotaTFPWjJyOWs?oc=5",
+            "source": "TradingView",
+            "published_at": "2026-10-26T14:32+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -2415,35 +2417,64 @@
       "domestic": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 0,
-        "items": []
-      },
-      "industry": {
-        "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 3,
+        "article_count": 4,
         "items": [
           {
-            "category": "產業消息",
-            "title": "台股盤中漲逾600點 台積電衝2430元 - PChome Online 新聞",
-            "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPcEo5a1J0cWczeTFYZlVHZDRyTXR4RWw1VTFzalV0dzhyakstZmhDRXVkU3IxWGVzS1JOOUtfYVVYZ0J1Mk5FVEpEQXlzcENOeUIyMmZnSVBEbFBTaHg5ZXNUd3ZyMHROOWJWRHozc0VrcGpTSm1LMUVhLWNPb2JaYUlURXZkVndEWW0w?oc=5",
-            "source": "PChome Online 新聞",
-            "published_at": "2026-10-28T03:35+00:00",
+            "category": "台灣市場",
+            "title": "薔琵颱風連休4天！台股震盪、外資狂砍 數據曝後市1族群強彈 - TVBS新聞網",
+            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5HYV9FaTdpYk1OdVJteFp0a0g5ZjZncl9UMjBoLVRqVktBUzcxNFhzQklLa0o3SldUY3pMQlhpX3p1REtLaHg1VWMxZVlfaFk?oc=5",
+            "source": "TVBS新聞網",
+            "published_at": "2026-10-24T02:38+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
-            "category": "產業消息",
-            "title": "Micron Trades at 5.3x Forward Earnings Versus TSMC's 24x as AI Memory Shortage Widens - BigGo Finance",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5qazJXdkFMbW1LMmVnR0VodU9ENHh3Wlh6Q1dKdlFqQ2FiX1l4Yk9TVVlqdTVXd0NPN1JWcVBLOGpFbTU3bEdqeXBUX003OGFVX1pZeXg4WFZJZTVlcjl5dGVEWWV1bHNwaWNDUWVmWWpiYlFlX1E?oc=5",
-            "source": "BigGo Finance",
-            "published_at": "2026-10-19T07:00+00:00",
-            "keyword_score": -1,
+            "category": "台灣市場",
+            "title": "外資拋售韓股市值比重為台股4倍 這些層面凸顯台灣展韌性 - 自由財經",
+            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Vc0NXS1dBcS1qRzRiajItS1BqVFEwdmNXck9DTXkxVWdlcGxUZU96bmZHd0pZXzVqUGc4UGUzY0tRUk5fNFlSSkIzek9lSDRCQWstV0N2c290eFJiSGtJ0gFkQVVfeXFMTUtwWFY4RWFMc1IwNnM5aDNKYVUtZU1EN0tGV3ljMTBpdTBhMDM0b2dtaHRPRFpIdmpfM1REUXZLdkcwaGFIYmhDWmV3eWV0M2o5R0t0WV9Eb0NTUHhqaFFfR2Q2bw?oc=5",
+            "source": "自由財經",
+            "published_at": "2026-10-14T07:00+00:00",
+            "keyword_score": 0,
             "positive_terms": [],
-            "negative_terms": [
-              "war"
-            ]
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "外資超配台灣勝過韓國 台股成全球AI首選 00409A帶台灣投資人反向看全球 - 觀傳媒",
+            "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE4tRDdyY2tvb3NGeVJzOGN6aHVLWmxScXRyU2tGTnhSNmxGanZMSjNTTWFBRXBZcmE1UXM5RTNUNW9qaEFJU0llVVhDWlRzZDY0Y2hJR0w1cw?oc=5",
+            "source": "觀傳媒",
+            "published_at": "2026-10-08T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "台股今年漲72％稱霸全球、還能繼續贏韓股？外資給「一組數字」揭答案 - 自由財經",
+            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9pUzdpejV4VEF6LVBHUmtIZEdvUEd5SHJOT09ULVcwQXNiQkdxaW9WbXMzRE5ycFduUU9zZ1ZqbG5KUWtfMW5qS3VETFBQYUJtYWFQcTNsZEJ2TkZkcjJv0gFkQVVfeXFMT3ZLUWpQZTNQa2xBYWZQcDVLZjgtMkxkTzRWQURmYndNalp3aFpJcmx1Z1lTTnl0RHhmR01nMnpuQjR5TGtjS1Z6eFlOQzROQnE5ZHdFZzAtSjVoOFRvcjYyR2hhUg?oc=5",
+            "source": "自由財經",
+            "published_at": "2026-10-07T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          }
+        ]
+      },
+      "industry": {
+        "tone": "中性或訊號不足",
+        "keyword_score": 0,
+        "article_count": 3,
+        "items": [
+          {
+            "category": "產業消息",
+            "title": "The Last Month Exposed The Risk Narrative Between Nvidia Vs.Taiwan Semiconductor - 24/7 Wall St.",
+            "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRGdwejU0cjNMRHN5aWNSLXAxOVpyWDNBRHd1a1d4N0ZVcXpKcVhYNUM0dUR2aktHTVdjRktMVDFjT1NZLVlFMTBIWlVOdVFjWWVPLWdhS1NBeHNqSGdNVVUxT3BFaUxyR3RUcDFYMFItUzJZdHE4S3U2THZFX25QNTdudTRVYXRQNFh5UUh6d29tZEhkZFEwaF9jQm15c3AzN3RlNXdhbnhEVWFrRVQ5SHZyLUQycUN1YTh0eTdGZDVVdw?oc=5",
+            "source": "24/7 Wall St.",
+            "published_at": "2026-10-27T13:45+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           },
           {
             "category": "產業消息",
@@ -2454,138 +2485,36 @@
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
+          },
+          {
+            "category": "產業消息",
+            "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
+            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
+            "source": "TechNews 科技新報",
+            "published_at": "2026-10-13T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           }
         ]
       },
       "items": [
         {
           "category": "國際市場",
-          "title": "Overall a good week incrementally for markets, given FOMC, OK PCE, break in bond linkage to oil. - Fundstrat Direct",
-          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPT2pCc0RldGVhNFE5UXRIOUt3ZGhtSmVLbG1jbVQyeC1ZT0JxR0FhNzVrUEpWMzMxdjZpQUtycnNyZkhTZThGM2lsYmFuWmpLbFJVMUI4RFI2SXBQY0ktMFRWU0ZCMEdSOWstazlwZi05WXNzN2pzZ3Q4N214TUVZU0lrRy1QaGVfWmZ5cUx2THNNWkNnY29HR3Q4SkpKZVhhLUdMOHlZTl93M0Y5WTQtMVdMSTNiS2VsaXVVTzJzeW1IeGt0QVFXeGtzWm1QU0g0Xy1xeWRRd00?oc=5",
-          "source": "Fundstrat Direct",
-          "published_at": "2026-10-30T11:50+00:00",
+          "title": "Fed Rate Decision: Hawkish Hold at 3.75%-4% in 10-2 Vote - Admirals",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcERtbXpFVjcxMnRFZ1puY29uUlZkUlhUWVFVNlBtNEk2VkRvQ1pWVkZFNmJJemxuZGJvTU5Pc3lCWVRYdjJzczZleWxQVkJxXzBneHJVY2VJMTJURXdORlVnZmtOaXY1Zl92MG5Xank5VlJtclM2S1BNYUg3Zmp4Z0o2Tl9qRmlmUkNvNHhpYU0tUDdnbmpVNnNiZ0I?oc=5",
+          "source": "Admirals",
+          "published_at": "2026-10-29T00:34+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "PCE inflation: Prices ticked higher in September, keeping expectations for a year-end Fed hike - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdjd1bFkyUjV5TXdRMEtqbXV1THZGelRhekxHQlNqc3pQZHdZNmFOcG1HUi02SmxPOVNPMlFWYldVNWZsRUxkaG5sTVVKWGZNbmJ0NnBGTThSWm9Cbl8zMWxMY2JhMW0zY28zSGtZdmdsNHFYckRQU3JTV2ZqSTlEUkUtVzU2S1BVSGhhMTJBSmxIZE5fMW0zVjloMVBIazdCOV9YU2tqMkZBa0hud3VOZWVfY0xjSnlqVTRKTm1WNHY4X3pqUmllUDcxQjFNb01JZ04wVg?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-10-29T14:30+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation - The New York Times",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQT0duQ2s1THJaQTllWHI4eXh0UEZXVjVLUkdBbUFyaHpERDhqQkxLcnhTRzVQU3k0MW5FeWF4Q25BZnJ4dHZuckZiRHZnN2V4eEljbEZDbFFxZnFZREJnQ29wTHdJSDhfV0FzYkdRQ1NkblZyZDAwTmZOdzhyZFlUc3N6M25CMWt6Y0VQMGZ3QmE?oc=5",
-          "source": "The New York Times",
-          "published_at": "2026-10-29T09:03+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock Market Today: Stocks Rise After Fed Holds Rates - STL.News",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0wT25GTzBCamZQcUViZzlJcEJUR3RUSEk2QjJtcTFxdTFLYVcxWHlVdk5SNmlRODJxRnlZXzZKY2dzYmh3bWlxcTlpT0tyRmYySHY1SE9RRDRxNk5GbE9XMXR5TGxuZ0I1THpvYm1qTVdDLW5zblFBSVp1STg3Y0k?oc=5",
-          "source": "STL.News",
-          "published_at": "2026-10-28T23:02+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Federal Reserve makes interest rate decision ahead of midterms - Fox Business",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR0hLUjN3TllXcDVjaXRBaUwxOW1QcnJLRkc3ZGR3SnR1U283WVdPeWozMmw2eFlLa3ZVb011TlEtMHI0RjV6eWE0T2ZXcXRNQVR5eEIzbVhRektfTHkzLWNLbVc5U0RQaXUyRnFSZ2VCUmZNOFlpcTQyWXc5S21zRWxpb2FBSS1FSkpiVnc0VnV5S2o50gGaAUFVX3lxTE1DUFpkcUswb2dYdVhleE1XejZfZVdTSHJsbUhOelF3Z1B4UUpGdWhqUGQzTmxvTmhGbFFQZ1VNdmhNenprZE1Hbjh6bW9RUTFGN0lfYkZMZ3g4YUh1VlM2eUhGNHNpVUN5ZG12R2RrSnpxTDRKTVR6Y29oMUhHNVdMZ1N1UzFLUjF3LUNnc0pvUFNQZXA1T1JnQ0E?oc=5",
-          "source": "Fox Business",
-          "published_at": "2026-10-28T21:17+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "December Will Give Clues As to Whether the Fed ‘Really Means What It Says,’ Economists Say - Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0yanZJaU1NTE1YVnlfdXpKSTc4UGRIbk13dkpJaDE3WnJJUFZvNGk2NFI5TndEZXFTMWZ4MU1KeXNBZXZPQ1ZiOUI5YVdTUm52eld0eVNMX01hYnVlUXZpdzFtUkdkWXRoeVE1VlJDNA?oc=5",
-          "source": "Investopedia",
-          "published_at": "2026-10-28T20:39+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed Says More Data Will Help Next Rate Decision as It Stands Pat - Bloomberg.com",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNYTNINnF3d0YzSWhxXzBuRUxDc2RycVdyV1FFVGFMcFMtdUZxVmx4RGQ5NDdJRmpRdlhMRlN4d1NTV1BFYVFXekxSQUhjRjBKWlNxTzNrb04xTmx5THJ1OVBZem1HWldlb2EzaWFsbmVNYUIxVWtqano5ZFJZanllZVJTYWNuYXVqRzFxMjRRSjVqaXBvWFQ5cTJiSElpWldqbjA5bXl6eEM?oc=5",
-          "source": "Bloomberg.com",
-          "published_at": "2026-10-28T20:16+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed’s Rate Hold Sends Bond Yields in Different Directions - WSJ",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaEkwMGl6T29kQlFSbU9EanZNX3VMdG5PcG9tWXh3cUQ0U0R5ZTFuUU1QRl9PWl9nd2l4bFpwWl9OOFFTS0VfSV9UcFR0VEtsRW9ld25admRIbkFQa292VTNWVV9xb2g3ZlQwZ2ZuNlVSQkNTQzhGN0RDSl9wZ0hDWi1fcGFTRnJHUTAzeEhUY1BZeVFJU1ZyaVFPdDkzNm9sVTVmcm9pSkxRWjlTOHRpSjlPNmxUb0pPaHBN?oc=5",
-          "source": "WSJ",
-          "published_at": "2026-10-28T20:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed meeting recap: Warsh says central bank will host fewer rate-setting meetings in future years - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1tMUlxMlhyZGowTmtxUW9oU1NrQjU1UzBWd0pobmpmdG83UHBURXhSSkgydEdTZnFJY2J2VFpJOGZGOWJlMGc5VEhxaW5EVmRYZ2NHZHJPZXhhV3NSazdDb0NpSWZMc3hBMnBYS210Nm5PNzRJTWfSAXtBVV95cUxPRWNadTVHenE4RU90Q0FxX0lOWjJWamVmRm4xUnk1cVJlZkFaeDRjX21iX1FKZEhYRmZVWFBPWDhUQks0elVQbjU5U2NVbTdGNWdsS1Y0Slo2SE9zTFhjc2EwQU9EaHRoR3pWN3Y2UmM2TmswVUxTODJObXc?oc=5",
-          "source": "CNBC",
-          "published_at": "2026-10-28T19:32+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "war"
-          ]
-        },
-        {
-          "category": "國際市場",
-          "title": "Federal Reserve leaves interest rates unchanged despite rising inflation - NBC News",
-          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPcHhyOWk0NW9KMUxVdWU1d015dG1YZmdWV2JsbGFRbTV5UFUxZUdENy10ZHl4M3FQakxWNW53enE3Um9IT3NCUUtDaDlkLWpXX0lpUWZPV214WURKVVdLcWtTczUzdjZiVm9HUFNzRmVSeUd2TzF2VDBpWlFvbzdyeWotdl9zOVAzaDhCZW9MQQ?oc=5",
-          "source": "NBC News",
-          "published_at": "2026-10-28T18:44+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed holds rates steady despite concerns over inflation - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPVjFqcXcxNFVDRGhYVGxJWGRJMTlJQmxGSDB5WUtrVzVKTGdOeHJuRFlCclpaVmFYQWtuQUx5QkliT0hCY05xN2oxTEs5eFFpa1dfMHBOTkY1Q2FMa3RRYlJhdU5tc2pJQk9KRkp2c1l6bVZFak5FYzUwelRWRnlJX29B0gGHAUFVX3lxTE9YSTVNRm1qMmE1eUZDQUlLdW51bmtLeWxka1JqTDFTMG9rUnNDR21QNFJRTTIxQjZyRlliVzZoYzd2MVVRTmFuQk13bE5qVFJsazZ6S1Jyd2h0RUl5VzM0TlphMFBhU21oUFpkOGRyQjFKVEkyZjVObmVBMVl2S3FTZ0RUVTFiWQ?oc=5",
-          "source": "CNBC",
-          "published_at": "2026-10-28T18:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed leaves rates unchanged to wait for more data on inflation – as it happened - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOVVJWY3RnblpmYjRWdkFHUDd0NmVLby1aUWQ5NzdMX3RzaGROS0F6NFA0SzAzeE5nOUJ3VlZYa3hyS2pWMWRxU2FIOGVLNVZybElRN2E0SGNleFAzWUNhNUNBU2RzdUJuaXBzbGZxdjZ3TXdPYlRxanZJRkx0ZC0wTVlJMFlWZWFoMk5XVUoxRkNNTkJHek1VMlJmYndZblNBNU1ERkp2Q2pVQUgzalN6T0l1ZlI?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-10-28T17:12+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "WATCH: Warsh holds briefing after Fed leaves key interest rate unchanged - PBS",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOeDRabTk3MGZlX1gzSnlMWEhPLTczT3pUckE2Q3R4cUpHT0lfQnFKRHo1eWdiQ1FiVXBXQlV6RVhpSTROYUZoYlFzRVlxMWlGUFdZcW5jMXpKdlBiZHRJMzNSOGJMTUFMWVdDVS1sbkFNcy12TGlnVE5rclMyREY5SEl6dEEwVE1VdFMyX0V2VWtFLWVVQ05iUWJMT2M1blZPZkNOUi1xLVFCWi1WZGxsZFJhXzDSAboBQVVfeXFMTV9BakhETXRqMkhSSzY5V1hjVHZ2Y1VkVzFMX19ua1BLUTRGQWdLWTI3aEcwMkhROG5tSjlDMHRLbDAtczhuV2djeUl2VHVydUo2NGFxcVk3YmpkdDRNMndOYlRlVzA0X3Y0WWxLU3hTanFreDdqdXA4ZmJPWk1QWU1BbHdocmo4VmVwLXEtTU5GUFhsYkhUN1VmZXB4TnE2SmItLVMtang4Tmd2NDdwanpPVUVpczB5aFZn?oc=5",
-          "source": "PBS",
-          "published_at": "2026-10-28T14:14+00:00",
+          "title": "Warsh Press Conference: Fed Holds Rates in a 10-2 Vote - Admirals",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNdzZEeUJfQmR5OEN2TXFUUFJralIwOHZVeE9FUDBUU1NrZlhNbFB0U2Jxek55MXlya1JoOGQzZG0wVEZLTE5pOHhJbGdnUWtoYkVlLVAzcDBra0JsZ0RUb3pxcVFmOF9CM0VFRnFkX0Fzb0NCbzhpQ0J6bVZCOEI0end0ZFk2d04wV1IxTmhB?oc=5",
+          "source": "Admirals",
+          "published_at": "2026-10-28T18:27+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
@@ -2603,11 +2532,11 @@
           "negative_terms": []
         },
         {
-          "category": "產業消息",
-          "title": "台股盤中漲逾600點 台積電衝2430元 - PChome Online 新聞",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPcEo5a1J0cWczeTFYZlVHZDRyTXR4RWw1VTFzalV0dzhyakstZmhDRXVkU3IxWGVzS1JOOUtfYVVYZ0J1Mk5FVEpEQXlzcENOeUIyMmZnSVBEbFBTaHg5ZXNUd3ZyMHROOWJWRHozc0VrcGpTSm1LMUVhLWNPb2JaYUlURXZkVndEWW0w?oc=5",
-          "source": "PChome Online 新聞",
-          "published_at": "2026-10-28T03:35+00:00",
+          "category": "國際市場",
+          "title": "Fed Rate Decision: The Fed leaves interest rates where they were - Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBFT1FlVk4yYWdpeUlSdTN5QkpjcWVld1p2WmRKaHVEck82enZJWXBpR0Uwamk3U0RTX2VHMk54S0FpdHI3d1RPdE9GeW43dEJRS2lkUkN6QmxWWnVxRG9SMkxLdHh4V2JtMVJkVnRPNmhGbzd5b1lLTA?oc=5",
+          "source": "Stock Titan",
+          "published_at": "2026-10-28T10:22+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -2624,10 +2553,52 @@
         },
         {
           "category": "產業消息",
-          "title": "Micron Trades at 5.3x Forward Earnings Versus TSMC's 24x as AI Memory Shortage Widens - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5qazJXdkFMbW1LMmVnR0VodU9ENHh3Wlh6Q1dKdlFqQ2FiX1l4Yk9TVVlqdTVXd0NPN1JWcVBLOGpFbTU3bEdqeXBUX003OGFVX1pZeXg4WFZJZTVlcjl5dGVEWWV1bHNwaWNDUWVmWWpiYlFlX1E?oc=5",
+          "title": "The Last Month Exposed The Risk Narrative Between Nvidia Vs.Taiwan Semiconductor - 24/7 Wall St.",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRGdwejU0cjNMRHN5aWNSLXAxOVpyWDNBRHd1a1d4N0ZVcXpKcVhYNUM0dUR2aktHTVdjRktMVDFjT1NZLVlFMTBIWlVOdVFjWWVPLWdhS1NBeHNqSGdNVVUxT3BFaUxyR3RUcDFYMFItUzJZdHE4S3U2THZFX25QNTdudTRVYXRQNFh5UUh6d29tZEhkZFEwaF9jQm15c3AzN3RlNXdhbnhEVWFrRVQ5SHZyLUQycUN1YTh0eTdGZDVVdw?oc=5",
+          "source": "24/7 Wall St.",
+          "published_at": "2026-10-27T13:45+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Economic Calendar | October 26–30, 2026 for OANDA:XAUUSD by forexcitypro_leemeenal - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZmh6eFlYNlJlazJFdzdCZ2FIclFENTR1dUFxczVMQ3o3UEhtQXA0VUkwWUFCeVlTcXZ6a1F0Rmd6Y25JX19VUzcyeTdITmRPQVFfdVJZNlk5UU1BY0FwbXQ0bHczVXV5NnMxQ3kybGlGQjZMeDEzaFl6TDc1cEtpZjVxRjdIdGotaTFPWjJyOWs?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-10-26T14:32+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Fed Rate Decision Preview: Will Kevin Warsh Hold Rates at 4% and Signal a December Hike? - Markets.com",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9pMTdRQ2p1NUZZam9lRkwyZWI5dEJpUWQzZ1ZxUU9Vc2RNR3FzVVJ2b2NMWnpiX3ZaY2taR3VkQ1p1bHI0NjhsSUFqa2c0QTF3RE5nRUFlTGJLaUpwYk1PdzlmelFrakN6ZmJqdnhTRXgtSzA?oc=5",
+          "source": "Markets.com",
+          "published_at": "2026-10-25T16:02+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "war"
+          ]
+        },
+        {
+          "category": "台灣市場",
+          "title": "薔琵颱風連休4天！台股震盪、外資狂砍 數據曝後市1族群強彈 - TVBS新聞網",
+          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5HYV9FaTdpYk1OdVJteFp0a0g5ZjZncl9UMjBoLVRqVktBUzcxNFhzQklLa0o3SldUY3pMQlhpX3p1REtLaHg1VWMxZVlfaFk?oc=5",
+          "source": "TVBS新聞網",
+          "published_at": "2026-10-24T02:38+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Federal Reserve Votes Unanimously to Raise Rates 25 Basis Points to 3.75%-4.00%; Warsh Defies White House Pressure to Launch Tightening Cycle - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBiUlVZRmEyWHF1andZbE5mUUV6TmFIX1VZZkVQd0RkbDJDRTlqMGVGRzg5ZV90QjV4dWU2Z012eWhpYkxyYkE3UDdJSFZWcXhnSjMyek5ycVViRVNQZmNtMGh5MF9VQmpTWGhXd1RCUUNGejZ3M0E?oc=5",
           "source": "BigGo Finance",
-          "published_at": "2026-10-19T07:00+00:00",
+          "published_at": "2026-10-23T19:35+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
@@ -2643,6 +2614,80 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "美國通膨高於預期引發升息疑慮 美股那斯達克指數重挫 - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYMjJHLXI2QWhlbnBBTHV5VGtwQVdpTV9fUjBHd1ZMYVN1dzB2d2V3MUFYc1ZxLUs4M09zazVEVWY5YlgwV2xuNjlKN0FKb3QyS2pnLXcyRzJXMTZPVERzc0tKN0VEdw?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "升息"
+          ]
+        },
+        {
+          "category": "國際市場",
+          "title": "美股早盤》通膨超預期！費半跌破1.2萬點 台指期夜盤一度挫近400點 | 蕭宥宸 | 財經 - 風傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE90WTRDMXB2Qi1XRktqdVp2THBXNVR3SjhaSkdqcVZCaUU2QUdkVlhqSUV5UEozMG5NNWJGLXZPdlBGTkJtRTFZSi1JMThPZw?oc=5",
+          "source": "風傳媒",
+          "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "美通膨高於預期引升息擔憂 那斯達克指數重挫1.88% - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFByUXBOV01xVzBtRk9JMjNxTTJTZzkxM282UUNTN0RxU0tLNXJXTVpudGo3bFY1Y0dURzVCcHV1Tmh3UzQ5V0FYYXVvQzFFRFZHRElCMVdrMGVUQ0VpQ2pmRnMyNXJFdw?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "升息"
+          ]
+        },
+        {
+          "category": "台灣市場",
+          "title": "外資拋售韓股市值比重為台股4倍 這些層面凸顯台灣展韌性 - 自由財經",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Vc0NXS1dBcS1qRzRiajItS1BqVFEwdmNXck9DTXkxVWdlcGxUZU96bmZHd0pZXzVqUGc4UGUzY0tRUk5fNFlSSkIzek9lSDRCQWstV0N2c290eFJiSGtJ0gFkQVVfeXFMTUtwWFY4RWFMc1IwNnM5aDNKYVUtZU1EN0tGV3ljMTBpdTBhMDM0b2dtaHRPRFpIdmpfM1REUXZLdkcwaGFIYmhDWmV3eWV0M2o5R0t0WV9Eb0NTUHhqaFFfR2Q2bw?oc=5",
+          "source": "自由財經",
+          "published_at": "2026-10-14T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "產業消息",
+          "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
+          "source": "TechNews 科技新報",
+          "published_at": "2026-10-13T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "外資超配台灣勝過韓國 台股成全球AI首選 00409A帶台灣投資人反向看全球 - 觀傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE4tRDdyY2tvb3NGeVJzOGN6aHVLWmxScXRyU2tGTnhSNmxGanZMSjNTTWFBRXBZcmE1UXM5RTNUNW9qaEFJU0llVVhDWlRzZDY0Y2hJR0w1cw?oc=5",
+          "source": "觀傳媒",
+          "published_at": "2026-10-08T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "台股今年漲72％稱霸全球、還能繼續贏韓股？外資給「一組數字」揭答案 - 自由財經",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9pUzdpejV4VEF6LVBHUmtIZEdvUEd5SHJOT09ULVcwQXNiQkdxaW9WbXMzRE5ycFduUU9zZ1ZqbG5KUWtfMW5qS3VETFBQYUJtYWFQcTNsZEJ2TkZkcjJv0gFkQVVfeXFMT3ZLUWpQZTNQa2xBYWZQcDVLZjgtMkxkTzRWQURmYndNalp3aFpJcmx1Z1lTTnl0RHhmR01nMnpuQjR5TGtjS1Z6eFlOQzROQnE5ZHdFZzAtSjVoOFRvcjYyR2hhUg?oc=5",
+          "source": "自由財經",
+          "published_at": "2026-10-07T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -2653,153 +2698,153 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-10-30T17:14:43+00:00",
+      "generated_at_utc": "2026-10-30T23:16:05+00:00",
       "taiwan_data_date": "2026-10-30",
-      "us_session_date": "2026-10-29",
-      "us_timezone_checked_at": "2026-10-30T13:14-04:00",
+      "us_session_date": "2026-10-30",
+      "us_timezone_checked_at": "2026-10-30T19:16-04:00",
       "us_market": [
         {
           "ticker": "^GSPC",
           "name": "S&P 500",
-          "date": "2026-10-29",
-          "close": 7720.39013671875,
-          "previous_close": 7743.97998046875,
-          "display_close": "7,720.39",
-          "display_change": "-0.30%",
-          "change_pct": -0.305,
+          "date": "2026-10-30",
+          "close": 7580.06982421875,
+          "previous_close": 7720.39013671875,
+          "display_close": "7,580.07",
+          "display_change": "-1.82%",
+          "change_pct": -1.818,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "^IXIC",
           "name": "NASDAQ 綜合指數",
-          "date": "2026-10-29",
-          "close": 26184.720703125,
-          "previous_close": 26549.849609375,
-          "display_close": "26,184.72",
-          "display_change": "-1.38%",
-          "change_pct": -1.375,
+          "date": "2026-10-30",
+          "close": 25436.998046875,
+          "previous_close": 26184.720703125,
+          "display_close": "25,437.00",
+          "display_change": "-2.86%",
+          "change_pct": -2.856,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "^SOX",
           "name": "費城半導體指數",
-          "date": "2026-10-29",
-          "close": 11518.2001953125,
-          "previous_close": 11684.0,
-          "display_close": "11,518.20",
-          "display_change": "-1.42%",
-          "change_pct": -1.419,
+          "date": "2026-10-30",
+          "close": 10688.7998046875,
+          "previous_close": 11518.2001953125,
+          "display_close": "10,688.80",
+          "display_change": "-7.20%",
+          "change_pct": -7.201,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "^DJI",
           "name": "道瓊指數",
-          "date": "2026-10-29",
-          "close": 52342.55859375,
-          "previous_close": 52475.1015625,
-          "display_close": "52,342.56",
-          "display_change": "-0.25%",
-          "change_pct": -0.253,
+          "date": "2026-10-30",
+          "close": 51770.30859375,
+          "previous_close": 52342.55859375,
+          "display_close": "51,770.31",
+          "display_change": "-1.09%",
+          "change_pct": -1.093,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "TSM",
           "name": "台積電 ADR",
-          "date": "2026-10-29",
-          "close": 431.80999755859375,
-          "previous_close": 439.510009765625,
-          "display_close": "431.81",
-          "display_change": "-1.75%",
-          "change_pct": -1.752,
+          "date": "2026-10-30",
+          "close": 406.1300048828125,
+          "previous_close": 431.80999755859375,
+          "display_close": "406.13",
+          "display_change": "-5.95%",
+          "change_pct": -5.947,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "NVDA",
           "name": "NVIDIA",
-          "date": "2026-10-29",
-          "close": 213.66000366210938,
-          "previous_close": 215.3800048828125,
-          "display_close": "213.66",
-          "display_change": "-0.80%",
-          "change_pct": -0.799,
+          "date": "2026-10-30",
+          "close": 204.63999938964844,
+          "previous_close": 213.66000366210938,
+          "display_close": "204.64",
+          "display_change": "-4.22%",
+          "change_pct": -4.222,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "AMD",
           "name": "AMD",
-          "date": "2026-10-29",
-          "close": 566.4199829101562,
-          "previous_close": 578.4400024414062,
-          "display_close": "566.42",
-          "display_change": "-2.08%",
-          "change_pct": -2.078,
+          "date": "2026-10-30",
+          "close": 504.79998779296875,
+          "previous_close": 566.4199829101562,
+          "display_close": "504.80",
+          "display_change": "-10.88%",
+          "change_pct": -10.879,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "MU",
           "name": "美光",
-          "date": "2026-10-29",
-          "close": 934.27001953125,
-          "previous_close": 983.22998046875,
-          "display_close": "934.27",
-          "display_change": "-4.98%",
-          "change_pct": -4.98,
+          "date": "2026-10-30",
+          "close": 884.739990234375,
+          "previous_close": 934.27001953125,
+          "display_close": "884.74",
+          "display_change": "-5.30%",
+          "change_pct": -5.301,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "ASML",
           "name": "ASML",
-          "date": "2026-10-29",
-          "close": 1675.699951171875,
-          "previous_close": 1662.8499755859375,
-          "display_close": "1,675.70",
-          "display_change": "+0.77%",
-          "change_pct": 0.773,
+          "date": "2026-10-30",
+          "close": 1565.9000244140625,
+          "previous_close": 1675.699951171875,
+          "display_close": "1,565.90",
+          "display_change": "-6.55%",
+          "change_pct": -6.552,
           "yield_change_bps": null,
-          "tone": "偏多"
+          "tone": "偏空"
         },
         {
           "ticker": "^VIX",
           "name": "VIX 波動率指數",
-          "date": "2026-10-29",
-          "close": 17.200000762939453,
-          "previous_close": 16.90999984741211,
-          "display_close": "17.20",
-          "display_change": "+1.71%",
-          "change_pct": 1.715,
+          "date": "2026-10-30",
+          "close": 19.420000076293945,
+          "previous_close": 17.200000762939453,
+          "display_close": "19.42",
+          "display_change": "+12.91%",
+          "change_pct": 12.907,
           "yield_change_bps": null,
           "tone": "波動風險升高"
         },
         {
           "ticker": "^TNX",
           "name": "美國10年期公債殖利率",
-          "date": "2026-10-29",
-          "close": 4.988999843597412,
-          "previous_close": 5.045000076293945,
-          "display_close": "0.50%",
+          "date": "2026-10-30",
+          "close": 4.928999900817871,
+          "previous_close": 4.988999843597412,
+          "display_close": "0.49%",
           "display_change": "-0.6 bps",
-          "change_pct": -1.11,
-          "yield_change_bps": -0.56,
+          "change_pct": -1.203,
+          "yield_change_bps": -0.6,
           "tone": "殖利率下降"
         },
         {
           "ticker": "^FVX",
           "name": "美國5年期公債殖利率",
-          "date": "2026-10-29",
-          "close": 4.801000118255615,
-          "previous_close": 4.870999813079834,
-          "display_close": "0.48%",
-          "display_change": "-0.7 bps",
-          "change_pct": -1.437,
-          "yield_change_bps": -0.7,
+          "date": "2026-10-30",
+          "close": 4.720999717712402,
+          "previous_close": 4.801000118255615,
+          "display_close": "0.47%",
+          "display_change": "-0.8 bps",
+          "change_pct": -1.666,
+          "yield_change_bps": -0.8,
           "tone": "殖利率下降"
         }
       ],
@@ -2883,140 +2928,31 @@
         },
         {
           "group": "美股前夜",
-          "title": "美股市場出現較大跌幅：台積電 ADR、AMD、美光",
-          "date": "2026-10-29",
+          "title": "美股市場出現較大跌幅：S&P 500、NASDAQ 綜合指數、費城半導體指數、台積電 ADR、NVIDIA、AMD、美光、ASML",
+          "date": "2026-10-30",
           "tone": "偏空",
           "detail": "單日跌幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
         },
         {
           "group": "國際新聞",
-          "title": "Overall a good week incrementally for markets, given FOMC, OK PCE, break in bond linkage to oil. - Fundstrat Direct",
-          "date": "2026-10-30 19:50 台北時間",
+          "title": "Fed Rate Decision: Hawkish Hold at 3.75%-4% in 10-2 Vote - Admirals",
+          "date": "2026-10-29 08:34 台北時間",
           "tone": "待判讀",
-          "detail": "Fundstrat Direct｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPT2pCc0RldGVhNFE5UXRIOUt3ZGhtSmVLbG1jbVQyeC1ZT0JxR0FhNzVrUEpWMzMxdjZpQUtycnNyZkhTZThGM2lsYmFuWmpLbFJVMUI4RFI2SXBQY0ktMFRWU0ZCMEdSOWstazlwZi05WXNzN2pzZ3Q4N214TUVZU0lrRy1QaGVfWmZ5cUx2THNNWkNnY29HR3Q4SkpKZVhhLUdMOHlZTl93M0Y5WTQtMVdMSTNiS2VsaXVVTzJzeW1IeGt0QVFXeGtzWm1QU0g0Xy1xeWRRd00?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "PCE inflation: Prices ticked higher in September, keeping expectations for a year-end Fed hike - Yahoo Finance",
-          "date": "2026-10-29 22:30 台北時間",
-          "tone": "待判讀",
-          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdjd1bFkyUjV5TXdRMEtqbXV1THZGelRhekxHQlNqc3pQZHdZNmFOcG1HUi02SmxPOVNPMlFWYldVNWZsRUxkaG5sTVVKWGZNbmJ0NnBGTThSWm9Cbl8zMWxMY2JhMW0zY28zSGtZdmdsNHFYckRQU3JTV2ZqSTlEUkUtVzU2S1BVSGhhMTJBSmxIZE5fMW0zVjloMVBIazdCOV9YU2tqMkZBa0hud3VOZWVfY0xjSnlqVTRKTm1WNHY4X3pqUmllUDcxQjFNb01JZ04wVg?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation - The New York Times",
-          "date": "2026-10-29 17:03 台北時間",
-          "tone": "待判讀",
-          "detail": "The New York Times｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQT0duQ2s1THJaQTllWHI4eXh0UEZXVjVLUkdBbUFyaHpERDhqQkxLcnhTRzVQU3k0MW5FeWF4Q25BZnJ4dHZuckZiRHZnN2V4eEljbEZDbFFxZnFZREJnQ29wTHdJSDhfV0FzYkdRQ1NkblZyZDAwTmZOdzhyZFlUc3N6M25CMWt6Y0VQMGZ3QmE?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Stock Market Today: Stocks Rise After Fed Holds Rates - STL.News",
-          "date": "2026-10-29 07:02 台北時間",
-          "tone": "待判讀",
-          "detail": "STL.News｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0wT25GTzBCamZQcUViZzlJcEJUR3RUSEk2QjJtcTFxdTFLYVcxWHlVdk5SNmlRODJxRnlZXzZKY2dzYmh3bWlxcTlpT0tyRmYySHY1SE9RRDRxNk5GbE9XMXR5TGxuZ0I1THpvYm1qTVdDLW5zblFBSVp1STg3Y0k?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Federal Reserve makes interest rate decision ahead of midterms - Fox Business",
-          "date": "2026-10-29 05:17 台北時間",
-          "tone": "待判讀",
-          "detail": "Fox Business｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR0hLUjN3TllXcDVjaXRBaUwxOW1QcnJLRkc3ZGR3SnR1U283WVdPeWozMmw2eFlLa3ZVb011TlEtMHI0RjV6eWE0T2ZXcXRNQVR5eEIzbVhRektfTHkzLWNLbVc5U0RQaXUyRnFSZ2VCUmZNOFlpcTQyWXc5S21zRWxpb2FBSS1FSkpiVnc0VnV5S2o50gGaAUFVX3lxTE1DUFpkcUswb2dYdVhleE1XejZfZVdTSHJsbUhOelF3Z1B4UUpGdWhqUGQzTmxvTmhGbFFQZ1VNdmhNenprZE1Hbjh6bW9RUTFGN0lfYkZMZ3g4YUh1VlM2eUhGNHNpVUN5ZG12R2RrSnpxTDRKTVR6Y29oMUhHNVdMZ1N1UzFLUjF3LUNnc0pvUFNQZXA1T1JnQ0E?oc=5"
+          "detail": "Admirals｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcERtbXpFVjcxMnRFZ1puY29uUlZkUlhUWVFVNlBtNEk2VkRvQ1pWVkZFNmJJemxuZGJvTU5Pc3lCWVRYdjJzczZleWxQVkJxXzBneHJVY2VJMTJURXdORlVnZmtOaXY1Zl92MG5Xank5VlJtclM2S1BNYUg3Zmp4Z0o2Tl9qRmlmUkNvNHhpYU0tUDdnbmpVNnNiZ0I?oc=5"
         }
       ],
       "us_news": [
         {
           "category": "國際市場",
-          "title": "Overall a good week incrementally for markets, given FOMC, OK PCE, break in bond linkage to oil. - Fundstrat Direct",
-          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPT2pCc0RldGVhNFE5UXRIOUt3ZGhtSmVLbG1jbVQyeC1ZT0JxR0FhNzVrUEpWMzMxdjZpQUtycnNyZkhTZThGM2lsYmFuWmpLbFJVMUI4RFI2SXBQY0ktMFRWU0ZCMEdSOWstazlwZi05WXNzN2pzZ3Q4N214TUVZU0lrRy1QaGVfWmZ5cUx2THNNWkNnY29HR3Q4SkpKZVhhLUdMOHlZTl93M0Y5WTQtMVdMSTNiS2VsaXVVTzJzeW1IeGt0QVFXeGtzWm1QU0g0Xy1xeWRRd00?oc=5",
-          "source": "Fundstrat Direct",
-          "published_at": "2026-10-30T11:50+00:00",
+          "title": "Fed Rate Decision: Hawkish Hold at 3.75%-4% in 10-2 Vote - Admirals",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcERtbXpFVjcxMnRFZ1puY29uUlZkUlhUWVFVNlBtNEk2VkRvQ1pWVkZFNmJJemxuZGJvTU5Pc3lCWVRYdjJzczZleWxQVkJxXzBneHJVY2VJMTJURXdORlVnZmtOaXY1Zl92MG5Xank5VlJtclM2S1BNYUg3Zmp4Z0o2Tl9qRmlmUkNvNHhpYU0tUDdnbmpVNnNiZ0I?oc=5",
+          "source": "Admirals",
+          "published_at": "2026-10-29T00:34+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-10-30 19:50 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "PCE inflation: Prices ticked higher in September, keeping expectations for a year-end Fed hike - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdjd1bFkyUjV5TXdRMEtqbXV1THZGelRhekxHQlNqc3pQZHdZNmFOcG1HUi02SmxPOVNPMlFWYldVNWZsRUxkaG5sTVVKWGZNbmJ0NnBGTThSWm9Cbl8zMWxMY2JhMW0zY28zSGtZdmdsNHFYckRQU3JTV2ZqSTlEUkUtVzU2S1BVSGhhMTJBSmxIZE5fMW0zVjloMVBIazdCOV9YU2tqMkZBa0hud3VOZWVfY0xjSnlqVTRKTm1WNHY4X3pqUmllUDcxQjFNb01JZ04wVg?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-10-29T14:30+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 22:30 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation - The New York Times",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQT0duQ2s1THJaQTllWHI4eXh0UEZXVjVLUkdBbUFyaHpERDhqQkxLcnhTRzVQU3k0MW5FeWF4Q25BZnJ4dHZuckZiRHZnN2V4eEljbEZDbFFxZnFZREJnQ29wTHdJSDhfV0FzYkdRQ1NkblZyZDAwTmZOdzhyZFlUc3N6M25CMWt6Y0VQMGZ3QmE?oc=5",
-          "source": "The New York Times",
-          "published_at": "2026-10-29T09:03+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 17:03 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock Market Today: Stocks Rise After Fed Holds Rates - STL.News",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0wT25GTzBCamZQcUViZzlJcEJUR3RUSEk2QjJtcTFxdTFLYVcxWHlVdk5SNmlRODJxRnlZXzZKY2dzYmh3bWlxcTlpT0tyRmYySHY1SE9RRDRxNk5GbE9XMXR5TGxuZ0I1THpvYm1qTVdDLW5zblFBSVp1STg3Y0k?oc=5",
-          "source": "STL.News",
-          "published_at": "2026-10-28T23:02+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 07:02 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Federal Reserve makes interest rate decision ahead of midterms - Fox Business",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR0hLUjN3TllXcDVjaXRBaUwxOW1QcnJLRkc3ZGR3SnR1U283WVdPeWozMmw2eFlLa3ZVb011TlEtMHI0RjV6eWE0T2ZXcXRNQVR5eEIzbVhRektfTHkzLWNLbVc5U0RQaXUyRnFSZ2VCUmZNOFlpcTQyWXc5S21zRWxpb2FBSS1FSkpiVnc0VnV5S2o50gGaAUFVX3lxTE1DUFpkcUswb2dYdVhleE1XejZfZVdTSHJsbUhOelF3Z1B4UUpGdWhqUGQzTmxvTmhGbFFQZ1VNdmhNenprZE1Hbjh6bW9RUTFGN0lfYkZMZ3g4YUh1VlM2eUhGNHNpVUN5ZG12R2RrSnpxTDRKTVR6Y29oMUhHNVdMZ1N1UzFLUjF3LUNnc0pvUFNQZXA1T1JnQ0E?oc=5",
-          "source": "Fox Business",
-          "published_at": "2026-10-28T21:17+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 05:17 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "December Will Give Clues As to Whether the Fed ‘Really Means What It Says,’ Economists Say - Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0yanZJaU1NTE1YVnlfdXpKSTc4UGRIbk13dkpJaDE3WnJJUFZvNGk2NFI5TndEZXFTMWZ4MU1KeXNBZXZPQ1ZiOUI5YVdTUm52eld0eVNMX01hYnVlUXZpdzFtUkdkWXRoeVE1VlJDNA?oc=5",
-          "source": "Investopedia",
-          "published_at": "2026-10-28T20:39+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 04:39 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed Says More Data Will Help Next Rate Decision as It Stands Pat - Bloomberg.com",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNYTNINnF3d0YzSWhxXzBuRUxDc2RycVdyV1FFVGFMcFMtdUZxVmx4RGQ5NDdJRmpRdlhMRlN4d1NTV1BFYVFXekxSQUhjRjBKWlNxTzNrb04xTmx5THJ1OVBZem1HWldlb2EzaWFsbmVNYUIxVWtqano5ZFJZanllZVJTYWNuYXVqRzFxMjRRSjVqaXBvWFQ5cTJiSElpWldqbjA5bXl6eEM?oc=5",
-          "source": "Bloomberg.com",
-          "published_at": "2026-10-28T20:16+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 04:16 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed’s Rate Hold Sends Bond Yields in Different Directions - WSJ",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaEkwMGl6T29kQlFSbU9EanZNX3VMdG5PcG9tWXh3cUQ0U0R5ZTFuUU1QRl9PWl9nd2l4bFpwWl9OOFFTS0VfSV9UcFR0VEtsRW9ld25admRIbkFQa292VTNWVV9xb2g3ZlQwZ2ZuNlVSQkNTQzhGN0RDSl9wZ0hDWi1fcGFTRnJHUTAzeEhUY1BZeVFJU1ZyaVFPdDkzNm9sVTVmcm9pSkxRWjlTOHRpSjlPNmxUb0pPaHBN?oc=5",
-          "source": "WSJ",
-          "published_at": "2026-10-28T20:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-10-29 04:00 台北時間"
+          "published_at_taipei": "2026-10-29 08:34 台北時間"
         }
       ],
       "domestic_news": [],

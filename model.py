@@ -32,7 +32,8 @@ def fit_latest_model(data, target_col="target"):
     X, y = df[features], df[target_col].astype(int)
     oof_p, oof_y = [], []
     if len(df) >= 350 and y.nunique() == 2:
-        for train_idx, valid_idx in TimeSeriesSplit(n_splits=5).split(X):
+        horizon = int(target_col.removeprefix("target_").removesuffix("d")) if target_col.startswith("target_") else 1
+        for train_idx, valid_idx in TimeSeriesSplit(n_splits=5, gap=max(0, horizon - 1)).split(X):
             if y.iloc[train_idx].nunique() < 2:
                 continue
             fold = _make_model().fit(X.iloc[train_idx], y.iloc[train_idx])

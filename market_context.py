@@ -170,6 +170,7 @@ def add_institutional_features(data, records):
         if col in frame:
             aligned = frame[col].reindex(data.index).astype(float) / 1000.0
             data[f"f_twse_0050_{name}_net_1000shares"] = aligned.shift(1)
+            data[f"f_twse_0050_{name}_net_5d_1000shares"] = aligned.rolling(5).sum().shift(1)
     return data
 
 
@@ -186,6 +187,9 @@ def latest_institutional_features(records, latest_taiwan_date):
         result[f"f_twse_{name}_net_5d_100m"] = sum(values) if values else float("nan")
     for name in ("foreign", "trust", "dealer", "total"):
         result[f"f_twse_0050_{name}_net_1000shares"] = float(row.get(f"0050_{name}_net_shares", float("nan"))) / 1000.0
+        history = [x for x in records if x.get("date", "") <= latest_taiwan_date][-5:]
+        values = [float(x[f"0050_{name}_net_shares"]) / 1000.0 for x in history if x.get(f"0050_{name}_net_shares") is not None]
+        result[f"f_twse_0050_{name}_net_5d_1000shares"] = sum(values) if values else float("nan")
     return result
 
 

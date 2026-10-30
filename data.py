@@ -7,7 +7,7 @@ TICKERS = [
     "0050.TW","2330.TW","2454.TW","2317.TW","2308.TW","3711.TW",
     "2383.TW","3037.TW","2303.TW","2382.TW","2881.TW",
     "TSM","NVDA","AMD","MU","ASML","^SOX","^IXIC","^GSPC","^DJI",
-    "^VIX","DX-Y.NYB","GC=F","CL=F","TWD=X","^HSI","000001.SS"
+    "^VIX","^TNX","^FVX","DX-Y.NYB","GC=F","CL=F","TWD=X","^TWII","^N225","^HSI","000001.SS","EWT"
 ]
 
 def load_market_data(years=5):

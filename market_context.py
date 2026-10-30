@@ -180,11 +180,12 @@ def latest_institutional_features(records, latest_taiwan_date):
     row = matches[-1]
     result = {}
     for name in ("foreign", "trust", "dealer", "total"):
-        result[f"f_twse_{name}_net_100m"] = float(row.get(f"{name}_net_100m", 0))
+        result[f"f_twse_{name}_net_100m"] = float(row.get(f"{name}_net_100m", float("nan")))
         history = [x for x in records if x.get("date", "") <= latest_taiwan_date][-5:]
-        result[f"f_twse_{name}_net_5d_100m"] = sum(float(x.get(f"{name}_net_100m", 0)) for x in history)
+        values = [float(x[f"{name}_net_100m"]) for x in history if x.get(f"{name}_net_100m") is not None]
+        result[f"f_twse_{name}_net_5d_100m"] = sum(values) if values else float("nan")
     for name in ("foreign", "trust", "dealer", "total"):
-        result[f"f_twse_0050_{name}_net_1000shares"] = float(row.get(f"0050_{name}_net_shares", 0)) / 1000.0
+        result[f"f_twse_0050_{name}_net_1000shares"] = float(row.get(f"0050_{name}_net_shares", float("nan"))) / 1000.0
     return result
 
 

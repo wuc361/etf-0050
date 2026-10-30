@@ -9,7 +9,7 @@ from data import load_market_data
 from features import build_features
 from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward
 from news import collect_news
-from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing, verify_twse_0050_close
+from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing, sync_official_0050_latest
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "site" / "data" / "latest.json"
@@ -64,6 +64,7 @@ def build_next_session_row(raw, columns):
 def main():
     now = datetime.now(timezone.utc)
     raw = load_market_data(years=5)
+    raw, official_close_check = sync_official_0050_latest(raw)
     data = build_features(raw)
     taiwan_prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_taiwan_date = pd.Timestamp(taiwan_prices.index[-1]).date().isoformat()
@@ -106,7 +107,8 @@ def main():
     prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_date = pd.Timestamp(prices.index[-1]).date().isoformat()
     latest_close = float(prices["Close"].iloc[-1])
-    official_close_check = verify_twse_0050_close(latest_date, latest_close)
+    if latest_date != official_close_check["date"]:
+        raise RuntimeError(f"內部日期檢查不一致：行情序列={latest_date}、TWSE={official_close_check['date']}")
     latest_close = float(official_close_check["close"])
     history_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).copy()
     close_series = history_frame["Close"].astype(float)

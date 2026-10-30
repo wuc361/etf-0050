@@ -85,7 +85,7 @@ def main() -> None:
     next_row = None
     for horizon in (1, 2, 3):
         target_col = f"target_{horizon}d"
-        horizon_report, horizon_predictions = evaluate_horizon(data, target_col, test_window=40)
+        horizon_report, horizon_predictions = evaluate_horizon(data, target_col, horizon=horizon, test_window=40)
         estimator, horizon_features = fit_latest_model(data, target_col=target_col)
         if model_features is None:
             model_features = horizon_features

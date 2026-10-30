@@ -169,7 +169,7 @@
     drawMacd(d.history || []);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
-    renderMarketBriefing(ex.market_briefing || {});
+    renderMarketBriefing(d.explanation?.market_briefing || {});
     renderModelComparison(d.model_comparison || {});
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';

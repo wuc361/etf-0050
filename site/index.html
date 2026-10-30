@@ -43,6 +43,16 @@
     .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; }
     .metric { background:#101a2b; padding:12px; border-radius:10px; }
     .metric strong { display:block; font-size:1.2rem; margin-top:5px; }
+    .event-grid,.market-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+    .event-card,.market-card { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:13px; }
+    .event-card h3,.market-card h3 { margin:0 0 8px; font-size:1rem; }
+    .event-card p,.market-card p { color:#aab4c4; font-size:.9rem; line-height:1.5; }
+    .positive { color:#f87171; } .negative { color:#34d399; } .neutral { color:#cbd5e1; }
+    .table-scroll { overflow-x:auto; }
+    .market-table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    .market-table th,.market-table td { padding:9px 8px; border-bottom:1px solid #29364c; text-align:right; white-space:nowrap; }
+    .market-table th:first-child,.market-table td:first-child { text-align:left; }
+    .section-caption { color:#9ca3af; font-size:.82rem; line-height:1.5; }
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
     a { color: #93c5fd; }
   </style>
@@ -61,6 +71,26 @@
     <article class="card"><div class="label">0050 最近收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">資料日期：—</p></article>
     <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
   </div>
+  <section class="card">
+    <h2>🌐 前一觀測日重大事件與市場脈動</h2>
+    <p id="briefing-narrative">等待前一觀測日資料…</p>
+    <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
+    <h3>🇺🇸 美股前一個已完成交易時段</h3>
+    <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
+    <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
+    <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
+    <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
+    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計，不等於0050單一ETF的資金流；自營商含自行買賣及避險。</p>
+    <h3>📰 前一觀測日重大新聞與事件</h3>
+    <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
+    <div id="briefing-sources" class="source-grid"></div>
+    <p class="section-caption">事件方向為規則式提示，不代表已證明因果。新聞標題不等於全文查證，且新聞不直接改寫模型機率。請留意各項資料的實際發布時間。</p>
+  </section>
+  <section class="card">
+    <h2>🧪 模型比較（相同樣本外測試區間）</h2>
+    <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
+    <p class="section-caption">Logistic Regression 維持正式預測基準；Random Forest、Extra Trees 僅作同區間研究比較，尚未自動取代正式模型。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+  </section>
   <section class="card">
     <h2>🔮 未來 1～3 個交易日預測</h2>
     <div id="horizon-forecasts" class="forecast-grid"><p>等待模型資料…</p></div>
@@ -136,6 +166,8 @@
     drawMacd(d.history || []);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
+    renderMarketBriefing(ex.market_briefing || {});
+    renderModelComparison(d.model_comparison || {});
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
     $('direction').className = 'value ' + (f.direction === 'UP' ? 'up' : 'down');
@@ -160,6 +192,78 @@
   } catch (e) {
     $('status').textContent = '尚未取得有效預測';
     $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function toneClass(tone) {
+    if (tone === '偏多') return 'positive';
+    if (tone === '偏空') return 'negative';
+    return 'neutral';
+  }
+  function renderMarketBriefing(b) {
+    $('briefing-narrative').textContent = b.narrative || '目前沒有足夠的前一觀測日資料。';
+    $('briefing-dates').textContent =
+      '前一台灣交易日：' + (b.taiwan_data_date || '無資料') +
+      '｜美股觀測日：' + (b.us_session_date || '無資料') +
+      '｜摘要更新（UTC）：' + (b.generated_at_utc || '無資料');
+    const usHost = $('us-market-table'); usHost.replaceChildren();
+    const usRows = b.us_market || [];
+    if (usRows.length) {
+      const table = document.createElement('table'); table.className = 'market-table';
+      const head = document.createElement('tr');
+      ['市場／標的','資料日期','收盤','漲跌幅'].forEach(v => { const th=document.createElement('th'); th.textContent=v; head.append(th); });
+      const thead=document.createElement('thead'); thead.append(head); table.append(thead);
+      const tbody=document.createElement('tbody');
+      usRows.forEach(row => {
+        const tr=document.createElement('tr');
+        [row.name,row.date,Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
+          const td=document.createElement('td'); td.textContent=v; if(i===3) td.className=toneClass(row.tone); tr.append(td);
+        });
+        tbody.append(tr);
+      });
+      table.append(tbody); usHost.append(table);
+    } else usHost.textContent='沒有可用的美股前夜行情；不以舊日期行情冒充最新資料。';
+
+    const instHost=$('institutional-summary'); instHost.replaceChildren();
+    const inst=b.institutional;
+    if(inst) {
+      [['外資',inst.foreign_net_100m],['投信',inst.trust_net_100m],['自營商',inst.dealer_net_100m],['三大法人合計',inst.total_net_100m]].forEach(([name,value])=>{
+        const card=document.createElement('article');card.className='market-card';
+        const h=document.createElement('h3');h.textContent=name;
+        const p=document.createElement('p');p.className=toneClass(value>0?'偏多':value<0?'偏空':'中性');
+        p.textContent=(value>0?'買超 ':value<0?'賣超 ':'淨額 ')+Math.abs(Number(value)).toLocaleString('zh-TW',{maximumFractionDigits:2})+' 億元';
+        card.append(h,p);instHost.append(card);
+      });
+      const src=document.createElement('p');src.className='section-caption';
+      src.textContent='官方來源：TWSE BFI82U｜統計日期：'+inst.date;
+      instHost.append(src);
+    } else instHost.textContent='法人資料尚未取得，請查看資料狀態與來源連結。';
+
+    const eventsHost=$('major-events');eventsHost.replaceChildren();
+    (b.events||[]).forEach(item=>{
+      const card=document.createElement('article');card.className='event-card';
+      const h=document.createElement('h3');h.textContent=item.group||'市場事件';
+      const title=document.createElement('p');title.className=toneClass(item.tone);title.textContent=item.title||'';
+      const detail=document.createElement('p');detail.textContent=item.detail||'';
+      const date=document.createElement('p');date.className='section-caption';date.textContent=item.date||'';
+      card.append(h,title,detail,date);eventsHost.append(card);
+    });
+    if(!eventsHost.children.length)eventsHost.textContent='尚無符合條件的重大事件。';
+    const sourceHost=$('briefing-sources');sourceHost.replaceChildren();
+    (b.sources||[]).forEach(item=>{
+      const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.name+'（'+(item.role||'資料來源')+'）';
+      sourceHost.append(a);
+    });
+  }
+  function renderModelComparison(comparison) {
+    const host=$('model-comparison');host.replaceChildren();
+    (comparison.models||[]).forEach(item=>{
+      const card=document.createElement('div');card.className='metric';
+      const title=document.createElement('span');title.className='chart-note';title.textContent=item.name+(item.name===comparison.production_model?'｜正式模型':'｜研究比較');
+      const strong=document.createElement('strong');strong.textContent=percent(item.accuracy);
+      const details=document.createElement('p');details.className='chart-note';
+      details.textContent='平衡準確率 '+percent(item.balanced_accuracy)+'｜Brier '+Number(item.brier_score).toFixed(3)+'｜樣本 '+item.n_test;
+      card.append(title,strong,details);host.append(card);
+    });
+    if(!host.children.length)host.textContent='模型比較資料尚未產生：'+(comparison.status||'無資料');
   }
   function renderHorizons(forecasts) {
     const host=$('horizon-forecasts'); host.replaceChildren();

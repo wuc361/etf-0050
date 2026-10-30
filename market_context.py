@@ -29,8 +29,7 @@ def _request_json(url: str):
 def fetch_twse_institutional(date_text: str):
     """Fetch official BFI82U data; values are NTD, returned in NTD 100m."""
     query = urllib.parse.urlencode({
-        "response": "json", "date": date_text.replace("-", ""),
-        "dayDate": "", "type": "day"
+        "response": "json", "dayDate": date_text.replace("-", ""), "type": "day"
     })
     payload = _request_json(TWSE_URL + "?" + query)
     if str(payload.get("stat", "")).upper() not in {"OK", "OK "}:

@@ -1,6 +1,8 @@
 name: 0050 AI Daily Forecast
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
   schedule:
     # 00:30 UTC = 08:30 Taiwan time, Monday-Friday.

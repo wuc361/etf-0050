@@ -8,7 +8,7 @@
 - `model.py`：Logistic Regression 基準模型與 expanding-window Walk-forward 回測。
 - `run_daily.py`：由 GitHub Actions 呼叫，輸出 `site/data/latest.json`。
 - `news.py`：讀取 Google News RSS，整理國際市場、台灣市場與半導體產業新聞標題，提供來源連結及初步關鍵字情緒。
-- `site/index.html`：不依賴 Streamlit 的靜態儀表板。
+- `site/index.html`：不依賴 Streamlit 的靜態儀表板，顯示三種預測期限及最近120個交易日K線/成交量。
 - `.github/workflows/daily.yml`：排程執行並部署 GitHub Pages。
 
 ## 啟用方式
@@ -23,6 +23,8 @@
 - 目前使用 Logistic Regression 基準分類器，不保證準確率或獲利。
 - 跨市場時區與交易日曆尚未完整建模；盤前可用性需要進一步驗證。
 - 新聞目前以 RSS 標題關鍵字作初步分類，不代表全文語意分析或事件查證；不會直接改動模型機率，也尚未納入歷史回測。
+- 2日、3日預測為相對最新收盤價的累積方向分類，不是逐日價格路徑；各期限分開訓練及回測，並在回測切分時排除可能重疊的未來標籤。
+- K線為 Yahoo Finance 調整後日線資料，最多顯示最近120個交易日；不等同即時報價。
 - 回測方向準確率不等同扣除交易成本後的策略報酬。
 - 請勿把模型結果當作個人化投資建議。
 

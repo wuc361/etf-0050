@@ -42,7 +42,7 @@ def evaluate_horizon(data, target_col, horizon=1, test_window=40, min_train=250)
     if len(df) < min_train + 20:
         raise ValueError(f"{target_col} 有效資料不足：{len(df)} 筆")
     predictions = []
-    start = min_train
+    start = min_train + (horizon - 1)
     while start < len(df):
         end = min(start + test_window, len(df))
         train_end = max(0, start - (horizon - 1))

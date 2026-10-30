@@ -228,7 +228,13 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
             "display_change": f"{(latest - previous) * 10:+.1f} bps" if is_yield else f"{change * 100:+.2f}%",
             "change_pct": round(change * 100, 3),
             "yield_change_bps": round((latest - previous) * 10, 2) if is_yield else None,
-            "tone": "偏多" if change > 0 else "偏空" if change < 0 else "中性"
+            "tone": (
+                ("波動風險升高" if change > 0 else "波動風險下降" if change < 0 else "中性")
+                if ticker == "^VIX" else
+                ("殖利率上升" if latest > previous else "殖利率下降" if latest < previous else "中性")
+                if is_yield else
+                ("偏多" if change > 0 else "偏空" if change < 0 else "中性")
+            )
         })
     actual_us_dates = [x["date"] for x in us_rows]
     us_session_date = max(actual_us_dates) if actual_us_dates else us_cutoff
@@ -274,8 +280,10 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
             "detail": "TWSE BFI82U 未回傳有效資料；不以其他日期資料代替。"
         })
 
-    us_negative = [x for x in us_rows if x["change_pct"] <= -1.5]
-    us_positive = [x for x in us_rows if x["change_pct"] >= 1.5]
+    equity_tickers = {"^GSPC", "^IXIC", "^SOX", "^DJI", "TSM", "NVDA", "AMD", "MU", "ASML"}
+    us_equity_rows = [x for x in us_rows if x["ticker"] in equity_tickers]
+    us_negative = [x for x in us_equity_rows if x["change_pct"] <= -1.5]
+    us_positive = [x for x in us_equity_rows if x["change_pct"] >= 1.5]
     if us_negative:
         names = "、".join(x["name"] for x in us_negative)
         events.append({"group":"美股前夜","title":f"美股市場出現較大跌幅：{names}","date":us_session_date,"tone":"偏空","detail":"單日跌幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"})

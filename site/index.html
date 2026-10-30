@@ -80,7 +80,10 @@
     <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
     <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
-    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計，不等於0050單一ETF的資金流；自營商含自行買賣及避險。</p>
+    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
+    <h3>🎯 0050 ETF 本身的法人買賣超</h3>
+    <div id="etf-0050-summary" class="market-grid"><p>資料載入中…</p></div>
+    <p class="section-caption">單位：股。此區使用 TWSE T86 個別證券資料，與上方全市場金額分開呈現，避免將整體市場法人資金誤認為0050直接流入。</p>
     <h3>📰 前一觀測日重大新聞與事件</h3>
     <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
     <div id="briefing-sources" class="source-grid"></div>
@@ -236,6 +239,19 @@
       src.textContent='官方來源：TWSE BFI82U｜統計日期：'+inst.date;
       instHost.append(src);
     } else instHost.textContent='法人資料尚未取得，請查看資料狀態與來源連結。';
+
+    const etfHost=$('etf-0050-summary');etfHost.replaceChildren();
+    const etf=b.etf_0050_institutional;
+    if(etf && etf.total_net_shares !== null && etf.total_net_shares !== undefined) {
+      [['外資',etf.foreign_net_shares],['投信',etf.trust_net_shares],['自營商',etf.dealer_net_shares],['三大法人合計',etf.total_net_shares]].forEach(([name,value])=>{
+        const card=document.createElement('article');card.className='market-card';
+        const h=document.createElement('h3');h.textContent=name;
+        const p=document.createElement('p');p.className=toneClass(value>0?'偏多':value<0?'偏空':'中性');
+        p.textContent=(value>0?'買超 ':value<0?'賣超 ':'淨額 ')+Math.abs(Number(value)).toLocaleString('zh-TW')+' 股';
+        card.append(h,p);etfHost.append(card);
+      });
+      const link=document.createElement('a');link.href=etf.source_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='查看 TWSE 0050 個別法人買賣超原始資料';etfHost.append(link);
+    } else etfHost.textContent='目前尚未取得0050個別ETF法人資料；請查看資料錯誤紀錄。';
 
     const eventsHost=$('major-events');eventsHost.replaceChildren();
     (b.events||[]).forEach(item=>{

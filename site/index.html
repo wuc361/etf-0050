@@ -33,6 +33,16 @@
     canvas { display:block; width:100%; height:360px; background:#101a2b; border-radius:12px; }
     .chart-legend { display:flex; flex-wrap:wrap; gap:14px; color:#9ca3af; font-size:.85rem; margin:10px 0; }
     .chart-note { color:#9ca3af; font-size:.85rem; }
+    .chart-stack { display:grid; gap:14px; }
+    .chart-panel { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:10px; }
+    .chart-panel h3 { margin:4px 4px 10px; font-size:1rem; }
+    .chart-panel canvas { height:300px; }
+    .learning-grid,.source-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .learn-item,.source-item { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:13px; }
+    .learn-item p,.source-item p { color:#aab4c4; font-size:.9rem; line-height:1.55; }
+    .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; }
+    .metric { background:#101a2b; padding:12px; border-radius:10px; }
+    .metric strong { display:block; font-size:1.2rem; margin-top:5px; }
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
     a { color: #93c5fd; }
   </style>
@@ -51,6 +61,42 @@
     <article class="card"><div class="label">0050 最近收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">資料日期：—</p></article>
     <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
   </div>
+  <section class="card">
+    <h2>🔮 未來 1～3 個交易日預測</h2>
+    <div id="horizon-forecasts" class="forecast-grid"><p>等待模型資料…</p></div>
+    <p class="chart-note">三個期限分別訓練模型，預測的是相對最新收盤價的累積方向，不是逐日價格路徑。期限越長，不確定性通常越高。</p>
+  </section>
+  <section class="card">
+    <h2>📈 0050 歷史 K 線與技術指標</h2>
+    <p class="chart-note">最近最多120個交易日。紅K代表收盤高於開盤、綠K代表收盤低於開盤；圖表為日線研究資料，非即時報價。</p>
+    <div class="chart-stack">
+      <div class="chart-panel"><h3>K線、MA5、MA20、MA60、布林通道及成交量</h3><canvas id="candlestick-chart" aria-label="0050歷史K線與均線圖"></canvas></div>
+      <div class="chart-panel"><h3>RSI（14日相對強弱指標）</h3><canvas id="rsi-chart" aria-label="0050 RSI 技術指標圖"></canvas></div>
+      <div class="chart-panel"><h3>MACD（12、26、9）</h3><canvas id="macd-chart" aria-label="0050 MACD 技術指標圖"></canvas></div>
+    </div>
+    <p id="chart-range" class="chart-note">圖表資料載入中…</p>
+  </section>
+  <section class="card">
+    <h2>🧪 模型回測品質檢查</h2>
+    <div id="backtest-metrics" class="metric-grid"><p>等待回測資料…</p></div>
+    <p class="chart-note">Brier Score 越低越好（0為完美機率預測）；Balanced Accuracy 可降低漲跌樣本比例不均的影響。請同時比較多數類別基準線，不能只看單一準確率。</p>
+  </section>
+  <section class="card">
+    <h2>📚 技術分析學習區</h2>
+    <div class="learning-grid">
+      <article class="learn-item"><h3>MA5／MA20／MA60 均線</h3><p>MA5觀察短期價格方向，MA20觀察約一個月趨勢，MA60觀察中期趨勢。短均線向上穿越長均線可視為偏多訊號，但盤整時容易反覆假突破。</p></article>
+      <article class="learn-item"><h3>RSI 14</h3><p>常見參考是高於70視為偏熱、低於30視為偏弱。RSI不是單獨的買賣指令；強勢趨勢中可能長時間停留在高檔。</p></article>
+      <article class="learn-item"><h3>MACD 12／26／9</h3><p>MACD線與訊號線交叉、柱狀體擴大或縮小，可觀察動能變化。訊號具有落後性，應搭配價格趨勢及成交量。</p></article>
+      <article class="learn-item"><h3>布林通道 20／2</h3><p>中線通常為20日均線，上下軌為均線加減兩倍標準差。通道收窄代表波動可能降低，不代表一定即將上漲或下跌。</p></article>
+      <article class="learn-item"><h3>成交量與量價</h3><p>價格上漲且成交量高於近期均量，代表參與度增加；但單日大量也可能是換手或出貨，應觀察後續價格確認。</p></article>
+      <article class="learn-item"><h3>ATR 14 波動幅度</h3><p>ATR衡量近期平均真實波幅，適合理解市場波動與風險，不提供方向。高ATR代表價格波動較大，不等於偏多。</p></article>
+    </div>
+  </section>
+  <section class="card">
+    <h2>🔗 可查證的研究資料與工具</h2>
+    <div id="reference-links" class="source-grid"><p>資料來源載入中…</p></div>
+    <p class="chart-note">建議以官方資料核對價格、三大法人與期貨籌碼。此版本列出研究入口，但尚未全部接入模型特徵。</p>
+  </section>
   <section class="card">
     <h2>模型與資料狀態</h2>
     <p id="model-meta">—</p>
@@ -86,6 +132,10 @@
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     drawCandles(d.history || []);
+    drawIndicatorLine('rsi-chart', d.history || [], 'rsi14', 'RSI 14', 0, 100, [30,70]);
+    drawMacd(d.history || []);
+    renderBacktestMetrics(d.forecasts || {});
+    renderReferenceLinks(d.reference_links || []);
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
     $('direction').className = 'value ' + (f.direction === 'UP' ? 'up' : 'down');
@@ -139,8 +189,13 @@
     ctx.font='11px system-ui'; ctx.strokeStyle='#34445d'; ctx.fillStyle='#9ca3af'; ctx.lineWidth=1;
     for(let i=0;i<=4;i++){ const y=top+priceH*i/4; const val=hi-(hi-lo)*i/4; ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(width-right,y); ctx.stroke(); ctx.fillText(val.toFixed(1),5,y+4); }
     const step=plotW/rows.length, candleW=Math.max(2,Math.min(10,step*0.62));
+    const y=v=>top+(hi-v)/(hi-lo)*priceH;
+    [['ma5','#fbbf24'],['ma20','#60a5fa'],['ma60','#c084fc'],['bb_upper','#64748b'],['bb_mid','#475569'],['bb_lower','#64748b']].forEach(([key,color])=>{
+      ctx.strokeStyle=color;ctx.lineWidth=1.3;ctx.beginPath();let begun=false;
+      rows.forEach((row,i)=>{const v=row[key];if(!Number.isFinite(v))return;const x=left+step*(i+.5),py=y(v);if(!begun){ctx.moveTo(x,py);begun=true;}else ctx.lineTo(x,py);});ctx.stroke();
+    });
     rows.forEach((x,i)=>{
-      const cx=left+step*(i+0.5), y=v=>top+(hi-v)/(hi-lo)*priceH;
+      const cx=left+step*(i+0.5);
       const rising=x.close>=x.open; ctx.strokeStyle=rising?'#f87171':'#34d399'; ctx.fillStyle=ctx.strokeStyle;
       ctx.beginPath(); ctx.moveTo(cx,y(x.high)); ctx.lineTo(cx,y(x.low)); ctx.stroke();
       const bodyTop=y(Math.max(x.open,x.close)), bodyBottom=y(Math.min(x.open,x.close));
@@ -148,9 +203,54 @@
       const vh=(x.volume||0)/maxVol*(volBottom-volTop);
       ctx.globalAlpha=0.65; ctx.fillRect(cx-candleW/2,volBottom-vh,candleW,vh); ctx.globalAlpha=1;
     });
-    ctx.fillStyle='#9ca3af'; ctx.fillText(rows[0].date, left, height-7);
+    ctx.fillStyle='#9ca3af'; ctx.fillText('MA5 黃｜MA20 藍｜MA60 紫｜布林通道灰',left,12);
+    ctx.fillText(rows[0].date, left, height-7);
     const last=rows[rows.length-1].date; const tw=ctx.measureText(last).width; ctx.fillText(last,width-right-tw,height-7);
     $('chart-range').textContent='期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' 個交易日｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
+  }
+  function drawIndicatorLine(id, rows, key, label, minOverride, maxOverride, thresholds=[]) {
+    const canvas=$(id); if(!canvas || !rows.length) return;
+    const ratio=window.devicePixelRatio||1, width=Math.max(320,canvas.clientWidth), height=260;
+    canvas.width=width*ratio; canvas.height=height*ratio;
+    const ctx=canvas.getContext('2d'); ctx.scale(ratio,ratio);
+    ctx.fillStyle='#101a2b';ctx.fillRect(0,0,width,height);
+    const values=rows.map(x=>x[key]).filter(Number.isFinite);
+    if(!values.length){ctx.fillStyle='#9ca3af';ctx.fillText('尚無足夠資料',20,30);return;}
+    const lo=minOverride??Math.min(...values), hi=maxOverride??Math.max(...values);
+    const left=44,right=12,top=18,bottom=28,w=width-left-right,h=height-top-bottom;
+    ctx.font='11px system-ui';ctx.strokeStyle='#34445d';ctx.fillStyle='#9ca3af';
+    for(let i=0;i<=4;i++){const y=top+h*i/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(width-right,y);ctx.stroke();ctx.fillText((hi-(hi-lo)*i/4).toFixed(0),5,y+4);}
+    thresholds.forEach(t=>{const y=top+(hi-t)/(hi-lo)*h;ctx.setLineDash([4,4]);ctx.strokeStyle='#64748b';ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(width-right,y);ctx.stroke();ctx.setLineDash([]);});
+    ctx.strokeStyle='#60a5fa';ctx.lineWidth=2;ctx.beginPath();let begun=false;
+    rows.forEach((row,i)=>{const v=row[key];if(!Number.isFinite(v))return;const x=left+(i/(Math.max(1,rows.length-1)))*w,y=top+(hi-v)/(hi-lo)*h;if(!begun){ctx.moveTo(x,y);begun=true;}else ctx.lineTo(x,y);});
+    ctx.stroke();ctx.fillStyle='#9ca3af';ctx.fillText(label,left,12);
+  }
+  function drawMacd(rows) {
+    const canvas=$('macd-chart');if(!canvas||!rows.length)return;
+    const ratio=window.devicePixelRatio||1,width=Math.max(320,canvas.clientWidth),height=260;
+    canvas.width=width*ratio;canvas.height=height*ratio;
+    const ctx=canvas.getContext('2d');ctx.scale(ratio,ratio);ctx.fillStyle='#101a2b';ctx.fillRect(0,0,width,height);
+    const vals=rows.flatMap(x=>[x.macd,x.macd_signal,x.macd_hist]).filter(Number.isFinite);
+    if(!vals.length){ctx.fillStyle='#9ca3af';ctx.fillText('尚無足夠資料',20,30);return;}
+    const abs=Math.max(...vals.map(Math.abs),0.01)*1.15,left=44,right=12,top=18,bottom=24,w=width-left-right,h=height-top-bottom,zero=top+h/2;
+    ctx.strokeStyle='#64748b';ctx.beginPath();ctx.moveTo(left,zero);ctx.lineTo(width-right,zero);ctx.stroke();
+    const step=w/rows.length,bw=Math.max(2,Math.min(8,step*.55));
+    rows.forEach((r,i)=>{if(!Number.isFinite(r.macd_hist))return;const x=left+(i+.5)*step,v=r.macd_hist/abs*h/2;ctx.fillStyle=v>=0?'#f87171':'#34d399';ctx.fillRect(x-bw/2,Math.min(zero,zero-v),bw,Math.max(1,Math.abs(v)));});
+    [['macd','#60a5fa'],['macd_signal','#fbbf24']].forEach(([key,color])=>{ctx.strokeStyle=color;ctx.lineWidth=1.7;ctx.beginPath();let begun=false;rows.forEach((r,i)=>{if(!Number.isFinite(r[key]))return;const x=left+(i/(Math.max(1,rows.length-1)))*w,y=zero-r[key]/abs*h/2;if(!begun){ctx.moveTo(x,y);begun=true;}else ctx.lineTo(x,y);});ctx.stroke();});
+    ctx.fillStyle='#9ca3af';ctx.font='11px system-ui';ctx.fillText('MACD藍線｜訊號線黃線｜柱狀體為差值',left,12);
+  }
+  function renderBacktestMetrics(forecasts) {
+    const host=$('backtest-metrics');host.replaceChildren();
+    [1,2,3].forEach(day=>{const b=forecasts[day+'d']?.backtest;if(!b)return;
+      const values=[['第'+day+'日準確率',percent(b.accuracy)],['平衡準確率',percent(b.balanced_accuracy)],['Brier Score',Number.isFinite(b.brier_score)?b.brier_score.toFixed(3):'N/A'],['多數類別基準',percent(b.majority_baseline_accuracy)],['測試樣本',String(b.n_test??'—')]];
+      values.forEach(([label,value])=>{const el=document.createElement('div');el.className='metric';const title=document.createElement('span');title.className='chart-note';title.textContent=label;const strong=document.createElement('strong');strong.textContent=value;el.append(title,strong);host.append(el);});
+    });
+    if(!host.children.length)host.textContent='目前沒有回測品質資料。';
+  }
+  function renderReferenceLinks(items) {
+    const host=$('reference-links');host.replaceChildren();
+    items.forEach(item=>{const card=document.createElement('article');card.className='source-item';const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.name;const p=document.createElement('p');p.textContent=item.purpose||'';card.append(a,p);host.append(card);});
+    if(!items.length)host.textContent='尚未提供資料來源連結。';
   }
   function renderNews(key, group) {
     const g=group || {}; $(key+'-tone').textContent=(g.tone || '無資料')+'｜標題關鍵字分數：'+(g.keyword_score ?? 0);

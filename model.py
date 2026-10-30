@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.metrics import accuracy_score, recall_score, balanced_accuracy_score, brier_score_loss
+from sklearn.model_selection import TimeSeriesSplit
 import joblib
 
 OUT = Path("artifacts")
@@ -24,11 +25,43 @@ def walk_forward_evaluate(data, test_window=40, min_train=250):
     return evaluate_horizon(data, "target", horizon=1, test_window=test_window, min_train=min_train)
 
 def fit_latest_model(data, target_col="target"):
+    """Fit final classifier and chronological out-of-fold Platt calibration."""
     df = data.dropna(subset=[target_col]).copy()
     features = [c for c in df.columns if c.startswith("f_")]
-    model = _make_model().fit(df[features], df[target_col].astype(int))
+    df = df.dropna(subset=features, how="all")
+    X, y = df[features], df[target_col].astype(int)
+    oof_p, oof_y = [], []
+    if len(df) >= 350 and y.nunique() == 2:
+        for train_idx, valid_idx in TimeSeriesSplit(n_splits=5).split(X):
+            if y.iloc[train_idx].nunique() < 2:
+                continue
+            fold = _make_model().fit(X.iloc[train_idx], y.iloc[train_idx])
+            oof_p.extend(fold.predict_proba(X.iloc[valid_idx])[:, 1].tolist())
+            oof_y.extend(y.iloc[valid_idx].tolist())
+    model = _make_model().fit(X, y)
+    calibrator = None
+    if len(oof_p) >= 100 and len(set(oof_y)) == 2:
+        p = np.clip(np.asarray(oof_p), 1e-5, 1 - 1e-5)
+        logits = np.log(p / (1 - p)).reshape(-1, 1)
+        calibrator = LogisticRegression(C=1.0, max_iter=1000).fit(logits, np.asarray(oof_y, dtype=int))
+    model.probability_calibrator_ = calibrator
+    model.calibration_status_ = "chronological_oof_platt" if calibrator is not None else "uncalibrated_fallback"
+    model.calibration_samples_ = len(oof_p)
     joblib.dump({"model": model, "features": features, "target": target_col}, OUT / f"latest_model_{target_col}.joblib")
     return model, features
+
+
+def predict_calibrated_probability(model, row, features):
+    raw = float(model.predict_proba(row[features])[:, 1][0])
+    calibrator = getattr(model, "probability_calibrator_", None)
+    if calibrator is not None:
+        p = float(np.clip(raw, 1e-5, 1 - 1e-5))
+        logit = np.log(p / (1 - p))
+        probability = float(calibrator.predict_proba(np.asarray([[logit]]))[0, 1])
+    else:
+        probability = raw
+    # Do not display numerical extremes as certainty.
+    return float(np.clip(probability, 0.05, 0.95))
 
 def save_report(report, predictions):
     OUT.mkdir(exist_ok=True)

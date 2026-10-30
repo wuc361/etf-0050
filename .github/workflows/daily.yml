@@ -7,9 +7,10 @@ on:
       - "site/data/**"
   workflow_dispatch:
   schedule:
-    # 00:30 UTC = 08:30 Taiwan time, Monday-Friday.
-    # Scheduled jobs may be delayed; data freshness is shown on the website.
-    - cron: "30 0 * * 1-5"
+    # 08:30 UTC = 16:30 Taiwan time, Monday-Friday.
+    # Run after Taiwan cash-market close so the same-day 0050 close can be collected.
+    # The latest completed US regular session remains the prior US trading session.
+    - cron: "30 8 * * 1-5"
 
 permissions:
   contents: write

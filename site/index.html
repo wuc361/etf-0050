@@ -217,7 +217,7 @@
       const tbody=document.createElement('tbody');
       usRows.forEach(row => {
         const tr=document.createElement('tr');
-        [row.name,row.date,Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
+        [row.name,row.date,row.display_close||Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),row.display_change||((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
           const td=document.createElement('td'); td.textContent=v; if(i===3) td.className=toneClass(row.tone); tr.append(td);
         });
         tbody.append(tr);

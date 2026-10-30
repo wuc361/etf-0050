@@ -21,7 +21,7 @@ US_TICKERS = {
 
 def _request_json(url: str):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 ETF0050Research/1.0"})
-    with urllib.request.urlopen(req, timeout=20) as response:
+    with urllib.request.urlopen(req, timeout=10) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
@@ -112,7 +112,7 @@ def fetch_twse_0050_flow(date_text: str):
         }
     return None
 
-def update_institutional_history(trading_dates, path: Path, backfill_sessions: int = 60):
+def update_institutional_history(trading_dates, path: Path, backfill_sessions: int = 60, max_fetch: int = 10):
     """Backfill recent sessions once, then append each new session to the committed JSON cache."""
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
@@ -122,8 +122,12 @@ def update_institutional_history(trading_dates, path: Path, backfill_sessions: i
     by_date = {x.get("date"): x for x in existing if x.get("date")}
     dates = [d.date().isoformat() for d in trading_dates[-backfill_sessions:]]
     missing = [d for d in dates if d not in by_date or "0050_total_net_shares" not in by_date[d]]
+    # Always prioritize the latest Taiwan session, then backfill older dates in small batches.
+    latest_date = dates[-1] if dates else None
+    selected = ([latest_date] if latest_date in missing else [])
+    selected += [d for d in missing if d != latest_date][:max(0, max_fetch - len(selected))]
     errors = []
-    for date_text in missing:
+    for date_text in selected:
         try:
             record = by_date.get(date_text, {})
             if not record:

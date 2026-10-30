@@ -7,6 +7,7 @@
 - `features.py`：產生歷史特徵與標籤。
 - `model.py`：Logistic Regression 基準模型與 expanding-window Walk-forward 回測。
 - `run_daily.py`：由 GitHub Actions 呼叫，輸出 `site/data/latest.json`。
+- `news.py`：讀取 Google News RSS，整理國際市場、台灣市場與半導體產業新聞標題，提供來源連結及初步關鍵字情緒。
 - `site/index.html`：不依賴 Streamlit 的靜態儀表板。
 - `.github/workflows/daily.yml`：排程執行並部署 GitHub Pages。
 
@@ -21,6 +22,7 @@
 - Yahoo Finance 是非官方資料來源，行情完整性需自行交叉驗證。
 - 目前使用 Logistic Regression 基準分類器，不保證準確率或獲利。
 - 跨市場時區與交易日曆尚未完整建模；盤前可用性需要進一步驗證。
+- 新聞目前以 RSS 標題關鍵字作初步分類，不代表全文語意分析或事件查證；不會直接改動模型機率，也尚未納入歷史回測。
 - 回測方向準確率不等同扣除交易成本後的策略報酬。
 - 請勿把模型結果當作個人化投資建議。
 

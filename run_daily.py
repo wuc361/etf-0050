@@ -7,7 +7,8 @@ import numpy as np
 import pandas as pd
 from data import load_market_data
 from features import build_features
-from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward
+from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward, predict_calibrated_probability
+from explain import explain_model_prediction, build_market_analysis
 from news import collect_news
 from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing, sync_official_0050_latest
 
@@ -83,6 +84,7 @@ def main():
     model_comparison = compare_models_walk_forward(data, target_col="target_1d", test_window=40)
     forecasts, next_row = {}, None
     feature_names = None
+    model_drivers = None
     for horizon in (1, 2, 3):
         target = f"target_{horizon}d"
         report, predictions = evaluate_horizon(data, target, horizon=horizon, test_window=40)
@@ -93,11 +95,17 @@ def main():
         for key, value in latest_flow.items():
             if key in next_row.columns:
                 next_row.loc[0, key] = value
-        up = float(estimator.predict_proba(next_row[model_features])[:, 1][0])
+        raw_up = float(estimator.predict_proba(next_row[model_features])[:, 1][0])
+        up = predict_calibrated_probability(estimator, next_row, model_features)
+        if horizon == 1:
+            model_drivers = explain_model_prediction(estimator, next_row, model_features)
         forecasts[f"{horizon}d"] = {
             "direction": "UP" if up >= .5 else "DOWN",
             "up_probability": round(up, 6),
             "down_probability": round(1-up, 6),
+            "raw_up_probability": round(raw_up, 6),
+            "probability_calibration": getattr(estimator, "calibration_status_", "unknown"),
+            "probability_display_cap": [0.05, 0.95],
             "backtest": report,
             "target_definition": f"相對最新收盤價，未來第 {horizon} 個台灣交易日收盤方向"
         }
@@ -150,19 +158,25 @@ def main():
     market_briefing = build_market_briefing(
         raw, institutional_records, news, latest_taiwan_date, institutional_errors
     )
+    # Use the same dated observations as the visible market briefing.
     factors = []
-    for ticker, label in [
-        ("^SOX","費城半導體指數"),("^IXIC","NASDAQ"),("^GSPC","S&P 500"),
-        ("^DJI","道瓊指數"),("TSM","台積電 ADR"),("NVDA","NVIDIA"),
-        ("2330.TW","台積電"),("^TWII","台灣加權指數"),("EWT","台灣 ETF"),
-        ("TWD=X","美元兌新台幣"),("^VIX","VIX 波動率指數"),
-        ("^TNX","美國10年期公債殖利率"),("^FVX","美國5年期公債殖利率")
-    ]:
-        frame = raw.get(ticker)
-        if frame is not None and len(frame["Close"].dropna()) > 1:
-            series = frame["Close"].dropna()
-            change = float(series.pct_change().dropna().iloc[-1])
-            factors.append({"name":label,"latest_return":round(change,6),"tone":"偏多" if change>0 else "偏空" if change<0 else "中性"})
+    for item in market_briefing.get("us_market", []):
+        change = item.get("change_pct")
+        if change is not None:
+            factors.append({"name": item.get("name", item.get("ticker", "市場標的")),
+                            "latest_return": round(float(change) / 100.0, 6),
+                            "tone": item.get("tone", "中性"), "date": item.get("date"),
+                            "source": "Yahoo Finance market briefing"})
+    market_analysis = build_market_analysis(market_briefing, history_frame, model_drivers)
+    data_quality = {
+        "taiwan_price_date": latest_date,
+        "official_twse_date": official_close_check.get("date"),
+        "institutional_date": (market_briefing.get("institutional") or {}).get("date"),
+        "us_session_dates": sorted({x.get("date") for x in market_briefing.get("us_market", []) if x.get("date")}),
+        "twse_price_date_match": latest_date == official_close_check.get("date"),
+        "institutional_date_match": (market_briefing.get("institutional") or {}).get("date") in (None, latest_date),
+        "note": "台股收盤、法人公開資料與美股最後完成交易時段可能不同日；分別顯示各自日期，不將不同市場資料偽裝成同一日期。"
+    }
     p1 = forecasts["1d"]["up_probability"]
     interpretation = "量化模型偏向上漲。" if p1 >= .55 else "量化模型偏向下跌。" if p1 <= .45 else "量化模型訊號接近中性。"
     report1 = forecasts["1d"]["backtest"]
@@ -171,7 +185,7 @@ def main():
         "generated_at_utc":now.isoformat(timespec="seconds"),
         "data_as_of":latest_date,
         "latest_close":latest_close,
-        "price_validation":official_close_check,
+        "price_validation":official_close_check,\n        "data_quality":data_quality,
         "forecasts":forecasts,
         "model_comparison":model_comparison,
         "history":history,
@@ -181,10 +195,10 @@ def main():
         "backtest":{"method":"purged expanding-window walk-forward",
                     "accuracy":report1["accuracy"],"up_recall":report1["up_recall"],
                     "coverage":1.0,"base_rate":report1["base_rate"],"n_test":report1["n_test"]},
-        "explanation":{"model_interpretation":interpretation,"market_factors":factors,
+        "explanation":{"model_interpretation":interpretation,"market_factors":factors,"market_analysis":market_analysis,"model_drivers":model_drivers,
                        "news":news,"market_briefing":market_briefing,
                        "summary":"交叉閱讀量化模型、前一個台灣交易日法人籌碼、前一個已完成美股交易時段及國內外新聞；新聞事件只作解釋參考，不直接改寫模型機率。"},
-        "model":{"name":"Logistic Regression","feature_count":len(feature_names),"training_rows":len(labeled)},
+        "model":{"name":"Logistic Regression + chronological OOF Platt calibration","feature_count":len(feature_names),"training_rows":len(labeled),"calibration":"time-ordered out-of-fold sigmoid calibration; displayed probability bounded to 5%-95%"},
         "data_source":"Yahoo Finance (unofficial; verify independently)",
         "reference_links":[
             {"name":"TWSE 臺灣證券交易所","url":"https://www.twse.com.tw/","purpose":"上市股票、三大法人與市場統計官方來源"},
@@ -199,7 +213,7 @@ def main():
             "研究用途，不構成投資建議。",
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
-            "跨市場時區與資料發布時間仍需進一步驗證。",
+            "台股收盤、法人資料與美股時段分別標示來源日期；不同市場交易日不要求相同，並檢查同一來源日期的一致性。",\n            "顯示機率採時間序列樣本外 Platt 校準，並限制於5%至95%；此上限是避免虛假確定性的顯示保護，不代表真實機率保證落在此區間。",\n            "模型特徵貢獻是 Logistic Regression 的線性 log-odds 分解，不是因果關係；市場文字分析為可追溯規則式整理，未接外部生成式 AI API。",
             "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
             "TWSE法人資料初期回填最近60個交易日，較長期歷史尚未完整；法人特徵僅使用已公開的前一交易日資料。",
             "美股市場摘要依紐約時間最後完成的常規交易時段判定；遇休市或資料供應商延遲時，會以實際資料日期顯示，不保證一定是前一個日曆日。",

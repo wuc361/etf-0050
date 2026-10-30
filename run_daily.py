@@ -9,7 +9,7 @@ from data import load_market_data
 from features import build_features
 from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward
 from news import collect_news
-from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing
+from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing, verify_twse_0050_close
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "site" / "data" / "latest.json"
@@ -106,6 +106,8 @@ def main():
     prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_date = pd.Timestamp(prices.index[-1]).date().isoformat()
     latest_close = float(prices["Close"].iloc[-1])
+    official_close_check = verify_twse_0050_close(latest_date, latest_close)
+    latest_close = float(official_close_check["close"])
     history_frame = raw["0050.TW"].dropna(subset=["Open", "High", "Low", "Close"]).copy()
     close_series = history_frame["Close"].astype(float)
     ma5 = close_series.rolling(5).mean()
@@ -167,6 +169,7 @@ def main():
         "generated_at_utc":now.isoformat(timespec="seconds"),
         "data_as_of":latest_date,
         "latest_close":latest_close,
+        "price_validation":official_close_check,
         "forecasts":forecasts,
         "model_comparison":model_comparison,
         "history":history,

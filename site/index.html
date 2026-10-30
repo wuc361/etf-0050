@@ -68,7 +68,8 @@
   <div class="grid">
     <article class="card"><div class="label">預測方向</div><div id="direction" class="value">—</div><p id="target" class="muted">—</p></article>
     <article class="card"><div class="label">模型預估上漲機率</div><div id="up-prob" class="value">—</div><p id="down-prob" class="muted">下跌機率：—</p></article>
-    <article class="card"><div class="label">0050 最近收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">資料日期：—</p></article>
+    <article class="card"><div class="label">0050 最近已確認收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">台灣交易日：—</p></article>
+    <article class="card"><div class="label">模型預測參考價格</div><div id="forecast-price" class="value">尚未估算</div><p id="forecast-price-note" class="muted">目前模型只輸出漲跌方向機率，沒有價格迴歸模型；不以機率假造目標價。</p></article>
     <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
   </div>
   <section class="card">
@@ -178,7 +179,13 @@
     $('up-prob').textContent = percent(f.up_probability);
     $('down-prob').textContent = '下跌機率：' + percent(f.down_probability);
     $('price').textContent = Number(d.latest_close).toLocaleString('zh-TW', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    $('as-of').textContent = '資料日期：' + (d.data_as_of || '未知');
+    $('as-of').textContent = '台灣交易日：' + (d.data_as_of || '未知');
+    const fp = d.forecast?.reference_price;
+    $('forecast-price').textContent = Number.isFinite(Number(fp)) && fp !== null
+      ? Number(fp).toLocaleString('zh-TW', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' 元'
+      : '尚未估算';
+    $('forecast-price-note').textContent = d.forecast?.reference_price_note ||
+      '目前模型只輸出漲跌方向機率，沒有價格迴歸模型；不以機率假造目標價。';
     $('accuracy').textContent = percent(b.accuracy);
     $('backtest-meta').textContent = '測試筆數：' + (b.n_test ?? '—') + '｜上漲命中率：' + percent(b.up_recall) + '｜上漲基準比例：' + percent(b.base_rate);
     $('model-meta').textContent = (d.model?.name || '模型') + '｜因子數：' + (d.model?.feature_count ?? '—') + '｜訓練樣本：' + (d.model?.training_rows ?? '—');

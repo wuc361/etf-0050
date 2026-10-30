@@ -101,6 +101,17 @@
     <p class="chart-note">三個期限分別訓練模型，預測的是相對最新收盤價的累積方向，不是逐日價格路徑。期限越長，不確定性通常越高。</p>
   </section>
   <section class="card">
+    <h2>⚖️ 多空因素與可追溯模型解釋</h2>
+    <p id="market-analysis-summary">等待分析資料…</p><p id="market-analysis-method" class="section-caption"></p>
+    <h3>🟢 支持上漲的因素</h3><div id="bullish-factors" class="event-grid"></div>
+    <h3>🔴 支持下跌的因素</h3><div id="bearish-factors" class="event-grid"></div>
+    <h3>⚪ 中性因素</h3><div id="neutral-factors" class="event-grid"></div>
+    <h3>🧮 模型特徵貢獻（非因果）</h3>
+    <div class="learning-grid"><article class="learn-item"><h4>推升上漲傾向</h4><div id="model-positive-drivers"></div></article><article class="learn-item"><h4>壓低上漲傾向</h4><div id="model-negative-drivers"></div></article></div>
+    <p id="model-driver-method" class="section-caption"></p>
+    <h3>🕒 資料日期檢查</h3><p id="data-quality" class="section-caption">等待資料品質檢查…</p>
+  </section>
+  <section class="card">
     <h2>📈 0050 歷史 K 線與技術指標</h2>
     <p class="chart-note">最近最多120個交易日。紅K代表收盤高於開盤、綠K代表收盤低於開盤；圖表為日線研究資料，非即時報價。</p>
     <div class="chart-stack">
@@ -195,6 +206,7 @@
     const ex = d.explanation || {}, n = ex.news || {};
     $('explanation-summary').textContent = ex.summary || '尚無綜合說明。';
     $('model-interpretation').textContent = ex.model_interpretation || '尚無模型解讀。';
+    renderMarketAnalysis(ex.market_analysis || {}, ex.model_drivers || {}, d.data_quality || {});
     $('market-factors').replaceChildren(...(ex.market_factors || []).map(x => { const li=document.createElement('li'); li.textContent=x.name+'：'+(x.latest_return*100).toFixed(2)+'%（'+x.tone+'）'; return li; }));
     renderNews('international', n.international); renderNews('domestic', n.domestic); renderNews('industry', n.industry);
     $('news-method').textContent = n.method || '新聞資料尚未提供。';
@@ -202,6 +214,37 @@
   } catch (e) {
     $('status').textContent = '尚未取得有效預測';
     $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function renderMarketAnalysis(a, drivers, quality) {
+    $('market-analysis-summary').textContent=a.summary||'目前沒有足夠訊號產生綜合判讀。';
+    $('market-analysis-method').textContent=a.method||'';
+    function cards(id,rows){
+      const host=$(id);host.replaceChildren();
+      (rows||[]).forEach(item=>{
+        const card=document.createElement('article');card.className='event-card';
+        const title=document.createElement('h3');title.textContent=item.title||'市場因素';
+        const value=document.createElement('p');value.className='tone';value.textContent=item.value||'';
+        const detail=document.createElement('p');detail.textContent=item.detail||'';
+        const meta=document.createElement('p');meta.className='section-caption';meta.textContent=[item.date?'資料日 '+item.date:'',item.source||''].filter(Boolean).join('｜');
+        card.append(title,value,detail,meta);host.append(card);
+      });
+      if(!host.children.length)host.textContent='目前沒有可用訊號。';
+    }
+    cards('bullish-factors',a.bullish_factors);cards('bearish-factors',a.bearish_factors);cards('neutral-factors',a.neutral_factors);
+    function driversList(id,rows){
+      const host=$(id);host.replaceChildren();
+      (rows||[]).forEach(x=>{const p=document.createElement('p');p.textContent=x.label+'：'+Number(x.contribution).toFixed(3);host.append(p);});
+      if(!host.children.length)host.textContent='尚無足夠資料計算特徵貢獻。';
+    }
+    driversList('model-positive-drivers',drivers.top_positive);driversList('model-negative-drivers',drivers.top_negative);
+    $('model-driver-method').textContent=drivers.method||'特徵貢獻尚未產生。';
+    $('data-quality').textContent=[
+      '0050行情日：'+(quality.taiwan_price_date||'無資料'),
+      'TWSE官方收盤日：'+(quality.official_twse_date||'無資料')+'（'+(quality.twse_price_date_match?'一致':'不一致')+'）',
+      '法人資料日：'+(quality.institutional_date||'無資料')+'（'+(quality.institutional_date_match?'一致或未提供':'不一致')+'）',
+      '美股資料日：'+((quality.us_session_dates||[]).join('、')||'無資料'),
+      quality.note||''
+    ].join('｜');
   }
   function toneClass(tone) {
     if (tone === '偏多') return 'positive';

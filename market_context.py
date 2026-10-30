@@ -362,8 +362,10 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
     }
 
 
-def verify_twse_0050_close(expected_date: str, yahoo_close: float, tolerance: float = 0.02):
-    """Fail closed unless Yahoo's latest 0050 close matches the latest TWSE daily record."""
+def sync_official_0050_latest(raw: dict, max_staleness_days: int = 7):
+    """Use the official TWSE latest daily OHLCV bar for 0050; never model on a stale Yahoo bar."""
+    import pandas as pd
+
     now_taipei = datetime.now(ZoneInfo("Asia/Taipei"))
     month_start = now_taipei.replace(day=1).strftime("%Y%m%d")
     query = urllib.parse.urlencode({
@@ -374,24 +376,64 @@ def verify_twse_0050_close(expected_date: str, yahoo_close: float, tolerance: fl
     parsed = []
     for row in rows:
         try:
-            date_text = str(row[0]).replace("/", "")
-            if len(date_text) != 7:
+            raw_date = str(row[0]).replace("/", "").strip()
+            if len(raw_date) != 7:
                 continue
-            year = int(date_text[:3]) + 1911
-            date_iso = f"{year:04d}-{date_text[3:5]}-{date_text[5:7]}"
-            close_value = float(str(row[6]).replace(",", ""))
-            parsed.append((date_iso, close_value))
+            yyyy = int(raw_date[:3]) + 1911
+            date_iso = f"{yyyy:04d}-{raw_date[3:5]}-{raw_date[5:7]}"
+            values = [float(str(v).replace(",", "").strip()) for v in row[1:7]]
+            volume, turnover, open_price, high_price, low_price, close_price = values
+            parsed.append({
+                "date": date_iso, "volume": volume, "turnover": turnover,
+                "open": open_price, "high": high_price, "low": low_price,
+                "close": close_price
+            })
         except (ValueError, TypeError, IndexError):
             continue
     if not parsed:
-        raise RuntimeError("TWSE官方0050日成交資訊無有效資料，已停止發布預測。")
-    official_date, official_close = max(parsed, key=lambda item: item[0])
-    if official_date != expected_date:
+        raise RuntimeError("TWSE官方0050日成交資訊無有效OHLCV資料，停止發布預測。")
+
+    official = max(parsed, key=lambda x: x["date"])
+    frame = raw.get("0050.TW")
+    if frame is None or frame.empty:
+        raise RuntimeError("Yahoo Finance沒有0050歷史資料，無法建立完整模型序列。")
+    frame = frame.copy()
+    index = pd.DatetimeIndex(pd.to_datetime(frame.index))
+    if index.tz is not None:
+        index = index.tz_localize(None)
+    frame.index = index.normalize()
+    yahoo_date = frame.index.max().date().isoformat()
+    official_date = official["date"]
+    gap = (pd.Timestamp(official_date) - pd.Timestamp(yahoo_date)).days
+    if gap < 0:
         raise RuntimeError(
-            f"0050行情日期不一致：Yahoo={expected_date}，TWSE最新={official_date}；已停止發布預測，避免使用過期行情。"
+            f"Yahoo資料日期 {yahoo_date} 晚於TWSE官方最新日期 {official_date}；日期狀態異常，停止發布。"
         )
-    if abs(float(yahoo_close) - official_close) > tolerance:
+    if gap > max_staleness_days:
         raise RuntimeError(
-            f"0050收盤價不一致：Yahoo={float(yahoo_close):.2f}，TWSE={official_close:.2f}；已停止發布預測。"
+            f"Yahoo資料落後TWSE官方資料超過{max_staleness_days}個日曆日（Yahoo={yahoo_date}、TWSE={official_date}）；"
+            "缺少中間交易日，停止發布以免錯誤補值。"
         )
-    return {"date": official_date, "close": official_close, "source": "TWSE STOCK_DAY"}
+
+    bar = pd.DataFrame([{
+        "Open": official["open"], "High": official["high"],
+        "Low": official["low"], "Close": official["close"],
+        "Volume": official["volume"]
+    }], index=[pd.Timestamp(official_date)])
+    # Official TWSE is the source of truth for the latest bar. Replace a same-date
+    # Yahoo row or append the missing latest Taiwan session.
+    frame = pd.concat([frame, bar])
+    frame = frame[~frame.index.duplicated(keep="last")].sort_index()
+    raw["0050.TW"] = frame
+    return raw, {
+        "date": official_date,
+        "close": official["close"],
+        "open": official["open"],
+        "high": official["high"],
+        "low": official["low"],
+        "volume": int(official["volume"]),
+        "source": "TWSE STOCK_DAY",
+        "yahoo_previous_latest_date": yahoo_date,
+        "yahoo_lag_calendar_days": gap,
+        "status": "official_bar_merged"
+    }

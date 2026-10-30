@@ -17,7 +17,7 @@ def load_market_data(years=5):
     for ticker in TICKERS:
         try:
             df = yf.download(ticker, start=start.isoformat(), end=end.isoformat(),
-                             auto_adjust=True, progress=False, threads=False)
+                             auto_adjust=False, progress=False, threads=False)
             if df is not None and not df.empty:
                 if isinstance(df.columns, pd.MultiIndex):
                     df.columns = df.columns.get_level_values(0)

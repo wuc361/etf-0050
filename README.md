@@ -1,43 +1,28 @@
-# 0050 AI Forecast V1
+# 0050 AI Forecast
 
-## 目標設定
-- 開盤前預測 0050 當日收盤相對前一交易日收盤方向
-- 五年歷史資料
-- 雲端網頁儀表板
-- 50 項候選因子登錄表
-- Walk-forward 樣本外回測
+以 GitHub Actions 執行每日資料更新、樣本外回測與下一交易日方向研究；GitHub Pages 提供靜態預測儀表板，不需要 Streamlit 常駐服務。
 
-## 本版本的誠實範圍
-這是可部署的研究起始專案，不是已完成的 50 因子生產模型。
-首版可由 Yahoo Finance 下載一批可取得的市場價格序列；官方 TWSE/TAIFEX 歷史資料、新聞情緒、法人現貨買賣超、產業動態指數及部分海外資料仍需接入。
-因子登錄表會標示可計算、待接 API 或待建置，不會把缺資料的項目假裝已納入模型。
-Yahoo Finance 是非官方資料來源，正式部署應以 TWSE、TAIFEX、可信行情供應商作交叉驗證。
+## 架構
+- `data.py`：下載研究用市場價格資料（Yahoo Finance，非官方來源）。
+- `features.py`：產生歷史特徵與標籤。
+- `model.py`：Logistic Regression 基準模型與 expanding-window Walk-forward 回測。
+- `run_daily.py`：由 GitHub Actions 呼叫，輸出 `site/data/latest.json`。
+- `site/index.html`：不依賴 Streamlit 的靜態儀表板。
+- `.github/workflows/daily.yml`：排程執行並部署 GitHub Pages。
 
-## 本機啟動
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-streamlit run app.py
-```
+## 啟用方式
+1. 在 GitHub Repository 的 **Settings → Actions → General → Workflow permissions** 確認工作流程允許必要的讀寫權限。
+2. 在 **Settings → Pages** 將 **Build and deployment → Source** 設為 **GitHub Actions**。
+3. 前往 **Actions → 0050 AI Daily Forecast → Run workflow**，手動執行第一次流程。
+4. 成功後從 **Settings → Pages** 查看網站網址。排程為星期一至星期五 UTC 00:30（台灣時間 08:30），但 GitHub 排程可能延遲，且不是交易日曆。
+5. 若工作流程失敗，開啟 **Actions** 查看失敗步驟與錯誤紀錄。
 
-## 雲端部署
-可部署到 Streamlit Community Cloud 或其他支援 Python 的主機。將此專案推送到 GitHub，建立 Streamlit app，指定 `app.py`。
-正式長期服務建議使用獨立排程器與資料庫；不要把 Streamlit 單一程序當成可靠的每日資料倉儲。
+## 研究限制
+- Yahoo Finance 是非官方資料來源，行情完整性需自行交叉驗證。
+- 目前使用 Logistic Regression 基準分類器，不保證準確率或獲利。
+- 跨市場時區與交易日曆尚未完整建模；盤前可用性需要進一步驗證。
+- 回測方向準確率不等同扣除交易成本後的策略報酬。
+- 請勿把模型結果當作個人化投資建議。
 
-## 重要研究限制
-1. 預測標籤是下一交易日 close > 當前 close；最後一列沒有標籤。
-2. 全球市場資料使用前一交易日觀測值；正式版需以交易所時區與交易日曆精確對齊。
-3. 台股收盤後公布的法人資料只能作為下一交易日特徵，不能用於當日開盤前預測。
-4. 回測以 expanding-window walk-forward，不隨機切分時間序列。
-5. 本版報告為方向準確率，不等同可交易策略報酬；尚未納入滑價、手續費、稅負與交易限制。
-6. 不保證 90% 正確率。若樣本外測試未達標，應如實顯示。
-
-## 下一階段
-- 官方 TWSE/TAIFEX API 接入及快取
-- 歷史新聞資料與發布時間戳記、新聞去重及情緒分類
-- 動態 0050 成分股權重與成分股變更歷史
-- FRED 利率資料及韓國股市資料
-- 特徵重要性、Permutation importance、SHAP
-- 模型版本管理、漂移偵測、Champion/Challenger 部署流程
-- 雲端資料庫、排程、監控與通知
+## 舊版 Streamlit
+舊的 `app.py` 保留作為參考，不會由新的 GitHub Actions 流程執行。

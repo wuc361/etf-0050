@@ -68,7 +68,7 @@ def save_report(report, predictions):
     predictions.to_csv(OUT/"predictions.csv",index=False)
 
 
-def evaluate_horizon(data, target_col, test_window=40, min_train=250):
+def evaluate_horizon(data, target_col, horizon=1, test_window=40, min_train=250):
     """Expanding-window evaluation for one independently trained forecast horizon."""
     df = data.dropna(subset=[target_col]).copy()
     features = [c for c in df.columns if c.startswith("f_")]
@@ -79,7 +79,7 @@ def evaluate_horizon(data, target_col, test_window=40, min_train=250):
     start = min_train
     while start < len(df):
         end = min(start + test_window, len(df))
-        train, test = df.iloc[:start], df.iloc[start:end]
+        # Purge the final horizon-1 training rows so their future labels cannot overlap\n        # the first observations in the validation window.\n        train_end = max(0, start - (horizon - 1))\n        train, test = df.iloc[:train_end], df.iloc[start:end]
         estimator = _make_model()
         estimator.fit(train[features], train[target_col].astype(int))
         probabilities = estimator.predict_proba(test[features])[:, 1]

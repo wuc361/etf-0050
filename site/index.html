@@ -170,8 +170,14 @@
       const direction=document.createElement('div'); direction.className='value '+(item?.direction==='UP'?'up':'down');
       direction.textContent=item ? (item.direction==='UP'?'偏向上漲':'偏向下跌') : '資料不足';
       const probability=document.createElement('p'); probability.textContent=item ? '上漲機率 '+percent(item.up_probability)+'｜下跌 '+percent(item.down_probability) : '尚無預測';
-      const accuracy=document.createElement('p'); accuracy.className='muted'; accuracy.textContent=item?.backtest ? '樣本外方向準確率 '+percent(item.backtest.accuracy)+'｜測試 '+item.backtest.n_test+' 筆' : '回測資料不足';
-      const note=document.createElement('p'); note.className='chart-note'; note.textContent=item?.target_definition || '';
+      const accuracy=document.createElement('p'); accuracy.className='muted';
+      accuracy.textContent=item?.backtest ? '樣本外準確率 '+percent(item.backtest.accuracy)+'｜平衡準確率 '+percent(item.backtest.balanced_accuracy)+'｜測試 '+item.backtest.n_test+' 筆' : '回測資料不足';
+      const note=document.createElement('p'); note.className='chart-note';
+      const bt=item?.backtest;
+      const edge=bt && Number.isFinite(bt.accuracy) && Number.isFinite(bt.majority_baseline_accuracy)
+        ? (bt.accuracy > bt.majority_baseline_accuracy ? '回測準確率高於多數類別基準，但不保證未來。' : '⚠ 回測準確率未高於簡單基準，暫無證據顯示模型有穩定優勢。')
+        : '';
+      note.textContent=[item?.target_definition || '',edge,bt && Number.isFinite(bt.brier_score) ? 'Brier Score：'+bt.brier_score.toFixed(3)+'（越低越好）' : ''].filter(Boolean).join('｜');
       card.append(title,direction,probability,accuracy,note); host.append(card);
     });
   }

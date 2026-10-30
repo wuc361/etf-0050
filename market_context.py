@@ -15,7 +15,8 @@ US_TICKERS = {
     "^GSPC": "S&P 500", "^IXIC": "NASDAQ 綜合指數",
     "^SOX": "費城半導體指數", "^DJI": "道瓊指數",
     "TSM": "台積電 ADR", "NVDA": "NVIDIA", "AMD": "AMD",
-    "MU": "美光", "ASML": "ASML"
+    "MU": "美光", "ASML": "ASML", "^VIX": "VIX 波動率指數",
+    "^TNX": "美國10年期公債殖利率", "^FVX": "美國5年期公債殖利率"
 }
 
 

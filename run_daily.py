@@ -37,6 +37,27 @@ def build_next_session_row(raw, columns):
             volume = frame["Volume"].dropna().astype(float)
             vc = volume.pct_change().dropna()
             row["f_0050_volume_change"] = float(vc.iloc[-1]) if len(vc) else np.nan
+            row["f_0050_volume_ratio20"] = float(volume.iloc[-1] / volume.rolling(20).mean().iloc[-1]) if len(volume) >= 20 and volume.rolling(20).mean().iloc[-1] else np.nan
+            ma60 = close.rolling(60).mean().iloc[-1]
+            row["f_0050_ma60_gap"] = float(close.iloc[-1] / ma60 - 1) if pd.notna(ma60) and ma60 else np.nan
+            ema12 = close.ewm(span=12, adjust=False).mean()
+            ema26 = close.ewm(span=26, adjust=False).mean()
+            macd = ema12 - ema26
+            signal = macd.ewm(span=9, adjust=False).mean()
+            row["f_0050_macd"] = float(macd.iloc[-1] / close.iloc[-1])
+            row["f_0050_macd_signal"] = float(signal.iloc[-1] / close.iloc[-1])
+            row["f_0050_macd_hist"] = float((macd.iloc[-1] - signal.iloc[-1]) / close.iloc[-1])
+            ma20 = close.rolling(20).mean().iloc[-1]
+            std20 = close.rolling(20).std().iloc[-1]
+            row["f_0050_bollinger_pctb"] = float((close.iloc[-1] - (ma20 - 2 * std20)) / (4 * std20)) if pd.notna(std20) and std20 else np.nan
+            high = frame["High"].dropna().astype(float)
+            low = frame["Low"].dropna().astype(float)
+            previous = close.shift(1)
+            tr = pd.concat([(high - low), (high - previous).abs(), (low - previous).abs()], axis=1).max(axis=1)
+            atr = tr.rolling(14).mean().iloc[-1]
+            row["f_0050_atr14_pct"] = float(atr / close.iloc[-1]) if pd.notna(atr) and close.iloc[-1] else np.nan
+            ret20 = close.pct_change(20).iloc[-1]
+            row["f_0050_roc20"] = float(ret20) if pd.notna(ret20) else np.nan
     return pd.DataFrame([{key: row.get(key, np.nan) for key in columns}])
 
 def main():

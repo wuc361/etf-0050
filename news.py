@@ -9,10 +9,12 @@ from email.utils import parsedate_to_datetime
 
 FEEDS = [
     ("國際市場", "美股 聯準會 利率 通膨 Nasdaq 半導體", "zh-TW", "TW", "TW"),
-    ("國際市場", "Federal Reserve interest rates inflation Nasdaq semiconductor stocks", "en-US", "US", "US"),
+    ("國際市場", "Federal Reserve FOMC CPI PCE payrolls inflation Treasury yields rate decision", "en-US", "US", "US"),
+    ("國際市場", "S&P 500 Nasdaq semiconductor stocks technology earnings market volatility", "en-US", "US", "US"),
     ("產業消息", "台積電 AI 晶片 NVIDIA 半導體", "zh-TW", "TW", "TW"),
     ("台灣市場", "台股 加權指數 外資 台灣股市", "zh-TW", "TW", "TW"),
-    ("台灣市場", "台灣央行 新台幣 出口 景氣", "zh-TW", "TW", "TW"),
+    ("台灣市場", "台灣央行 新台幣 匯率 利率 出口 景氣 政策", "zh-TW", "TW", "TW"),
+    ("產業消息", "NVIDIA earnings AI demand TSMC semiconductor supply chain", "en-US", "US", "US"),
 ]
 POSITIVE = ["上調","升評","獲利成長","營收創高","創新高","需求強勁","訂單增加","降息","通膨降溫","優於預期","買超","上漲","成長","利多","回升","upgrade","beat estimates","strong demand","rate cut","rally","surge","growth"]
 NEGATIVE = ["下調","降評","獲利衰退","營收下滑","需求疲弱","訂單減少","升息","通膨升溫","低於預期","賣超","下跌","衰退","利空","制裁","關稅","戰爭","地緣政治","暴跌","downgrade","miss estimates","weak demand","rate hike","selloff","recession","tariff","sanctions","war"]

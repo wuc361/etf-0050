@@ -1,0 +1,35 @@
+{
+  "project": "0050 AI Forecast",
+  "generated_at_utc": "2026-10-30T15:34:12+00:00",
+  "data_as_of": "2026-10-30",
+  "latest_close": 104.94999694824219,
+  "forecast": {
+    "direction": "DOWN",
+    "up_probability": 0.101162,
+    "down_probability": 0.898838,
+    "threshold": 0.5,
+    "target_session": "下一個台灣交易日（本版未接入官方交易日曆）"
+  },
+  "backtest": {
+    "method": "expanding-window walk-forward",
+    "accuracy": 0.6591836734693878,
+    "up_recall": 0.6964980544747081,
+    "coverage": 1.0,
+    "base_rate": 0.5244897959183673,
+    "n_test": 980
+  },
+  "model": {
+    "name": "Logistic Regression",
+    "feature_count": 59,
+    "training_rows": 1230
+  },
+  "data_source": "Yahoo Finance (unofficial; verify independently)",
+  "status": "ok",
+  "limitations": [
+    "研究用途，不構成投資建議。",
+    "歷史樣本外準確率不保證未來表現。",
+    "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
+    "跨市場時區與資料發布時間仍需進一步驗證。",
+    "回測方向準確率不等同扣除交易成本後的投資報酬。"
+  ]
+}

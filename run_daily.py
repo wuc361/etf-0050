@@ -12,6 +12,7 @@ import pandas as pd
 from data import load_market_data
 from features import build_features
 from model import fit_latest_model, save_report, walk_forward_evaluate
+from news import collect_news
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "site" / "data" / "latest.json"
@@ -86,6 +87,22 @@ def main() -> None:
     latest_date = pd.Timestamp(raw["0050.TW"]["Close"].dropna().index[-1]).date().isoformat()
     latest_close = float(raw["0050.TW"]["Close"].dropna().iloc[-1])
 
+    news_analysis = collect_news()
+    market_factors = []
+    for ticker, label in [("^SOX", "費城半導體指數"), ("^IXIC", "NASDAQ"), ("^GSPC", "S&P 500"), ("TSM", "台積電 ADR"), ("2330.TW", "台積電")]:
+        frame = raw.get(ticker)
+        if frame is not None and len(frame["Close"].dropna()) >= 2:
+            series = frame["Close"].dropna()
+            change = float(series.pct_change().dropna().iloc[-1])
+            market_factors.append({"name": label, "latest_return": round(change, 6), "tone": "偏多" if change > 0 else "偏空" if change < 0 else "中性"})
+
+    if probability_up >= 0.55:
+        model_interpretation = "量化模型偏向上漲，但仍須觀察新聞與市場風險是否抵銷。"
+    elif probability_up <= 0.45:
+        model_interpretation = "量化模型偏向下跌，需留意國際市場及台灣市場是否出現支撐訊號。"
+    else:
+        model_interpretation = "量化模型訊號接近中性，方向優勢不明顯。"
+
     # Do not claim the weekday approximation is an official exchange calendar.
     result = {
         "project": "0050 AI Forecast",
@@ -107,6 +124,12 @@ def main() -> None:
             "base_rate": report["base_rate"],
             "n_test": report["n_test"]
         },
+        "explanation": {
+            "model_interpretation": model_interpretation,
+            "market_factors": market_factors,
+            "news": news_analysis,
+            "summary": "交叉閱讀量化模型、國際市場、台灣市場及產業新聞；新聞目前不參與模型機率計算。"
+        },
         "model": {
             "name": "Logistic Regression",
             "feature_count": len(model_features),
@@ -119,6 +142,7 @@ def main() -> None:
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
             "跨市場時區與資料發布時間仍需進一步驗證。",
+            "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
             "回測方向準確率不等同扣除交易成本後的投資報酬。"
         ]
     }

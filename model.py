@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, recall_score
+from sklearn.metrics import accuracy_score, recall_score, balanced_accuracy_score, brier_score_loss
 import joblib
 
 OUT = Path("artifacts")
@@ -66,10 +66,17 @@ def evaluate_horizon(data, target_col, horizon=1, test_window=40, min_train=250)
     pred = pd.DataFrame(predictions)
     actual = (pred["actual"] == "UP").astype(int)
     predicted = (pred["prediction"] == "UP").astype(int)
+    accuracy = float(accuracy_score(actual, predicted))
+    base_rate = float(actual.mean())
+    majority_baseline = max(base_rate, 1.0 - base_rate)
     report = {
-        "accuracy": float(accuracy_score(actual, predicted)),
+        "accuracy": accuracy,
+        "balanced_accuracy": float(balanced_accuracy_score(actual, predicted)),
         "up_recall": float(recall_score(actual, predicted, zero_division=0)),
-        "base_rate": float(actual.mean()),
+        "brier_score": float(brier_score_loss(actual, pred["up_probability"])),
+        "majority_baseline_accuracy": majority_baseline,
+        "accuracy_lift_vs_baseline": accuracy - majority_baseline,
+        "base_rate": base_rate,
         "n_test": int(len(pred))
     }
     return report, pred

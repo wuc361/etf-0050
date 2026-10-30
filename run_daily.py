@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from data import load_market_data
 from features import build_features
-from model import fit_latest_model, save_report, evaluate_horizon
+from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward
 from news import collect_news
 from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing
 
@@ -79,6 +79,7 @@ def main():
     if len(labeled) < 300:
         raise RuntimeError(f"Not enough labeled observations: {len(labeled)}")
 
+    model_comparison = compare_models_walk_forward(data, target_col="target_1d", test_window=40)
     forecasts, next_row = {}, None
     feature_names = None
     for horizon in (1, 2, 3):
@@ -167,6 +168,7 @@ def main():
         "data_as_of":latest_date,
         "latest_close":latest_close,
         "forecasts":forecasts,
+        "model_comparison":model_comparison,
         "history":history,
         "forecast":{"direction":forecasts["1d"]["direction"],"up_probability":p1,
                     "down_probability":forecasts["1d"]["down_probability"],

@@ -260,9 +260,16 @@
       const title=document.createElement('p');title.className=toneClass(item.tone);title.textContent=item.title||'';
       const detail=document.createElement('p');detail.textContent=item.detail||'';
       const date=document.createElement('p');date.className='section-caption';date.textContent=item.date||'';
-      card.append(h,title,detail,date);eventsHost.append(card);
+      card.append(h,title,detail,date);
+      if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='閱讀原始報導';card.append(link);}
+      eventsHost.append(card);
     });
     if(!eventsHost.children.length)eventsHost.textContent='尚無符合條件的重大事件。';
+    if((b.institutional_errors||[]).length){
+      const warning=document.createElement('p');warning.className='section-caption';
+      warning.textContent='部分官方法人資料讀取提醒：'+b.institutional_errors.slice(0,4).join('；');
+      instHost.append(warning);
+    }
     const sourceHost=$('briefing-sources');sourceHost.replaceChildren();
     (b.sources||[]).forEach(item=>{
       const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.name+'（'+(item.role||'資料來源')+'）';

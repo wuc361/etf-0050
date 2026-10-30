@@ -285,11 +285,11 @@ def build_market_briefing(raw, institutional_records, news, taiwan_data_date, in
     domestic_news = [x for x in recent if x.get("category") == "台灣市場"][:8]
     industry_news = [x for x in recent if x.get("category") == "產業消息"][:8]
     for item in us_news[:5]:
-        events.append({"group":"國際新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源"),"url":item.get("url","")})
+        events.append({"group":"國際新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源"),"url":item.get("url",""),"url":item.get("url","")})
     for item in domestic_news[:4]:
-        events.append({"group":"台灣新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源")})
+        events.append({"group":"台灣新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源"),"url":item.get("url","")})
     for item in industry_news[:4]:
-        events.append({"group":"產業新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源")})
+        events.append({"group":"產業新聞","title":item.get("title",""),"date":item.get("published_at",""),"tone":"偏空" if item.get("keyword_score",0)<0 else "偏多" if item.get("keyword_score",0)>0 else "待判讀","detail":item.get("source","新聞來源"),"url":item.get("url","")})
 
     total = float(institutional.get("total_net_100m", 0)) if institutional else None
     us_tech = [x for x in us_rows if x["ticker"] in {"^IXIC","^SOX","TSM","NVDA","AMD","MU","ASML"}]

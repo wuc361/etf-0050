@@ -9,6 +9,7 @@ from data import load_market_data
 from features import build_features
 from model import fit_latest_model, save_report, evaluate_horizon
 from news import collect_news
+from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "site" / "data" / "latest.json"
@@ -64,6 +65,14 @@ def main():
     now = datetime.now(timezone.utc)
     raw = load_market_data(years=5)
     data = build_features(raw)
+    taiwan_prices = raw["0050.TW"].dropna(subset=["Close"])
+    latest_taiwan_date = pd.Timestamp(taiwan_prices.index[-1]).date().isoformat()
+    institutional_path = ROOT / "site" / "data" / "institutional_history.json"
+    institutional_records, institutional_errors = update_institutional_history(
+        taiwan_prices.index, institutional_path, backfill_sessions=60
+    )
+    data = add_institutional_features(data, institutional_records)
+    latest_flow = latest_institutional_features(institutional_records, latest_taiwan_date)
     labeled = data.dropna(subset=["target_1d"]).copy()
     features = [x for x in labeled.columns if x.startswith("f_")]
     labeled = labeled.dropna(subset=features, how="all")
@@ -79,6 +88,9 @@ def main():
         if next_row is None:
             feature_names = model_features
             next_row = build_next_session_row(raw, feature_names)
+        for key, value in latest_flow.items():
+            if key in next_row.columns:
+                next_row.loc[0, key] = value
         up = float(estimator.predict_proba(next_row[model_features])[:, 1][0])
         forecasts[f"{horizon}d"] = {
             "direction": "UP" if up >= .5 else "DOWN",
@@ -130,6 +142,9 @@ def main():
             "bb_lower": float(bb_lower.loc[idx]) if pd.notna(bb_lower.loc[idx]) else None
         })
     news = collect_news()
+    market_briefing = build_market_briefing(
+        raw, institutional_records, news, latest_taiwan_date, institutional_errors
+    )
     factors = []
     for ticker, label in [
         ("^SOX","費城半導體指數"),("^IXIC","NASDAQ"),("^GSPC","S&P 500"),
@@ -160,7 +175,8 @@ def main():
                     "accuracy":report1["accuracy"],"up_recall":report1["up_recall"],
                     "coverage":1.0,"base_rate":report1["base_rate"],"n_test":report1["n_test"]},
         "explanation":{"model_interpretation":interpretation,"market_factors":factors,
-                       "news":news,"summary":"交叉閱讀量化模型、國際市場、台灣市場及產業新聞；新聞目前不參與模型機率計算。"},
+                       "news":news,"market_briefing":market_briefing,
+                       "summary":"交叉閱讀量化模型、前一個台灣交易日法人籌碼、前一個已完成美股交易時段及國內外新聞；新聞事件只作解釋參考，不直接改寫模型機率。"},
         "model":{"name":"Logistic Regression","feature_count":len(feature_names),"training_rows":len(labeled)},
         "data_source":"Yahoo Finance (unofficial; verify independently)",
         "reference_links":[
@@ -178,6 +194,8 @@ def main():
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
             "跨市場時區與資料發布時間仍需進一步驗證。",
             "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
+            "TWSE法人資料初期回填最近60個交易日，較長期歷史尚未完整；法人特徵僅使用已公開的前一交易日資料。",
+            "美股市場摘要依紐約時間最後完成的常規交易時段判定；遇休市或資料供應商延遲時，會以實際資料日期顯示，不保證一定是前一個日曆日。",
             "2日及3日預測為獨立模型的累積方向分類，不是逐日價格路徑；期限越長，不確定性通常越高。",
             "多日回測已排除可能重疊的訓練標籤，但仍需持續檢驗模型穩定性。",
             "回測方向準確率不等同扣除交易成本後的投資報酬。"

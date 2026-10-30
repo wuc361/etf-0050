@@ -1,12 +1,12 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-10-30T15:34:12+00:00",
+  "generated_at_utc": "2026-10-30T15:38:22+00:00",
   "data_as_of": "2026-10-30",
   "latest_close": 104.94999694824219,
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.101162,
-    "down_probability": 0.898838,
+    "up_probability": 0.101361,
+    "down_probability": 0.898639,
     "threshold": 0.5,
     "target_session": "下一個台灣交易日（本版未接入官方交易日曆）"
   },

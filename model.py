@@ -6,6 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.metrics import accuracy_score, recall_score, balanced_accuracy_score, brier_score_loss
 import joblib
 
@@ -80,3 +81,67 @@ def evaluate_horizon(data, target_col, horizon=1, test_window=40, min_train=250)
         "n_test": int(len(pred))
     }
     return report, pred
+
+
+def compare_models_walk_forward(data, target_col="target_1d", test_window=40, min_train=250):
+    """Compare models on identical purged expanding-window folds; keep Logistic as production baseline."""
+    df = data.dropna(subset=[target_col]).copy()
+    features = [col for col in df.columns if col.startswith("f_")]
+    df = df.dropna(subset=features, how="all")
+    if len(df) < min_train + 20:
+        return {"status": "insufficient_data", "models": []}
+    from sklearn.impute import SimpleImputer
+    from sklearn.pipeline import Pipeline
+    from sklearn.metrics import accuracy_score, balanced_accuracy_score, brier_score_loss
+    from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
+
+    factories = {
+        "Logistic Regression": lambda: _make_model(),
+        "Random Forest": lambda: Pipeline([
+            ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
+            ("model", RandomForestClassifier(
+                n_estimators=120, max_depth=5, min_samples_leaf=8,
+                class_weight="balanced_subsample", random_state=42, n_jobs=-1
+            ))
+        ]),
+        "Extra Trees": lambda: Pipeline([
+            ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
+            ("model", ExtraTreesClassifier(
+                n_estimators=120, max_depth=5, min_samples_leaf=8,
+                class_weight="balanced", random_state=42, n_jobs=-1
+            ))
+        ])
+    }
+    predictions = {name: [] for name in factories}
+    start = min_train
+    while start < len(df):
+        end = min(start + test_window, len(df))
+        train, test = df.iloc[:start], df.iloc[start:end]
+        if len(train) < min_train:
+            break
+        for name, factory in factories.items():
+            estimator = factory()
+            estimator.fit(train[features], train[target_col].astype(int))
+            probability = estimator.predict_proba(test[features])[:, 1]
+            for dt, p, actual in zip(test.index, probability, test[target_col].astype(int)):
+                predictions[name].append((str(dt.date()), float(p), int(actual)))
+        start = end
+    reports = []
+    for name, rows in predictions.items():
+        if not rows:
+            continue
+        pred = pd.DataFrame(rows, columns=["date", "probability", "actual"])
+        direction = (pred["probability"] >= .5).astype(int)
+        actual = pred["actual"]
+        accuracy = float(accuracy_score(actual, direction))
+        reports.append({
+            "name": name,
+            "accuracy": accuracy,
+            "balanced_accuracy": float(balanced_accuracy_score(actual, direction)),
+            "brier_score": float(brier_score_loss(actual, pred["probability"])),
+            "n_test": int(len(pred)),
+            "majority_baseline_accuracy": float(max(actual.mean(), 1 - actual.mean()))
+        })
+    return {"status": "ok" if reports else "no_predictions", "target": target_col,
+            "method": "identical purged expanding-window folds",
+            "production_model": "Logistic Regression", "models": reports}

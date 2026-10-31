@@ -5,7 +5,7 @@
 ## 架構
 - `data.py`：下載研究用市場價格資料（Yahoo Finance，非官方來源）。
 - `features.py`：產生1/2/3交易日預測標籤、跨市場報酬、MA60、RSI、MACD、布林通道、ATR、量能等特徵。
-- `model.py`：Logistic Regression 基準模型、Purged expanding-window Walk-forward 回測、Balanced Accuracy、Brier Score及多數類別基準比較。
+- `model.py`：以時間序列切分進行 sigmoid 機率校準的 Logistic Regression、Purged expanding-window Walk-forward 回測、Balanced Accuracy、Brier Score及多數類別基準比較；預測機率限制在1%至99%，避免把模型輸出誤讀為確定性。
 - `run_daily.py`：由 GitHub Actions 呼叫，輸出 `site/data/latest.json`。
 - `news.py`：讀取 Google News RSS，整理國際市場、台灣市場與半導體產業新聞標題，提供來源連結及初步關鍵字情緒。
 - `market_context.py`：抓取 TWSE BFI82U 全市場三大法人買賣金額，以及 T86 0050 個別ETF法人買賣超股數；累積最近60個交易日，並整理前一個已完成美股交易時段的市場表現。
@@ -16,13 +16,13 @@
 1. 在 GitHub Repository 的 **Settings → Actions → General → Workflow permissions** 確認工作流程允許必要的讀寫權限。
 2. 在 **Settings → Pages** 將 **Build and deployment → Source** 設為 **GitHub Actions**。
 3. 前往 **Actions → 0050 AI Daily Forecast → Run workflow**，手動執行第一次流程。
-4. 成功後從 **Settings → Pages** 查看網站網址。排程為星期一至星期五 UTC 00:30（台灣時間 08:30），但 GitHub 排程可能延遲，且不是交易日曆。
+4. 成功後從 **Settings → Pages** 查看網站網址。排程為星期一至星期五 UTC 00:30（台灣時間 08:30），在台股開盤前執行，以取得最新已完成的美股交易時段；GitHub 排程可能延遲，且不是交易日曆。
 5. 若工作流程失敗，開啟 **Actions** 查看失敗步驟與錯誤紀錄。
 
 ## 研究限制
 - Yahoo Finance 是非官方資料來源，行情完整性需自行交叉驗證；TWSE、TAIFEX、FRED、CBOE及元大投信連結目前提供查證入口，並非全部已自動接入模型。
 - 目前使用 Logistic Regression 基準分類器，不保證準確率或獲利。回測同時提供 Balanced Accuracy、Brier Score與多數類別基準，請避免只看 Accuracy。
-- 跨市場時區與交易日曆尚未完整建模；盤前可用性需要進一步驗證。
+- 美股主要指數、半導體及大型科技股特徵，依台灣交易日 D 的前一個日曆日作為美股資料截止日，對齊台灣 09:00 開盤前已完成的最近美股交易時段；其他海外市場仍需持續驗證各自時區與交易日曆。
 - 新聞目前以 RSS 標題關鍵字作初步分類，不代表全文語意分析或事件查證；不會直接改動模型機率，也尚未納入歷史回測。
 - TWSE BFI82U 為全市場法人買賣金額；T86 為0050個別ETF法人買賣超股數。兩者單位及統計範圍不同，不可混為一談。初期只回填最近60個交易日，且須以交易所公告時間確認資料已公開後，才可用於下一交易日模型。
 - 美股前夜觀測依紐約時間最後完成的常規交易時段標示日期；週末、休市與資料延遲時，以實際資料日期為準。美股表現與台股反應是關聯觀察，不等於因果證明。

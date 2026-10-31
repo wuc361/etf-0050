@@ -93,13 +93,13 @@ def main():
         for key, value in latest_flow.items():
             if key in next_row.columns:
                 next_row.loc[0, key] = value
-        up = float(estimator.predict_proba(next_row[model_features])[:, 1][0])
+        up = float(np.clip(estimator.predict_proba(next_row[model_features])[:, 1][0], 0.01, 0.99))
         forecasts[f"{horizon}d"] = {
             "direction": "UP" if up >= .5 else "DOWN",
             "up_probability": round(up, 6),
             "down_probability": round(1-up, 6),
             "backtest": report,
-            "target_definition": f"相對最新收盤價，未來第 {horizon} 個台灣交易日收盤方向"
+            "target_definition": f"相對最近一個台灣交易日收盤價，未來第 {horizon} 個台灣交易日收盤方向（不是開盤跳空預測）"
         }
         if horizon == 1:
             save_report(report, predictions)
@@ -184,7 +184,7 @@ def main():
         "explanation":{"model_interpretation":interpretation,"market_factors":factors,
                        "news":news,"market_briefing":market_briefing,
                        "summary":"交叉閱讀量化模型、前一個台灣交易日法人籌碼、前一個已完成美股交易時段及國內外新聞；新聞事件只作解釋參考，不直接改寫模型機率。"},
-        "model":{"name":"Logistic Regression","feature_count":len(feature_names),"training_rows":len(labeled)},
+        "model":{"name":"Calibrated Logistic Regression","probability_calibration":"sigmoid / chronological time-series folds","probability_bounds":[0.01,0.99],"feature_count":len(feature_names),"training_rows":len(labeled)},
         "data_source":"Yahoo Finance (unofficial; verify independently)",
         "reference_links":[
             {"name":"TWSE 臺灣證券交易所","url":"https://www.twse.com.tw/","purpose":"上市股票、三大法人與市場統計官方來源"},
@@ -199,7 +199,7 @@ def main():
             "研究用途，不構成投資建議。",
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
-            "跨市場時區與資料發布時間仍需進一步驗證。",
+            "美股主要市場特徵已按台灣開盤前可得的最近已完成美股交易時段對齊；其他市場時區及資料供應商延遲仍需持續監控。",
             "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
             "TWSE法人資料初期回填最近60個交易日，較長期歷史尚未完整；法人特徵僅使用已公開的前一交易日資料。",
             "美股市場摘要依紐約時間最後完成的常規交易時段判定；遇休市或資料供應商延遲時，會以實際資料日期顯示，不保證一定是前一個日曆日。",

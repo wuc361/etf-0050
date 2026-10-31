@@ -79,6 +79,10 @@ def build_features(raw):
         target[f"target_{horizon}d"] = (future_close > previous_close).astype(float)
         target.loc[future_close.isna() | previous_close.isna(), f"target_{horizon}d"] = np.nan
     target["target"] = target["target_1d"]
+    # Separate opening-gap target: next Taiwan session open vs prior Taiwan close.
+    next_open = raw["0050.TW"]["Open"].reindex(target.index)
+    target["target_open_up"] = (next_open > target["close"].shift(1)).astype(float)
+    target.loc[next_open.isna() | target["close"].shift(1).isna(), "target_open_up"] = np.nan
     X = pd.DataFrame(index=target.index)
     for ticker, df in raw.items():
         safe = ticker.replace("^","").replace(".","_").replace("=","_").replace("-","_")

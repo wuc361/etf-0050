@@ -80,7 +80,7 @@ def main():
     if len(labeled) < 300:
         raise RuntimeError(f"Not enough labeled observations: {len(labeled)}")
 
-    model_comparison = compare_models_walk_forward(data, target_col="target_1d", test_window=40)
+    model_comparison = compare_models_walk_forward(data, target_col="target_1d", test_window=80)
     selected_model = model_comparison.get("selected_model", "Logistic Regression")
     forecasts, next_row = {}, None
     feature_names = None

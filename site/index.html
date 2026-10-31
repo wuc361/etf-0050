@@ -93,7 +93,22 @@
   <section class="card">
     <h2>🧪 模型比較（相同樣本外測試區間）</h2>
     <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
-    <p class="section-caption">Logistic Regression 維持正式預測基準；Random Forest、Extra Trees 僅作同區間研究比較，尚未自動取代正式模型。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+    <p class="section-caption">正式模型依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；若沒有候選模型通過門檻，退回 Logistic Regression。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+  </section>
+  <section class="card">
+    <h2>🛡️ 市場恐慌偵測與風險狀態</h2>
+    <div id="market-risk" class="metric-grid"><p>等待風險資料…</p></div>
+    <p class="section-caption">規則式風險警示獨立呈現，不會偷偷覆寫模型方向機率。SOX、NASDAQ、台積電 ADR 同步重挫時提高警戒；警示門檻不是自動賣出指令。</p>
+  </section>
+  <section class="card">
+    <h2>🌅 下一交易日開盤跳空預測</h2>
+    <div id="opening-gap" class="forecast-grid"><p>等待開盤模型…</p></div>
+    <p class="section-caption">獨立預測下一交易日開盤價相對最近一個台灣交易日收盤價的方向，不與收盤方向預測混合。</p>
+  </section>
+  <section class="card">
+    <h2>🎯 預測可信度檢查</h2>
+    <div id="confidence-metrics" class="metric-grid"><p>等待可信度資料…</p></div>
+    <p class="section-caption">資料品質、三模型訊號一致性及所選模型歷史樣本外表現分開呈現；可信度不是保證獲利的分數。</p>
   </section>
   <section class="card">
     <h2>🔮 未來 1～3 個交易日預測</h2>
@@ -172,6 +187,9 @@
     renderReferenceLinks(d.reference_links || []);
     renderMarketBriefing(d.explanation?.market_briefing || {});
     renderModelComparison(d.model_comparison || {});
+    renderMarketRisk(d.market_risk || {});
+    renderOpeningGap(d.opening_gap_forecast || {});
+    renderConfidence(d.confidence || {});
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
     $('direction').className = 'value ' + (f.direction === 'UP' ? 'up' : 'down');
@@ -294,6 +312,43 @@
       card.append(title,strong,details);host.append(card);
     });
     if(!host.children.length)host.textContent='模型比較資料尚未產生：'+(comparison.status||'無資料');
+  }
+  function renderMarketRisk(risk) {
+    const host=$('market-risk');host.replaceChildren();
+    const card=document.createElement('div');card.className='metric';
+    const title=document.createElement('span');title.className='chart-note';title.textContent='目前風險狀態';
+    const strong=document.createElement('strong');strong.textContent=risk.label||'資料不足';
+    const detail=document.createElement('p');detail.className='chart-note';
+    detail.textContent='觸發 '+(risk.trigger_count??'—')+'/3 項同步重挫條件';
+    card.append(title,strong,detail);host.append(card);
+    Object.entries(risk.observations||{}).forEach(([ticker,item])=>{
+      const el=document.createElement('div');el.className='metric';
+      const name=document.createElement('span');name.className='chart-note';name.textContent=ticker;
+      const value=document.createElement('strong');value.textContent=item.return==null?'N/A':percent(item.return);
+      const note=document.createElement('p');note.className='chart-note';note.textContent='警戒門檻 '+percent(item.threshold)+'｜'+(item.triggered?'已觸發':'未觸發');
+      el.append(name,value,note);host.append(el);
+    });
+    const rule=document.createElement('p');rule.className='chart-note';rule.textContent=risk.rule||'';host.append(rule);
+  }
+  function renderOpeningGap(gap) {
+    const host=$('opening-gap');host.replaceChildren();
+    const card=document.createElement('article');card.className='forecast-card';
+    const title=document.createElement('h3');title.textContent=gap.direction==='UP'?'預測開高':'預測開低';
+    const value=document.createElement('div');value.className='value '+(gap.direction==='UP'?'up':'down');value.textContent=percent(gap.up_probability)+' 開盤上漲';
+    const detail=document.createElement('p');detail.textContent='開盤下跌 '+percent(gap.down_probability);
+    const back=document.createElement('p');back.className='chart-note';back.textContent=gap.backtest?'樣本外準確率 '+percent(gap.backtest.accuracy)+'｜平衡準確率 '+percent(gap.backtest.balanced_accuracy)+'｜測試 '+gap.backtest.n_test+' 筆':'回測不足';
+    card.append(title,value,detail,back);host.append(card);
+  }
+  function renderConfidence(conf) {
+    const host=$('confidence-metrics');host.replaceChildren();
+    const values=[
+      ['資料完整度',percent(conf.data_quality_score),(conf.available_features??'—')+'/'+(conf.total_features??'—')+' 個特徵可用'],
+      ['模型訊號一致性',percent(conf.signal_consensus),Object.entries(conf.model_probabilities||{}).map(([k,v])=>k+': '+percent(v)).join('｜')],
+      ['歷史平衡準確率',percent(conf.historical_balanced_accuracy),'樣本外 '+(conf.historical_test_count??'—')+' 筆'],
+      ['歷史 Brier Score',Number.isFinite(conf.historical_brier_score)?conf.historical_brier_score.toFixed(3):'N/A','越低代表機率預測品質越好']
+    ];
+    values.forEach(([label,value,note])=>{const el=document.createElement('div');el.className='metric';const t=document.createElement('span');t.className='chart-note';t.textContent=label;const v=document.createElement('strong');v.textContent=value;const p=document.createElement('p');p.className='chart-note';p.textContent=note;el.append(t,v,p);host.append(el);});
+    const note=document.createElement('p');note.className='chart-note';note.textContent=conf.label||'';host.append(note);
   }
   function renderHorizons(forecasts) {
     const host=$('horizon-forecasts'); host.replaceChildren();

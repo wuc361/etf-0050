@@ -27,7 +27,7 @@ def _make_model(model_name="Logistic Regression", n_splits=3):
         base = Pipeline([
             ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
             ("model", RandomForestClassifier(
-                n_estimators=160, max_depth=5, min_samples_leaf=8,
+                n_estimators=80, max_depth=5, min_samples_leaf=8,
                 class_weight="balanced_subsample", random_state=42, n_jobs=-1
             ))
         ])
@@ -35,7 +35,7 @@ def _make_model(model_name="Logistic Regression", n_splits=3):
         base = Pipeline([
             ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
             ("model", ExtraTreesClassifier(
-                n_estimators=160, max_depth=5, min_samples_leaf=8,
+                n_estimators=80, max_depth=5, min_samples_leaf=8,
                 class_weight="balanced", random_state=42, n_jobs=-1
             ))
         ])

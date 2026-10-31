@@ -75,16 +75,34 @@ def build_features(raw):
     target["target"] = target["target_1d"]
     X = pd.DataFrame(index=target.index)
     for ticker, df in raw.items():
+        safe = ticker.replace("^","").replace(".","_").replace("=","_").replace("-","_")
+
+        # US regular-session bars are dated by the New York trading date. For a
+        # Taiwan session on date D, only the latest US session dated <= D-1
+        # was completed before Taiwan's 09:00 open. Align by calendar date,
+        # not by shifting one Taiwan trading row (which adds an accidental lag).
+        us_market_tickers = {
+            "^SOX", "^IXIC", "^GSPC", "^DJI", "TSM", "NVDA", "AMD",
+            "MU", "ASML", "^VIX", "^TNX", "^FVX", "EWT"
+        }
+        if ticker in us_market_tickers:
+            native_close = df["Close"].dropna().astype(float).copy()
+            native_index = pd.DatetimeIndex(pd.to_datetime(native_close.index))
+            if native_index.tz is not None:
+                native_index = native_index.tz_localize(None)
+            native_close.index = native_index.normalize()
+            native_close = native_close[~native_close.index.duplicated(keep="last")].sort_index()
+            available_dates = pd.DatetimeIndex(X.index) - pd.Timedelta(days=1)
+            X[f"f_{safe}_ret1"] = native_close.pct_change().reindex(available_dates, method="ffill").to_numpy()
+            X[f"f_{safe}_ret5"] = native_close.pct_change(5).reindex(available_dates, method="ffill").to_numpy()
+            continue
+
         close = df["Close"].reindex(X.index).ffill()
         vol = df["Volume"].reindex(X.index).ffill()
-        # US-market observations on calendar date D-1 are shifted to Taiwan session D.
-        # All inputs are lagged at least one Taiwan session: Taiwan stocks from D-1,
-        # overseas closes from the latest completed overseas session before Taiwan open.
-        shift_n = 1
-        r = _ret(close).shift(shift_n)
-        safe = ticker.replace("^","").replace(".","_").replace("=","_").replace("-","_")
+        # Taiwan-listed instruments use the previous Taiwan trading session.
+        r = _ret(close).shift(1)
         X[f"f_{safe}_ret1"] = r
-        X[f"f_{safe}_ret5"] = close.pct_change(5).shift(shift_n)
+        X[f"f_{safe}_ret5"] = close.pct_change(5).shift(1)
         if ticker == "0050.TW":
             X["f_0050_rsi14"] = _rsi(close).shift(1)
             X["f_0050_ma5_gap"] = (close / close.rolling(5).mean() - 1).shift(1)

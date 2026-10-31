@@ -7,18 +7,32 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import accuracy_score, recall_score, balanced_accuracy_score, brier_score_loss
 import joblib
 
 OUT = Path("artifacts")
 OUT.mkdir(exist_ok=True)
 
-def _make_model():
-    return Pipeline([
+def _make_model(n_splits=3):
+    """Chronologically calibrated logistic model; avoid class-weight-distorted probabilities."""
+    base = Pipeline([
         ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
         ("scale", StandardScaler()),
-        ("model", LogisticRegression(max_iter=2000, class_weight="balanced"))
+        ("model", LogisticRegression(max_iter=3000, class_weight=None))
     ])
+    return CalibratedClassifierCV(
+        estimator=base,
+        method="sigmoid",
+        cv=TimeSeriesSplit(n_splits=n_splits),
+        ensemble=True
+    )
+
+
+def _bounded_probabilities(values):
+    # A noisy market-direction model should not communicate mathematical certainty.
+    return np.clip(np.asarray(values, dtype=float), 0.01, 0.99)
 
 def walk_forward_evaluate(data, test_window=40, min_train=250):
     return evaluate_horizon(data, "target", horizon=1, test_window=test_window, min_train=min_train)
@@ -26,7 +40,7 @@ def walk_forward_evaluate(data, test_window=40, min_train=250):
 def fit_latest_model(data, target_col="target"):
     df = data.dropna(subset=[target_col]).copy()
     features = [c for c in df.columns if c.startswith("f_")]
-    model = _make_model().fit(df[features], df[target_col].astype(int))
+    model = _make_model(n_splits=5).fit(df[features], df[target_col].astype(int))
     joblib.dump({"model": model, "features": features, "target": target_col}, OUT / f"latest_model_{target_col}.joblib")
     return model, features
 
@@ -52,7 +66,7 @@ def evaluate_horizon(data, target_col, horizon=1, test_window=40, min_train=250)
             break
         estimator = _make_model()
         estimator.fit(train[features], train[target_col].astype(int))
-        probabilities = estimator.predict_proba(test[features])[:, 1]
+        probabilities = _bounded_probabilities(estimator.predict_proba(test[features])[:, 1])
         for dt, probability, actual in zip(test.index, probabilities, test[target_col].astype(int)):
             predictions.append({
                 "date": str(dt.date()),
@@ -122,7 +136,7 @@ def compare_models_walk_forward(data, target_col="target_1d", test_window=40, mi
         for name, factory in factories.items():
             estimator = factory()
             estimator.fit(train[features], train[target_col].astype(int))
-            probability = estimator.predict_proba(test[features])[:, 1]
+            probability = _bounded_probabilities(estimator.predict_proba(test[features])[:, 1])
             for dt, p, actual in zip(test.index, probability, test[target_col].astype(int)):
                 predictions[name].append((str(dt.date()), float(p), int(actual)))
         start = end
@@ -144,4 +158,4 @@ def compare_models_walk_forward(data, target_col="target_1d", test_window=40, mi
         })
     return {"status": "ok" if reports else "no_predictions", "target": target_col,
             "method": "identical purged expanding-window folds",
-            "production_model": "Logistic Regression", "models": reports}
+            "production_model": "Calibrated Logistic Regression", "models": reports}

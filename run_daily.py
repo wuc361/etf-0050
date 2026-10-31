@@ -81,12 +81,14 @@ def main():
         raise RuntimeError(f"Not enough labeled observations: {len(labeled)}")
 
     model_comparison = compare_models_walk_forward(data, target_col="target_1d", test_window=40)
+    selected_model = model_comparison.get("selected_model", "Logistic Regression")
     forecasts, next_row = {}, None
     feature_names = None
     for horizon in (1, 2, 3):
         target = f"target_{horizon}d"
-        report, predictions = evaluate_horizon(data, target, horizon=horizon, test_window=40)
-        estimator, model_features = fit_latest_model(data, target_col=target)
+        horizon_model = selected_model if horizon == 1 else "Logistic Regression"
+        report, predictions = evaluate_horizon(data, target, horizon=horizon, test_window=40, model_name=horizon_model)
+        estimator, model_features = fit_latest_model(data, target_col=target, model_name=horizon_model)
         if next_row is None:
             feature_names = model_features
             next_row = build_next_session_row(raw, feature_names)
@@ -99,10 +101,77 @@ def main():
             "up_probability": round(up, 6),
             "down_probability": round(1-up, 6),
             "backtest": report,
+            "model_name": horizon_model,
             "target_definition": f"相對最近一個台灣交易日收盤價，未來第 {horizon} 個台灣交易日收盤方向（不是開盤跳空預測）"
         }
         if horizon == 1:
             save_report(report, predictions)
+
+    # Separate next-session opening-gap model: next open vs latest Taiwan close.
+    gap_report, gap_predictions = evaluate_horizon(
+        data, "target_open_up", horizon=1, test_window=40, model_name=selected_model
+    )
+    gap_estimator, gap_features = fit_latest_model(
+        data, target_col="target_open_up", model_name=selected_model
+    )
+    gap_row = build_next_session_row(raw, gap_features)
+    for key, value in latest_flow.items():
+        if key in gap_row.columns:
+            gap_row.loc[0, key] = value
+    gap_up = float(np.clip(gap_estimator.predict_proba(gap_row[gap_features])[:, 1][0], 0.01, 0.99))
+
+    # Current market stress is a transparent rule-based overlay, not a hidden
+    # rewrite of the statistical forecast probability.
+    stress_inputs = {"^SOX": -0.03, "^IXIC": -0.02, "TSM": -0.03}
+    stress_observations = {}
+    for ticker, threshold in stress_inputs.items():
+        frame = raw.get(ticker)
+        series = frame["Close"].dropna() if frame is not None else pd.Series(dtype=float)
+        value = float(series.pct_change().dropna().iloc[-1]) if len(series) > 1 else None
+        stress_observations[ticker] = {"return": value, "threshold": threshold,
+                                       "triggered": bool(value is not None and value <= threshold)}
+    stress_count = sum(1 for x in stress_observations.values() if x["triggered"])
+    if stress_count == 3:
+        risk_level, risk_label = "HIGH", "高風險：SOX、NASDAQ、台積電 ADR 同時重挫"
+    elif stress_count == 2:
+        risk_level, risk_label = "ELEVATED", "風險升高：三項國際指標中有兩項重挫"
+    elif stress_count == 1:
+        risk_level, risk_label = "WATCH", "風險觀察：一項國際指標達重挫門檻"
+    else:
+        risk_level, risk_label = "NORMAL", "未觸發國際市場同步重挫條件"
+
+    # Compare live directional votes across all three calibrated model families.
+    live_model_probabilities = {}
+    for candidate in ("Logistic Regression", "Random Forest", "Extra Trees"):
+        candidate_model, candidate_features = fit_latest_model(data, target_col="target_1d", model_name=candidate)
+        candidate_row = build_next_session_row(raw, candidate_features)
+        for key, value in latest_flow.items():
+            if key in candidate_row.columns:
+                candidate_row.loc[0, key] = value
+        live_model_probabilities[candidate] = float(np.clip(
+            candidate_model.predict_proba(candidate_row[candidate_features])[:, 1][0], 0.01, 0.99
+        ))
+    selected_report = next((x for x in model_comparison.get("models", [])
+                            if x.get("name") == selected_model), forecasts["1d"]["backtest"])
+    live_votes = [p >= 0.5 for p in live_model_probabilities.values()]
+    signal_consensus = max(sum(live_votes), len(live_votes) - sum(live_votes)) / max(len(live_votes), 1)
+    data_quality = float(next_row[feature_names].notna().mean()) if feature_names else 0.0
+    confidence = {
+        "data_quality_score": round(data_quality, 4),
+        "available_features": int(next_row[feature_names].notna().sum()) if feature_names else 0,
+        "total_features": len(feature_names or []),
+        "signal_consensus": round(signal_consensus, 4),
+        "model_probabilities": live_model_probabilities,
+        "historical_balanced_accuracy": selected_report.get("balanced_accuracy"),
+        "historical_brier_score": selected_report.get("brier_score"),
+        "historical_test_count": selected_report.get("n_test"),
+        "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
+    }
+    risk_assessment = {
+        "level": risk_level, "label": risk_label, "trigger_count": stress_count,
+        "observations": stress_observations,
+        "rule": "SOX <= -3%, NASDAQ <= -2%, TSM ADR <= -3%; 兩項觸發為風險升高，三項同時觸發為高風險"
+    }
 
     prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_date = pd.Timestamp(prices.index[-1]).date().isoformat()
@@ -173,6 +242,14 @@ def main():
         "latest_close":latest_close,
         "price_validation":official_close_check,
         "forecasts":forecasts,
+        "opening_gap_forecast":{
+            "direction":"UP" if gap_up >= 0.5 else "DOWN",
+            "up_probability":round(gap_up,6),"down_probability":round(1-gap_up,6),
+            "backtest":gap_report,"model_name":selected_model,
+            "target_definition":"下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
+        },
+        "market_risk":risk_assessment,
+        "confidence":confidence,
         "model_comparison":model_comparison,
         "history":history,
         "forecast":{"direction":forecasts["1d"]["direction"],"up_probability":p1,
@@ -183,8 +260,8 @@ def main():
                     "coverage":1.0,"base_rate":report1["base_rate"],"n_test":report1["n_test"]},
         "explanation":{"model_interpretation":interpretation,"market_factors":factors,
                        "news":news,"market_briefing":market_briefing,
-                       "summary":"交叉閱讀量化模型、前一個台灣交易日法人籌碼、前一個已完成美股交易時段及國內外新聞；新聞事件只作解釋參考，不直接改寫模型機率。"},
-        "model":{"name":"Calibrated Logistic Regression","probability_calibration":"sigmoid / chronological time-series folds","probability_bounds":[0.01,0.99],"feature_count":len(feature_names),"training_rows":len(labeled)},
+                       "summary":"交叉閱讀量化模型、前一個台灣交易日法人籌碼、前一個已完成美股交易時段及國內外新聞；新聞事件只作解釋參考，不直接改寫模型機率。市場恐慌規則獨立顯示，不隱藏改寫模型機率。"},
+        "model":{"name":selected_model,"probability_calibration":"sigmoid / chronological time-series folds","selection_method":model_comparison.get("method"),"selection_rule":model_comparison.get("selection_rule"),"probability_bounds":[0.01,0.99],"feature_count":len(feature_names),"training_rows":len(labeled)},
         "data_source":"Yahoo Finance (unofficial; verify independently)",
         "reference_links":[
             {"name":"TWSE 臺灣證券交易所","url":"https://www.twse.com.tw/","purpose":"上市股票、三大法人與市場統計官方來源"},
@@ -200,7 +277,7 @@ def main():
             "歷史樣本外準確率不保證未來表現。",
             "尚未接入官方台灣交易日曆；目標交易日標籤為近似說明。",
             "美股主要市場特徵已按台灣開盤前可得的最近已完成美股交易時段對齊；其他市場時區及資料供應商延遲仍需持續監控。",
-            "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測。",
+            "新聞僅為 RSS 標題關鍵字整理，尚未納入模型訓練或歷史回測；法人說明會及財報事件須有可回溯的歷史公告資料，才適合納入訓練。",
             "TWSE法人資料初期回填最近60個交易日，較長期歷史尚未完整；法人特徵僅使用已公開的前一交易日資料。",
             "美股市場摘要依紐約時間最後完成的常規交易時段判定；遇休市或資料供應商延遲時，會以實際資料日期顯示，不保證一定是前一個日曆日。",
             "2日及3日預測為獨立模型的累積方向分類，不是逐日價格路徑；期限越長，不確定性通常越高。",

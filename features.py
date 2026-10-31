@@ -59,6 +59,12 @@ FACTOR_REGISTRY = [
  ])
 ]
 
+US_MARKET_TICKERS = {
+    "^SOX", "^IXIC", "^GSPC", "^DJI", "TSM", "NVDA", "AMD",
+    "MU", "ASML", "^VIX", "^TNX", "^FVX", "EWT"
+}
+
+
 def _ret(s):
     return s.pct_change()
 
@@ -81,11 +87,7 @@ def build_features(raw):
         # Taiwan session on date D, only the latest US session dated <= D-1
         # was completed before Taiwan's 09:00 open. Align by calendar date,
         # not by shifting one Taiwan trading row (which adds an accidental lag).
-        us_market_tickers = {
-            "^SOX", "^IXIC", "^GSPC", "^DJI", "TSM", "NVDA", "AMD",
-            "MU", "ASML", "^VIX", "^TNX", "^FVX", "EWT"
-        }
-        if ticker in us_market_tickers:
+        if ticker in US_MARKET_TICKERS:
             native_close = df["Close"].dropna().astype(float).copy()
             native_index = pd.DatetimeIndex(pd.to_datetime(native_close.index))
             if native_index.tz is not None:
@@ -127,7 +129,7 @@ def build_features(raw):
             true_range = pd.concat([high - low, (high - previous_close).abs(), (low - previous_close).abs()], axis=1).max(axis=1)
             X["f_0050_atr14_pct"] = (true_range.rolling(14).mean() / close).shift(1)
             X["f_0050_roc20"] = close.pct_change(20).shift(1)
-    # All feature values are shifted at least one Taiwan session to prevent using target-day data.
+    # Every feature is restricted to information available before the Taiwan session opens.
     X = X.replace([np.inf,-np.inf], np.nan)
     out = pd.concat([target, X], axis=1)
     return out

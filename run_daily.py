@@ -155,11 +155,23 @@ def main():
                             if x.get("name") == selected_model), forecasts["1d"]["backtest"])
     live_votes = [p >= 0.5 for p in live_model_probabilities.values()]
     signal_consensus = max(sum(live_votes), len(live_votes) - sum(live_votes)) / max(len(live_votes), 1)
-    data_quality = float(next_row[feature_names].notna().mean()) if feature_names else 0.0
+    # Convert the selected feature matrix to NumPy before aggregating. When
+    # pandas encounters duplicate feature labels, selecting columns can return
+    # a DataFrame and mean()/sum() produce a Series rather than a scalar.
+    if feature_names:
+        feature_values = next_row.loc[:, feature_names].to_numpy(dtype=float)
+        finite_mask = np.isfinite(feature_values)
+        data_quality = float(finite_mask.mean()) if finite_mask.size else 0.0
+        available_features = int(finite_mask.sum())
+        total_features = int(finite_mask.size)
+    else:
+        data_quality = 0.0
+        available_features = 0
+        total_features = 0
     confidence = {
         "data_quality_score": round(data_quality, 4),
-        "available_features": int(next_row[feature_names].notna().sum()) if feature_names else 0,
-        "total_features": len(feature_names or []),
+        "available_features": available_features,
+        "total_features": total_features,
         "signal_consensus": round(signal_consensus, 4),
         "model_probabilities": live_model_probabilities,
         "historical_balanced_accuracy": selected_report.get("balanced_accuracy"),

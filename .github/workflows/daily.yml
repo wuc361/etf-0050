@@ -46,6 +46,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Validate Python syntax
+        run: python -m compileall -q .
+
       - name: Run data pipeline and forecast
         run: python run_daily.py
 

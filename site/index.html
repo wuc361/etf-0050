@@ -182,6 +182,10 @@
 <script>
 (async function () {
   const $ = id => document.getElementById(id);
+  // Initialize chart state before the first await so the fetch continuation
+  // can safely call setupChartTimeframes() without hitting the temporal dead zone.
+  let chartSourceRows = [];
+  let chartTimeframe = 'daily';
   try {
     const response = await fetch('./data/latest.json?ts=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
@@ -371,8 +375,6 @@
       card.append(title,direction,probability,accuracy,note); host.append(card);
     });
   }
-  let chartSourceRows = [];
-  let chartTimeframe = 'daily';
   function setupChartTimeframes(rows) {
     chartSourceRows = Array.isArray(rows) ? rows : [];
     const controls = $('chart-timeframes');

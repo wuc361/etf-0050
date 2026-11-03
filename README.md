@@ -9,6 +9,7 @@
 - `run_daily.py`：由 GitHub Actions 呼叫，輸出 `site/data/latest.json`。
 - `news.py`：讀取 Google News RSS，整理國際市場、台灣市場與半導體產業新聞標題，提供來源連結及初步關鍵字情緒。
 - `market_context.py`：抓取 TWSE BFI82U 全市場三大法人買賣金額，以及 T86 0050 個別ETF法人買賣超股數；累積最近60個交易日，並整理前一個已完成美股交易時段的市場表現。
+- `taifex_night.py`：擷取 TAIFEX TX 台指期日盤／盤後日報，將夜盤資料依期交所交易日歸屬規則對齊隔日台股交易日，累積至 `site/data/taifex_futures_history.json`。
 - `site/index.html`：不依賴 Streamlit 的靜態儀表板，顯示三種預測期限、前一美股觀測日、全市場與0050個別法人籌碼、重大事件、K線/均線/布林通道/成交量、RSI、MACD、模型比較及指標教學。
 - `.github/workflows/daily.yml`：排程執行並部署 GitHub Pages。
 
@@ -16,11 +17,11 @@
 1. 在 GitHub Repository 的 **Settings → Actions → General → Workflow permissions** 確認工作流程允許必要的讀寫權限。
 2. 在 **Settings → Pages** 將 **Build and deployment → Source** 設為 **GitHub Actions**。
 3. 前往 **Actions → 0050 AI Daily Forecast → Run workflow**，手動執行第一次流程。
-4. 成功後從 **Settings → Pages** 查看網站網址。排程為星期一至星期五 UTC 00:30（台灣時間 08:30），在台股開盤前執行，以取得最新已完成的美股交易時段；GitHub 排程可能延遲，且不是交易日曆。
+4. 成功後從 **Settings → Pages** 查看網站網址。排程包含台灣時間週一至週五 05:45（夜盤收盤後，UTC 21:45、週日到週四）及 14:17（日盤收盤後，UTC 06:17、週一到週五）；GitHub 排程可能延遲，且不是交易日曆。
 5. 若工作流程失敗，開啟 **Actions** 查看失敗步驟與錯誤紀錄。
 
 ## 研究限制
-- Yahoo Finance 是非官方資料來源，行情完整性需自行交叉驗證；TWSE、TAIFEX、FRED、CBOE及元大投信連結目前提供查證入口，並非全部已自動接入模型。
+- Yahoo Finance 是非官方資料來源，行情完整性需自行交叉驗證；TWSE、TAIFEX、FRED、CBOE及元大投信連結目前提供查證入口，並非全部已自動接入模型。TAIFEX TX 夜盤日報已透過官方 DailyMarketReportFut 公開資料接入並持續累積。
 - 目前以 Logistic Regression、Random Forest、Extra Trees 進行時間序列校準及樣本外比較，並設有模型選擇門檻；不保證準確率或獲利。回測同時提供 Balanced Accuracy、Brier Score與多數類別基準，請避免只看 Accuracy。
 - 美股主要指數、半導體及大型科技股特徵，依台灣交易日 D 的前一個日曆日作為美股資料截止日，對齊台灣 09:00 開盤前已完成的最近美股交易時段；其他海外市場仍需持續驗證各自時區與交易日曆。
 - 新聞目前以 RSS 標題關鍵字作初步分類，不代表全文語意分析或事件查證；不會直接改動模型機率，也尚未納入歷史回測。
@@ -29,6 +30,7 @@
 - 新增 Logistic Regression、Random Forest、Extra Trees 的相同 expanding-window 樣本外比較；目前正式預測會依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；候選模型均採時間序列 sigmoid 校準，若沒有模型通過門檻則退回 Logistic Regression。
 - 2日、3日預測為相對最新收盤價的累積方向分類，不是逐日價格路徑；各期限分開訓練及回測，並在回測切分時排除可能重疊的未來標籤。
 - K線為 Yahoo Finance 調整後日線資料，最多顯示最近120個交易日；不等同即時報價。
+- TAIFEX 夜盤交易日依官方規則歸屬隔日交易日；夜盤特徵包含夜盤漲跌幅、開盤至最後成交報酬、夜盤高低區間、收盤位置及成交量。官方 OpenAPI 為最新日報資料流，程式以 GitHub 儲存的 JSON 累積歷史；至少累積120個有效夜盤交易日後才把特徵納入模型，之前只顯示行情、不調整預測機率。模型訓練及回測只使用各交易日開盤前已完成的夜盤資料。
 - 另設下一交易日開盤相對前一收盤的獨立方向模型；開盤跳空與收盤方向不可混用。市場恐慌警示以 SOX、NASDAQ、台積電 ADR 的透明門檻規則獨立顯示，不直接改寫模型機率。可信度分別呈現特徵資料完整度、模型方向一致性與歷史樣本外表現。\n- 法人說明會與財報事件可能透過財測、訂單、資本支出及產業展望影響個股與供應鏈；但事件本身沒有固定漲跌方向，須有歷史可回溯公告資料及公布時間，才能無前視偏誤地納入模型。\n- 回測方向準確率不等同扣除交易成本後的策略報酬。
 - 請勿把模型結果當作個人化投資建議。
 

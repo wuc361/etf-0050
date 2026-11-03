@@ -199,7 +199,7 @@ def main():
     bb_mid = close_series.rolling(20).mean()
     bb_std = close_series.rolling(20).std()
     bb_upper, bb_lower = bb_mid + 2 * bb_std, bb_mid - 2 * bb_std
-    history_frame = history_frame.tail(120)
+    history_frame = history_frame.tail(800)
     history = []
     for idx, row in history_frame.iterrows():
         history.append({

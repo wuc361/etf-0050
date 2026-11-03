@@ -7,9 +7,9 @@ on:
       - "site/data/**"
   workflow_dispatch:
   schedule:
-    # 00:30 UTC = 08:30 Taiwan time, Monday-Friday.
-    # Run before Taiwan's 09:00 open, after the latest completed US regular session.
-    - cron: "30 0 * * 1-5"
+    # 00:37 UTC = 08:37 Taiwan time, Monday-Friday.
+    # Offset from the hour to reduce GitHub Actions queue congestion.
+    - cron: "37 0 * * 1-5"
 
 permissions:
   contents: write

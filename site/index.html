@@ -108,6 +108,11 @@
     <p class="section-caption">規則式風險警示獨立呈現，不會偷偷覆寫模型方向機率。SOX、NASDAQ、台積電 ADR 同步重挫時提高警戒；警示門檻不是自動賣出指令。</p>
   </section>
   <section class="card">
+    <h2>🌙 台指期夜盤行情與隔日開盤訊號</h2>
+    <div id="taifex-night" class="metric-grid"><p>等待 TAIFEX 夜盤資料…</p></div>
+    <p class="section-caption">資料來源為臺灣期貨交易所 TX 官方日報。夜盤交易資料依期交所規則歸屬隔日交易日；若夜盤尚未收盤或資料未更新，模型不會拿舊夜盤冒充最新訊號。夜盤特徵累積至少120個有效交易日後才納入模型機率。</p>
+  </section>
+  <section class="card">
     <h2>🌅 下一交易日開盤跳空預測</h2>
     <div id="opening-gap" class="forecast-grid"><p>等待開盤模型…</p></div>
     <p class="section-caption">獨立預測下一交易日開盤價相對最近一個台灣交易日收盤價的方向，不與收盤方向預測混合。</p>
@@ -206,6 +211,7 @@
     renderMarketBriefing(d.explanation?.market_briefing || {});
     renderModelComparison(d.model_comparison || {});
     renderMarketRisk(d.market_risk || {});
+    renderTaifexNight(d.taifex_night || {});
     renderOpeningGap(d.opening_gap_forecast || {});
     renderConfidence(d.confidence || {});
     $('status').textContent = '資料已載入';
@@ -341,6 +347,38 @@
       el.append(name,value,note);host.append(el);
     });
     const rule=document.createElement('p');rule.className='chart-note';rule.textContent=risk.rule||'';host.append(rule);
+  }
+  function renderTaifexNight(night) {
+    const host=$('taifex-night');host.replaceChildren();
+    const row=night.latest||null;
+    const fresh=night.prediction_session||null;
+    const card=document.createElement('div');card.className='metric';
+    const title=document.createElement('span');title.className='chart-note';title.textContent='夜盤資料狀態';
+    const strong=document.createElement('strong');strong.textContent=night.label||'尚無資料';
+    const detail=document.createElement('p');detail.className='chart-note';
+    detail.textContent='資料日期 '+(row?.date||'—')+'｜累積 '+(night.history_sessions??0)+' 個夜盤交易日';
+    card.append(title,strong,detail);host.append(card);
+    if(row){
+      const metrics=[
+        ['夜盤漲跌幅',row.change_pct==null?'N/A':Number(row.change_pct).toFixed(2)+'%','相對期交所日報參考價'],
+        ['最後成交價',row.last==null?'N/A':Number(row.last).toLocaleString('zh-TW'),'契約月份 '+(row.contract_month||'—')],
+        ['夜盤開盤／高／低', [row.open,row.high,row.low].map(v=>v==null?'—':Number(v).toLocaleString('zh-TW')).join(' / '),'點數'],
+        ['夜盤成交量',row.volume==null?'N/A':Number(row.volume).toLocaleString('zh-TW'),'口']
+      ];
+      metrics.forEach(([label,value,note])=>{const el=document.createElement('div');el.className='metric';const t=document.createElement('span');t.className='chart-note';t.textContent=label;const v=document.createElement('strong');v.textContent=value;const p=document.createElement('p');p.className='chart-note';p.textContent=note;el.append(t,v,p);host.append(el);});
+    }
+    const model=document.createElement('p');model.className='chart-note';
+    model.textContent=night.model_feature_status||'夜盤特徵尚未納入模型。';
+    host.append(model);
+    if(fresh){
+      const ready=document.createElement('p');ready.className='chart-note';
+      ready.textContent='本次開盤預測採用夜盤交易日 '+fresh.date+' 的已完成資料。';
+      host.append(ready);
+    }
+    const fetched=document.createElement('p');fetched.className='chart-note';
+    fetched.textContent='最後擷取時間：'+(night.fetch?.updated_at_taipei||'未知')+'｜來源：TAIFEX 官方公開日報';
+    host.append(fetched);
+    (night.fetch?.errors||[]).forEach(message=>{const warning=document.createElement('p');warning.className='chart-note';warning.textContent='資料更新提醒：'+message;host.append(warning);});
   }
   function renderOpeningGap(gap) {
     const host=$('opening-gap');host.replaceChildren();

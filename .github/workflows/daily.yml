@@ -7,8 +7,10 @@ on:
       - "site/data/**"
   workflow_dispatch:
   schedule:
-    # 06:17 UTC = 14:17 Taiwan time, Monday-Friday, after Taiwan's market close.
-    # Refresh using the latest completed session for the next trading day.
+    # 21:45 UTC = 05:45 Taiwan time, Monday-Friday: after the TAIFEX night session closes.
+    # Refresh the next-session opening forecast with the completed night-session data.
+    - cron: "45 21 * * 0-4"
+    # 06:17 UTC = 14:17 Taiwan time, Monday-Friday: refresh after Taiwan's cash-market close.
     - cron: "17 6 * * 1-5"
 
 permissions:

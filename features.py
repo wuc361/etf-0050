@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from taifex_night import build_taifex_feature_map, MIN_NIGHT_HISTORY, FEATURE_NAMES
 
 FACTOR_REGISTRY = [
  {"id":i+1,"factor":name,"group":group,"v1_status":status,"note":note}
@@ -68,7 +69,7 @@ US_MARKET_TICKERS = {
 def _ret(s):
     return s.pct_change()
 
-def build_features(raw):
+def build_features(raw, taifex_records=None):
     target = raw["0050.TW"]["Close"].rename("close").to_frame()
     # Target day D is predicted using Taiwan data through D-1 only.
     # Horizon labels: on prediction row D, features are available through D-1.
@@ -133,6 +134,14 @@ def build_features(raw):
             true_range = pd.concat([high - low, (high - previous_close).abs(), (low - previous_close).abs()], axis=1).max(axis=1)
             X["f_0050_atr14_pct"] = (true_range.rolling(14).mean() / close).shift(1)
             X["f_0050_roc20"] = close.pct_change(20).shift(1)
+    # TAIFEX night-session rows are attributed to the following Taiwan trading date.
+    # Require a meaningful accumulated history before exposing them to model training.
+    night_map = build_taifex_feature_map(taifex_records or [])
+    if len(night_map) >= MIN_NIGHT_HISTORY:
+        for feature_name in FEATURE_NAMES:
+            values = {pd.Timestamp(date_text): feature_row.get(feature_name, np.nan)
+                      for date_text, feature_row in night_map.items()}
+            X[feature_name] = pd.Series(values).reindex(X.index)
     # Every feature is restricted to information available before the Taiwan session opens.
     X = X.replace([np.inf,-np.inf], np.nan)
     out = pd.concat([target, X], axis=1)

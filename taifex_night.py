@@ -18,6 +18,7 @@ TAIFEX_API = "https://openapi.taifex.com.tw/v1/DailyMarketReportFut"
 MIN_NIGHT_HISTORY = 120
 FEATURE_NAMES = (
     "f_taifex_night_change_pct",
+    "f_taifex_night_vs_prev_settlement_pct",
     "f_taifex_night_open_to_last_pct",
     "f_taifex_night_range_pct",
     "f_taifex_night_close_location",
@@ -169,7 +170,7 @@ def _near_month_rows(records, session="after_hours"):
     return grouped
 
 
-def _feature_values(row):
+def _feature_values(row, records=None):
     if not row:
         return {}
     open_price, high, low, last = (row.get(k) for k in ("open", "high", "low", "last"))
@@ -178,26 +179,40 @@ def _feature_values(row):
     values = {}
     if change_pct is not None:
         values[FEATURE_NAMES[0]] = float(change_pct) / 100.0
+    # Compare the night-session last price with the most recent regular-session
+    # settlement for the same contract month when possible.
+    regular_rows = [
+        item for item in (records or [])
+        if item.get("contract") == "TX" and item.get("session") == "regular"
+        and item.get("date", "") < row.get("date", "") and item.get("settlement") is not None
+    ]
+    same_month = [item for item in regular_rows
+                  if str(item.get("contract_month") or "") == str(row.get("contract_month") or "")]
+    settlement_rows = same_month or regular_rows
+    if settlement_rows and last is not None:
+        previous_settlement = max(settlement_rows, key=lambda item: item["date"]).get("settlement")
+        if previous_settlement:
+            values[FEATURE_NAMES[1]] = float(last) / float(previous_settlement) - 1.0
     if open_price and last is not None:
-        values[FEATURE_NAMES[1]] = float(last) / float(open_price) - 1.0
+        values[FEATURE_NAMES[2]] = float(last) / float(open_price) - 1.0
     if high is not None and low is not None and last:
-        values[FEATURE_NAMES[2]] = (float(high) - float(low)) / abs(float(last))
+        values[FEATURE_NAMES[3]] = (float(high) - float(low)) / abs(float(last))
         spread = float(high) - float(low)
         if spread > 0:
-            values[FEATURE_NAMES[3]] = (float(last) - float(low)) / spread
+            values[FEATURE_NAMES[4]] = (float(last) - float(low)) / spread
     if volume is not None and volume >= 0:
-        values[FEATURE_NAMES[4]] = math.log1p(float(volume))
+        values[FEATURE_NAMES[5]] = math.log1p(float(volume))
     return values
 
 
 def build_taifex_feature_map(records):
     """Return date-indexed, completed night-session features for supervised rows."""
     grouped = _near_month_rows(records, "after_hours")
-    return {date_text: _feature_values(row) for date_text, row in grouped.items()}
+    return {date_text: _feature_values(row, records) for date_text, row in grouped.items()}
 
 
-def night_feature_values(row):
-    return _feature_values(row)
+def night_feature_values(row, records=None):
+    return _feature_values(row, records)
 
 
 def latest_night_for_prediction(records, latest_taiwan_date):

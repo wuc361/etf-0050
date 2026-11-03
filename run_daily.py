@@ -74,7 +74,7 @@ def main():
     taiwan_prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_taiwan_date = pd.Timestamp(taiwan_prices.index[-1]).date().isoformat()
     night_for_prediction = latest_night_for_prediction(taifex_records, latest_taiwan_date)
-    night_features = night_feature_values(night_for_prediction) if night_for_prediction else {}
+    night_features = night_feature_values(night_for_prediction, taifex_records) if night_for_prediction else {}
     data = build_features(raw, taifex_records)
     institutional_path = ROOT / "site" / "data" / "institutional_history.json"
     institutional_records, institutional_errors = update_institutional_history(

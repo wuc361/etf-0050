@@ -59,9 +59,8 @@
     .section-caption { color:#9ca3af; font-size:.82rem; line-height:1.5; }
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
     a { color: #93c5fd; }
-  </style>
-</head>
-<body>
+  
+    .dashboard-group { <main>
 <main>
   <header>
     <h1>📈 0050 AI 預測中心</h1>
@@ -69,57 +68,39 @@
     <p id="status" class="status">正在載入最近一次預測…</p>
   </header>
   <div id="error" class="error" role="alert"></div>
-  <div class="grid">
+  <section class="dashboard-group">
+    <h2 class="dashboard-group-title">一、漲跌預測｜先看方向與機率</h2>
+      <div class="grid">
     <article class="card"><div class="label">預測方向</div><div id="direction" class="value">—</div><p id="target" class="muted">—</p></article>
     <article class="card"><div class="label">模型預估上漲機率</div><div id="up-prob" class="value">—</div><p id="down-prob" class="muted">下跌機率：—</p></article>
     <article class="card"><div class="label">0050 最近已確認收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">台灣交易日：—</p></article>
     
     <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
   </div>
-  <section class="card">
-    <h2>🌐 前一觀測日重大事件與市場脈動</h2>
-    <p id="briefing-narrative">等待前一觀測日資料…</p>
-    <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
-    <h3>🇺🇸 美股前一個已完成交易時段</h3>
-    <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
-    <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
-    <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
-    <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
-    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
-    <h3>🎯 0050 ETF 本身的法人買賣超</h3>
-    <div id="etf-0050-summary" class="market-grid"><p>資料載入中…</p></div>
-    <p class="section-caption">單位：股。此區使用 TWSE T86 個別證券資料，與上方全市場金額分開呈現，避免將整體市場法人資金誤認為0050直接流入。</p>
-    <h3>📰 前一觀測日重大新聞與事件</h3>
-    <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
-    <div id="briefing-sources" class="source-grid"></div>
-    <p class="section-caption">事件方向為規則式提示，不代表已證明因果。新聞標題不等於全文查證，且新聞不直接改寫模型機率。請留意各項資料的實際發布時間。</p>
-  </section>
-  <section class="card">
-    <h2>🧪 模型比較（相同樣本外測試區間）</h2>
-    <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
-    <p class="section-caption">正式模型依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；若沒有候選模型通過門檻，退回 Logistic Regression。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
-  </section>
-  <section class="card">
-    <h2>🛡️ 市場恐慌偵測與風險狀態</h2>
-    <div id="market-risk" class="metric-grid"><p>等待風險資料…</p></div>
-    <p class="section-caption">規則式風險警示獨立呈現，不會偷偷覆寫模型方向機率。SOX、NASDAQ、台積電 ADR 同步重挫時提高警戒；警示門檻不是自動賣出指令。</p>
-  </section>
-  <section class="card">
+<section class="card">
     <h2>🌅 下一交易日開盤跳空預測</h2>
     <div id="opening-gap" class="forecast-grid"><p>等待開盤模型…</p></div>
     <p class="section-caption">獨立預測下一交易日開盤價相對最近一個台灣交易日收盤價的方向，不與收盤方向預測混合。</p>
   </section>
-  <section class="card">
-    <h2>🎯 預測可信度檢查</h2>
-    <div id="confidence-metrics" class="metric-grid"><p>等待可信度資料…</p></div>
-    <p class="section-caption">資料品質、三模型訊號一致性及所選模型歷史樣本外表現分開呈現；可信度不是保證獲利的分數。</p>
-  </section>
-  <section class="card">
+<section class="card">
     <h2>🔮 未來 1～3 個交易日預測</h2>
     <div id="horizon-forecasts" class="forecast-grid"><p>等待模型資料…</p></div>
     <p class="chart-note">三個期限分別訓練模型，預測的是相對最新收盤價的累積方向，不是逐日價格路徑。期限越長，不確定性通常越高。</p>
   </section>
-  <section class="card">
+<section class="card">
+    <h2>🎯 預測可信度檢查</h2>
+    <div id="confidence-metrics" class="metric-grid"><p>等待可信度資料…</p></div>
+    <p class="section-caption">資料品質、三模型訊號一致性及所選模型歷史樣本外表現分開呈現；可信度不是保證獲利的分數。</p>
+  </section>
+<section class="card">
+    <h2>🧪 模型比較（相同樣本外測試區間）</h2>
+    <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
+    <p class="section-caption">正式模型依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；若沒有候選模型通過門檻，退回 Logistic Regression。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+  </section>
+  </section>
+  <section class="dashboard-group">
+    <h2 class="dashboard-group-title">二、參考數據｜檢視市場與技術面</h2>
+    <section class="card">
     <h2>📈 0050 歷史 K 線與技術指標</h2>
     <p class="chart-note">可切換每日、每週及每月K線。週線／月線由每日OHLCV彙整，均線、RSI、MACD及布林通道會依目前週期重新計算；非即時報價。</p>
     <div id="chart-timeframes" class="timeframe-controls" role="group" aria-label="K線時間週期">
@@ -134,12 +115,67 @@
     </div>
     <p id="chart-range" class="chart-note">圖表資料載入中…</p>
   </section>
-  <section class="card">
+<section class="card">
+    <h2>🛡️ 市場恐慌偵測與風險狀態</h2>
+    <div id="market-risk" class="metric-grid"><p>等待風險資料…</p></div>
+    <p class="section-caption">規則式風險警示獨立呈現，不會偷偷覆寫模型方向機率。SOX、NASDAQ、台積電 ADR 同步重挫時提高警戒；警示門檻不是自動賣出指令。</p>
+  </section>
+<section class="card">
     <h2>🧪 模型回測品質檢查</h2>
     <div id="backtest-metrics" class="metric-grid"><p>等待回測資料…</p></div>
     <p class="chart-note">Brier Score 越低越好（0為完美機率預測）；Balanced Accuracy 可降低漲跌樣本比例不均的影響。請同時比較多數類別基準線，不能只看單一準確率。</p>
   </section>
-  <section class="card">
+<section class="card">
+    <h2>🌐 前一觀測日重大事件與市場脈動</h2>
+    <p id="briefing-narrative">等待前一觀測日資料…</p>
+    <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
+    <h3>🇺🇸 美股前一個已完成交易時段</h3>
+    <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
+    <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
+    <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
+    <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
+    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
+    <h3>🎯 0050 ETF 本身的法人買賣超</h3>
+    <div id="etf-0050-summary" class="market-grid"><p>資料載入中…</p></div>
+    <p class="section-caption">單位：股。此區使用 TWSE T86 個別證券資料，與上方全市場金額分開呈現，避免將整體市場法人資金誤認為0050直接流入。</p>
+  </section>
+<section class="card">
+    <h2>🔗 可查證的研究資料與工具</h2>
+    <div id="reference-links" class="source-grid"><p>資料來源載入中…</p></div>
+    <p class="chart-note">建議以官方資料核對價格、三大法人與期貨籌碼。此版本列出研究入口，但尚未全部接入模型特徵。</p>
+  </section>
+<section class="card">
+    <h2>模型與資料狀態</h2>
+    <p id="model-meta">—</p>
+    <p id="generated" class="muted">—</p>
+    <p id="source" class="muted">—</p>
+  </section>
+  </section>
+  <section class="dashboard-group">
+    <h2 class="dashboard-group-title">三、新聞消息｜掌握市場事件</h2>
+      <section class="card">
+    <h2>📰 重大新聞與市場消息</h2>
+    <h3>📰 前一觀測日重大新聞與事件</h3>
+    <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
+    <div id="briefing-sources" class="source-grid"></div>
+    <p class="section-caption">事件方向為規則式提示，不代表已證明因果。新聞標題不等於全文查證，且新聞不直接改寫模型機率。請留意各項資料的實際發布時間。</p>
+  </section>
+<section class="card">
+    <h2>📊 預測來源與市場因素</h2>
+    <p id="explanation-summary">—</p>
+    <p id="model-interpretation">—</p>
+    <h3>市場數據觀察</h3><ul id="market-factors"><li>尚未載入。</li></ul>
+    <div class="news-grid">
+      <div><h3>🌍 國際市場新聞</h3><p id="international-tone" class="tone">—</p><div id="international-news"></div></div>
+      <div><h3>🇹🇼 台灣市場新聞</h3><p id="domestic-tone" class="tone">—</p><div id="domestic-news"></div></div>
+      <div><h3>💻 產業與半導體新聞</h3><p id="industry-tone" class="tone">—</p><div id="industry-news"></div></div>
+    </div>
+    <p id="news-method" class="muted"></p><ul id="news-limitations"></ul>
+  </section>
+  </section>
+  <section class="dashboard-group">
+    <h2 class="dashboard-group-title">四、教學資料｜指標解說與使用須知</h2>
+    <section class="card">
     <h2>📚 技術分析學習區</h2>
     <div class="learning-grid">
       <article class="learn-item"><h3>MA5／MA20／MA60 均線</h3><p>MA5觀察短期價格方向，MA20觀察約一個月趨勢，MA60觀察中期趨勢。短均線向上穿越長均線可視為偏多訊號，但盤整時容易反覆假突破。</p></article>
@@ -150,25 +186,13 @@
       <article class="learn-item"><h3>ATR 14 波動幅度</h3><p>ATR衡量近期平均真實波幅，適合理解市場波動與風險，不提供方向。高ATR代表價格波動較大，不等於偏多。</p></article>
     </div>
   </section>
-  <section class="card">
-    <h2>🔗 可查證的研究資料與工具</h2>
-    <div id="reference-links" class="source-grid"><p>資料來源載入中…</p></div>
-    <p class="chart-note">建議以官方資料核對價格、三大法人與期貨籌碼。此版本列出研究入口，但尚未全部接入模型特徵。</p>
+<section class="card">
+    <h2>使用限制</h2>
+    <ul id="limitations"><li>尚未載入資料。</li></ul>
   </section>
-  <section class="card">
-    <h2>模型與資料狀態</h2>
-    <p id="model-meta">—</p>
-    <p id="generated" class="muted">—</p>
-    <p id="source" class="muted">—</p>
   </section>
-  <section class="card">
-    <h2>📊 預測來源與市場因素</h2>
-    <p id="explanation-summary">—</p>
-    <p id="model-interpretation">—</p>
-    <h3>市場數據觀察</h3><ul id="market-factors"><li>尚未載入。</li></ul>
-    <div class="news-grid">
-      <div><h3>🌍 國際市場新聞</h3><p id="international-tone" class="tone">—</p><div id="international-news"></div></div>
-      <div><h3>🇹🇼 台灣市場新聞</h3><p id="domestic-tone" class="tone">—</p><div id="domestic-news"></div></div>
+  <footer class="muted">本網站為研究與教育用途，不構成投資建議。模型機率不代表實際獲利機率；歷史表現不保證未來結果。資料來源及模型仍需獨立驗證。</footer>
+</main>e" class="tone">—</p><div id="domestic-news"></div></div>
       <div><h3>💻 產業與半導體新聞</h3><p id="industry-tone" class="tone">—</p><div id="industry-news"></div></div>
     </div>
     <p id="news-method" class="muted"></p><ul id="news-limitations"></ul>

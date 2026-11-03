@@ -10,11 +10,12 @@ from features import build_features
 from model import fit_latest_model, save_report, evaluate_horizon, compare_models_walk_forward
 from news import collect_news
 from market_context import update_institutional_history, add_institutional_features, latest_institutional_features, build_market_briefing, sync_official_0050_latest
+from taifex_night import update_taifex_history, latest_night_for_prediction, night_feature_values, build_night_dashboard
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "site" / "data" / "latest.json"
 
-def build_next_session_row(raw, columns):
+def build_next_session_row(raw, columns, night_features=None):
     row = {}
     for ticker, frame in raw.items():
         close = frame["Close"].dropna().astype(float)
@@ -59,15 +60,22 @@ def build_next_session_row(raw, columns):
             row["f_0050_atr14_pct"] = float(atr / close.iloc[-1]) if pd.notna(atr) and close.iloc[-1] else np.nan
             ret20 = close.pct_change(20).iloc[-1]
             row["f_0050_roc20"] = float(ret20) if pd.notna(ret20) else np.nan
+    for key, value in (night_features or {}).items():
+        if key in columns:
+            row[key] = value
     return pd.DataFrame([{key: row.get(key, np.nan) for key in columns}])
 
 def main():
     now = datetime.now(timezone.utc)
     raw = load_market_data(years=5)
     raw, official_close_check = sync_official_0050_latest(raw)
-    data = build_features(raw)
+    taifex_path = ROOT / "site" / "data" / "taifex_futures_history.json"
+    taifex_records, taifex_fetch_status = update_taifex_history(taifex_path)
     taiwan_prices = raw["0050.TW"].dropna(subset=["Close"])
     latest_taiwan_date = pd.Timestamp(taiwan_prices.index[-1]).date().isoformat()
+    night_for_prediction = latest_night_for_prediction(taifex_records, latest_taiwan_date)
+    night_features = night_feature_values(night_for_prediction) if night_for_prediction else {}
+    data = build_features(raw, taifex_records)
     institutional_path = ROOT / "site" / "data" / "institutional_history.json"
     institutional_records, institutional_errors = update_institutional_history(
         taiwan_prices.index, institutional_path, backfill_sessions=60
@@ -91,7 +99,7 @@ def main():
         estimator, model_features = fit_latest_model(data, target_col=target, model_name=horizon_model)
         if next_row is None:
             feature_names = model_features
-            next_row = build_next_session_row(raw, feature_names)
+            next_row = build_next_session_row(raw, feature_names, night_features)
         for key, value in latest_flow.items():
             if key in next_row.columns:
                 next_row.loc[0, key] = value
@@ -114,7 +122,7 @@ def main():
     gap_estimator, gap_features = fit_latest_model(
         data, target_col="target_open_up", model_name=selected_model
     )
-    gap_row = build_next_session_row(raw, gap_features)
+    gap_row = build_next_session_row(raw, gap_features, night_features)
     for key, value in latest_flow.items():
         if key in gap_row.columns:
             gap_row.loc[0, key] = value
@@ -144,7 +152,7 @@ def main():
     live_model_probabilities = {}
     for candidate in ("Logistic Regression", "Random Forest", "Extra Trees"):
         candidate_model, candidate_features = fit_latest_model(data, target_col="target_1d", model_name=candidate)
-        candidate_row = build_next_session_row(raw, candidate_features)
+        candidate_row = build_next_session_row(raw, candidate_features, night_features)
         for key, value in latest_flow.items():
             if key in candidate_row.columns:
                 candidate_row.loc[0, key] = value
@@ -222,6 +230,7 @@ def main():
     market_briefing = build_market_briefing(
         raw, institutional_records, news, latest_taiwan_date, institutional_errors
     )
+    taifex_night = build_night_dashboard(taifex_records, taifex_fetch_status, latest_taiwan_date)
     factors = []
     for ticker, label in [
         ("^SOX","費城半導體指數"),("^IXIC","NASDAQ"),("^GSPC","S&P 500"),
@@ -252,6 +261,7 @@ def main():
             "target_definition":"下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
         },
         "market_risk":risk_assessment,
+        "taifex_night":taifex_night,
         "confidence":confidence,
         "model_comparison":model_comparison,
         "history":history,
@@ -285,6 +295,7 @@ def main():
             "美股市場摘要依紐約時間最後完成的常規交易時段判定；遇休市或資料供應商延遲時，會以實際資料日期顯示，不保證一定是前一個日曆日。",
             "2日及3日預測為獨立模型的累積方向分類，不是逐日價格路徑；期限越長，不確定性通常越高。",
             "多日回測已排除可能重疊的訓練標籤，但仍需持續檢驗模型穩定性。",
+            "台指期夜盤使用 TAIFEX 最新公開日報累積歷史；官方公開 API 非完整歷史查詢。夜盤特徵至少累積120個有效交易日後才納入模型，樣本不足時僅顯示行情，不調整模型機率。",
             "回測方向準確率不等同扣除交易成本後的投資報酬。"
         ]
     }

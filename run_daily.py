@@ -155,10 +155,13 @@ def main():
                             if x.get("name") == selected_model), forecasts["1d"]["backtest"])
     live_votes = [p >= 0.5 for p in live_model_probabilities.values()]
     signal_consensus = max(sum(live_votes), len(live_votes) - sum(live_votes)) / max(len(live_votes), 1)
-    data_quality = float(next_row[feature_names].notna().mean()) if feature_names else 0.0
+    # Reduce through NumPy to guarantee scalar values and avoid pandas Series conversion errors.
+    available_mask = next_row.loc[:, feature_names].notna().to_numpy(dtype=bool) if feature_names else np.array([], dtype=bool)
+    available_count = int(available_mask.sum())
+    data_quality = float(available_count / len(feature_names)) if feature_names else 0.0
     confidence = {
         "data_quality_score": round(data_quality, 4),
-        "available_features": int(next_row[feature_names].notna().sum()) if feature_names else 0,
+        "available_features": available_count,
         "total_features": len(feature_names or []),
         "signal_consensus": round(signal_consensus, 4),
         "model_probabilities": live_model_probabilities,

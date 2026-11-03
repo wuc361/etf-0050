@@ -40,7 +40,10 @@
     .timeframe-button:focus-visible { outline:2px solid #93c5fd; outline-offset:2px; }
     .chart-panel { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:10px; }
     .chart-panel h3 { margin:4px 4px 10px; font-size:1rem; }
-    .chart-panel canvas { height:300px; }
+    .chart-panel canvas { height:300px; cursor:crosshair; touch-action:pan-y; }
+    #chart-crosshair-info { margin:10px 0 14px; padding:12px 14px; border:1px solid #3b4c66; border-radius:10px; background:#0b1628; color:#dbeafe; font-size:.88rem; line-height:1.7; font-variant-numeric:tabular-nums; }
+    #chart-crosshair-info strong { color:#fff; }
+    .chart-hint { color:#9ca3af; font-size:.82rem; margin:6px 2px 10px; }
     .learning-grid,.source-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
     .learn-item,.source-item { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:13px; }
     .learn-item p,.source-item p { color:#aab4c4; font-size:.9rem; line-height:1.55; }
@@ -127,6 +130,8 @@
       <button type="button" class="timeframe-button" data-timeframe="weekly" aria-pressed="false">每週</button>
       <button type="button" class="timeframe-button" data-timeframe="monthly" aria-pressed="false">每月</button>
     </div>
+    <p class="chart-hint">將滑鼠移到K線或技術指標圖上，或在觸控螢幕上點選／拖曳，即可同步查看該日期數據。</p>
+    <div id="chart-crosshair-info" aria-live="polite">移動游標至圖表，即可查看日期、開高低收、成交量、均線與技術指標。</div>
     <div class="chart-stack">
       <div class="chart-panel"><h3>K線、MA5、MA20、MA60、布林通道及成交量</h3><canvas id="candlestick-chart" aria-label="0050歷史K線與均線圖"></canvas></div>
       <div class="chart-panel"><h3>RSI（14日相對強弱指標）</h3><canvas id="rsi-chart" aria-label="0050 RSI 技術指標圖"></canvas></div>
@@ -186,6 +191,8 @@
   // can safely call setupChartTimeframes() without hitting the temporal dead zone.
   let chartSourceRows = [];
   let chartTimeframe = 'daily';
+  let chartRowsCurrent = [];
+  let chartHoverIndex = null;
   try {
     const response = await fetch('./data/latest.json?ts=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
@@ -390,9 +397,36 @@
       renderSelectedCharts();
     });
     renderSelectedCharts();
+    ['candlestick-chart','rsi-chart','macd-chart'].forEach(id => {
+      const canvas = $(id);
+      if (!canvas || canvas.dataset.hoverReady) return;
+      canvas.dataset.hoverReady = '1';
+      const updateHover = event => {
+        if (!chartRowsCurrent.length) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const left = id === 'candlestick-chart' ? 52 : 44;
+        const right = 12;
+        const plotWidth = Math.max(1, rect.width - left - right);
+        if (x < left || x > rect.width - right) return;
+        let index = id === 'candlestick-chart'
+          ? Math.floor((x - left) / (plotWidth / chartRowsCurrent.length))
+          : Math.round((x - left) / plotWidth * (chartRowsCurrent.length - 1));
+        chartHoverIndex = Math.max(0, Math.min(chartRowsCurrent.length - 1, index));
+        renderSelectedCharts();
+      };
+      canvas.addEventListener('pointermove', updateHover);
+      canvas.addEventListener('pointerdown', updateHover);
+      canvas.addEventListener('pointerleave', () => {
+        chartHoverIndex = null;
+        renderSelectedCharts();
+      });
+    });
   }
   function renderSelectedCharts() {
     const grouped = buildChartRows(chartSourceRows, chartTimeframe);
+    chartRowsCurrent = grouped;
+    if (chartHoverIndex !== null && chartHoverIndex >= grouped.length) chartHoverIndex = grouped.length - 1;
     drawCandles(grouped);
     drawIndicatorLine('rsi-chart', grouped, 'rsi14', 'RSI 14', 0, 100, [30,70]);
     drawMacd(grouped);
@@ -488,6 +522,8 @@
     ctx.fillStyle='#9ca3af'; ctx.fillText('MA5 黃｜MA20 藍｜MA60 紫｜布林通道灰',left,12);
     ctx.fillText(rows[0].date, left, height-7);
     const last=rows[rows.length-1].date; const tw=ctx.measureText(last).width; ctx.fillText(last,width-right-tw,height-7);
+    drawChartCrosshair(ctx, rows, chartHoverIndex, i => left + step * (i + 0.5), height);
+    updateChartHoverInfo(rows, chartHoverIndex);
     const periodLabel = chartTimeframe === 'daily' ? '交易日' : chartTimeframe === 'weekly' ? '週' : '月';
     $('chart-range').textContent='檢視：'+({daily:'每日',weekly:'每週',monthly:'每月'}[chartTimeframe])+'｜期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' '+periodLabel+'｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
   }
@@ -507,6 +543,7 @@
     ctx.strokeStyle='#60a5fa';ctx.lineWidth=2;ctx.beginPath();let begun=false;
     rows.forEach((row,i)=>{const v=row[key];if(!Number.isFinite(v))return;const x=left+(i/(Math.max(1,rows.length-1)))*w,y=top+(hi-v)/(hi-lo)*h;if(!begun){ctx.moveTo(x,y);begun=true;}else ctx.lineTo(x,y);});
     ctx.stroke();ctx.fillStyle='#9ca3af';ctx.fillText(label,left,12);
+    drawChartCrosshair(ctx, rows, chartHoverIndex, i => left + (i / Math.max(1,rows.length-1)) * w, height);
   }
   function drawMacd(rows) {
     const canvas=$('macd-chart');if(!canvas||!rows.length)return;
@@ -521,6 +558,27 @@
     rows.forEach((r,i)=>{if(!Number.isFinite(r.macd_hist))return;const x=left+(i+.5)*step,v=r.macd_hist/abs*h/2;ctx.fillStyle=v>=0?'#f87171':'#34d399';ctx.fillRect(x-bw/2,Math.min(zero,zero-v),bw,Math.max(1,Math.abs(v)));});
     [['macd','#60a5fa'],['macd_signal','#fbbf24']].forEach(([key,color])=>{ctx.strokeStyle=color;ctx.lineWidth=1.7;ctx.beginPath();let begun=false;rows.forEach((r,i)=>{if(!Number.isFinite(r[key]))return;const x=left+(i/(Math.max(1,rows.length-1)))*w,y=zero-r[key]/abs*h/2;if(!begun){ctx.moveTo(x,y);begun=true;}else ctx.lineTo(x,y);});ctx.stroke();});
     ctx.fillStyle='#9ca3af';ctx.font='11px system-ui';ctx.fillText('MACD藍線｜訊號線黃線｜柱狀體為差值',left,12);
+    drawChartCrosshair(ctx, rows, chartHoverIndex, i => left + (i / Math.max(1,rows.length-1)) * w, height);
+  }
+  function drawChartCrosshair(ctx, rows, index, xForIndex, height) {
+    if (index === null || !rows[index]) return;
+    const x = xForIndex(index);
+    ctx.save();
+    ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(x,16); ctx.lineTo(x,height-24); ctx.stroke();
+    ctx.restore();
+  }
+  function updateChartHoverInfo(rows, index) {
+    const host = $('chart-crosshair-info');
+    if (!host) return;
+    if (index === null || !rows[index]) {
+      host.textContent = '移動游標至圖表，即可查看日期、開高低收、成交量、均線與技術指標。';
+      return;
+    }
+    const r = rows[index];
+    const n = v => Number.isFinite(Number(v)) ? Number(v).toLocaleString('zh-TW',{minimumFractionDigits:2,maximumFractionDigits:2}) : '—';
+    const vol = Number(r.volume);
+    host.innerHTML = '<strong>' + r.date + '</strong>　開 ' + n(r.open) + '　高 ' + n(r.high) + '　低 ' + n(r.low) + '　收 <strong>' + n(r.close) + '</strong>　成交量 ' + (Number.isFinite(vol) ? vol.toLocaleString('zh-TW') : '—') + '<br>MA5 ' + n(r.ma5) + '　MA20 ' + n(r.ma20) + '　MA60 ' + n(r.ma60) + '　布林上／中／下 ' + n(r.bb_upper) + ' / ' + n(r.bb_mid) + ' / ' + n(r.bb_lower) + '<br>RSI(14) ' + n(r.rsi14) + '　MACD ' + n(r.macd) + '　訊號線 ' + n(r.macd_signal) + '　柱狀體 ' + n(r.macd_hist);
   }
   function renderBacktestMetrics(forecasts) {
     const host=$('backtest-metrics');host.replaceChildren();

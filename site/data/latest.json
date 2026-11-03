@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-03T13:14:44+00:00",
+  "generated_at_utc": "2026-11-03T13:20:19+00:00",
   "data_as_of": "2026-11-03",
   "latest_close": 100.6,
   "price_validation": {
@@ -18,13 +18,13 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.265015,
-      "down_probability": 0.734985,
+      "up_probability": 0.261486,
+      "down_probability": 0.738514,
       "backtest": {
         "accuracy": 0.691131498470948,
         "balanced_accuracy": 0.6889700493070363,
         "up_recall": 0.73828125,
-        "brier_score": 0.19539374432956103,
+        "brier_score": 0.195393744329561,
         "majority_baseline_accuracy": 0.5219164118246687,
         "accuracy_lift_vs_baseline": 0.16921508664627927,
         "base_rate": 0.5219164118246687,
@@ -35,13 +35,13 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.685725,
-      "down_probability": 0.314275,
+      "up_probability": 0.684677,
+      "down_probability": 0.315323,
       "backtest": {
         "accuracy": 0.5883554647599591,
         "balanced_accuracy": 0.579020979020979,
         "up_recall": 0.6545454545454545,
-        "brier_score": 0.2424666627429421,
+        "brier_score": 0.2424666627126519,
         "majority_baseline_accuracy": 0.5617977528089888,
         "accuracy_lift_vs_baseline": 0.026557711950970342,
         "base_rate": 0.5617977528089888,
@@ -52,13 +52,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.615849,
-      "down_probability": 0.384151,
+      "up_probability": 0.616372,
+      "down_probability": 0.383628,
       "backtest": {
         "accuracy": 0.5547594677584442,
         "balanced_accuracy": 0.5294399223807806,
         "up_recall": 0.6932624113475178,
-        "brier_score": 0.2514594361533713,
+        "brier_score": 0.2514594361109271,
         "majority_baseline_accuracy": 0.5772773797338793,
         "accuracy_lift_vs_baseline": -0.022517911975435068,
         "base_rate": 0.5772773797338793,
@@ -70,13 +70,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.212851,
-    "down_probability": 0.787149,
+    "up_probability": 0.214065,
+    "down_probability": 0.785935,
     "backtest": {
       "accuracy": 0.7849133537206932,
       "balanced_accuracy": 0.7826819182285066,
       "up_recall": 0.8239845261121856,
-      "brier_score": 0.14959417712315923,
+      "brier_score": 0.14959417712335024,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25790010193679913,
       "base_rate": 0.527013251783894,
@@ -114,9 +114,9 @@
     "total_features": 93,
     "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.7692782615636282,
-      "Random Forest": 0.2650154217989843,
-      "Extra Trees": 0.24516696020455853
+      "Logistic Regression": 0.7669428217727834,
+      "Random Forest": 0.26148619483731517,
+      "Extra Trees": 0.24575867280819796
     },
     "historical_balanced_accuracy": 0.6908336387260128,
     "historical_brier_score": 0.19476786232437546,
@@ -135,7 +135,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6340468909276249,
         "balanced_accuracy": 0.6326709088486141,
-        "brier_score": 0.22233958201200807,
+        "brier_score": 0.22233958219709,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
@@ -14561,8 +14561,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.265015,
-    "down_probability": 0.734985,
+    "up_probability": 0.261486,
+    "down_probability": 0.738514,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14623,12 +14623,12 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.005815,
+        "latest_return": 0.005692,
         "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": 0.007565,
+        "latest_return": 0.014184,
         "tone": "偏多"
       },
       {
@@ -14643,11 +14643,11 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-03T13:16:15+00:00",
+      "generated_at_utc": "2026-11-03T13:21:47+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -2,
+        "keyword_score": -4,
         "article_count": 16,
         "items": [
           {
@@ -14672,13 +14672,15 @@
           },
           {
             "category": "國際市場",
-            "title": "U.S. Stocks Close | Nasdaq and S&P 500 Both Post \"A‑Shares\" Sell‑Offs; Nasdaq 100 Enters Technical Correction; Chip Index Drops Over 3%, Micron Falls 6%; Golden Dragon China Index Rises Over 2%; Crude Oil Plummets 8%, Gold Gains Strength - 富途牛牛",
-            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUGFKQVFteW9WMzNmSDRIRV9pNS1DaUpxSWtWa3FXM2xCalp3SVcyU3dWWDJzNERmSnhYX0FyMnl5LUxFZTRfb2Y3cWlJbmFzLUhhaVVRZ0s5VkJuSnhobEJyTGxzb29aQ3ZEZmZXMTNuRWVWUGQwbWlxdThvTVRWMVViN1N0QVR2MzlEMUpCcGQ?oc=5",
-            "source": "富途牛牛",
-            "published_at": "2026-11-02T22:19+00:00",
-            "keyword_score": 0,
+            "title": "Stock Market Today: S&P 500, Nasdaq close lower as tech selloff deepens, but Dow rises and oil prices drop - MarketWatch",
+            "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQl9sYzAzMExvX0pWb3d2dFczSlRqQ0Y4QjBuN0toQUdfUlBsUzlOTjVNSFY4ZmFlQ2xQRVR0Ymd3Q1cwWnZQbUNocUVwc1ZfZzZ3ay02YVhLY1l2YXVIN3kxTWRrYk1DcXBja2M1S3RXUmlkSXY3UEJkdTBfOS1venNZSlRrdmVNekVFTG1HT1VvNUVlQ1BVczRpS0s3VVZJcVBERE9Idm5ldnc3LVBldkoxV25lTzd3OTA0Qi1fM3BheW9QU1ZpR1R6cEw3dw?oc=5",
+            "source": "MarketWatch",
+            "published_at": "2026-11-02T22:46+00:00",
+            "keyword_score": -1,
             "positive_terms": [],
-            "negative_terms": []
+            "negative_terms": [
+              "selloff"
+            ]
           },
           {
             "category": "國際市場",
@@ -14773,13 +14775,15 @@
         },
         {
           "category": "國際市場",
-          "title": "U.S. Stocks Close | Nasdaq and S&P 500 Both Post \"A‑Shares\" Sell‑Offs; Nasdaq 100 Enters Technical Correction; Chip Index Drops Over 3%, Micron Falls 6%; Golden Dragon China Index Rises Over 2%; Crude Oil Plummets 8%, Gold Gains Strength - 富途牛牛",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUGFKQVFteW9WMzNmSDRIRV9pNS1DaUpxSWtWa3FXM2xCalp3SVcyU3dWWDJzNERmSnhYX0FyMnl5LUxFZTRfb2Y3cWlJbmFzLUhhaVVRZ0s5VkJuSnhobEJyTGxzb29aQ3ZEZmZXMTNuRWVWUGQwbWlxdThvTVRWMVViN1N0QVR2MzlEMUpCcGQ?oc=5",
-          "source": "富途牛牛",
-          "published_at": "2026-11-02T22:19+00:00",
-          "keyword_score": 0,
+          "title": "Stock Market Today: S&P 500, Nasdaq close lower as tech selloff deepens, but Dow rises and oil prices drop - MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQl9sYzAzMExvX0pWb3d2dFczSlRqQ0Y4QjBuN0toQUdfUlBsUzlOTjVNSFY4ZmFlQ2xQRVR0Ymd3Q1cwWnZQbUNocUVwc1ZfZzZ3ay02YVhLY1l2YXVIN3kxTWRrYk1DcXBja2M1S3RXUmlkSXY3UEJkdTBfOS1venNZSlRrdmVNekVFTG1HT1VvNUVlQ1BVczRpS0s3VVZJcVBERE9Idm5ldnc3LVBldkoxV25lTzd3OTA0Qi1fM3BheW9QU1ZpR1R6cEw3dw?oc=5",
+          "source": "MarketWatch",
+          "published_at": "2026-11-02T22:46+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "selloff"
+          ]
         },
         {
           "category": "國際市場",
@@ -14815,20 +14819,20 @@
         },
         {
           "category": "國際市場",
-          "title": "Chip stocks are suffering from a ‘crisis of confidence’ — but things aren’t as gloomy as they seem - MarketWatch",
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOd3hSdUtzUnNReUhLdTRlVEhPbVdIQk03NFlKT3NUeHpTdHJ4WjZTcjlfMF8zaEhGS1BWM00xbDdycFVRSzJjOHYxYXJlTHA0NWZPTkUySmUzd3V1WDhUSmFURjhtMzM1LUhxek5pdmZBRmxjbWtFSFV0TWgzdUZpbThMWTc3UnNjbDQzZ2MySjhCenRQcHhqZFllRWc3bDR2NEl5S1FXWTBiODVFdmtWVndtdElRc0syd3hSRXN0blV0eE0tYjhrYjJCbkExcGt1VXc?oc=5",
-          "source": "MarketWatch",
-          "published_at": "2026-11-02T20:30+00:00",
+          "title": "October dive for AI-related shares tests broader US stock market's resilience - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPSVlEWkkyN3lYZG41WXJvcl9pNWlKYW5VNjdmb1lHYkNGVHpmT1BHLWVDUFQydFNra3JIeVlfVFh5ZzhoTzRfMVdwZ2didmtGZ0hGZDN6ZmtTbUk5b2lIb3JfZ2poRld3R1BCM28zLUlHUnlZcHJQMXp3S01PTGNBSmxRN1pYMThUZXQtbHBHaU5CWnhTMFF6VTFidG05QzdQTnVJYmJiZl9YQTFxX3ZhWExjN0NZOUpTWjFTaUh5WUFSem9MdW1Z?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-02T17:08+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "S&P 500 ends down; Apple dips ahead of quarterly report - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPbnVDQzd0LTF3Vi1BMnJDLWpGaHNIMlJVTDNnVmplMzZnVjRxRTZUUTRsQkVvZ21EN3lXMzA4ZDJnOTQwc01ld2tqT1pGZVN6VmpuVWpzLVVMUU1qcDdnRFdEQUZoM0l6Ym9NYnhfWDctWkZnSC1fLUk0RGxtUmd3WU9zLXdhcTdGTkJvcUxaazZKZEliVjl3bVBfZldDajJMOXZtVkx0NVI4YWlwMkVFbXpMR0ZGQW9wOWxEcTM3QThSdk1fb2c?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-02T10:57+00:00",
+          "title": "Semiconductor Stocks Are Cheaper Than the S&P 500: Is It Time to Buy SOXX and SMH ETFs? - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQZHNYM2pVR3dDdkpMdWxDa1QtcU9aSVhDVklaZmVDMjNGdHZHU0JmbnRVRmNyUFJQNkxzazNlekZWQjBSMWx3cXZycmtGZEFRYVA1dDVXVWFpYUxjZlBvVmR5WnpvYVgzYmtBdGFOaW1XSy1zMUtIWS1YYmdQTGdEYmhHUWhabERPYW9tbE54emVSWG9CUTNHTi1hWUdab2lEQ0ZvU3BPdHZLbEtlUlM4X1dXLUN3cUpmdU5tbnpBZUNXbHhtaWFjX3RPWkNTQ1AzRVdYc1RWS3NxeFlE?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-02T14:16+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14918,16 +14922,6 @@
           "negative_terms": []
         },
         {
-          "category": "國際市場",
-          "title": "TradingKey 每日市場簡報：630億美元Anthropic算力融資提振晶片股，博通漲4%，CRWV漲近8%，波音跌超10% - TradingKey",
-          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPdjA2UG1UeFl5YVJTQmJlNnZtalEtWi1NVjE3VXB3M2paY1NNWkpmSFVXLVk0ZTNILTdEbUMzVlhjdllkbHFqb2x5ZG5KRzVOa05HdG1Gb3ZoRktWdFBkb3lMZ0hVOFY0cTY3ZTNjMnQ2WXNnUUxSLWtUSGRxQUxQQ3lrVE56Z19NdXN6NEpsUUYzYkc2U0NIV2paSXFCamEtVjJhZzgtTVJ4aWdXcTZWMGlCRGNrczBwZkx0Y1JBWVpURUdCd2pFNE5FLXZtbldhcGVIdmNuLUppcUVUNVFaZC1IQXRVdzMyMmJJ?oc=5",
-          "source": "TradingKey",
-          "published_at": "2026-10-28T01:08+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
           "category": "產業消息",
           "title": "The Last Month Exposed The Risk Narrative Between Nvidia Vs.Taiwan Semiconductor - 24/7 Wall St.",
           "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRGdwejU0cjNMRHN5aWNSLXAxOVpyWDNBRHd1a1d4N0ZVcXpKcVhYNUM0dUR2aktHTVdjRktMVDFjT1NZLVlFMTBIWlVOdVFjWWVPLWdhS1NBeHNqSGdNVVUxT3BFaUxyR3RUcDFYMFItUzJZdHE4S3U2THZFX25QNTdudTRVYXRQNFh5UUh6d29tZEhkZFEwaF9jQm15c3AzN3RlNXdhbnhEVWFrRVQ5SHZyLUQycUN1YTh0eTdGZDVVdw?oc=5",
@@ -14936,6 +14930,18 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Fed Rate Decision Preview: Will Kevin Warsh Hold Rates at 4% and Signal a December Hike? - Markets.com",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9pMTdRQ2p1NUZZam9lRkwyZWI5dEJpUWQzZ1ZxUU9Vc2RNR3FzVVJ2b2NMWnpiX3ZaY2taR3VkQ1p1bHI0NjhsSUFqa2c0QTF3RE5nRUFlTGJLaUpwYk1PdzlmelFrakN6ZmJqdnhTRXgtSzA?oc=5",
+          "source": "Markets.com",
+          "published_at": "2026-10-25T16:02+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "war"
+          ]
         }
       ],
       "source_errors": [],
@@ -14946,10 +14952,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-03T13:16:15+00:00",
+      "generated_at_utc": "2026-11-03T13:21:47+00:00",
       "taiwan_data_date": "2026-11-03",
       "us_session_date": "2026-11-02",
-      "us_timezone_checked_at": "2026-11-03T08:16-05:00",
+      "us_timezone_checked_at": "2026-11-03T08:21-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15202,11 +15208,11 @@
         },
         {
           "group": "國際新聞",
-          "title": "U.S. Stocks Close | Nasdaq and S&P 500 Both Post \"A‑Shares\" Sell‑Offs; Nasdaq 100 Enters Technical Correction; Chip Index Drops Over 3%, Micron Falls 6%; Golden Dragon China Index Rises Over 2%; Crude Oil Plummets 8%, Gold Gains Strength - 富途牛牛",
-          "date": "2026-11-03 06:19 台北時間",
-          "tone": "待判讀",
-          "detail": "富途牛牛｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUGFKQVFteW9WMzNmSDRIRV9pNS1DaUpxSWtWa3FXM2xCalp3SVcyU3dWWDJzNERmSnhYX0FyMnl5LUxFZTRfb2Y3cWlJbmFzLUhhaVVRZ0s5VkJuSnhobEJyTGxzb29aQ3ZEZmZXMTNuRWVWUGQwbWlxdThvTVRWMVViN1N0QVR2MzlEMUpCcGQ?oc=5"
+          "title": "Stock Market Today: S&P 500, Nasdaq close lower as tech selloff deepens, but Dow rises and oil prices drop - MarketWatch",
+          "date": "2026-11-03 06:46 台北時間",
+          "tone": "偏空",
+          "detail": "MarketWatch｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQl9sYzAzMExvX0pWb3d2dFczSlRqQ0Y4QjBuN0toQUdfUlBsUzlOTjVNSFY4ZmFlQ2xQRVR0Ymd3Q1cwWnZQbUNocUVwc1ZfZzZ3ay02YVhLY1l2YXVIN3kxTWRrYk1DcXBja2M1S3RXUmlkSXY3UEJkdTBfOS1venNZSlRrdmVNekVFTG1HT1VvNUVlQ1BVczRpS0s3VVZJcVBERE9Idm5ldnc3LVBldkoxV25lTzd3OTA0Qi1fM3BheW9QU1ZpR1R6cEw3dw?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15250,14 +15256,16 @@
         },
         {
           "category": "國際市場",
-          "title": "U.S. Stocks Close | Nasdaq and S&P 500 Both Post \"A‑Shares\" Sell‑Offs; Nasdaq 100 Enters Technical Correction; Chip Index Drops Over 3%, Micron Falls 6%; Golden Dragon China Index Rises Over 2%; Crude Oil Plummets 8%, Gold Gains Strength - 富途牛牛",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUGFKQVFteW9WMzNmSDRIRV9pNS1DaUpxSWtWa3FXM2xCalp3SVcyU3dWWDJzNERmSnhYX0FyMnl5LUxFZTRfb2Y3cWlJbmFzLUhhaVVRZ0s5VkJuSnhobEJyTGxzb29aQ3ZEZmZXMTNuRWVWUGQwbWlxdThvTVRWMVViN1N0QVR2MzlEMUpCcGQ?oc=5",
-          "source": "富途牛牛",
-          "published_at": "2026-11-02T22:19+00:00",
-          "keyword_score": 0,
+          "title": "Stock Market Today: S&P 500, Nasdaq close lower as tech selloff deepens, but Dow rises and oil prices drop - MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNQl9sYzAzMExvX0pWb3d2dFczSlRqQ0Y4QjBuN0toQUdfUlBsUzlOTjVNSFY4ZmFlQ2xQRVR0Ymd3Q1cwWnZQbUNocUVwc1ZfZzZ3ay02YVhLY1l2YXVIN3kxTWRrYk1DcXBja2M1S3RXUmlkSXY3UEJkdTBfOS1venNZSlRrdmVNekVFTG1HT1VvNUVlQ1BVczRpS0s3VVZJcVBERE9Idm5ldnc3LVBldkoxV25lTzd3OTA0Qi1fM3BheW9QU1ZpR1R6cEw3dw?oc=5",
+          "source": "MarketWatch",
+          "published_at": "2026-11-02T22:46+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-03 06:19 台北時間"
+          "negative_terms": [
+            "selloff"
+          ],
+          "published_at_taipei": "2026-11-03 06:46 台北時間"
         },
         {
           "category": "國際市場",
@@ -15296,25 +15304,25 @@
         },
         {
           "category": "國際市場",
-          "title": "Chip stocks are suffering from a ‘crisis of confidence’ — but things aren’t as gloomy as they seem - MarketWatch",
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOd3hSdUtzUnNReUhLdTRlVEhPbVdIQk03NFlKT3NUeHpTdHJ4WjZTcjlfMF8zaEhGS1BWM00xbDdycFVRSzJjOHYxYXJlTHA0NWZPTkUySmUzd3V1WDhUSmFURjhtMzM1LUhxek5pdmZBRmxjbWtFSFV0TWgzdUZpbThMWTc3UnNjbDQzZ2MySjhCenRQcHhqZFllRWc3bDR2NEl5S1FXWTBiODVFdmtWVndtdElRc0syd3hSRXN0blV0eE0tYjhrYjJCbkExcGt1VXc?oc=5",
-          "source": "MarketWatch",
-          "published_at": "2026-11-02T20:30+00:00",
+          "title": "October dive for AI-related shares tests broader US stock market's resilience - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPSVlEWkkyN3lYZG41WXJvcl9pNWlKYW5VNjdmb1lHYkNGVHpmT1BHLWVDUFQydFNra3JIeVlfVFh5ZzhoTzRfMVdwZ2didmtGZ0hGZDN6ZmtTbUk5b2lIb3JfZ2poRld3R1BCM28zLUlHUnlZcHJQMXp3S01PTGNBSmxRN1pYMThUZXQtbHBHaU5CWnhTMFF6VTFidG05QzdQTnVJYmJiZl9YQTFxX3ZhWExjN0NZOUpTWjFTaUh5WUFSem9MdW1Z?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-02T17:08+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-03 04:30 台北時間"
+          "published_at_taipei": "2026-11-03 01:08 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "S&P 500 ends down; Apple dips ahead of quarterly report - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPbnVDQzd0LTF3Vi1BMnJDLWpGaHNIMlJVTDNnVmplMzZnVjRxRTZUUTRsQkVvZ21EN3lXMzA4ZDJnOTQwc01ld2tqT1pGZVN6VmpuVWpzLVVMUU1qcDdnRFdEQUZoM0l6Ym9NYnhfWDctWkZnSC1fLUk0RGxtUmd3WU9zLXdhcTdGTkJvcUxaazZKZEliVjl3bVBfZldDajJMOXZtVkx0NVI4YWlwMkVFbXpMR0ZGQW9wOWxEcTM3QThSdk1fb2c?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-02T10:57+00:00",
+          "title": "Semiconductor Stocks Are Cheaper Than the S&P 500: Is It Time to Buy SOXX and SMH ETFs? - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQZHNYM2pVR3dDdkpMdWxDa1QtcU9aSVhDVklaZmVDMjNGdHZHU0JmbnRVRmNyUFJQNkxzazNlekZWQjBSMWx3cXZycmtGZEFRYVA1dDVXVWFpYUxjZlBvVmR5WnpvYVgzYmtBdGFOaW1XSy1zMUtIWS1YYmdQTGdEYmhHUWhabERPYW9tbE54emVSWG9CUTNHTi1hWUdab2lEQ0ZvU3BPdHZLbEtlUlM4X1dXLUN3cUpmdU5tbnpBZUNXbHhtaWFjX3RPWkNTQ1AzRVdYc1RWS3NxeFlE?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-02T14:16+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-02 18:57 台北時間"
+          "published_at_taipei": "2026-11-02 22:16 台北時間"
         }
       ],
       "domestic_news": [],

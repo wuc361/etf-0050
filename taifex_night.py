@@ -84,7 +84,7 @@ def _canonical(row):
         "low": _number(_field(row, "Low", "最低價")),
         "last": _number(_field(row, "Last", "Close", "最後成交價")),
         "change_points": _number(_field(row, "Change", "漲跌")),
-        "change_pct": _number(_field(row, "%", "ChangePercent", "漲跌百分比")),
+        "change_pct": _number(_field(row, "%", "Change(%)", "ChangePercent", "漲跌百分比")),
         "volume": _number(_field(row, "Volume", "成交量")),
         "settlement": _number(_field(row, "SettlementPrice", "Settlement Price", "結算價")),
         "open_interest": _number(_field(row, "OpenInterest", "未平倉量")),

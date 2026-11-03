@@ -34,6 +34,10 @@
     .chart-legend { display:flex; flex-wrap:wrap; gap:14px; color:#9ca3af; font-size:.85rem; margin:10px 0; }
     .chart-note { color:#9ca3af; font-size:.85rem; }
     .chart-stack { display:grid; gap:14px; }
+    .timeframe-controls { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+    .timeframe-button { border:1px solid #475569; border-radius:9px; padding:8px 18px; color:#cbd5e1; background:#172338; font:inherit; cursor:pointer; }
+    .timeframe-button.active { color:#fff; background:#2563eb; border-color:#3b82f6; }
+    .timeframe-button:focus-visible { outline:2px solid #93c5fd; outline-offset:2px; }
     .chart-panel { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:10px; }
     .chart-panel h3 { margin:4px 4px 10px; font-size:1rem; }
     .chart-panel canvas { height:300px; }
@@ -69,7 +73,7 @@
     <article class="card"><div class="label">預測方向</div><div id="direction" class="value">—</div><p id="target" class="muted">—</p></article>
     <article class="card"><div class="label">模型預估上漲機率</div><div id="up-prob" class="value">—</div><p id="down-prob" class="muted">下跌機率：—</p></article>
     <article class="card"><div class="label">0050 最近已確認收盤價</div><div id="price" class="value">—</div><p id="as-of" class="muted">台灣交易日：—</p></article>
-    <article class="card"><div class="label">模型預測參考價格</div><div id="forecast-price" class="value">尚未估算</div><p id="forecast-price-note" class="muted">目前模型只輸出漲跌方向機率，沒有價格迴歸模型；不以機率假造目標價。</p></article>
+    
     <article class="card"><div class="label">Walk-forward 樣本外方向準確率</div><div id="accuracy" class="value">—</div><p id="backtest-meta" class="muted">—</p></article>
   </div>
   <section class="card">
@@ -117,7 +121,12 @@
   </section>
   <section class="card">
     <h2>📈 0050 歷史 K 線與技術指標</h2>
-    <p class="chart-note">最近最多120個交易日。紅K代表收盤高於開盤、綠K代表收盤低於開盤；圖表為日線研究資料，非即時報價。</p>
+    <p class="chart-note">可切換每日、每週及每月K線。週線／月線由每日OHLCV彙整，均線、RSI、MACD及布林通道會依目前週期重新計算；非即時報價。</p>
+    <div id="chart-timeframes" class="timeframe-controls" role="group" aria-label="K線時間週期">
+      <button type="button" class="timeframe-button active" data-timeframe="daily" aria-pressed="true">每日</button>
+      <button type="button" class="timeframe-button" data-timeframe="weekly" aria-pressed="false">每週</button>
+      <button type="button" class="timeframe-button" data-timeframe="monthly" aria-pressed="false">每月</button>
+    </div>
     <div class="chart-stack">
       <div class="chart-panel"><h3>K線、MA5、MA20、MA60、布林通道及成交量</h3><canvas id="candlestick-chart" aria-label="0050歷史K線與均線圖"></canvas></div>
       <div class="chart-panel"><h3>RSI（14日相對強弱指標）</h3><canvas id="rsi-chart" aria-label="0050 RSI 技術指標圖"></canvas></div>
@@ -180,9 +189,7 @@
     if (d.status !== 'ok') throw new Error('最近一次模型執行未成功。');
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
-    drawCandles(d.history || []);
-    drawIndicatorLine('rsi-chart', d.history || [], 'rsi14', 'RSI 14', 0, 100, [30,70]);
-    drawMacd(d.history || []);
+    setupChartTimeframes(d.history || []);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
     renderMarketBriefing(d.explanation?.market_briefing || {});
@@ -198,12 +205,6 @@
     $('down-prob').textContent = '下跌機率：' + percent(f.down_probability);
     $('price').textContent = Number(d.latest_close).toLocaleString('zh-TW', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     $('as-of').textContent = '台灣交易日：' + (d.data_as_of || '未知');
-    const fp = d.forecast?.reference_price;
-    $('forecast-price').textContent = Number.isFinite(Number(fp)) && fp !== null
-      ? Number(fp).toLocaleString('zh-TW', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' 元'
-      : '尚未估算';
-    $('forecast-price-note').textContent = d.forecast?.reference_price_note ||
-      '目前模型只輸出漲跌方向機率，沒有價格迴歸模型；不以機率假造目標價。';
     $('accuracy').textContent = percent(b.accuracy);
     $('backtest-meta').textContent = '測試筆數：' + (b.n_test ?? '—') + '｜上漲命中率：' + percent(b.up_recall) + '｜上漲基準比例：' + percent(b.base_rate);
     $('model-meta').textContent = (d.model?.name || '模型') + '｜因子數：' + (d.model?.feature_count ?? '—') + '｜訓練樣本：' + (d.model?.training_rows ?? '—');
@@ -370,6 +371,90 @@
       card.append(title,direction,probability,accuracy,note); host.append(card);
     });
   }
+  let chartSourceRows = [];
+  let chartTimeframe = 'daily';
+  function setupChartTimeframes(rows) {
+    chartSourceRows = Array.isArray(rows) ? rows : [];
+    const controls = $('chart-timeframes');
+    if (controls) controls.addEventListener('click', event => {
+      const button = event.target.closest('[data-timeframe]');
+      if (!button) return;
+      chartTimeframe = button.dataset.timeframe;
+      controls.querySelectorAll('[data-timeframe]').forEach(el => {
+        const active = el.dataset.timeframe === chartTimeframe;
+        el.classList.toggle('active', active);
+        el.setAttribute('aria-pressed', String(active));
+      });
+      renderSelectedCharts();
+    });
+    renderSelectedCharts();
+  }
+  function renderSelectedCharts() {
+    const grouped = buildChartRows(chartSourceRows, chartTimeframe);
+    drawCandles(grouped);
+    drawIndicatorLine('rsi-chart', grouped, 'rsi14', 'RSI 14', 0, 100, [30,70]);
+    drawMacd(grouped);
+  }
+  function buildChartRows(rows, timeframe) {
+    if (!rows.length) return [];
+    let output = rows;
+    if (timeframe !== 'daily') {
+      const groups = new Map();
+      rows.forEach(row => {
+        const dt = new Date(row.date + 'T00:00:00Z');
+        let key;
+        if (timeframe === 'weekly') {
+          const day = dt.getUTCDay() || 7;
+          dt.setUTCDate(dt.getUTCDate() + 4 - day);
+          const yearStart = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+          const week = Math.ceil((((dt - yearStart) / 86400000) + 1) / 7);
+          key = dt.getUTCFullYear() + '-W' + String(week).padStart(2, '0');
+        } else {
+          key = row.date.slice(0, 7);
+        }
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(row);
+      });
+      output = Array.from(groups.values()).map(group => ({
+        date: group[group.length - 1].date,
+        open: Number(group[0].open),
+        high: Math.max(...group.map(x => Number(x.high))),
+        low: Math.min(...group.map(x => Number(x.low))),
+        close: Number(group[group.length - 1].close),
+        volume: group.reduce((sum, x) => sum + (Number(x.volume) || 0), 0)
+      }));
+    } else {
+      output = rows.map(row => ({...row}));
+    }
+    const closes = output.map(x => Number(x.close));
+    const sma = (values, period, index) => index + 1 < period ? null :
+      values.slice(index - period + 1, index + 1).reduce((a,b)=>a+b,0) / period;
+    const ema = (values, period) => {
+      const result = []; const k = 2 / (period + 1);
+      values.forEach((v,i) => result.push(i ? v*k + result[i-1]*(1-k) : v));
+      return result;
+    };
+    const e12=ema(closes,12), e26=ema(closes,26);
+    const macd=e12.map((v,i)=>v-e26[i]), signal=ema(macd,9);
+    const gains=[], losses=[];
+    closes.forEach((v,i)=>{const change=i?v-closes[i-1]:0;gains.push(Math.max(0,change));losses.push(Math.max(0,-change));});
+    output.forEach((row,i)=>{
+      row.ma5=sma(closes,5,i); row.ma20=sma(closes,20,i); row.ma60=sma(closes,60,i);
+      const mid=row.ma20, window=closes.slice(Math.max(0,i-19),i+1);
+      if(window.length===20 && mid!==null){
+        const variance=window.reduce((sum,v)=>sum+(v-mid)**2,0)/19;
+        const sd=Math.sqrt(variance); row.bb_mid=mid; row.bb_upper=mid+2*sd; row.bb_lower=mid-2*sd;
+      }
+      if(i>=14){
+        const avgGain=gains.slice(i-13,i+1).reduce((a,b)=>a+b,0)/14;
+        const avgLoss=losses.slice(i-13,i+1).reduce((a,b)=>a+b,0)/14;
+        row.rsi14=avgLoss===0?100:100-100/(1+avgGain/avgLoss);
+      } else row.rsi14=null;
+      row.macd=macd[i]; row.macd_signal=signal[i]; row.macd_hist=macd[i]-signal[i];
+    });
+    const limits={daily:120,weekly:156,monthly:60};
+    return output.slice(-limits[timeframe]);
+  }
   function drawCandles(rows) {
     const canvas=$('candlestick-chart'); if (!canvas || !rows.length) { $('chart-range').textContent='目前沒有K線資料。'; return; }
     const ratio=window.devicePixelRatio || 1, width=Math.max(320,canvas.clientWidth), height=360;
@@ -401,7 +486,8 @@
     ctx.fillStyle='#9ca3af'; ctx.fillText('MA5 黃｜MA20 藍｜MA60 紫｜布林通道灰',left,12);
     ctx.fillText(rows[0].date, left, height-7);
     const last=rows[rows.length-1].date; const tw=ctx.measureText(last).width; ctx.fillText(last,width-right-tw,height-7);
-    $('chart-range').textContent='期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' 個交易日｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
+    const periodLabel = chartTimeframe === 'daily' ? '交易日' : chartTimeframe === 'weekly' ? '週' : '月';
+    $('chart-range').textContent='檢視：'+({daily:'每日',weekly:'每週',monthly:'每月'}[chartTimeframe])+'｜期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' '+periodLabel+'｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
   }
   function drawIndicatorLine(id, rows, key, label, minOverride, maxOverride, thresholds=[]) {
     const canvas=$(id); if(!canvas || !rows.length) return;

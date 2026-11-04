@@ -1,0 +1,74 @@
+name: 0050 Intraday Auto Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub Actions uses UTC. 01:00-05:55 UTC maps to 09:00-13:55 Taiwan time.
+    # The Python monitor only marks 09:30-13:35 Taiwan data as cash-session updates.
+    - cron: "*/5 1-5 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: etf-0050-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh-intraday:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install intraday data dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "pandas>=2.2,<3" "yfinance>=0.2.40"
+
+      - name: Validate and fetch five-minute market data
+        run: |
+          python -m py_compile run_intraday.py
+          python run_intraday.py
+
+      - name: Add live-monitor link to the Pages build
+        run: python scripts/inject_live_link.py
+
+      - name: Commit intraday snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/intraday.json
+          if git diff --cached --quiet; then
+            echo "Intraday snapshot did not change."
+          else
+            git commit -m "chore: refresh 0050 intraday snapshot"
+            git fetch origin main
+            git rebase origin/main
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload static website
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+      - name: Deploy static website
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="0050 盤中五分鐘行情監控">
+<title>0050 盤中即時監控</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:#0b1220;color:#e5e7eb}main{max-width:1050px;margin:auto;padding:24px 16px 50px}
+a{color:#93c5fd}.muted{color:#9ca3af}.status{display:inline-block;padding:6px 11px;border-radius:999px;background:#25364d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0}
+.card{background:#151f32;border:1px solid #29364c;border-radius:14px;padding:16px}
+.label{color:#9ca3af;font-size:.9rem}.value{font-size:1.65rem;font-weight:750;margin-top:7px}
+.up{color:#f87171}.down{color:#34d399}.neutral{color:#cbd5e1}
+table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:right;padding:10px 8px;border-bottom:1px solid #29364c;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+.scroll{overflow-x:auto}canvas{width:100%;height:260px;background:#101a2b;border-radius:10px}
+small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #475569;border-radius:8px;padding:4px 7px}
+</style></head>
+<body><main>
+<p><a href="./index.html">← 返回 0050 AI 預測中心</a></p>
+<h1>📡 0050 盤中即時監控</h1>
+<p id="status" class="status">載入中…</p>
+<p id="updated" class="muted">等待行情資料</p>
+<div class="grid">
+ <article class="card"><div class="label">0050 最新 5 分鐘報價</div><div id="price" class="value">—</div><p id="change" class="muted">—</p></article>
+ <article class="card"><div class="label">相對前一交易日收盤</div><div id="day-change" class="value">—</div><p id="prev-close" class="muted">—</p></article>
+ <article class="card"><div class="label">當日區間</div><div id="range" class="value">—</div><p id="volume" class="muted">—</p></article>
+ <article class="card"><div class="label">每日模型預測（最近一次正式計算）</div><div id="forecast" class="value">—</div><p id="forecast-meta" class="muted">—</p></article>
+</div>
+<section class="card"><h2>台灣市場與美股期貨觀察</h2><div class="scroll"><table><thead><tr><th>標的</th><th>最新價格</th><th>日漲跌</th><th>5分鐘變化</th><th>行情時間</th><th>狀態</th></tr></thead><tbody id="quotes"><tr><td colspan="6">載入中…</td></tr></tbody></table></div></section>
+<section class="card"><h2>0050 今日 5 分鐘走勢</h2><canvas id="chart" width="1000" height="260"></canvas><p id="chart-note" class="muted">—</p></section>
+<section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
+<p class="muted"><a href="./index.html">返回每日預測與歷史 K 線</a></p>
+</main>
+<script>
+(async function(){
+ const $=id=>document.getElementById(id);
+ const fmt=(v,d=2)=>v==null||!Number.isFinite(Number(v))?"—":Number(v).toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d});
+ const pct=v=>v==null?"—":(v>0?"+":"")+fmt(v,2)+"%";
+ const cls=v=>v==null?"neutral":v>0?"up":v<0?"down":"neutral";
+ function draw(bars){
+  const c=$("chart"),ctx=c.getContext("2d"),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);
+  if(!bars||bars.length<2){ctx.fillStyle="#9ca3af";ctx.fillText("尚無足夠的今日 0050 5 分鐘資料",20,35);return}
+  const values=bars.map(x=>x.close).filter(Number.isFinite),lo=Math.min(...values),hi=Math.max(...values),pad=(hi-lo)*.12||.1;
+  ctx.strokeStyle="#34445d";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=15+i*(h-35)/4;ctx.beginPath();ctx.moveTo(45,y);ctx.lineTo(w-10,y);ctx.stroke()}
+  ctx.fillStyle="#9ca3af";ctx.font="12px sans-serif";ctx.fillText(fmt(hi+pad),4,20);ctx.fillText(fmt(lo-pad),4,h-12);
+  ctx.strokeStyle="#60a5fa";ctx.lineWidth=2;ctx.beginPath();
+  values.forEach((v,i)=>{const x=45+i*(w-60)/(values.length-1),y=15+(hi+pad-v)/(hi-lo+2*pad)*(h-35);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();
+  const last=values[values.length-1],x=w-15,y=15+(hi+pad-last)/(hi-lo+2*pad)*(h-35);ctx.fillStyle="#f8fafc";ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();
+ }
+ async function load(){
+  try{
+   const [a,b]=await Promise.all([fetch("https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
+   if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();const daily=b.ok?await b.json():{};
+   $("status").textContent=live.label||live.status;$("updated").textContent="台灣資料日期："+(live.trading_date_taipei||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
+   const etf=(live.quotes||[]).find(x=>x.ticker==="0050.TW");
+   if(etf&&etf.price!=null){
+    $("price").textContent=fmt(etf.price);$("change").textContent="最近一根5分鐘K："+pct(etf.five_min_change_pct);$("change").className=cls(etf.five_min_change_pct);
+    $("day-change").textContent=pct(etf.change_pct);$("day-change").className=cls(etf.change_pct);
+    $("prev-close").textContent="前一交易日收盤："+fmt(etf.previous_close);
+    $("range").textContent=fmt(etf.low)+" – "+fmt(etf.high);$("volume").textContent="當日累計成交量："+(etf.volume==null?"—":Number(etf.volume).toLocaleString("zh-TW"));
+    draw(etf.bars||[]);$("chart-note").textContent="最新行情時間："+(etf.latest_bar_time||"—");
+   }else{$("chart-note").textContent="目前未取得今日 0050 盤中報價；請留意資料供應商或台灣休市日。"}
+   const f=daily.forecasts&&daily.forecasts["1d"];
+   $("forecast").textContent=f?(f.direction==="UP"?"偏多":"偏空")+" "+fmt(f.up_probability*100,1)+"%":"—";
+   $("forecast-meta").textContent=f?"模型資料截至 "+(daily.data_as_of||"—")+"；此為最近一次每日模型結果，非盤中重新訓練":"每日預測尚未載入";
+   $("quotes").innerHTML=(live.quotes||[]).map(q=>'<tr><td>'+q.name+'<br><small>'+q.ticker+'</small></td><td>'+fmt(q.price)+'</td><td class="'+cls(q.change_pct)+'">'+pct(q.change_pct)+'</td><td class="'+cls(q.five_min_change_pct)+'">'+pct(q.five_min_change_pct)+'</td><td>'+((q.latest_bar_time||"—").replace("T"," "))+'</td><td>'+(q.status==="live"?"已取得當日資料":"無當日資料")+'</td></tr>').join("")||'<tr><td colspan="6">目前沒有行情</td></tr>';
+   $("note").textContent=live.note||"—";
+  }catch(e){$("status").textContent="資料載入失敗";$("updated").textContent=e.message}
+ }
+ await load();setInterval(load,60000);
+})();
+</script></body></html>

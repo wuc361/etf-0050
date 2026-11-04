@@ -50,7 +50,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
  }
  async function load(){
   try{
-   const [a,b]=await Promise.all([fetch("./data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
+   const [a,b]=await Promise.all([fetch("https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
    if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();const daily=b.ok?await b.json():{};
    $("status").textContent=live.label||live.status;$("updated").textContent="台灣資料日期："+(live.trading_date_taipei||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
    const etf=(live.quotes||[]).find(x=>x.ticker==="0050.TW");

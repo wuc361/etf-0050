@@ -6,13 +6,15 @@ on:
     # GitHub Actions uses UTC. 01:00-05:55 UTC maps to 09:00-13:55 Taiwan time.
     # The Python monitor only marks 09:30-13:35 Taiwan data as cash-session updates.
     - cron: "*/5 1-5 * * 1-5"
+    # Track US index futures through the Taiwan evening and overnight session.
+    - cron: "*/15 7-20 * * 0-5"
 
 permissions:
   contents: write
 
 concurrency:
-  group: etf-0050-publish
-  cancel-in-progress: false
+  group: etf-0050-intraday
+  cancel-in-progress: true
 
 jobs:
   refresh-intraday:

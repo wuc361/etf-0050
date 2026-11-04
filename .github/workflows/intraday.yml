@@ -1,6 +1,11 @@
 name: 0050 Intraday Auto Monitor
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'run_intraday.py'
+      - '.github/workflows/intraday.yml'
   workflow_dispatch:
   schedule:
     # GitHub Actions uses UTC. 01:00-05:55 UTC maps to 09:00-13:55 Taiwan time.

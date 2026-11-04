@@ -18,9 +18,6 @@ jobs:
   refresh-intraday:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -41,9 +38,6 @@ jobs:
         run: |
           python -m py_compile run_intraday.py
           python run_intraday.py
-
-      - name: Add live-monitor link to the Pages build
-        run: python scripts/inject_live_link.py
 
       - name: Commit intraday snapshot
         run: |

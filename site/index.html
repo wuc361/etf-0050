@@ -195,6 +195,8 @@
   // Initialize chart state before the first await so the fetch continuation
   // can safely call setupChartTimeframes() without hitting the temporal dead zone.
   let chartSourceRows = [];
+  let chartBaseRows = [];
+  let chartLiveLabel = '';
   let chartTimeframe = 'daily';
   let chartRowsCurrent = [];
   let chartHoverIndex = null;
@@ -206,6 +208,8 @@
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     setupChartTimeframes(d.history || []);
+    await refreshIntradayChart();
+    setInterval(refreshIntradayChart, 60000);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
     renderMarketBriefing(d.explanation?.market_briefing || {});
@@ -421,7 +425,8 @@
     });
   }
   function setupChartTimeframes(rows) {
-    chartSourceRows = Array.isArray(rows) ? rows : [];
+    chartBaseRows = Array.isArray(rows) ? rows : [];
+    chartSourceRows = chartBaseRows.slice();
     const controls = $('chart-timeframes');
     if (controls) controls.addEventListener('click', event => {
       const button = event.target.closest('[data-timeframe]');
@@ -460,6 +465,46 @@
         renderSelectedCharts();
       });
     });
+  }
+  async function refreshIntradayChart() {
+    try {
+      const url = 'https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts=' + Date.now();
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) throw new Error('盤中資料尚未發布');
+      const live = await response.json();
+      const quote = (live.quotes || []).find(item => item.ticker === '0050.TW' && item.status === 'live');
+      chartSourceRows = chartBaseRows.slice();
+      chartLiveLabel = '';
+      if (quote && Array.isArray(quote.bars) && quote.bars.length) {
+        const bars = quote.bars.filter(x => Number.isFinite(Number(x.close)));
+        if (bars.length) {
+          const date = String(bars[bars.length - 1].time || '').slice(0, 10);
+          if (date === live.trading_date_taipei) {
+            const dailyBar = {
+              date,
+              open: Number(bars[0].open),
+              high: Math.max(...bars.map(x => Number(x.high))),
+              low: Math.min(...bars.map(x => Number(x.low))),
+              close: Number(bars[bars.length - 1].close),
+              volume: bars.reduce((sum, x) => sum + (Number(x.volume) || 0), 0),
+              is_intraday: true
+            };
+            const existing = chartSourceRows.findIndex(x => x.date === date);
+            if (existing >= 0) chartSourceRows[existing] = dailyBar;
+            else if (!chartSourceRows.length || date > chartSourceRows[chartSourceRows.length - 1].date) chartSourceRows.push(dailyBar);
+            chartLiveLabel = '｜盤中5分鐘資料截至 ' + (quote.latest_bar_time || live.generated_at_taipei) + '（未收盤暫估）';
+          }
+        }
+      }
+      if (!chartLiveLabel) {
+        chartLiveLabel = '｜盤中資料尚未取得；顯示最近已確認日線';
+      }
+      renderSelectedCharts();
+    } catch (error) {
+      chartLiveLabel = '｜盤中更新暫不可用，顯示最近已確認日線';
+      chartSourceRows = chartBaseRows.slice();
+      renderSelectedCharts();
+    }
   }
   function renderSelectedCharts() {
     const grouped = buildChartRows(chartSourceRows, chartTimeframe);
@@ -563,7 +608,7 @@
     drawChartCrosshair(ctx, rows, chartHoverIndex, i => left + step * (i + 0.5), height);
     updateChartHoverInfo(rows, chartHoverIndex);
     const periodLabel = chartTimeframe === 'daily' ? '交易日' : chartTimeframe === 'weekly' ? '週' : '月';
-    $('chart-range').textContent='檢視：'+({daily:'每日',weekly:'每週',monthly:'每月'}[chartTimeframe])+'｜期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' '+periodLabel+'｜最近收盤：'+Number(rows[rows.length-1].close).toFixed(2);
+    $('chart-range').textContent='檢視：'+({daily:'每日',weekly:'每週',monthly:'每月'}[chartTimeframe])+'｜期間：'+rows[0].date+' 至 '+last+'｜共 '+rows.length+' '+periodLabel+'｜最近價格：'+Number(rows[rows.length-1].close).toFixed(2)+(chartTimeframe === 'daily' ? chartLiveLabel : '');
   }
   function drawIndicatorLine(id, rows, key, label, minOverride, maxOverride, thresholds=[]) {
     const canvas=$(id); if(!canvas || !rows.length) return;

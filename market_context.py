@@ -401,13 +401,19 @@ def sync_official_0050_latest(raw: dict, max_staleness_days: int = 7):
     if index.tz is not None:
         index = index.tz_localize(None)
     frame.index = index.normalize()
-    yahoo_date = frame.index.max().date().isoformat()
+    yahoo_received_latest_date = frame.index.max().date().isoformat()
     official_date = official["date"]
-    gap = (pd.Timestamp(official_date) - pd.Timestamp(yahoo_date)).days
-    if gap < 0:
+    # Yahoo daily history can expose the current Taiwan date before TWSE has
+    # published its official completed daily bar. That row may be an unfinished
+    # session candle: never treat it as an official close or reject the whole run.
+    frame = frame[frame.index.date <= pd.Timestamp(official_date).date()]
+    if frame.empty:
         raise RuntimeError(
-            f"Yahoo資料日期 {yahoo_date} 晚於TWSE官方最新日期 {official_date}；日期狀態異常，停止發布。"
+            f"Yahoo資料沒有可用的TWSE官方日期（Yahoo收到最新日期={yahoo_received_latest_date}、"
+            f"TWSE={official_date}）；停止發布以避免使用未完成日K。"
         )
+    yahoo_date = frame.index.max().date().isoformat()
+    gap = (pd.Timestamp(official_date) - pd.Timestamp(yahoo_date)).days
     if gap > max_staleness_days:
         raise RuntimeError(
             f"Yahoo資料落後TWSE官方資料超過{max_staleness_days}個日曆日（Yahoo={yahoo_date}、TWSE={official_date}）；"
@@ -433,6 +439,7 @@ def sync_official_0050_latest(raw: dict, max_staleness_days: int = 7):
         "volume": int(official["volume"]),
         "source": "TWSE STOCK_DAY",
         "yahoo_previous_latest_date": yahoo_date,
+        "yahoo_latest_date_received": yahoo_received_latest_date,
         "yahoo_lag_calendar_days": gap,
         "status": "official_bar_merged"
     }

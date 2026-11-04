@@ -7,10 +7,11 @@ on:
       - "site/data/**"
   workflow_dispatch:
   schedule:
-    # 21:45 UTC = 05:45 Taiwan time, Monday-Friday: after the TAIFEX night session closes.
-    # Refresh the next-session opening forecast with the completed night-session data.
+    # 05:45 Taiwan time: refresh completed TAIFEX night-session and US market data.
     - cron: "45 21 * * 0-4"
-    # 06:17 UTC = 14:17 Taiwan time, Monday-Friday: refresh after Taiwan's cash-market close.
+    # 08:30 Taiwan time: refresh the latest completed US session before the cash-market open.
+    - cron: "30 0 * * 1-5"
+    # 14:17 Taiwan time: official close validation and next-session forecast.
     - cron: "17 6 * * 1-5"
 
 permissions:
@@ -54,6 +55,9 @@ jobs:
       - name: Run data pipeline and forecast
         run: python run_daily.py
 
+      - name: Add live-monitor link to the Pages build
+        run: python scripts/inject_live_link.py
+
       - name: Commit latest forecast JSON
         run: |
           git config user.name "github-actions[bot]"
@@ -63,7 +67,6 @@ jobs:
             echo "Forecast JSON did not change."
           else
             git commit -m "chore: update 0050 forecast data"
-            # Rebase generated data onto any code commits made while this run was executing.
             git fetch origin main
             git rebase origin/main
             git push

@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-05T16:27:10+00:00",
+  "generated_at_utc": "2026-11-05T16:33:15+00:00",
   "data_as_of": "2026-11-05",
   "latest_close": 97.15,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.15667,
-      "down_probability": 0.84333,
+      "up_probability": 0.158252,
+      "down_probability": 0.841748,
       "backtest": {
         "accuracy": 0.6880733944954128,
         "balanced_accuracy": 0.6849668984469335,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "DOWN",
-      "up_probability": 0.424568,
-      "down_probability": 0.575432,
+      "up_probability": 0.420626,
+      "down_probability": 0.579374,
       "backtest": {
         "accuracy": 0.5965270684371808,
         "balanced_accuracy": 0.5878321678321679,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.610994,
-      "down_probability": 0.389006,
+      "up_probability": 0.607969,
+      "down_probability": 0.392031,
       "backtest": {
         "accuracy": 0.548618219037871,
         "balanced_accuracy": 0.5241207734446104,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.15206,
-    "down_probability": 0.84794,
+    "up_probability": 0.150833,
+    "down_probability": 0.849167,
     "backtest": {
       "accuracy": 0.7838939857288482,
       "balanced_accuracy": 0.7821566731141198,
       "up_recall": 0.8143133462282398,
-      "brier_score": 0.15133245496548867,
+      "brier_score": 0.1513324549652636,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25688073394495414,
       "base_rate": 0.527013251783894,
@@ -92,17 +92,17 @@
     "trigger_count": 3,
     "observations": {
       "^SOX": {
-        "return": -0.08463649126237338,
+        "return": -0.08825747510864856,
         "threshold": -0.03,
         "triggered": true
       },
       "^IXIC": {
-        "return": -0.038897957235332514,
+        "return": -0.041542243042528404,
         "threshold": -0.02,
         "triggered": true
       },
       "TSM": {
-        "return": -0.07850917833030635,
+        "return": -0.08112725109069019,
         "threshold": -0.03,
         "triggered": true
       }
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2247,
       "stored_rows": 44,
-      "updated_at_taipei": "2026-11-06T00:27:26+08:00",
+      "updated_at_taipei": "2026-11-06T00:33:29+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,12 +148,12 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.3198353695755656,
-      "Random Forest": 0.15666977640618013,
-      "Extra Trees": 0.057596872069392145
+      "Logistic Regression": 0.32000830285105886,
+      "Random Forest": 0.158251981534944,
+      "Extra Trees": 0.05769434375816882
     },
     "historical_balanced_accuracy": 0.6842444934837824,
-    "historical_brier_score": 0.19630473137216317,
+    "historical_brier_score": 0.1963047313721632,
     "historical_test_count": 981,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -177,7 +177,7 @@
         "name": "Random Forest",
         "accuracy": 0.6870540265035678,
         "balanced_accuracy": 0.6842444934837824,
-        "brier_score": 0.19630473137216317,
+        "brier_score": 0.1963047313721632,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5208970438328236
       },
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.15667,
-    "down_probability": 0.84333,
+    "up_probability": 0.158252,
+    "down_probability": 0.841748,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14612,32 +14612,32 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.084636,
+        "latest_return": -0.088257,
         "tone": "偏空"
       },
       {
         "name": "NASDAQ",
-        "latest_return": -0.038898,
+        "latest_return": -0.041542,
         "tone": "偏空"
       },
       {
         "name": "S&P 500",
-        "latest_return": -0.027563,
+        "latest_return": -0.029875,
         "tone": "偏空"
       },
       {
         "name": "道瓊指數",
-        "latest_return": -0.021212,
+        "latest_return": -0.022336,
         "tone": "偏空"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": -0.078509,
+        "latest_return": -0.081127,
         "tone": "偏空"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.068206,
+        "latest_return": -0.070504,
         "tone": "偏空"
       },
       {
@@ -14652,38 +14652,48 @@
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.088844,
+        "latest_return": -0.092398,
         "tone": "偏空"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.008646,
+        "latest_return": 0.008798,
         "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": 0.4413,
+        "latest_return": 0.396749,
         "tone": "偏多"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": -0.01083,
+        "latest_return": -0.010421,
         "tone": "偏空"
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": -0.014289,
+        "latest_return": -0.012796,
         "tone": "偏空"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-05T16:28:27+00:00",
+      "generated_at_utc": "2026-11-05T16:34:16+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
         "article_count": 4,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
+            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5",
+            "source": "BigGo Finance",
+            "published_at": "2026-11-05T15:35+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
           {
             "category": "國際市場",
             "title": "Stock Market Today: S&P 500, Nasdaq, Dow Jones jump after Democratic election win - Beinsure",
@@ -14704,16 +14714,6 @@
             "positive_terms": [
               "rally"
             ],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Yield Curve's Subtle Steepening: Bond Market Questions Fed's Rate Path - InteractiveCrypto",
-            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZmJTTGdVdTItNjJZOU93c0Nub1RlT0I1TE9VMjgzOTVpc1E0MmhLYlUzOWpvQ2czbHNRdUw3aGs5by1La3NaM1NGSFNubjVHSkJRZGtPRmJDbGsxVi1CVGFsMlpmY3RrZ2ZRSVU0ckZ1ZnZQcUdnWUJUYmVZaXk5ams5WjZVZHdjLUNkMTh1ZC1VNG0wWi1FLW54YkFyOWFXT0d4bG1B?oc=5",
-            "source": "InteractiveCrypto",
-            "published_at": "2026-11-02T02:47+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
             "negative_terms": []
           },
           {
@@ -14872,6 +14872,16 @@
       },
       "items": [
         {
+          "category": "國際市場",
+          "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5",
+          "source": "BigGo Finance",
+          "published_at": "2026-11-05T15:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "台灣市場",
           "title": "台幣逼近33元還會再貶？富邦金羅瑋：弱勢恐延續至明年Q1 央行年底或重估政策 | Newtalk - LINE TODAY",
           "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pclRMOTUwV2tSS2xWd21kTEFpMHNDYkdqRTNWVVVlWW16bGpRYnNCYjJjS2lTbW01SWNrRmJVZFBWMXJnTkRwSnB6ZFM0cE1MUUhuNkF3?oc=5",
@@ -14935,16 +14945,6 @@
           "positive_terms": [
             "上漲"
           ],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Yield Curve's Subtle Steepening: Bond Market Questions Fed's Rate Path - InteractiveCrypto",
-          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZmJTTGdVdTItNjJZOU93c0Nub1RlT0I1TE9VMjgzOTVpc1E0MmhLYlUzOWpvQ2czbHNRdUw3aGs5by1La3NaM1NGSFNubjVHSkJRZGtPRmJDbGsxVi1CVGFsMlpmY3RrZ2ZRSVU0ckZ1ZnZQcUdnWUJUYmVZaXk5ams5WjZVZHdjLUNkMTh1ZC1VNG0wWi1FLW54YkFyOWFXT0d4bG1B?oc=5",
-          "source": "InteractiveCrypto",
-          "published_at": "2026-11-02T02:47+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
           "negative_terms": []
         },
         {
@@ -15072,10 +15072,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-05T16:28:27+00:00",
+      "generated_at_utc": "2026-11-05T16:34:16+00:00",
       "taiwan_data_date": "2026-11-05",
       "us_session_date": "2026-11-04",
-      "us_timezone_checked_at": "2026-11-05T11:28-05:00",
+      "us_timezone_checked_at": "2026-11-05T11:34-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15319,6 +15319,14 @@
         },
         {
           "group": "國際新聞",
+          "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
+          "date": "2026-11-05 23:35 台北時間",
+          "tone": "待判讀",
+          "detail": "BigGo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "Stock Market Today: S&P 500, Nasdaq, Dow Jones jump after Democratic election win - Beinsure",
           "date": "2026-11-05 01:37 台北時間",
           "tone": "待判讀",
@@ -15359,6 +15367,17 @@
         }
       ],
       "us_news": [
+        {
+          "category": "國際市場",
+          "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5",
+          "source": "BigGo Finance",
+          "published_at": "2026-11-05T15:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-05 23:35 台北時間"
+        },
         {
           "category": "國際市場",
           "title": "Stock Market Today: S&P 500, Nasdaq, Dow Jones jump after Democratic election win - Beinsure",

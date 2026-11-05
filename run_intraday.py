@@ -118,9 +118,9 @@ def fetch_market_margin_maintenance() -> dict:
         with urlopen(request, timeout=18) as response:
             raw = response.read().decode("utf-8", errors="replace")
         text = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
-        text = re.sub(r"\\s+", " ", text)
+        text = re.sub(r"\s+", " ", text)
         match = re.search(
-            r"最新大盤融資維持率.*?上市[）)]?\\s*([0-9]+(?:\\.[0-9]+)?)%.*?(20\\d{2}-\\d{2}-\\d{2}).*?上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%.*?整體\\s*([0-9]+(?:\\.[0-9]+)?)%",
+            r"最新大盤融資維持率.*?上市[）)]?\s*([0-9]+(?:\.[0-9]+)?)%.*?(20\d{2}-\d{2}-\d{2}).*?上櫃\s*([0-9]+(?:\.[0-9]+)?)%.*?整體\s*([0-9]+(?:\.[0-9]+)?)%",
             text,
         )
         if not match:

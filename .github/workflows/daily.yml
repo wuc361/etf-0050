@@ -9,6 +9,8 @@ on:
   schedule:
     # 05:45 Taiwan time: refresh completed TAIFEX night-session and US market data.
     - cron: "45 21 * * 0-4"
+    # 06:15 Taiwan time: refresh after the previous US regular session has closed (allowing a data-provider buffer).
+    - cron: "15 22 * * 0-4"
     # 08:30 Taiwan time: refresh the latest completed US session before the cash-market open.
     - cron: "30 0 * * 1-5"
     # 14:17 Taiwan time: official close validation and next-session forecast.

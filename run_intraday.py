@@ -263,6 +263,7 @@ def main():
         old_etf = old_margin.get("etf_0050") if isinstance(old_margin, dict) else None
         if old_etf and old_margin.get("status") in ("estimated", "stale"):
             margin_maintenance["etf_0050"] = old_etf
+            margin_maintenance["history"] = old_margin.get("history", [])
             margin_maintenance["status"] = "stale"
             margin_maintenance["previous_data_date"] = old_etf.get("date")
             margin_maintenance["note"] = "本次資料來源暫時無回傳；保留上次成功估算並標示原資料日期，不視為最新值。"

@@ -85,7 +85,7 @@
     <h2>🌐 前一觀測日重大事件與市場脈動</h2>
     <p id="briefing-narrative">等待前一觀測日資料…</p>
     <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
-    <h3>🇺🇸 美股前一個已完成交易時段</h3>
+    <h3>🇺🇸 美股最近一個已完成現貨交易時段</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
     <p class="section-caption">盤中即時行情與風險監控已移至「盤中即時監控」分頁；本頁只保留已完成交易時段的市場資料。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
@@ -94,7 +94,7 @@
     <h3>🎯 0050 ETF 本身的法人買賣超</h3>
     <div id="etf-0050-summary" class="market-grid"><p>資料載入中…</p></div>
     <p class="section-caption">單位：股。此區使用 TWSE T86 個別證券資料，與上方全市場金額分開呈現，避免將整體市場法人資金誤認為0050直接流入。</p>
-    <h3>📰 前一觀測日重大新聞與事件</h3>
+    <h3>📰 本次觀測日重大新聞與事件</h3>
     <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
     <div id="briefing-sources" class="source-grid"></div>
     <p class="section-caption">事件方向為規則式提示，不代表已證明因果。新聞標題不等於全文查證，且新聞不直接改寫模型機率。請留意各項資料的實際發布時間。</p>
@@ -251,9 +251,10 @@
   function renderMarketBriefing(b) {
     $('briefing-narrative').textContent = b.narrative || '目前沒有足夠的前一觀測日資料。';
     $('briefing-dates').textContent =
-      '前一台灣交易日：' + (b.taiwan_data_date || '無資料') +
-      '｜美股觀測日：' + (b.us_session_date || '無資料') +
-      '｜摘要更新（UTC）：' + (b.generated_at_utc || '無資料');
+      '本次重大事件觀測日（台灣）：' + (b.taiwan_data_date || '無資料') +
+      '｜美股最近完成的現貨交易日：' + (b.us_session_date || '無資料') +
+      '｜摘要更新（UTC）：' + (b.generated_at_utc || '無資料') +
+      '。美股期貨另以盤中即時監控頁的台灣時間標示，不與現貨收盤日混用。';
     const usHost = $('us-market-table'); usHost.replaceChildren();
     const usRows = b.us_market || [];
     if (usRows.length) {

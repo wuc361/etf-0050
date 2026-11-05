@@ -168,6 +168,7 @@ def fetch_0050_margin_maintenance() -> dict:
         split_factors = {"2025-06-18": 4.0}
         moving_cost = None
         latest = None
+        history = []
         for day in sorted(set(close_by_date).intersection(margin_by_date)):
             close = close_by_date[day]
             row = margin_by_date[day]
@@ -203,6 +204,7 @@ def fetch_0050_margin_maintenance() -> dict:
                     "financing_ratio": 0.60,
                     "maintenance_pct": round(ratio, 2),
                 }
+                history.append(dict(latest))
 
         if not latest:
             raise ValueError("0050 融資資料與收盤價沒有可計算的共同日期")
@@ -210,6 +212,7 @@ def fetch_0050_margin_maintenance() -> dict:
         return {
             "status": "estimated",
             "etf_0050": latest,
+            "history": history[-500:],
             "source": "FinMind 免費個股每日資料（融資交易＋收盤價）",
             "source_url": "https://finmind.github.io/tutor/TaiwanMarket/Chip/",
             "method": "依每日融資買進、融資餘額與收盤價推估移動平均融資成本；維持率＝收盤價÷（推估成本×60%）×100%。",

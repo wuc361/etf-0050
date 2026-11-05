@@ -78,7 +78,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
     note.textContent="收盤價 "+fmt(etfMargin.close)+" 元｜推估融資成本 "+fmt(etfMargin.margin_cost_estimate)+" 元";
     card.append(title,number,note);marginHost.replaceChildren(card);
     const freshness=margin.status==="stale"?"｜資料狀態：沿用上次成功資料（非最新）":"｜資料狀態：最新成功估算";
-    marginMeta.textContent="資料日期："+(etfMargin.date||"—")+"｜融資餘額："+Number(etfMargin.margin_balance_lots||0).toLocaleString("zh-TW")+" 張"+freshness+"｜來源："+(margin.source||"—");
+    marginMeta.textContent="資料日期："+(etfMargin.date||"—")+"｜融資餘額："+Number(etfMargin.margin_balance_lots??etfMargin.margin_balance_shares??0).toLocaleString("zh-TW")+" 張"+freshness+"｜來源："+(margin.source||"—");
    }else{
     marginHost.textContent="目前無法取得新的 0050 融資維持率估算。";
     marginMeta.textContent=margin.error||"等待下一次每日資料更新；不會以舊數字冒充最新行情。";

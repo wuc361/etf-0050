@@ -111,42 +111,31 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
 
 
 def fetch_market_margin_maintenance() -> dict:
-    """Fetch end-of-day estimated market margin maintenance ratios.
-
-    This is an estimate from publicly available margin balances and prices,
-    not the exchange's account-level aggregate collateral ratio.
-    """
-    url = "https://toalpha.tw/market/chips?mlimit=100&mscope=hot&view=margin"
+    """Fetch the latest published third-party market-wide maintenance estimate."""
+    url = "https://www.istock.tw/post/twmarginrequirement"
     try:
         request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; ETF-0050-monitor/1.0)"})
         with urlopen(request, timeout=18) as response:
             raw = response.read().decode("utf-8", errors="replace")
         text = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
-        text = re.sub(r"\s+", " ", text)
+        text = re.sub(r"\\s+", " ", text)
         match = re.search(
-            r"(20\d{2}/\d{1,2}/\d{1,2})\s*上市\s*([0-9]+(?:\.[0-9]+)?)%\s*[、,，]?\s*上櫃\s*([0-9]+(?:\.[0-9]+)?)%",
+            r"最新大盤融資維持率.*?上市[）)]?\\s*([0-9]+(?:\\.[0-9]+)?)%.*?(20\\d{2}-\\d{2}-\\d{2}).*?上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%.*?整體\\s*([0-9]+(?:\\.[0-9]+)?)%",
             text,
         )
         if not match:
-            # Some page versions put the date before the section heading.
-            match = re.search(
-                r"上市\s*([0-9]+(?:\.[0-9]+)?)%.*?上櫃\s*([0-9]+(?:\.[0-9]+)?)%.*?(20\d{2}/\d{1,2}/\d{1,2})",
-                text,
-            )
-            if not match:
-                raise ValueError("頁面未找到上市／上櫃維持率欄位")
-            listed, otc, date = match.group(1), match.group(2), match.group(3)
-        else:
-            date, listed, otc = match.group(1), match.group(2), match.group(3)
+            raise ValueError("頁面未找到上市、上櫃及整體融資維持率")
+        listed, date, otc, overall = match.groups()
         return {
             "status": "estimated",
-            "data_date": date.replace("/", "-"),
+            "data_date": date,
             "listed_pct": float(listed),
             "otc_pct": float(otc),
-            "source": "ToAlpha（依公開融資餘額與收盤價推估）",
+            "overall_pct": float(overall),
+            "source": "愛玩股（彙整市場公開資料）",
             "source_url": url,
             "is_official_aggregate": False,
-            "note": "非證交所逐戶整戶擔保維持率；上市、上櫃分開估算，僅作市場槓桿風險觀察。",
+            "note": "第三方彙整／推估的市場平均值，不是證交所逐戶整戶維持率，也不是個人帳戶數字。",
         }
     except Exception as exc:
         return {
@@ -154,12 +143,14 @@ def fetch_market_margin_maintenance() -> dict:
             "data_date": None,
             "listed_pct": None,
             "otc_pct": None,
-            "source": "ToAlpha",
+            "overall_pct": None,
+            "source": "愛玩股",
             "source_url": url,
             "is_official_aggregate": False,
             "error": f"{type(exc).__name__}: {str(exc)[:160]}",
             "note": "目前無法取得最新估算值；請勿以舊資料冒充最新維持率。",
         }
+
 
 def main():
     now = datetime.now(TAIPEI)

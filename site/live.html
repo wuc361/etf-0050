@@ -80,7 +80,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
    const margin=live.margin_maintenance||{};
    const marginHost=$("margin-ratio-cards");
    const marginMeta=$("margin-ratio-meta");
-   if(margin.status==="estimated"&&Number.isFinite(Number(margin.listed_pct))&&Number.isFinite(Number(margin.otc_pct))){
+   if(margin.status==="estimated"&&Number.isFinite(Number(margin.overall_pct))&&Number.isFinite(Number(margin.listed_pct))&&Number.isFinite(Number(margin.otc_pct))){
     const makeMarginCard=(label,value)=>{
      const card=document.createElement("article");card.className="card"+(value<150?" margin-alert":value>=170?" margin-good":"");
      const title=document.createElement("div");title.className="label";title.textContent=label;
@@ -88,7 +88,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
      const note=document.createElement("div");note.className="margin-sub";note.textContent=value<140?"偏低警戒":value<150?"低於150%觀察線":value<170?"中性觀察區":"相對較高";
      card.append(title,number,note);return card;
     };
-    marginHost.replaceChildren(makeMarginCard("上市融資維持率（估算）",margin.listed_pct),makeMarginCard("上櫃融資維持率（估算）",margin.otc_pct));
+    marginHost.replaceChildren(makeMarginCard("上市櫃整體維持率（估算）",margin.overall_pct),makeMarginCard("上市融資維持率（估算）",margin.listed_pct),makeMarginCard("上櫃融資維持率（估算）",margin.otc_pct));
     marginMeta.textContent="資料日期："+(margin.data_date||"—")+"｜來源："+(margin.source||"—")+"｜每日盤後更新，非盤中即時值。";
    }else{
     marginHost.textContent="目前無法取得最新維持率估算，請勿以舊資料代替。";

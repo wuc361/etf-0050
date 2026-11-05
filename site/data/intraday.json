@@ -2,7 +2,7 @@
   "status": "latest_data",
   "label": "台灣市場顯示最近有效交易日 2026-11-05；美股期貨持續顯示最新可用資料",
   "trading_date_taipei": "2026-11-06",
-  "generated_at_taipei": "2026-11-06T00:49:58+08:00",
+  "generated_at_taipei": "2026-11-06T00:51:27+08:00",
   "refresh_interval_minutes": 5,
   "market_hours_taipei": "09:30-13:30（台灣證券交易日）",
   "source": "Yahoo Finance 5-minute bars; indicative data, not an official exchange feed",
@@ -1375,14 +1375,14 @@
       "ticker": "^SOX",
       "name": "費城半導體指數",
       "status": "live",
-      "price": 9325.5478515625,
+      "price": 9349.1533203125,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:45:00+08:00",
+      "latest_bar_time": "2026-11-06T00:50:00+08:00",
       "previous_close": 10268.650390625,
-      "change_pct": -9.1843,
-      "five_min_change_pct": -0.116,
+      "change_pct": -8.9544,
+      "five_min_change_pct": 0.2531,
       "open": 9806.3115234375,
       "high": 9836.8349609375,
       "low": 9060.044921875,
@@ -1611,6 +1611,14 @@
           "low": 9313.0673828125,
           "close": 9325.5478515625,
           "volume": 0
+        },
+        {
+          "time": "2026-11-06T00:50+08:00",
+          "open": 9322.9384765625,
+          "high": 9349.1533203125,
+          "low": 9319.447265625,
+          "close": 9349.1533203125,
+          "volume": 0
         }
       ],
       "message": ""
@@ -1619,18 +1627,18 @@
       "ticker": "^IXIC",
       "name": "NASDAQ 綜合指數",
       "status": "live",
-      "price": 24625.220703125,
+      "price": 24651.09375,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:45:00+08:00",
+      "latest_bar_time": "2026-11-06T00:50:00+08:00",
       "previous_close": 25736.509765625,
-      "change_pct": -4.3179,
-      "five_min_change_pct": -0.0615,
+      "change_pct": -4.2174,
+      "five_min_change_pct": 0.1051,
       "open": 25550.666015625,
       "high": 25550.666015625,
       "low": 24269.80859375,
-      "volume": 4436523781,
+      "volume": 4468810781,
       "bars": [
         {
           "time": "2026-11-05T22:30+08:00",
@@ -1854,7 +1862,15 @@
           "high": 24682.669921875,
           "low": 24613.6171875,
           "close": 24625.220703125,
-          "volume": 82635000
+          "volume": 97047000
+        },
+        {
+          "time": "2026-11-06T00:50+08:00",
+          "open": 24634.375,
+          "high": 24651.09375,
+          "low": 24624.845703125,
+          "close": 24651.09375,
+          "volume": 17875000
         }
       ],
       "message": ""
@@ -1863,27 +1879,19 @@
       "ticker": "TSM",
       "name": "台積電 ADR",
       "status": "live",
-      "price": 361.9150085449219,
+      "price": 362.57000732421875,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:45:00+08:00",
+      "latest_bar_time": "2026-11-06T00:50:00+08:00",
       "previous_close": 395.75,
-      "change_pct": -8.5496,
-      "five_min_change_pct": -0.2742,
+      "change_pct": -8.3841,
+      "five_min_change_pct": 0.1893,
       "open": 390.67,
       "high": 395.75,
       "low": 352.44500732421875,
-      "volume": 30880050,
+      "volume": 31036507,
       "bars": [
-        {
-          "time": "2026-11-05T18:05+08:00",
-          "open": 389.76,
-          "high": 389.76,
-          "low": 389.12,
-          "close": 389.71,
-          "volume": 0
-        },
         {
           "time": "2026-11-05T18:10+08:00",
           "open": 389.2,
@@ -2482,7 +2490,7 @@
           "high": 367.1199951171875,
           "low": 364.05999755859375,
           "close": 365.17999267578125,
-          "volume": 405767
+          "volume": 401812
         },
         {
           "time": "2026-11-06T00:40+08:00",
@@ -2496,9 +2504,17 @@
           "time": "2026-11-06T00:45+08:00",
           "open": 362.8299865722656,
           "high": 364.2424011230469,
-          "low": 361.9150085449219,
-          "close": 361.9150085449219,
-          "volume": 269399
+          "low": 361.80499267578125,
+          "close": 361.885009765625,
+          "volume": 341764
+        },
+        {
+          "time": "2026-11-06T00:50+08:00",
+          "open": 361.885009765625,
+          "high": 362.80999755859375,
+          "low": 361.6400146484375,
+          "close": 362.57000732421875,
+          "volume": 88047
         }
       ],
       "message": ""
@@ -2507,27 +2523,19 @@
       "ticker": "NVDA",
       "name": "NVIDIA",
       "status": "live",
-      "price": 186.3249969482422,
+      "price": 186.75,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:45:00+08:00",
+      "latest_bar_time": "2026-11-06T00:50:00+08:00",
       "previous_close": 200.1300048828125,
-      "change_pct": -6.898,
-      "five_min_change_pct": -0.059,
+      "change_pct": -6.6857,
+      "five_min_change_pct": 0.2308,
       "open": 198.0,
       "high": 200.0,
       "low": 181.5500030517578,
-      "volume": 865533363,
+      "volume": 865897237,
       "bars": [
-        {
-          "time": "2026-11-05T18:20+08:00",
-          "open": 199.17,
-          "high": 199.46,
-          "low": 199.11,
-          "close": 199.43,
-          "volume": 0
-        },
         {
           "time": "2026-11-05T18:25+08:00",
           "open": 199.5,
@@ -3141,8 +3149,16 @@
           "open": 186.43499755859375,
           "high": 186.86839294433594,
           "low": 186.02200317382812,
-          "close": 186.3249969482422,
+          "close": 186.32000732421875,
           "volume": 2078714
+        },
+        {
+          "time": "2026-11-06T00:50+08:00",
+          "open": 186.33999633789062,
+          "high": 186.75,
+          "low": 186.2801055908203,
+          "close": 186.75,
+          "volume": 363874
         }
       ],
       "message": ""
@@ -3151,27 +3167,19 @@
       "ticker": "^VIX",
       "name": "VIX 波動率指數",
       "status": "live",
-      "price": 23.270000457763672,
+      "price": 22.56999969482422,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:30:00+08:00",
+      "latest_bar_time": "2026-11-06T00:35:00+08:00",
       "previous_close": 16.610000610351562,
-      "change_pct": 40.0963,
-      "five_min_change_pct": 4.0698,
+      "change_pct": 35.882,
+      "five_min_change_pct": -3.0082,
       "open": 17.139999389648438,
       "high": 28.09000015258789,
       "low": 16.700000762939453,
       "volume": 0,
       "bars": [
-        {
-          "time": "2026-11-05T18:05+08:00",
-          "open": 16.920000076293945,
-          "high": 16.950000762939453,
-          "low": 16.8700008392334,
-          "close": 16.8799991607666,
-          "volume": 0
-        },
         {
           "time": "2026-11-05T18:10+08:00",
           "open": 16.889999389648438,
@@ -3787,6 +3795,14 @@
           "low": 22.389999389648438,
           "close": 23.270000457763672,
           "volume": 0
+        },
+        {
+          "time": "2026-11-06T00:35+08:00",
+          "open": 23.280000686645508,
+          "high": 23.280000686645508,
+          "low": 22.559999465942383,
+          "close": 22.56999969482422,
+          "volume": 0
         }
       ],
       "message": ""
@@ -3795,27 +3811,19 @@
       "ticker": "NQ=F",
       "name": "NASDAQ 100 期貨",
       "status": "live",
-      "price": 27272.25,
+      "price": 27253.0,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
-      "latest_bar_time": "2026-11-06T00:35:00+08:00",
+      "latest_bar_time": "2026-11-06T00:40:00+08:00",
       "previous_close": 28566.75,
-      "change_pct": -4.5315,
-      "five_min_change_pct": 0.1303,
+      "change_pct": -4.5989,
+      "five_min_change_pct": -0.0706,
       "open": 28245.75,
       "high": 28465.0,
       "low": 26732.0,
-      "volume": 728960,
+      "volume": 731169,
       "bars": [
-        {
-          "time": "2026-11-05T18:10+08:00",
-          "open": 28397.0,
-          "high": 28421.75,
-          "low": 28386.5,
-          "close": 28405.0,
-          "volume": 604
-        },
         {
           "time": "2026-11-05T18:15+08:00",
           "open": 28402.5,
@@ -4431,6 +4439,14 @@
           "low": 27229.75,
           "close": 27272.25,
           "volume": 15637
+        },
+        {
+          "time": "2026-11-06T00:40+08:00",
+          "open": 27269.5,
+          "high": 27279.5,
+          "low": 27235.0,
+          "close": 27253.0,
+          "volume": 2209
         }
       ],
       "message": ""
@@ -4439,18 +4455,18 @@
       "ticker": "ES=F",
       "name": "S&P 500 期貨",
       "status": "live",
-      "price": 7496.25,
+      "price": 7489.25,
       "market_date_taipei": "2026-11-06",
       "exchange_session_date": "2026-11-05",
       "is_current_taipei_date": true,
       "latest_bar_time": "2026-11-06T00:40:00+08:00",
       "previous_close": 7720.5,
-      "change_pct": -2.9046,
-      "five_min_change_pct": -0.0033,
+      "change_pct": -2.9953,
+      "five_min_change_pct": -0.0967,
       "open": 7700.5,
       "high": 7738.75,
       "low": 7421.0,
-      "volume": 1867414,
+      "volume": 1873343,
       "bars": [
         {
           "time": "2026-11-05T18:15+08:00",
@@ -5072,9 +5088,9 @@
           "time": "2026-11-06T00:40+08:00",
           "open": 7496.5,
           "high": 7497.0,
-          "low": 7488.75,
-          "close": 7496.25,
-          "volume": 0
+          "low": 7487.5,
+          "close": 7489.25,
+          "volume": 5929
         }
       ],
       "message": ""

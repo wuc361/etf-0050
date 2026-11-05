@@ -87,12 +87,7 @@
     <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
     <h3>🇺🇸 美股前一個已完成交易時段</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
-    <h3>⚡ 美股盤中即時行情與風險監控</h3>
-    <p id="us-intraday-status" class="section-caption">正在讀取 SOX、NASDAQ、台積電 ADR 等盤中行情…</p>
-    <div id="us-intraday-risk" class="metric-grid"><p>即時風險計算中…</p></div>
-    <div id="us-intraday-table" class="table-scroll"><p>盤中資料載入中…</p></div>
-    <p class="section-caption">盤中行情每5分鐘擷取、頁面每60秒重新讀取。此為即時風險監控，不等於模型重新訓練；正式預測仍以最新已確認台股收盤資料計算。資料過期或缺漏時會明確標示，不沿用舊數值冒充即時行情。</p>
-    <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
+    <p class="section-caption">盤中即時行情與風險監控已移至「盤中即時監控」分頁；本頁只保留已完成交易時段的市場資料。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
     <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
     <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
@@ -215,10 +210,6 @@
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     setupChartTimeframes(d.history || []);
-    await refreshIntradayChart();
-    setInterval(refreshIntradayChart, 60000);
-    await refreshIntradayMarket();
-    setInterval(refreshIntradayMarket, 60000);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
     renderMarketBriefing(d.explanation?.market_briefing || {});

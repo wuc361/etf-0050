@@ -87,6 +87,11 @@
     <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
     <h3>🇺🇸 美股前一個已完成交易時段</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
+    <h3>⚡ 美股盤中即時行情與風險監控</h3>
+    <p id="us-intraday-status" class="section-caption">正在讀取 SOX、NASDAQ、台積電 ADR 等盤中行情…</p>
+    <div id="us-intraday-risk" class="metric-grid"><p>即時風險計算中…</p></div>
+    <div id="us-intraday-table" class="table-scroll"><p>盤中資料載入中…</p></div>
+    <p class="section-caption">盤中行情每5分鐘擷取、頁面每60秒重新讀取。此為即時風險監控，不等於模型重新訓練；正式預測仍以最新已確認台股收盤資料計算。資料過期或缺漏時會明確標示，不沿用舊數值冒充即時行情。</p>
     <p class="section-caption">特別關注 S&P 500、NASDAQ、費城半導體、台積電 ADR、NVIDIA 等與台灣權值科技股關聯較高的市場。以紐約時間最後完成的常規交易時段為準，並非單純抓前一個日曆日。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
     <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
@@ -212,6 +217,8 @@
     setupChartTimeframes(d.history || []);
     await refreshIntradayChart();
     setInterval(refreshIntradayChart, 60000);
+    await refreshIntradayMarket();
+    setInterval(refreshIntradayMarket, 60000);
     renderBacktestMetrics(d.forecasts || {});
     renderReferenceLinks(d.reference_links || []);
     renderMarketBriefing(d.explanation?.market_briefing || {});
@@ -506,6 +513,80 @@
       chartLiveLabel = '｜盤中更新暫不可用，顯示最近已確認日線';
       chartSourceRows = chartBaseRows.slice();
       renderSelectedCharts();
+    }
+  }
+  async function refreshIntradayMarket() {
+    const status = $('us-intraday-status');
+    const riskHost = $('us-intraday-risk');
+    const tableHost = $('us-intraday-table');
+    try {
+      const url = 'https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts=' + Date.now();
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) throw new Error('盤中行情檔讀取失敗（HTTP ' + response.status + '）');
+      const live = await response.json();
+      const quotes = live.quotes || [];
+      const byTicker = Object.fromEntries(quotes.map(q => [q.ticker, q]));
+      const watched = ['^SOX', '^IXIC', 'TSM', 'NVDA', 'NQ=F', 'ES=F'];
+      const labels = {'^SOX':'費半 SOX','^IXIC':'NASDAQ','TSM':'台積電 ADR','NVDA':'NVIDIA','NQ=F':'NASDAQ 100 期貨','ES=F':'S&P 500 期貨'};
+      const thresholds = {'^SOX':-5, '^IXIC':-3, 'TSM':-4};
+      const fmtPct = v => v == null || !Number.isFinite(Number(v)) ? '—' : (Number(v)>0?'+':'') + Number(v).toFixed(2) + '%';
+      const usable = watched.map(t => byTicker[t]).filter(q => q && q.status === 'live');
+      const staleMins = q => {
+        const t = Date.parse(q.latest_bar_time || '');
+        return Number.isFinite(t) ? (Date.now() - t) / 60000 : Infinity;
+      };
+      const triggered = Object.keys(thresholds).filter(t => {
+        const q = byTicker[t];
+        return q && q.status === 'live' && staleMins(q) <= 25 && Number(q.change_pct) <= thresholds[t];
+      });
+      const missing = Object.keys(thresholds).filter(t => !byTicker[t] || byTicker[t].status !== 'live' || staleMins(byTicker[t]) > 25);
+      const maxAge = usable.length ? Math.max(...usable.map(staleMins)) : Infinity;
+      const fresh = Number.isFinite(maxAge) && maxAge <= 25;
+      const risk = triggered.length >= 3 ? ['HIGH','高風險：SOX、NASDAQ、台積電 ADR 同步重挫']
+        : triggered.length === 2 ? ['ELEVATED','風險升高：三項核心指標有兩項重挫']
+        : triggered.length === 1 ? ['WATCH','風險觀察：至少一項核心指標達警戒門檻']
+        : missing.length ? ['INCOMPLETE','資料不完整：核心指標尚未全部取得新鮮行情']
+        : ['NORMAL','未觸發盤中同步重挫條件'];
+      status.textContent = '行情日期：' + (live.trading_date_taipei || '—') +
+        '｜擷取時間：' + (live.generated_at_taipei || '—') +
+        '｜資料來源：Yahoo Finance 5分鐘K線' +
+        (fresh ? '｜資料新鮮度：正常' : '｜資料新鮮度：可能延遲或過期');
+      riskHost.replaceChildren();
+      const riskCard = document.createElement('div'); riskCard.className = 'metric';
+      const rt = document.createElement('span'); rt.className = 'chart-note'; rt.textContent = '即時市場風險';
+      const rv = document.createElement('strong'); rv.textContent = risk[1];
+      const rd = document.createElement('p'); rd.className = 'chart-note';
+      rd.textContent = '核心警戒觸發 ' + triggered.length + '/3' + (missing.length ? '｜資料缺漏：' + missing.join(', ') : '');
+      riskCard.append(rt, rv, rd); riskHost.append(riskCard);
+      Object.keys(thresholds).forEach(t => {
+        const q = byTicker[t]; const card = document.createElement('div'); card.className = 'metric';
+        const name = document.createElement('span'); name.className = 'chart-note'; name.textContent = labels[t] + '（門檻 ' + thresholds[t] + '%）';
+        const val = document.createElement('strong'); val.textContent = q && q.status === 'live' && staleMins(q) <= 25 ? fmtPct(q.change_pct) : '資料不足／過期';
+        const note = document.createElement('p'); note.className = 'chart-note';
+        note.textContent = q && q.latest_bar_time ? '行情時間：' + q.latest_bar_time : (q?.message || '尚未取得行情');
+        card.append(name, val, note); riskHost.append(card);
+      });
+      tableHost.replaceChildren();
+      const table = document.createElement('table'); table.className = 'market-table';
+      const thead = document.createElement('thead'); const hr = document.createElement('tr');
+      ['標的','最新價格','相對前收','5分鐘變化','最新行情時間','資料狀態'].forEach(x=>{const th=document.createElement('th');th.textContent=x;hr.append(th);});
+      thead.append(hr); table.append(thead);
+      const tbody = document.createElement('tbody');
+      watched.forEach(t => {
+        const q = byTicker[t]; const tr = document.createElement('tr');
+        const values = [labels[t], q?.price == null ? '—' : Number(q.price).toLocaleString('zh-TW',{maximumFractionDigits:2}),
+          q?.status === 'live' ? fmtPct(q.change_pct) : '—',
+          q?.status === 'live' ? fmtPct(q.five_min_change_pct) : '—',
+          q?.latest_bar_time || '—',
+          q?.status === 'live' && staleMins(q) <= 25 ? '最新' : '缺漏／過期'];
+        values.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i===2||i===3){const n=Number(i===2?q?.change_pct:q?.five_min_change_pct);td.className=Number.isFinite(n)?(n>0?'positive':n<0?'negative':'neutral'):'neutral';}tr.append(td);});
+        tbody.append(tr);
+      });
+      table.append(tbody); tableHost.append(table);
+    } catch (error) {
+      status.textContent = '盤中美股行情暫不可用：' + error.message;
+      riskHost.textContent = '無法確認目前風險狀態；請勿將每日舊資料視為即時訊號。';
+      tableHost.textContent = '目前無法取得盤中行情。';
     }
   }
   function renderSelectedCharts() {

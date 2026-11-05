@@ -15,6 +15,11 @@ a{color:#93c5fd}.muted{color:#9ca3af}.status{display:inline-block;padding:6px 11
 table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:right;padding:10px 8px;border-bottom:1px solid #29364c;white-space:nowrap}th:first-child,td:first-child{text-align:left}
 .scroll{overflow-x:auto}canvas{width:100%;height:260px;background:#101a2b;border-radius:10px}
 small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #475569;border-radius:8px;padding:4px 7px}
+.margin-dashboard{width:100%;height:620px;border:1px solid #34445d;border-radius:12px;background:#101a2b}
+.margin-note{background:#101a2b;border:1px solid #34445d;border-radius:12px;padding:14px;line-height:1.7;color:#cbd5e1}
+.margin-link{display:inline-block;background:#2563eb;color:#fff!important;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:9px;margin:8px 0}
+@media(max-width:640px){.margin-dashboard{height:520px}}
+
 </style></head>
 <body><main>
 <p><a href="./index.html">← 返回 0050 AI 預測中心</a></p>
@@ -29,6 +34,19 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
 </div>
 <section class="card"><h2>台灣市場與美股期貨觀察</h2><div class="scroll"><table><thead><tr><th>標的</th><th>最新價格</th><th>日漲跌</th><th>5分鐘變化</th><th>行情時間</th><th>狀態</th></tr></thead><tbody id="quotes"><tr><td colspan="6">載入中…</td></tr></tbody></table></div></section>
 <section class="card"><h2>0050 今日 5 分鐘走勢</h2><canvas id="chart" width="1000" height="260"></canvas><p id="chart-note" class="muted">—</p></section>
+<section class="card" id="margin-monitor">
+ <h2>🛡️ 融資維持率與市場槓桿風險</h2>
+ <p class="muted">監控全市場信用交易擔保狀況，觀察融資槓桿是否升高，以及市場下跌時可能出現的追繳與處分壓力。</p>
+ <div class="margin-note">
+  <strong>官方市場監控</strong><br>
+  融資維持率、融資餘額占市值比重、追繳／處分戶數與金額，請以證交所「臺股儀表板」授信業務－信用交易資料為準。官方信用交易數據主要為每日更新，並非盤中即時報價。
+  <br><a class="margin-link" href="https://www.twse.com.tw/dashboard/zh/index.html" target="_blank" rel="noopener noreferrer">開啟證交所臺股儀表板 ↗</a>
+  <p class="muted">若下方官方儀表板未能嵌入，請使用上方按鈕另開官方頁面。</p>
+ </div>
+ <iframe class="margin-dashboard" title="證交所臺股儀表板－授信業務及信用交易" src="https://www.twse.com.tw/dashboard/zh/index.html" loading="lazy" referrerpolicy="no-referrer"></iframe>
+ <p class="muted">觀察重點：維持率急降、追繳或處分金額增加、融資餘額快速減少若同時出現，代表市場槓桿去化壓力可能升高。150%可作為個人設定的觀察提醒值，並非官方追繳標準；130%也不能直接套用為全市場保證斷頭線。</p>
+ <p class="muted">提醒：這是全市場風險資料，不是你的個人融資帳戶維持率。個人整戶維持率與是否追繳，應以往來券商帳戶資料及通知為準。</p>
+</section>
 <section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
 <p class="muted"><a href="./index.html">返回每日預測與歷史 K 線</a></p>
 </main>

@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-05T16:33:15+00:00",
+  "generated_at_utc": "2026-11-05T16:35:32+00:00",
   "data_as_of": "2026-11-05",
   "latest_close": 97.15,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.158252,
-      "down_probability": 0.841748,
+      "up_probability": 0.158964,
+      "down_probability": 0.841036,
       "backtest": {
         "accuracy": 0.6880733944954128,
         "balanced_accuracy": 0.6849668984469335,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "DOWN",
-      "up_probability": 0.420626,
-      "down_probability": 0.579374,
+      "up_probability": 0.442598,
+      "down_probability": 0.557402,
       "backtest": {
         "accuracy": 0.5965270684371808,
         "balanced_accuracy": 0.5878321678321679,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.607969,
-      "down_probability": 0.392031,
+      "up_probability": 0.611293,
+      "down_probability": 0.388707,
       "backtest": {
         "accuracy": 0.548618219037871,
         "balanced_accuracy": 0.5241207734446104,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.150833,
-    "down_probability": 0.849167,
+    "up_probability": 0.150716,
+    "down_probability": 0.849284,
     "backtest": {
       "accuracy": 0.7838939857288482,
       "balanced_accuracy": 0.7821566731141198,
       "up_recall": 0.8143133462282398,
-      "brier_score": 0.1513324549652636,
+      "brier_score": 0.15133245496497333,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25688073394495414,
       "base_rate": 0.527013251783894,
@@ -92,17 +92,17 @@
     "trigger_count": 3,
     "observations": {
       "^SOX": {
-        "return": -0.08825747510864856,
+        "return": -0.08227407866289027,
         "threshold": -0.03,
         "triggered": true
       },
       "^IXIC": {
-        "return": -0.041542243042528404,
+        "return": -0.03743306661036694,
         "threshold": -0.02,
         "triggered": true
       },
       "TSM": {
-        "return": -0.08112725109069019,
+        "return": -0.07518937477791376,
         "threshold": -0.03,
         "triggered": true
       }
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2247,
       "stored_rows": 44,
-      "updated_at_taipei": "2026-11-06T00:33:29+08:00",
+      "updated_at_taipei": "2026-11-06T00:35:38+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.32000830285105886,
-      "Random Forest": 0.158251981534944,
-      "Extra Trees": 0.05769434375816882
+      "Logistic Regression": 0.3414301541013872,
+      "Random Forest": 0.1589635804908846,
+      "Extra Trees": 0.061588926173551495
     },
     "historical_balanced_accuracy": 0.6842444934837824,
     "historical_brier_score": 0.1963047313721632,
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.158252,
-    "down_probability": 0.841748,
+    "up_probability": 0.158964,
+    "down_probability": 0.841036,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14612,32 +14612,32 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.088257,
+        "latest_return": -0.082274,
         "tone": "偏空"
       },
       {
         "name": "NASDAQ",
-        "latest_return": -0.041542,
+        "latest_return": -0.037433,
         "tone": "偏空"
       },
       {
         "name": "S&P 500",
-        "latest_return": -0.029875,
+        "latest_return": -0.026723,
         "tone": "偏空"
       },
       {
         "name": "道瓊指數",
-        "latest_return": -0.022336,
+        "latest_return": -0.019542,
         "tone": "偏空"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": -0.081127,
+        "latest_return": -0.075189,
         "tone": "偏空"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.070504,
+        "latest_return": -0.064858,
         "tone": "偏空"
       },
       {
@@ -14652,38 +14652,60 @@
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.092398,
+        "latest_return": -0.085497,
         "tone": "偏空"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.008798,
+        "latest_return": 0.008768,
         "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": 0.396749,
+        "latest_return": 0.400361,
         "tone": "偏多"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": -0.010421,
+        "latest_return": -0.01083,
         "tone": "偏空"
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": -0.012796,
+        "latest_return": -0.013222,
         "tone": "偏空"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-05T16:34:16+00:00",
+      "generated_at_utc": "2026-11-05T16:36:26+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
-        "tone": "中性或訊號不足",
-        "keyword_score": 0,
-        "article_count": 4,
+        "tone": "偏多",
+        "keyword_score": 2,
+        "article_count": 6,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "Stock market today: Nasdaq plunges 5% as chip stocks sell off, Dow and S&P 500 give back post-election rally gains - Yahoo Finance",
+            "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNN1BQQmJLMC1jZnlVQi1QcVV2ZUdzZFVCU0lrdnRvMWl2b2FySnNrZWt0WFpnNS1CYjdkTGNvbzc5Z2JqMGlxN3NQS01RTnJzWjlxUW8tc2RBLUFRZzdfUUJGbkFWNGdobEM1MWlWcENPWlQycUhMWUhWbG45SUFVcFpTcWlVb0VTeGN0VnZianFmeUZJYmhEdU5NazYzWjBtVVJGTndUazFlMkVfbmtFUXYybkxSc0NsYUFfYTkyem5PLXlRQXRyblAyT1k?oc=5",
+            "source": "Yahoo Finance",
+            "published_at": "2026-11-05T16:24+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "rally"
+            ],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
+            "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+            "source": "Yahoo Finance",
+            "published_at": "2026-11-05T16:14+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
           {
             "category": "國際市場",
             "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
@@ -14718,15 +14740,13 @@
           },
           {
             "category": "國際市場",
-            "title": "美國最新通膨數據低於預期 美股漲跌互見！僅那斯達克收高 - 台視新聞網",
-            "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tQlhZN0thdE9ja3lrbFd3V1BDekVnMHZEUEJuMUV5Ums4dUVwdEdhc1VudG5qcWpjV0ZIc1E3Qmx1dnJzbS1CeUs2bHZiQlI2empEQUdXODA0VUhuS0ctREdZNEc?oc=5",
-            "source": "台視新聞網",
-            "published_at": "2026-10-01T07:00+00:00",
-            "keyword_score": -1,
+            "title": "Global Equity Markets and AI Investment Outlook - Davy",
+            "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNUGJWcHNtN3VOWVVhejB3emZJRGlOUFNNaFB1eHBUV1hRV1hTaVpPSVVHQXFXUG94cnpISnNhT1I0U1Y4bHQySmpiOVhsVmVMRG9QakdCMkVtbFR4ZE9taHp2Vjl3T1JtZWlqODk3MkRBVlBvaVo4Q3NuaE0ySW5tNFBKY1haaC01dnYxbGFWMlFSOEUtemx2Nkdya2k5dGRzczZ5cG5XalZMUzFpazI5dmZBaGI5N2JKSzBxaEVCS2pvS24tXzZkZTFUMktzZ3JNNy1Fd2gxdw?oc=5",
+            "source": "Davy",
+            "published_at": "2026-10-26T07:00+00:00",
+            "keyword_score": 0,
             "positive_terms": [],
-            "negative_terms": [
-              "低於預期"
-            ]
+            "negative_terms": []
           }
         ]
       },
@@ -14806,7 +14826,7 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 6,
+        "article_count": 4,
         "items": [
           {
             "category": "產業消息",
@@ -14847,30 +14867,32 @@
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-13T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "點名台積電！外媒曝必抱「2檔」長期投資 半導體關鍵命脈難被取代 - 自由財經",
-            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1ZOVFwREpjM09JR2FaQzlqY3UyZWxvdEFhamVhVGpIU213VUFmcUEyUnZZYk1CU0VFTUZpelJIc1FGZXZRVFpRTmdncndDQ3FsZXFVd1hmeW1SREhmVHV30gFkQVVfeXFMTmxOYzNaYkxTd0VvMzJTNkVWaTZLbHhjSTlpZ2FFa3RYU0JDX1gxMEMtNlhXdXRGTEZoeUJxWG1mY3NpZnA3bHRaeEVnamRTOXdza2hjVk1VcTdlUGh3SUJIVHYwSQ?oc=5",
-            "source": "自由財經",
-            "published_at": "2026-10-02T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
           }
         ]
       },
       "items": [
+        {
+          "category": "國際市場",
+          "title": "Stock market today: Nasdaq plunges 5% as chip stocks sell off, Dow and S&P 500 give back post-election rally gains - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNN1BQQmJLMC1jZnlVQi1QcVV2ZUdzZFVCU0lrdnRvMWl2b2FySnNrZWt0WFpnNS1CYjdkTGNvbzc5Z2JqMGlxN3NQS01RTnJzWjlxUW8tc2RBLUFRZzdfUUJGbkFWNGdobEM1MWlWcENPWlQycUhMWUhWbG45SUFVcFpTcWlVb0VTeGN0VnZianFmeUZJYmhEdU5NazYzWjBtVVJGTndUazFlMkVfbmtFUXYybkxSc0NsYUFfYTkyem5PLXlRQXRyblAyT1k?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-05T16:24+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-05T16:14+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
         {
           "category": "國際市場",
           "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
@@ -14990,6 +15012,16 @@
           "negative_terms": []
         },
         {
+          "category": "國際市場",
+          "title": "Global Equity Markets and AI Investment Outlook - Davy",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNUGJWcHNtN3VOWVVhejB3emZJRGlOUFNNaFB1eHBUV1hRV1hTaVpPSVVHQXFXUG94cnpISnNhT1I0U1Y4bHQySmpiOVhsVmVMRG9QakdCMkVtbFR4ZE9taHp2Vjl3T1JtZWlqODk3MkRBVlBvaVo4Q3NuaE0ySW5tNFBKY1haaC01dnYxbGFWMlFSOEUtemx2Nkdya2k5dGRzczZ5cG5XalZMUzFpazI5dmZBaGI5N2JKSzBxaEVCS2pvS24tXzZkZTFUMktzZ3JNNy1Fd2gxdw?oc=5",
+          "source": "Davy",
+          "published_at": "2026-10-26T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "台灣市場",
           "title": "台股下殺原因是颱風假？外資賣超擴大到816億！回測46K破季線「還有3訊號」…一堆股通殺誰被賣慘 - 今周刊",
           "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVWNZWEQ5M0d1ZHAwN1NnMl91ZmxORXhzOU1vaFNGYzZTdDVZQXBHSkw3UlNZMzJicW9HSzJoX01kVXNqYW9wMExvTTBXMTctMWZfcEhvY2JSNWo5b3pGeHRXQUI3eGUwM0Z4MzE4eXJxdWt3WTZFMWR6OEdfdTJmeA?oc=5",
@@ -15030,38 +15062,6 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-13T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "點名台積電！外媒曝必抱「2檔」長期投資 半導體關鍵命脈難被取代 - 自由財經",
-          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1ZOVFwREpjM09JR2FaQzlqY3UyZWxvdEFhamVhVGpIU213VUFmcUEyUnZZYk1CU0VFTUZpelJIc1FGZXZRVFpRTmdncndDQ3FsZXFVd1hmeW1SREhmVHV30gFkQVVfeXFMTmxOYzNaYkxTd0VvMzJTNkVWaTZLbHhjSTlpZ2FFa3RYU0JDX1gxMEMtNlhXdXRGTEZoeUJxWG1mY3NpZnA3bHRaeEVnamRTOXdza2hjVk1VcTdlUGh3SUJIVHYwSQ?oc=5",
-          "source": "自由財經",
-          "published_at": "2026-10-02T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "美國最新通膨數據低於預期 美股漲跌互見！僅那斯達克收高 - 台視新聞網",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tQlhZN0thdE9ja3lrbFd3V1BDekVnMHZEUEJuMUV5Ums4dUVwdEdhc1VudG5qcWpjV0ZIc1E3Qmx1dnJzbS1CeUs2bHZiQlI2empEQUdXODA0VUhuS0ctREdZNEc?oc=5",
-          "source": "台視新聞網",
-          "published_at": "2026-10-01T07:00+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "低於預期"
-          ]
         }
       ],
       "source_errors": [],
@@ -15072,10 +15072,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-05T16:34:16+00:00",
+      "generated_at_utc": "2026-11-05T16:36:26+00:00",
       "taiwan_data_date": "2026-11-05",
       "us_session_date": "2026-11-04",
-      "us_timezone_checked_at": "2026-11-05T11:34-05:00",
+      "us_timezone_checked_at": "2026-11-05T11:36-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15319,6 +15319,22 @@
         },
         {
           "group": "國際新聞",
+          "title": "Stock market today: Nasdaq plunges 5% as chip stocks sell off, Dow and S&P 500 give back post-election rally gains - Yahoo Finance",
+          "date": "2026-11-06 00:24 台北時間",
+          "tone": "偏多",
+          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNN1BQQmJLMC1jZnlVQi1QcVV2ZUdzZFVCU0lrdnRvMWl2b2FySnNrZWt0WFpnNS1CYjdkTGNvbzc5Z2JqMGlxN3NQS01RTnJzWjlxUW8tc2RBLUFRZzdfUUJGbkFWNGdobEM1MWlWcENPWlQycUhMWUhWbG45SUFVcFpTcWlVb0VTeGN0VnZianFmeUZJYmhEdU5NazYzWjBtVVJGTndUazFlMkVfbmtFUXYybkxSc0NsYUFfYTkyem5PLXlRQXRyblAyT1k?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
+          "date": "2026-11-06 00:14 台北時間",
+          "tone": "待判讀",
+          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
           "date": "2026-11-05 23:35 台北時間",
           "tone": "待判讀",
@@ -15367,6 +15383,30 @@
         }
       ],
       "us_news": [
+        {
+          "category": "國際市場",
+          "title": "Stock market today: Nasdaq plunges 5% as chip stocks sell off, Dow and S&P 500 give back post-election rally gains - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNN1BQQmJLMC1jZnlVQi1QcVV2ZUdzZFVCU0lrdnRvMWl2b2FySnNrZWt0WFpnNS1CYjdkTGNvbzc5Z2JqMGlxN3NQS01RTnJzWjlxUW8tc2RBLUFRZzdfUUJGbkFWNGdobEM1MWlWcENPWlQycUhMWUhWbG45SUFVcFpTcWlVb0VTeGN0VnZianFmeUZJYmhEdU5NazYzWjBtVVJGTndUazFlMkVfbmtFUXYybkxSc0NsYUFfYTkyem5PLXlRQXRyblAyT1k?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-05T16:24+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-06 00:24 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-05T16:14+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-06 00:14 台北時間"
+        },
         {
           "category": "國際市場",
           "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",

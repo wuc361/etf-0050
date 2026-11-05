@@ -5,6 +5,9 @@ This is a market-data monitor, not a retrained or calibrated intraday forecast.
 from __future__ import annotations
 
 import json
+import re
+import html as html_lib
+from urllib.request import Request, urlopen
 from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -106,10 +109,63 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
         result["message"] = f"{type(exc).__name__}: {str(exc)[:180]}"
     return result
 
+
+def fetch_market_margin_maintenance() -> dict:
+    """Fetch end-of-day estimated market margin maintenance ratios.
+
+    This is an estimate from publicly available margin balances and prices,
+    not the exchange's account-level aggregate collateral ratio.
+    """
+    url = "https://toalpha.tw/market/chips?mlimit=100&mscope=hot&view=margin"
+    try:
+        request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; ETF-0050-monitor/1.0)"})
+        with urlopen(request, timeout=18) as response:
+            raw = response.read().decode("utf-8", errors="replace")
+        text = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
+        text = re.sub(r"\\s+", " ", text)
+        match = re.search(
+            r"(20\\d{2}/\\d{1,2}/\\d{1,2})\\s*上市\\s*([0-9]+(?:\\.[0-9]+)?)%\\s*[、,，]?\\s*上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%",
+            text,
+        )
+        if not match:
+            # Some page versions put the date before the section heading.
+            match = re.search(
+                r"上市\\s*([0-9]+(?:\\.[0-9]+)?)%.*?上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%.*?(20\\d{2}/\\d{1,2}/\\d{1,2})",
+                text,
+            )
+            if not match:
+                raise ValueError("頁面未找到上市／上櫃維持率欄位")
+            listed, otc, date = match.group(1), match.group(2), match.group(3)
+        else:
+            date, listed, otc = match.group(1), match.group(2), match.group(3)
+        return {
+            "status": "estimated",
+            "data_date": date.replace("/", "-"),
+            "listed_pct": float(listed),
+            "otc_pct": float(otc),
+            "source": "ToAlpha（依公開融資餘額與收盤價推估）",
+            "source_url": url,
+            "is_official_aggregate": False,
+            "note": "非證交所逐戶整戶擔保維持率；上市、上櫃分開估算，僅作市場槓桿風險觀察。",
+        }
+    except Exception as exc:
+        return {
+            "status": "unavailable",
+            "data_date": None,
+            "listed_pct": None,
+            "otc_pct": None,
+            "source": "ToAlpha",
+            "source_url": url,
+            "is_official_aggregate": False,
+            "error": f"{type(exc).__name__}: {str(exc)[:160]}",
+            "note": "目前無法取得最新估算值；請勿以舊資料冒充最新維持率。",
+        }
+
 def main():
     now = datetime.now(TAIPEI)
     today = now.date().isoformat()
     quotes = [fetch_quote(ticker, label, today) for ticker, label in WATCHLIST.items()]
+    margin_maintenance = fetch_market_margin_maintenance()
     etf = next((q for q in quotes if q["ticker"] == "0050.TW"), None)
     in_cash_hours = time(9, 30) <= now.time().replace(tzinfo=None) <= time(13, 35)
     etf_is_today = bool(etf and etf.get("status") == "live"
@@ -132,6 +188,7 @@ def main():
         "market_hours_taipei": "09:30-13:30（台灣證券交易日）",
         "source": "Yahoo Finance 5-minute bars; indicative data, not an official exchange feed",
         "quotes": quotes,
+        "margin_maintenance": margin_maintenance,
         "note": "盤中行情為參考資料，可能有供應商延遲或缺漏；不會冒充 TWSE 官方收盤價，也不會直接改寫每日量化模型機率。收盤後由每日模型流程以官方收盤資料重新計算下一交易日預測。",
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

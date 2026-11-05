@@ -85,9 +85,9 @@
     <h2>🌐 前一觀測日重大事件與市場脈動</h2>
     <p id="briefing-narrative">等待前一觀測日資料…</p>
     <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
-    <h3>🇺🇸 美股最近一個已完成現貨交易時段</h3>
+    <h3>🇺🇸 美股核心觀察指標（最近完成交易日）</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
-    <p class="section-caption">盤中即時行情與風險監控已移至「盤中即時監控」分頁；本頁只保留已完成交易時段的市場資料。</p>
+    <p class="section-caption">只保留與0050較相關的6項指標：S&P 500（大盤）、NASDAQ（科技股）、費半（半導體）、台積電 ADR、NVIDIA（AI晶片）及美國10年期公債殖利率（利率環境）。盤中行情請看「盤中即時監控」。若日期仍是前一日，代表美國當日現貨尚未收盤，不是資料日期錯置。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
     <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
     <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
@@ -254,9 +254,12 @@
       '本次重大事件觀測日（台灣）：' + (b.taiwan_data_date || '無資料') +
       '｜美股最近完成的現貨交易日：' + (b.us_session_date || '無資料') +
       '｜摘要更新（UTC）：' + (b.generated_at_utc || '無資料') +
-      '。美股期貨另以盤中即時監控頁的台灣時間標示，不與現貨收盤日混用。';
+      '。美股日期依美東現貨收盤確認；台灣時間凌晨若美股尚未收盤，顯示前一個已完成交易日是正常情況。即時期貨請看盤中監控頁。';
     const usHost = $('us-market-table'); usHost.replaceChildren();
-    const usRows = b.us_market || [];
+    // Core US indicators most relevant to Taiwan 0050.
+    const coreUsTickers = new Set(["^GSPC", "^IXIC", "^SOX", "TSM", "NVDA", "^TNX"]);
+    const allUsRows = b.us_market || [];
+    const usRows = allUsRows.filter(row => coreUsTickers.has(row.ticker));
     if (usRows.length) {
       const table = document.createElement('table'); table.className = 'market-table';
       const head = document.createElement('tr');

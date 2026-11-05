@@ -198,7 +198,7 @@ def fetch_0050_margin_maintenance() -> dict:
                 latest = {
                     "date": day,
                     "close": round(close, 4),
-                    "margin_balance_shares": int(balance),
+                    "margin_balance_lots": int(balance),
                     "margin_cost_estimate": round(moving_cost, 4),
                     "financing_ratio": 0.60,
                     "maintenance_pct": round(ratio, 2),

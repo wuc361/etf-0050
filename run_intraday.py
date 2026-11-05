@@ -122,15 +122,15 @@ def fetch_market_margin_maintenance() -> dict:
         with urlopen(request, timeout=18) as response:
             raw = response.read().decode("utf-8", errors="replace")
         text = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
-        text = re.sub(r"\\s+", " ", text)
+        text = re.sub(r"\s+", " ", text)
         match = re.search(
-            r"(20\\d{2}/\\d{1,2}/\\d{1,2})\\s*上市\\s*([0-9]+(?:\\.[0-9]+)?)%\\s*[、,，]?\\s*上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%",
+            r"(20\d{2}/\d{1,2}/\d{1,2})\s*上市\s*([0-9]+(?:\.[0-9]+)?)%\s*[、,，]?\s*上櫃\s*([0-9]+(?:\.[0-9]+)?)%",
             text,
         )
         if not match:
             # Some page versions put the date before the section heading.
             match = re.search(
-                r"上市\\s*([0-9]+(?:\\.[0-9]+)?)%.*?上櫃\\s*([0-9]+(?:\\.[0-9]+)?)%.*?(20\\d{2}/\\d{1,2}/\\d{1,2})",
+                r"上市\s*([0-9]+(?:\.[0-9]+)?)%.*?上櫃\s*([0-9]+(?:\.[0-9]+)?)%.*?(20\d{2}/\d{1,2}/\d{1,2})",
                 text,
             )
             if not match:

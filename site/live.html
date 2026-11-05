@@ -17,7 +17,7 @@ table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:righ
 small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #475569;border-radius:8px;padding:4px 7px}
 .margin-dashboard{width:100%;height:620px;border:1px solid #34445d;border-radius:12px;background:#101a2b}
 .margin-note{background:#101a2b;border:1px solid #34445d;border-radius:12px;padding:14px;line-height:1.7;color:#cbd5e1}
-.margin-link{display:inline-block;background:#2563eb;color:#fff!important;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:9px;margin:8px 0}
+.margin-link{display:inline-block;background:#2563eb;color:#fff!important;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:9px;margin:8px 0}\n.margin-value{font-size:2rem;font-weight:800;margin:8px 0;font-variant-numeric:tabular-nums}.margin-sub{color:#9ca3af;font-size:.82rem;line-height:1.5}.margin-alert{border-color:#a16207}.margin-good{border-color:#2563eb}
 @media(max-width:640px){.margin-dashboard{height:520px}}
 
 </style></head>
@@ -44,7 +44,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
   <p class="muted">若下方官方儀表板未能嵌入，請使用上方按鈕另開官方頁面。</p>
  </div>
  <iframe class="margin-dashboard" title="證交所臺股儀表板－信用交易" src="https://www.twse.com.tw/dashboard/zh/credit/margin.html" loading="lazy" referrerpolicy="no-referrer"></iframe>
- <p class="muted">觀察重點：維持率急降、追繳或處分金額增加、融資餘額快速減少若同時出現，代表市場槓桿去化壓力可能升高。150%可作為個人設定的觀察提醒值，並非官方追繳標準；130%也不能直接套用為全市場保證斷頭線。</p>
+ <p class="muted">觀察參考：150%以下可提高警覺，140%以下代表市場平均緩衝空間偏低；130%是個別信用帳戶追繳門檻的常見法定參考，不能直接當作全市場平均維持率的斷頭線。若維持率快速下降，同時融資餘額大減，應留意槓桿去化壓力。</p>
  <p class="muted">提醒：這是全市場風險資料，不是你的個人融資帳戶維持率。個人整戶維持率與是否追繳，應以往來券商帳戶資料及通知為準。</p>
 </section>
 <section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
@@ -71,6 +71,23 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
    const [a,b]=await Promise.all([fetch("https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
    if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();const daily=b.ok?await b.json():{};
    $("status").textContent=live.label||live.status;$("updated").textContent="台灣資料日期："+(live.trading_date_taipei||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
+   const margin=live.margin_maintenance||{};
+   const marginHost=$("margin-ratio-cards");
+   const marginMeta=$("margin-ratio-meta");
+   if(margin.status==="estimated"&&Number.isFinite(Number(margin.listed_pct))&&Number.isFinite(Number(margin.otc_pct))){
+    const makeMarginCard=(label,value)=>{
+     const card=document.createElement("article");card.className="card"+(value<150?" margin-alert":value>=170?" margin-good":"");
+     const title=document.createElement("div");title.className="label";title.textContent=label;
+     const number=document.createElement("div");number.className="margin-value";number.textContent=Number(value).toFixed(1)+"%";
+     const note=document.createElement("div");note.className="margin-sub";note.textContent=value<140?"偏低警戒":value<150?"低於150%觀察線":value<170?"中性觀察區":"相對較高";
+     card.append(title,number,note);return card;
+    };
+    marginHost.replaceChildren(makeMarginCard("上市融資維持率（估算）",margin.listed_pct),makeMarginCard("上櫃融資維持率（估算）",margin.otc_pct));
+    marginMeta.textContent="資料日期："+(margin.data_date||"—")+"｜來源："+(margin.source||"—")+"｜每日盤後更新，非盤中即時值。";
+   }else{
+    marginHost.textContent="目前無法取得最新維持率估算，請勿以舊資料代替。";
+    marginMeta.textContent=margin.error||"請使用下方證交所官方信用交易儀表板查核市場資料。";
+   }
    const etf=(live.quotes||[]).find(x=>x.ticker==="0050.TW");
    if(etf&&etf.price!=null){
     $("price").textContent=fmt(etf.price);$("change").textContent="最近一根5分鐘K："+pct(etf.five_min_change_pct);$("change").className=cls(etf.five_min_change_pct);

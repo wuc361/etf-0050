@@ -17,7 +17,7 @@
 1. 在 GitHub Repository 的 **Settings → Actions → General → Workflow permissions** 確認工作流程允許必要的讀寫權限。
 2. 在 **Settings → Pages** 將 **Build and deployment → Source** 設為 **GitHub Actions**。
 3. 前往 **Actions → 0050 AI Daily Forecast → Run workflow**，手動執行第一次流程。
-4. 成功後從 **Settings → Pages** 查看網站網址。排程包含台灣時間週一至週五 05:45（夜盤收盤後，UTC 21:45、週日到週四）及 14:17（日盤收盤後，UTC 06:17、週一到週五）；GitHub 排程可能延遲，且不是交易日曆。
+4. 成功後從 **Settings → Pages** 查看網站網址。排程包含台灣時間週一至週五 05:45（夜盤收盤後，UTC 21:45、週日到週四）、06:15（美股前一交易日常規時段收盤後，UTC 22:15、週日到週四）、08:30（美股資料補充更新，UTC 00:30、週一到週五）及 14:17（日盤收盤後，UTC 06:17、週一到週五）；GitHub 排程可能延遲，且不是交易日曆。
 5. 若工作流程失敗，開啟 **Actions** 查看失敗步驟與錯誤紀錄。
 
 ## 研究限制

@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-05T16:58:11+00:00",
+  "generated_at_utc": "2026-11-05T22:45:31+00:00",
   "data_as_of": "2026-11-05",
   "latest_close": 97.15,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.164512,
-      "down_probability": 0.835488,
+      "up_probability": 0.161819,
+      "down_probability": 0.838181,
       "backtest": {
         "accuracy": 0.6880733944954128,
         "balanced_accuracy": 0.6849668984469335,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "DOWN",
-      "up_probability": 0.402751,
-      "down_probability": 0.597249,
+      "up_probability": 0.307055,
+      "down_probability": 0.692945,
       "backtest": {
         "accuracy": 0.5965270684371808,
         "balanced_accuracy": 0.5878321678321679,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.604251,
-      "down_probability": 0.395749,
+      "up_probability": 0.623413,
+      "down_probability": 0.376587,
       "backtest": {
         "accuracy": 0.548618219037871,
         "balanced_accuracy": 0.5241207734446104,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.151581,
-    "down_probability": 0.848419,
+    "up_probability": 0.167155,
+    "down_probability": 0.832845,
     "backtest": {
       "accuracy": 0.7838939857288482,
       "balanced_accuracy": 0.7821566731141198,
       "up_recall": 0.8143133462282398,
-      "brier_score": 0.15133245496520562,
+      "brier_score": 0.15133245496527395,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25688073394495414,
       "base_rate": 0.527013251783894,
@@ -92,17 +92,17 @@
     "trigger_count": 3,
     "observations": {
       "^SOX": {
-        "return": -0.09164774308332646,
+        "return": -0.12246134082630522,
         "threshold": -0.03,
         "triggered": true
       },
       "^IXIC": {
-        "return": -0.042956591412081524,
+        "return": -0.055233274896064,
         "threshold": -0.02,
         "triggered": true
       },
       "TSM": {
-        "return": -0.08732785232746365,
+        "return": -0.10777004143141977,
         "threshold": -0.03,
         "triggered": true
       }
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2247,
       "stored_rows": 44,
-      "updated_at_taipei": "2026-11-06T00:58:19+08:00",
+      "updated_at_taipei": "2026-11-06T06:45:43+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,12 +148,12 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.3040998470827478,
-      "Random Forest": 0.16451211288240972,
-      "Extra Trees": 0.05935054126462559
+      "Logistic Regression": 0.15948779539422286,
+      "Random Forest": 0.1618188984318339,
+      "Extra Trees": 0.0535087613697807
     },
     "historical_balanced_accuracy": 0.6842444934837824,
-    "historical_brier_score": 0.19630473137216317,
+    "historical_brier_score": 0.1963047313721632,
     "historical_test_count": 981,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -177,7 +177,7 @@
         "name": "Random Forest",
         "accuracy": 0.6870540265035678,
         "balanced_accuracy": 0.6842444934837824,
-        "brier_score": 0.19630473137216317,
+        "brier_score": 0.1963047313721632,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5208970438328236
       },
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.164512,
-    "down_probability": 0.835488,
+    "up_probability": 0.161819,
+    "down_probability": 0.838181,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14612,37 +14612,37 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.091648,
+        "latest_return": -0.122461,
         "tone": "偏空"
       },
       {
         "name": "NASDAQ",
-        "latest_return": -0.042957,
+        "latest_return": -0.055233,
         "tone": "偏空"
       },
       {
         "name": "S&P 500",
-        "latest_return": -0.031697,
+        "latest_return": -0.043557,
         "tone": "偏空"
       },
       {
         "name": "道瓊指數",
-        "latest_return": -0.023759,
+        "latest_return": -0.034355,
         "tone": "偏空"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": -0.087328,
+        "latest_return": -0.10777,
         "tone": "偏空"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.068655,
+        "latest_return": -0.09259,
         "tone": "偏空"
       },
       {
         "name": "台積電",
-        "latest_return": -0.015251,
+        "latest_return": -0.00885,
         "tone": "偏空"
       },
       {
@@ -14652,32 +14652,32 @@
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.092398,
+        "latest_return": -0.115369,
         "tone": "偏空"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.008646,
+        "latest_return": 0.010662,
         "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": 0.397953,
+        "latest_return": 0.696568,
         "tone": "偏多"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": -0.011238,
+        "latest_return": -0.011647,
         "tone": "偏空"
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": -0.014715,
+        "latest_return": -0.017274,
         "tone": "偏空"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-05T16:59:39+00:00",
+      "generated_at_utc": "2026-11-05T22:46:58+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "中性或訊號不足",
@@ -14686,62 +14686,64 @@
         "items": [
           {
             "category": "國際市場",
-            "title": "Chip stocks get slaughtered as Wall Street heads for its worst post-midterm day since 1896 - Yahoo Finance",
-            "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQdGJxaUFwMFhzNTlQamNCdnlkRmUwUmpsLXhaOUpYaHhFT3pkLVpodEpWdnR4R2NvNGVqQ2NPMERxdjV5bG1RTU5VZ2tHaVFKazRoRUg2VXJYcm1FVUFCdnZaQlRQUG1jRFpFQ29jdGpPclAtOTlRM1RxaktOZ3RsdEdHY05ITmJXSmZtZGlyN0NTM2RGbmxhRG05dW5EcjNGMEYzSTcyeE5zb2FhSENoRzgzZ0pXWnl2WVcwSlp2cHZrV1p2dUF6aFl4M2F2T3lBdWx5dUlNeVNXemx3eUowWQ?oc=5",
-            "source": "Yahoo Finance",
-            "published_at": "2026-11-05T16:34+00:00",
+            "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - KCRA",
+            "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNa1JfT1BLaWo4OEtuY0xmQTRNSHZWbHhmcldjZFFYd2N4ZHdlV29HaDE5MnUxUk9aa3RFYkhzblQwTnd3SWtrWG9NZXFNTnZZSzlPcktBZ05xbDZkTHlNby1reWFrazFneXFzLS1OVjMyVnV4UmF2MWxiQkxvbFlsaDNB?oc=5",
+            "source": "KCRA",
+            "published_at": "2026-11-05T22:16+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Stock Market Today: An AI Bloodbath: Nasdaq Sinks 5% and the Rest of the Market Is Tumbling Too - Barron's",
+            "title": "Stock Market Today, Nov. 5: Nasdaq Suffers Worst Day in 18 Months as AI Trade Comes Under Fire - The Motley Fool",
+            "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNYjFhMXc4eER6ZHJ0QUFOTFRNT1ltUmpXLWFqdzh5Z1JlZnN0M1ZPVFN1SmdudlE4bGdNVndQUjhvTmRqaGJreWdiUGRCLWVLRjJReWZrR0tWN3E1VWJmR0k0bmM5blQ0M0k5TFdJRl9yWS1Ud2htX0tpSE1pZVdXQUhaRzJCMmFRQnJjdXFuLTZXQkRmYnVzTEtuc2JtekFPNTFucHlzUFBOb0ZvTF9vVGhHWEo3OEdqWWw4aFRtVTRKcHYydkozVmtRMzZSa1NCVGdueHc0RWVGU2daa2pibWxUYUdxa1U?oc=5",
+            "source": "The Motley Fool",
+            "published_at": "2026-11-05T21:55+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Stock Indexes Routed on Capitulation out of Chipmakers and AI Stocks - Barchart.com",
+            "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOVXBIWmxCU3BCNjdWeklOZF9aeVhzaGpBc1NQYUZmYVF2WmVGOUNSSlR0M001dEVEc2FLQVQ5elFKcWhkM3FuaHc2aXkwZk5nUEZRQlhGUFo2MFJmLVpHUzNHMHVlRkE1ekV1ZmhBUGlRYjdTNkU5enNpeWVNdW4yS19kb21UazRzWElybHNtWHZCdS0xYVlBY055NzY2cXJmd0l4bWViTkZxQ3M2T2hseFRR?oc=5",
+            "source": "Barchart.com",
+            "published_at": "2026-11-05T21:37+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - WRAL",
+            "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPOVp4S0VfNk94andka3phWVlNeXZ1eVFpeDJoZVNxeU9xTVNCdjZMYzgwVGQ0a1VwSEpqeHVONWdhSHFKZVQtMzBtdVZ4dVZMYmJKdHRxMDhwSUU0MlNRTXd6WmNxUEZHY0loZFRzdlhZNVB0Z09PZ2JGN1VReFNya01XUGZZX3pWbUpnUV9Cemt1YkltYWI5ZEtxTHVXaU5ITzVva0tSUEVfR2VLRDNrN0xqR2hKRmRQM002RmQtcFRTYmNsOFB6bg?oc=5",
+            "source": "WRAL",
+            "published_at": "2026-11-05T21:19+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Stock Market Today: Inside the AI Panic that Knocked 5.5% Off the Nasdaq - Barron's",
             "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1vN2J6OHJCcGFsSkdMcXZQQTZOX2F1YndQSXZzemgtODE4MVJXbTYtbktXMlJaWFdhbFc2dVVUaGlaZzZ4VnFoTzJsM2Q1TmJ1bnB3aXZnYkdlRFFHQnlqRl9vZ283dE9GUU1nZWJfT1hUMEJIZkE?oc=5",
             "source": "Barron's",
-            "published_at": "2026-11-05T16:27+00:00",
+            "published_at": "2026-11-05T21:07+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
-            "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+            "title": "Stock market today: Nasdaq plunges 5% amid chip stock wipeout, Dow and S&P 500 erase post-election rally gains - Yahoo Finance",
+            "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZTZIZ0tKbklnYWJvNVFoSXUtcEFER2lUNXBpaUpWeW0zMVgxakZfODVnb0NwdG0tUDFVcGFoakZPbWhNRUlBcHFSM2dlN2RmQ256c19feE1PNjFNclZwQl9aSXFSRi10eGNoc1JjQUxpRGhEa05JT0dJdzBXLXI1LXNoa3pQZEJ4ZjAyNjBLSkF3VGhMckwzVFl4SnJLSlBtTEJXLUc4S2x4NFk3S1lsUGxDc3BKZ3dkeEZ5TmRNbVptdjFxOGFXMUFsQy1UR2l1UklaMUd3?oc=5",
             "source": "Yahoo Finance",
-            "published_at": "2026-11-05T16:14+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Stock Market Today: Nasdaq Sinks 4% as Investors Ditch Chip, Data-Center Stocks — Live Updates - WSJ",
-            "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPd0JqeUJIeUF5NWZ0RVUtVDhfSlJCMjc4U1didmsxU2lRZGdJcUZnNk90V0ZkVy1JNVZKRG10WkFySU1lREhqNUs2ZGlWZXhNRXBNMjVKWlJWajg5OWNFdG91V3VRV1B3cEkzSHNOVkFDaXRwbGJKUkRkX2lRdmtqQ0xGSTN5NVU?oc=5",
-            "source": "WSJ",
-            "published_at": "2026-11-05T16:13+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "A wipeout for AI stocks sends Wall Street reeling, and the S&P 500 tumbles more than 3% - LancasterOnline",
-            "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNX19JTU13VW4xX2stUUp5bXFMS3ZtbGdOYnF6am02SlZiNENIRlVHRkJmVUNGdjd6bmphZE5CSjA1eVN1eExYUTc2TEJIbkdzaU8tVHhBSDM4RkhIT3ZEcnVEb3E4cXhTTnllbllmbVRRVUtNM1ZHNDJ3U2V5bEpaSFFMaENkOUtzNkE3dkpYTERoTG9IYlhyNkVNSUplVkV2MmtKUkNBcUlXVlZFWTY0b3V1TTBXRDRwZHR6TGl2V09JQ2dDZHBmVUhMX0hwclZzby1SU25jeldoRjVLa2xSVWhMd3J5dk0zWW9qam5qLXVWNHVCZXhodGZBOVpBLVI5b3d3?oc=5",
-            "source": "LancasterOnline",
-            "published_at": "2026-11-05T16:12+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5",
-            "source": "BigGo Finance",
-            "published_at": "2026-11-05T15:35+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
+            "published_at": "2026-11-05T19:37+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "rally"
+            ],
             "negative_terms": []
           }
         ]
@@ -14753,10 +14755,10 @@
         "items": [
           {
             "category": "台灣市場",
-            "title": "台幣逼近33元還會再貶？富邦金羅瑋：弱勢恐延續至明年Q1 央行年底或重估政策 | Newtalk - LINE TODAY",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pclRMOTUwV2tSS2xWd21kTEFpMHNDYkdqRTNWVVVlWW16bGpRYnNCYjJjS2lTbW01SWNrRmJVZFBWMXJnTkRwSnB6ZFM0cE1MUUhuNkF3?oc=5",
-            "source": "LINE TODAY",
-            "published_at": "2026-11-05T10:25+00:00",
+            "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
+            "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5",
+            "source": "信傳媒",
+            "published_at": "2026-11-05T21:54+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14818,50 +14820,92 @@
       "items": [
         {
           "category": "國際市場",
-          "title": "Chip stocks get slaughtered as Wall Street heads for its worst post-midterm day since 1896 - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQdGJxaUFwMFhzNTlQamNCdnlkRmUwUmpsLXhaOUpYaHhFT3pkLVpodEpWdnR4R2NvNGVqQ2NPMERxdjV5bG1RTU5VZ2tHaVFKazRoRUg2VXJYcm1FVUFCdnZaQlRQUG1jRFpFQ29jdGpPclAtOTlRM1RxaktOZ3RsdEdHY05ITmJXSmZtZGlyN0NTM2RGbmxhRG05dW5EcjNGMEYzSTcyeE5zb2FhSENoRzgzZ0pXWnl2WVcwSlp2cHZrV1p2dUF6aFl4M2F2T3lBdWx5dUlNeVNXemx3eUowWQ?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-05T16:34+00:00",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - KCRA",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNa1JfT1BLaWo4OEtuY0xmQTRNSHZWbHhmcldjZFFYd2N4ZHdlV29HaDE5MnUxUk9aa3RFYkhzblQwTnd3SWtrWG9NZXFNTnZZSzlPcktBZ05xbDZkTHlNby1reWFrazFneXFzLS1OVjMyVnV4UmF2MWxiQkxvbFlsaDNB?oc=5",
+          "source": "KCRA",
+          "published_at": "2026-11-05T22:16+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Stock Market Today: An AI Bloodbath: Nasdaq Sinks 5% and the Rest of the Market Is Tumbling Too - Barron's",
+          "title": "Stock Market Today, Nov. 5: Nasdaq Suffers Worst Day in 18 Months as AI Trade Comes Under Fire - The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNYjFhMXc4eER6ZHJ0QUFOTFRNT1ltUmpXLWFqdzh5Z1JlZnN0M1ZPVFN1SmdudlE4bGdNVndQUjhvTmRqaGJreWdiUGRCLWVLRjJReWZrR0tWN3E1VWJmR0k0bmM5blQ0M0k5TFdJRl9yWS1Ud2htX0tpSE1pZVdXQUhaRzJCMmFRQnJjdXFuLTZXQkRmYnVzTEtuc2JtekFPNTFucHlzUFBOb0ZvTF9vVGhHWEo3OEdqWWw4aFRtVTRKcHYydkozVmtRMzZSa1NCVGdueHc0RWVGU2daa2pibWxUYUdxa1U?oc=5",
+          "source": "The Motley Fool",
+          "published_at": "2026-11-05T21:55+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5",
+          "source": "信傳媒",
+          "published_at": "2026-11-05T21:54+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Stock Indexes Routed on Capitulation out of Chipmakers and AI Stocks - Barchart.com",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOVXBIWmxCU3BCNjdWeklOZF9aeVhzaGpBc1NQYUZmYVF2WmVGOUNSSlR0M001dEVEc2FLQVQ5elFKcWhkM3FuaHc2aXkwZk5nUEZRQlhGUFo2MFJmLVpHUzNHMHVlRkE1ekV1ZmhBUGlRYjdTNkU5enNpeWVNdW4yS19kb21UazRzWElybHNtWHZCdS0xYVlBY055NzY2cXJmd0l4bWViTkZxQ3M2T2hseFRR?oc=5",
+          "source": "Barchart.com",
+          "published_at": "2026-11-05T21:37+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - WRAL",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPOVp4S0VfNk94andka3phWVlNeXZ1eVFpeDJoZVNxeU9xTVNCdjZMYzgwVGQ0a1VwSEpqeHVONWdhSHFKZVQtMzBtdVZ4dVZMYmJKdHRxMDhwSUU0MlNRTXd6WmNxUEZHY0loZFRzdlhZNVB0Z09PZ2JGN1VReFNya01XUGZZX3pWbUpnUV9Cemt1YkltYWI5ZEtxTHVXaU5ITzVva0tSUEVfR2VLRDNrN0xqR2hKRmRQM002RmQtcFRTYmNsOFB6bg?oc=5",
+          "source": "WRAL",
+          "published_at": "2026-11-05T21:19+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Stock Market Today: Inside the AI Panic that Knocked 5.5% Off the Nasdaq - Barron's",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1vN2J6OHJCcGFsSkdMcXZQQTZOX2F1YndQSXZzemgtODE4MVJXbTYtbktXMlJaWFdhbFc2dVVUaGlaZzZ4VnFoTzJsM2Q1TmJ1bnB3aXZnYkdlRFFHQnlqRl9vZ283dE9GUU1nZWJfT1hUMEJIZkE?oc=5",
           "source": "Barron's",
-          "published_at": "2026-11-05T16:27+00:00",
+          "published_at": "2026-11-05T21:07+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+          "title": "Stock market today: Nasdaq plunges 5% amid chip stock wipeout, Dow and S&P 500 erase post-election rally gains - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZTZIZ0tKbklnYWJvNVFoSXUtcEFER2lUNXBpaUpWeW0zMVgxakZfODVnb0NwdG0tUDFVcGFoakZPbWhNRUlBcHFSM2dlN2RmQ256c19feE1PNjFNclZwQl9aSXFSRi10eGNoc1JjQUxpRGhEa05JT0dJdzBXLXI1LXNoa3pQZEJ4ZjAyNjBLSkF3VGhMckwzVFl4SnJLSlBtTEJXLUc4S2x4NFk3S1lsUGxDc3BKZ3dkeEZ5TmRNbVptdjFxOGFXMUFsQy1UR2l1UklaMUd3?oc=5",
           "source": "Yahoo Finance",
-          "published_at": "2026-11-05T16:14+00:00",
+          "published_at": "2026-11-05T19:37+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "MARKETS LIVE: Nasdaq plunges as chip stocks tumble on AI spending concerns - Proactive financial news",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPWVRZdUZxSXlpcDNBWld5a0o4ZnhCU3FCSldKZWU1cktJQVZvRFJDeXpudWxSTzJOTUpnV2xtZE5MNW8ybmRWZWROTmYtMFJ1cjMwSTIwbXpVQzZxWVJ5YWJJek9URmluR0pqMy0telM2ODdEdkpXYVdBMWpqRnladm5OVG1mblgzQnpKMWJ6UF9tc3VVYkExNXhvN2d4Z2cxWmc1Mm1ZbzVreUtRdFpBamMzXzZDSXdBcEZXX2lyY190eUdvVkNzR2dpNTJBNHVsU29MNkM3WFJDWnFz?oc=5",
+          "source": "Proactive financial news",
+          "published_at": "2026-11-05T19:35+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Stock Market Today: Nasdaq Sinks 4% as Investors Ditch Chip, Data-Center Stocks — Live Updates - WSJ",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPd0JqeUJIeUF5NWZ0RVUtVDhfSlJCMjc4U1didmsxU2lRZGdJcUZnNk90V0ZkVy1JNVZKRG10WkFySU1lREhqNUs2ZGlWZXhNRXBNMjVKWlJWajg5OWNFdG91V3VRV1B3cEkzSHNOVkFDaXRwbGJKUkRkX2lRdmtqQ0xGSTN5NVU?oc=5",
-          "source": "WSJ",
-          "published_at": "2026-11-05T16:13+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "A wipeout for AI stocks sends Wall Street reeling, and the S&P 500 tumbles more than 3% - LancasterOnline",
-          "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNX19JTU13VW4xX2stUUp5bXFMS3ZtbGdOYnF6am02SlZiNENIRlVHRkJmVUNGdjd6bmphZE5CSjA1eVN1eExYUTc2TEJIbkdzaU8tVHhBSDM4RkhIT3ZEcnVEb3E4cXhTTnllbllmbVRRVUtNM1ZHNDJ3U2V5bEpaSFFMaENkOUtzNkE3dkpYTERoTG9IYlhyNkVNSUplVkV2MmtKUkNBcUlXVlZFWTY0b3V1TTBXRDRwZHR6TGl2V09JQ2dDZHBmVUhMX0hwclZzby1SU25jeldoRjVLa2xSVWhMd3J5dk0zWW9qam5qLXVWNHVCZXhodGZBOVpBLVI5b3d3?oc=5",
-          "source": "LancasterOnline",
-          "published_at": "2026-11-05T16:12+00:00",
+          "title": "Is the Chip Bubble Bursting? - RealMoney Pro",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzREZvUUFFRDBhMHFISTI0Wi1QaEJWWmFXQ0VKS2JDXzJ0bEFsQlBkMmFjcEk2aW9TY1dVQVFuU1VkZWNQLS1uanVOZDRkcHVSM214eklnZmhOUTlSWmFVQk81RWMtaUR5RFBsZ3l1YXFEbHB0Q0tvZ1FQSQ?oc=5",
+          "source": "RealMoney Pro",
+          "published_at": "2026-11-05T15:52+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14878,45 +14922,15 @@
         },
         {
           "category": "國際市場",
-          "title": "Wall Street's midterm sugar high fades as tech rout wipes out $2T (SP500:) - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNX3hGbDRyZTNuQUpIRi1Bb0d3YW8wcm14VUl5SjBfTWRHOVdHWE1kQnRlT2JDaUhOY1d6X0Y4Z0R2SE1xMDE4VXRUcmcwTGpVa3VoZFdZZmxsTU5aWWxfQ1FBcnR2MWZBamVmazE2bkdMYTVZa0ZHNmNpXzRoczdjYWRDbm9rVEtEVWFjaFVSN3owT2lrTFlPS0tPcW1wN1pQYU1r?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-05T15:34+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Tech stocks plunge on worries about AI and Democrats’ midterm landslide - NBC News",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOOTNfLWhKbG1YQW94UmZzUGpiYlNJUlNhZWstcGdKNE9mVnRlWDhTcE1FSW9iZkpwTDI3S1R2QWNoTFhndEN4bFpwMXQwQ1paZDlNbXNxSlBRNVh5MlVKOVNKMHowZVNiN00xX2FfcHVyeFBIVzhaVF96azRNWE5VZ1VndXItWmdwelE?oc=5",
-          "source": "NBC News",
-          "published_at": "2026-11-05T15:32+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq Futures Slip as Chip Selloff Rages On; Earnings and Fed Speak on Tap - Barchart.com",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPaURpY2VwV0xyc3Z4bnVmcHlaRUpadWFHMkNObW5lRkwycnhnOC1Gb2gyMWV3al93alEtRjdQM1hUclpUYi1zcWRhVUtsSE4taTBoR0VvaFNMZlJQSHRVdzUzRzhwVnMxd1BXdnRyWXZzUmZrNkhLNHVQaGkwVXhEV0xDSUlqRmR4ZGdSZl9TSUs1djA4Q0ZIZ1l5T0hCZ0RQYmV0VVAxT0FCNjBKb1dUZlV4elhDRHN0MHFnQU9n?oc=5",
-          "source": "Barchart.com",
-          "published_at": "2026-11-05T11:24+00:00",
+          "title": "The Stock Market Today, November 5, Closes Sharply Lower as the AI Chip Selloff Spreads - Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQMVB0bGVGWFkwRncybWxvNEdHYko2SURSRTdFZ3RteTFVMm1UaGtEU1pocHNpenJfbXk3T1BiTGE5MEIyaU1FYTJZck1hQlE4MEpON0tTZDlTYVRBcmdMYWp3eXJGcDBRUVdsbGduVTB5bS15VWhMTlc2MzJmS09TRg?oc=5",
+          "source": "Stock Titan",
+          "published_at": "2026-11-05T12:11+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
             "selloff"
           ]
-        },
-        {
-          "category": "台灣市場",
-          "title": "台幣逼近33元還會再貶？富邦金羅瑋：弱勢恐延續至明年Q1 央行年底或重估政策 | Newtalk - LINE TODAY",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pclRMOTUwV2tSS2xWd21kTEFpMHNDYkdqRTNWVVVlWW16bGpRYnNCYjJjS2lTbW01SWNrRmJVZFBWMXJnTkRwSnB6ZFM0cE1MUUhuNkF3?oc=5",
-          "source": "LINE TODAY",
-          "published_at": "2026-11-05T10:25+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         },
         {
           "category": "台灣市場",
@@ -14942,13 +14956,15 @@
         },
         {
           "category": "國際市場",
-          "title": "Nasdaq slides over 5%, falls into correction territory as traders dump chip stocks - Investing.com",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNdS01TG9xUDMwWUY0WUgzZDJqekZMZkowRDg2NkQ5SlE2RVJ3ZlE0Vll0VldjODIxeEtLeVJXUE80ajRtMGs2cVA0SUx5cVp3VkdfY0xYdlUtWk56enBJMW16Y1BubGFPTHRuWlRBMERWcGNSLUpsNjF1d2RmOFZMMV9wS3FqQjEyQXhqT1hfNzQ3NU9rZEJaOVBaX1pPREs2ODN1dlRWSEJYMW8?oc=5",
-          "source": "Investing.com",
-          "published_at": "2026-11-05T00:44+00:00",
-          "keyword_score": 0,
+          "title": "Chip selloff drags global stocks lower on AI spending concerns - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUG9ENFo3M0RHNWI0VEdfTlZhWmpjVGR0UjViV3dBQllRVkNha0YzU1FhX2lDaWVUT1U1Ym5DbWRlOFpJZ3JPU3AwZ1Nia3NNWjdKc3Jvd0VXU3otQU83ZjFlQmZwbHcyZmJKZFk4dVJWaXhWQnV6MTF6TUpmaDcxNmdhbFFNaU1N?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-05T02:35+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "selloff"
+          ]
         },
         {
           "category": "國際市場",
@@ -14970,16 +14986,6 @@
           "positive_terms": [
             "rally"
           ],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Semiconductor Sell-Off: The Best Chip Stocks to Buy Right Now Before They Skyrocket Once Again - The Motley Fool",
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQem5VeThlWExRTkY4ZzUwc1RpWWdjYnVXbkpyU3J0clF3TkRWeEVCUUc3dVdmY3A0djlrd21WYjJTOUJzWjN5alRPUExtVU5LdVQyenNndk5qdFJETTVFb3AxZzYyNmFqYzJjb1N3WDAwd0hpbVZ6RlVEVDRJR0g4eWxjSXJRcWRhN3JtNWUzYkZyNklwaUxkREM3MXFNU256V3BRX2djWm9Jd3JNbGd2TGo0OUNOcFJwR2tFZElEVkJBS2xXYXdveTdMc0FmbEFHYnc?oc=5",
-          "source": "The Motley Fool",
-          "published_at": "2026-11-04T11:36+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
           "negative_terms": []
         },
         {
@@ -15015,153 +15021,153 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-05T16:59:39+00:00",
+      "generated_at_utc": "2026-11-05T22:46:58+00:00",
       "taiwan_data_date": "2026-11-05",
-      "us_session_date": "2026-11-04",
-      "us_timezone_checked_at": "2026-11-05T11:59-05:00",
+      "us_session_date": "2026-11-05",
+      "us_timezone_checked_at": "2026-11-05T17:46-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
           "name": "S&P 500",
-          "date": "2026-11-04",
-          "close": 7688.6201171875,
-          "previous_close": 7568.919921875,
-          "display_close": "7,688.62",
-          "display_change": "+1.58%",
-          "change_pct": 1.581,
+          "date": "2026-11-05",
+          "close": 7353.72998046875,
+          "previous_close": 7688.6201171875,
+          "display_close": "7,353.73",
+          "display_change": "-4.36%",
+          "change_pct": -4.356,
           "yield_change_bps": null,
-          "tone": "偏多"
+          "tone": "偏空"
         },
         {
           "ticker": "^IXIC",
           "name": "NASDAQ 綜合指數",
-          "date": "2026-11-04",
-          "close": 25736.509765625,
-          "previous_close": 25372.009765625,
-          "display_close": "25,736.51",
-          "display_change": "+1.44%",
-          "change_pct": 1.437,
+          "date": "2026-11-05",
+          "close": 24314.998046875,
+          "previous_close": 25736.509765625,
+          "display_close": "24,315.00",
+          "display_change": "-5.52%",
+          "change_pct": -5.523,
           "yield_change_bps": null,
-          "tone": "偏多"
+          "tone": "偏空"
         },
         {
           "ticker": "^SOX",
           "name": "費城半導體指數",
-          "date": "2026-11-04",
-          "close": 10268.650390625,
-          "previous_close": 10600.400390625,
-          "display_close": "10,268.65",
-          "display_change": "-3.13%",
-          "change_pct": -3.13,
+          "date": "2026-11-05",
+          "close": 9011.1376953125,
+          "previous_close": 10268.650390625,
+          "display_close": "9,011.14",
+          "display_change": "-12.25%",
+          "change_pct": -12.246,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "^DJI",
           "name": "道瓊指數",
-          "date": "2026-11-04",
-          "close": 53356.12109375,
-          "previous_close": 51786.71875,
-          "display_close": "53,356.12",
-          "display_change": "+3.03%",
-          "change_pct": 3.031,
+          "date": "2026-11-05",
+          "close": 51523.05859375,
+          "previous_close": 53356.12109375,
+          "display_close": "51,523.06",
+          "display_change": "-3.44%",
+          "change_pct": -3.436,
           "yield_change_bps": null,
-          "tone": "偏多"
+          "tone": "偏空"
         },
         {
           "ticker": "TSM",
           "name": "台積電 ADR",
-          "date": "2026-11-04",
-          "close": 395.75,
-          "previous_close": 404.79998779296875,
-          "display_close": "395.75",
-          "display_change": "-2.24%",
-          "change_pct": -2.236,
+          "date": "2026-11-05",
+          "close": 353.1000061035156,
+          "previous_close": 395.75,
+          "display_close": "353.10",
+          "display_change": "-10.78%",
+          "change_pct": -10.777,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "NVDA",
           "name": "NVIDIA",
-          "date": "2026-11-04",
-          "close": 200.1300048828125,
-          "previous_close": 206.69000244140625,
-          "display_close": "200.13",
-          "display_change": "-3.17%",
-          "change_pct": -3.174,
+          "date": "2026-11-05",
+          "close": 181.60000610351562,
+          "previous_close": 200.1300048828125,
+          "display_close": "181.60",
+          "display_change": "-9.26%",
+          "change_pct": -9.259,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "AMD",
           "name": "AMD",
-          "date": "2026-11-04",
-          "close": 488.7799987792969,
-          "previous_close": 483.8999938964844,
-          "display_close": "488.78",
-          "display_change": "+1.01%",
-          "change_pct": 1.008,
+          "date": "2026-11-05",
+          "close": 404.3999938964844,
+          "previous_close": 488.7799987792969,
+          "display_close": "404.40",
+          "display_change": "-17.26%",
+          "change_pct": -17.263,
           "yield_change_bps": null,
-          "tone": "偏多"
+          "tone": "偏空"
         },
         {
           "ticker": "MU",
           "name": "美光",
-          "date": "2026-11-04",
-          "close": 795.22998046875,
-          "previous_close": 855.0999755859375,
-          "display_close": "795.23",
-          "display_change": "-7.00%",
-          "change_pct": -7.002,
+          "date": "2026-11-05",
+          "close": 656.3900146484375,
+          "previous_close": 795.22998046875,
+          "display_close": "656.39",
+          "display_change": "-17.46%",
+          "change_pct": -17.459,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "ASML",
           "name": "ASML",
-          "date": "2026-11-04",
-          "close": 1496.300048828125,
-          "previous_close": 1552.1400146484375,
-          "display_close": "1,496.30",
-          "display_change": "-3.60%",
-          "change_pct": -3.598,
+          "date": "2026-11-05",
+          "close": 1356.6500244140625,
+          "previous_close": 1496.300048828125,
+          "display_close": "1,356.65",
+          "display_change": "-9.33%",
+          "change_pct": -9.333,
           "yield_change_bps": null,
           "tone": "偏空"
         },
         {
           "ticker": "^VIX",
           "name": "VIX 波動率指數",
-          "date": "2026-11-04",
-          "close": 16.610000610351562,
-          "previous_close": 20.829999923706055,
-          "display_close": "16.61",
-          "display_change": "-20.26%",
-          "change_pct": -20.259,
+          "date": "2026-11-05",
+          "close": 28.18000030517578,
+          "previous_close": 16.610000610351562,
+          "display_close": "28.18",
+          "display_change": "+69.66%",
+          "change_pct": 69.657,
           "yield_change_bps": null,
-          "tone": "波動風險下降"
+          "tone": "波動風險升高"
         },
         {
           "ticker": "^TNX",
           "name": "美國10年期公債殖利率",
-          "date": "2026-11-04",
-          "close": 4.894000053405762,
-          "previous_close": 4.952000141143799,
-          "display_close": "0.49%",
+          "date": "2026-11-05",
+          "close": 4.836999893188477,
+          "previous_close": 4.894000053405762,
+          "display_close": "0.48%",
           "display_change": "-0.6 bps",
-          "change_pct": -1.171,
-          "yield_change_bps": -0.58,
+          "change_pct": -1.165,
+          "yield_change_bps": -0.57,
           "tone": "殖利率下降"
         },
         {
           "ticker": "^FVX",
           "name": "美國5年期公債殖利率",
-          "date": "2026-11-04",
-          "close": 4.689000129699707,
-          "previous_close": 4.743000030517578,
-          "display_close": "0.47%",
-          "display_change": "-0.5 bps",
-          "change_pct": -1.139,
-          "yield_change_bps": -0.54,
+          "date": "2026-11-05",
+          "close": 4.6080002784729,
+          "previous_close": 4.689000129699707,
+          "display_close": "0.46%",
+          "display_change": "-0.8 bps",
+          "change_pct": -1.727,
+          "yield_change_bps": -0.81,
           "tone": "殖利率下降"
         }
       ],
@@ -15248,65 +15254,58 @@
         },
         {
           "group": "美股前夜",
-          "title": "美股市場出現較大跌幅：費城半導體指數、台積電 ADR、NVIDIA、美光、ASML",
-          "date": "2026-11-04",
+          "title": "美股市場出現較大跌幅：S&P 500、NASDAQ 綜合指數、費城半導體指數、道瓊指數、台積電 ADR、NVIDIA、AMD、美光、ASML",
+          "date": "2026-11-05",
           "tone": "偏空",
           "detail": "單日跌幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
         },
         {
-          "group": "美股前夜",
-          "title": "美股市場出現較大漲幅：S&P 500、道瓊指數",
-          "date": "2026-11-04",
-          "tone": "偏多",
-          "detail": "單日漲幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
-        },
-        {
           "group": "國際新聞",
-          "title": "Chip stocks get slaughtered as Wall Street heads for its worst post-midterm day since 1896 - Yahoo Finance",
-          "date": "2026-11-06 00:34 台北時間",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - KCRA",
+          "date": "2026-11-06 06:16 台北時間",
           "tone": "待判讀",
-          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQdGJxaUFwMFhzNTlQamNCdnlkRmUwUmpsLXhaOUpYaHhFT3pkLVpodEpWdnR4R2NvNGVqQ2NPMERxdjV5bG1RTU5VZ2tHaVFKazRoRUg2VXJYcm1FVUFCdnZaQlRQUG1jRFpFQ29jdGpPclAtOTlRM1RxaktOZ3RsdEdHY05ITmJXSmZtZGlyN0NTM2RGbmxhRG05dW5EcjNGMEYzSTcyeE5zb2FhSENoRzgzZ0pXWnl2WVcwSlp2cHZrV1p2dUF6aFl4M2F2T3lBdWx5dUlNeVNXemx3eUowWQ?oc=5"
+          "detail": "KCRA｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNa1JfT1BLaWo4OEtuY0xmQTRNSHZWbHhmcldjZFFYd2N4ZHdlV29HaDE5MnUxUk9aa3RFYkhzblQwTnd3SWtrWG9NZXFNTnZZSzlPcktBZ05xbDZkTHlNby1reWFrazFneXFzLS1OVjMyVnV4UmF2MWxiQkxvbFlsaDNB?oc=5"
         },
         {
           "group": "國際新聞",
-          "title": "Stock Market Today: An AI Bloodbath: Nasdaq Sinks 5% and the Rest of the Market Is Tumbling Too - Barron's",
-          "date": "2026-11-06 00:27 台北時間",
+          "title": "Stock Market Today, Nov. 5: Nasdaq Suffers Worst Day in 18 Months as AI Trade Comes Under Fire - The Motley Fool",
+          "date": "2026-11-06 05:55 台北時間",
+          "tone": "待判讀",
+          "detail": "The Motley Fool｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNYjFhMXc4eER6ZHJ0QUFOTFRNT1ltUmpXLWFqdzh5Z1JlZnN0M1ZPVFN1SmdudlE4bGdNVndQUjhvTmRqaGJreWdiUGRCLWVLRjJReWZrR0tWN3E1VWJmR0k0bmM5blQ0M0k5TFdJRl9yWS1Ud2htX0tpSE1pZVdXQUhaRzJCMmFRQnJjdXFuLTZXQkRmYnVzTEtuc2JtekFPNTFucHlzUFBOb0ZvTF9vVGhHWEo3OEdqWWw4aFRtVTRKcHYydkozVmtRMzZSa1NCVGdueHc0RWVGU2daa2pibWxUYUdxa1U?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Stock Indexes Routed on Capitulation out of Chipmakers and AI Stocks - Barchart.com",
+          "date": "2026-11-06 05:37 台北時間",
+          "tone": "待判讀",
+          "detail": "Barchart.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOVXBIWmxCU3BCNjdWeklOZF9aeVhzaGpBc1NQYUZmYVF2WmVGOUNSSlR0M001dEVEc2FLQVQ5elFKcWhkM3FuaHc2aXkwZk5nUEZRQlhGUFo2MFJmLVpHUzNHMHVlRkE1ekV1ZmhBUGlRYjdTNkU5enNpeWVNdW4yS19kb21UazRzWElybHNtWHZCdS0xYVlBY055NzY2cXJmd0l4bWViTkZxQ3M2T2hseFRR?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - WRAL",
+          "date": "2026-11-06 05:19 台北時間",
+          "tone": "待判讀",
+          "detail": "WRAL｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPOVp4S0VfNk94andka3phWVlNeXZ1eVFpeDJoZVNxeU9xTVNCdjZMYzgwVGQ0a1VwSEpqeHVONWdhSHFKZVQtMzBtdVZ4dVZMYmJKdHRxMDhwSUU0MlNRTXd6WmNxUEZHY0loZFRzdlhZNVB0Z09PZ2JGN1VReFNya01XUGZZX3pWbUpnUV9Cemt1YkltYWI5ZEtxTHVXaU5ITzVva0tSUEVfR2VLRDNrN0xqR2hKRmRQM002RmQtcFRTYmNsOFB6bg?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Stock Market Today: Inside the AI Panic that Knocked 5.5% Off the Nasdaq - Barron's",
+          "date": "2026-11-06 05:07 台北時間",
           "tone": "待判讀",
           "detail": "Barron's｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1vN2J6OHJCcGFsSkdMcXZQQTZOX2F1YndQSXZzemgtODE4MVJXbTYtbktXMlJaWFdhbFc2dVVUaGlaZzZ4VnFoTzJsM2Q1TmJ1bnB3aXZnYkdlRFFHQnlqRl9vZ283dE9GUU1nZWJfT1hUMEJIZkE?oc=5"
         },
         {
-          "group": "國際新聞",
-          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
-          "date": "2026-11-06 00:14 台北時間",
-          "tone": "待判讀",
-          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Stock Market Today: Nasdaq Sinks 4% as Investors Ditch Chip, Data-Center Stocks — Live Updates - WSJ",
-          "date": "2026-11-06 00:13 台北時間",
-          "tone": "待判讀",
-          "detail": "WSJ｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPd0JqeUJIeUF5NWZ0RVUtVDhfSlJCMjc4U1didmsxU2lRZGdJcUZnNk90V0ZkVy1JNVZKRG10WkFySU1lREhqNUs2ZGlWZXhNRXBNMjVKWlJWajg5OWNFdG91V3VRV1B3cEkzSHNOVkFDaXRwbGJKUkRkX2lRdmtqQ0xGSTN5NVU?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "A wipeout for AI stocks sends Wall Street reeling, and the S&P 500 tumbles more than 3% - LancasterOnline",
-          "date": "2026-11-06 00:12 台北時間",
-          "tone": "待判讀",
-          "detail": "LancasterOnline｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNX19JTU13VW4xX2stUUp5bXFMS3ZtbGdOYnF6am02SlZiNENIRlVHRkJmVUNGdjd6bmphZE5CSjA1eVN1eExYUTc2TEJIbkdzaU8tVHhBSDM4RkhIT3ZEcnVEb3E4cXhTTnllbllmbVRRVUtNM1ZHNDJ3U2V5bEpaSFFMaENkOUtzNkE3dkpYTERoTG9IYlhyNkVNSUplVkV2MmtKUkNBcUlXVlZFWTY0b3V1TTBXRDRwZHR6TGl2V09JQ2dDZHBmVUhMX0hwclZzby1SU25jeldoRjVLa2xSVWhMd3J5dk0zWW9qam5qLXVWNHVCZXhodGZBOVpBLVI5b3d3?oc=5"
-        },
-        {
           "group": "台灣新聞",
-          "title": "台幣逼近33元還會再貶？富邦金羅瑋：弱勢恐延續至明年Q1 央行年底或重估政策 | Newtalk - LINE TODAY",
-          "date": "2026-11-05T10:25+00:00",
+          "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
+          "date": "2026-11-05T21:54+00:00",
           "tone": "待判讀",
-          "detail": "LINE TODAY｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pclRMOTUwV2tSS2xWd21kTEFpMHNDYkdqRTNWVVVlWW16bGpRYnNCYjJjS2lTbW01SWNrRmJVZFBWMXJnTkRwSnB6ZFM0cE1MUUhuNkF3?oc=5"
+          "detail": "信傳媒｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5"
         },
         {
           "group": "台灣新聞",
@@ -15328,104 +15327,106 @@
       "us_news": [
         {
           "category": "國際市場",
-          "title": "Chip stocks get slaughtered as Wall Street heads for its worst post-midterm day since 1896 - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQdGJxaUFwMFhzNTlQamNCdnlkRmUwUmpsLXhaOUpYaHhFT3pkLVpodEpWdnR4R2NvNGVqQ2NPMERxdjV5bG1RTU5VZ2tHaVFKazRoRUg2VXJYcm1FVUFCdnZaQlRQUG1jRFpFQ29jdGpPclAtOTlRM1RxaktOZ3RsdEdHY05ITmJXSmZtZGlyN0NTM2RGbmxhRG05dW5EcjNGMEYzSTcyeE5zb2FhSENoRzgzZ0pXWnl2WVcwSlp2cHZrV1p2dUF6aFl4M2F2T3lBdWx5dUlNeVNXemx3eUowWQ?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-05T16:34+00:00",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - KCRA",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNa1JfT1BLaWo4OEtuY0xmQTRNSHZWbHhmcldjZFFYd2N4ZHdlV29HaDE5MnUxUk9aa3RFYkhzblQwTnd3SWtrWG9NZXFNTnZZSzlPcktBZ05xbDZkTHlNby1reWFrazFneXFzLS1OVjMyVnV4UmF2MWxiQkxvbFlsaDNB?oc=5",
+          "source": "KCRA",
+          "published_at": "2026-11-05T22:16+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-06 00:34 台北時間"
+          "published_at_taipei": "2026-11-06 06:16 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Stock Market Today: An AI Bloodbath: Nasdaq Sinks 5% and the Rest of the Market Is Tumbling Too - Barron's",
+          "title": "Stock Market Today, Nov. 5: Nasdaq Suffers Worst Day in 18 Months as AI Trade Comes Under Fire - The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNYjFhMXc4eER6ZHJ0QUFOTFRNT1ltUmpXLWFqdzh5Z1JlZnN0M1ZPVFN1SmdudlE4bGdNVndQUjhvTmRqaGJreWdiUGRCLWVLRjJReWZrR0tWN3E1VWJmR0k0bmM5blQ0M0k5TFdJRl9yWS1Ud2htX0tpSE1pZVdXQUhaRzJCMmFRQnJjdXFuLTZXQkRmYnVzTEtuc2JtekFPNTFucHlzUFBOb0ZvTF9vVGhHWEo3OEdqWWw4aFRtVTRKcHYydkozVmtRMzZSa1NCVGdueHc0RWVGU2daa2pibWxUYUdxa1U?oc=5",
+          "source": "The Motley Fool",
+          "published_at": "2026-11-05T21:55+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-06 05:55 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "Stock Indexes Routed on Capitulation out of Chipmakers and AI Stocks - Barchart.com",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOVXBIWmxCU3BCNjdWeklOZF9aeVhzaGpBc1NQYUZmYVF2WmVGOUNSSlR0M001dEVEc2FLQVQ5elFKcWhkM3FuaHc2aXkwZk5nUEZRQlhGUFo2MFJmLVpHUzNHMHVlRkE1ekV1ZmhBUGlRYjdTNkU5enNpeWVNdW4yS19kb21UazRzWElybHNtWHZCdS0xYVlBY055NzY2cXJmd0l4bWViTkZxQ3M2T2hseFRR?oc=5",
+          "source": "Barchart.com",
+          "published_at": "2026-11-05T21:37+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-06 05:37 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "A brutal sell-off for AI stocks sends Wall Street reeling, and the S&P 500 tumbles 4.4% - WRAL",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPOVp4S0VfNk94andka3phWVlNeXZ1eVFpeDJoZVNxeU9xTVNCdjZMYzgwVGQ0a1VwSEpqeHVONWdhSHFKZVQtMzBtdVZ4dVZMYmJKdHRxMDhwSUU0MlNRTXd6WmNxUEZHY0loZFRzdlhZNVB0Z09PZ2JGN1VReFNya01XUGZZX3pWbUpnUV9Cemt1YkltYWI5ZEtxTHVXaU5ITzVva0tSUEVfR2VLRDNrN0xqR2hKRmRQM002RmQtcFRTYmNsOFB6bg?oc=5",
+          "source": "WRAL",
+          "published_at": "2026-11-05T21:19+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-06 05:19 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "Stock Market Today: Inside the AI Panic that Knocked 5.5% Off the Nasdaq - Barron's",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1vN2J6OHJCcGFsSkdMcXZQQTZOX2F1YndQSXZzemgtODE4MVJXbTYtbktXMlJaWFdhbFc2dVVUaGlaZzZ4VnFoTzJsM2Q1TmJ1bnB3aXZnYkdlRFFHQnlqRl9vZ283dE9GUU1nZWJfT1hUMEJIZkE?oc=5",
           "source": "Barron's",
-          "published_at": "2026-11-05T16:27+00:00",
+          "published_at": "2026-11-05T21:07+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-06 00:27 台北時間"
+          "published_at_taipei": "2026-11-06 05:07 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "A Sharp Pullback in Chip Stocks Meets Fresh Records in Four of Five Recent Earnings Reports - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSEI0bW9EQ2dkeHY3Q3E4WmhLdng2Vm9TRTZPcEVIYmVXTVZOYkV2UXhJblVYbnBieXU0ZXU2LTk2aWxvazdFUmJ2UkxkR2dad0tPMllzdU82RExmYkxvU0hLYnZyeW9pWHE0Um9XSzJMR1dsSnhaRUVUUkhpamIxcXY5VFdmZUtTMmJ6bUNhZXQwTFV4Wkh4aDQ0WG5GZw?oc=5",
+          "title": "Stock market today: Nasdaq plunges 5% amid chip stock wipeout, Dow and S&P 500 erase post-election rally gains - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZTZIZ0tKbklnYWJvNVFoSXUtcEFER2lUNXBpaUpWeW0zMVgxakZfODVnb0NwdG0tUDFVcGFoakZPbWhNRUlBcHFSM2dlN2RmQ256c19feE1PNjFNclZwQl9aSXFSRi10eGNoc1JjQUxpRGhEa05JT0dJdzBXLXI1LXNoa3pQZEJ4ZjAyNjBLSkF3VGhMckwzVFl4SnJLSlBtTEJXLUc4S2x4NFk3S1lsUGxDc3BKZ3dkeEZ5TmRNbVptdjFxOGFXMUFsQy1UR2l1UklaMUd3?oc=5",
           "source": "Yahoo Finance",
-          "published_at": "2026-11-05T16:14+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
+          "published_at": "2026-11-05T19:37+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-06 00:14 台北時間"
+          "published_at_taipei": "2026-11-06 03:37 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Stock Market Today: Nasdaq Sinks 4% as Investors Ditch Chip, Data-Center Stocks — Live Updates - WSJ",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPd0JqeUJIeUF5NWZ0RVUtVDhfSlJCMjc4U1didmsxU2lRZGdJcUZnNk90V0ZkVy1JNVZKRG10WkFySU1lREhqNUs2ZGlWZXhNRXBNMjVKWlJWajg5OWNFdG91V3VRV1B3cEkzSHNOVkFDaXRwbGJKUkRkX2lRdmtqQ0xGSTN5NVU?oc=5",
-          "source": "WSJ",
-          "published_at": "2026-11-05T16:13+00:00",
+          "title": "MARKETS LIVE: Nasdaq plunges as chip stocks tumble on AI spending concerns - Proactive financial news",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPWVRZdUZxSXlpcDNBWld5a0o4ZnhCU3FCSldKZWU1cktJQVZvRFJDeXpudWxSTzJOTUpnV2xtZE5MNW8ybmRWZWROTmYtMFJ1cjMwSTIwbXpVQzZxWVJ5YWJJek9URmluR0pqMy0telM2ODdEdkpXYVdBMWpqRnladm5OVG1mblgzQnpKMWJ6UF9tc3VVYkExNXhvN2d4Z2cxWmc1Mm1ZbzVreUtRdFpBamMzXzZDSXdBcEZXX2lyY190eUdvVkNzR2dpNTJBNHVsU29MNkM3WFJDWnFz?oc=5",
+          "source": "Proactive financial news",
+          "published_at": "2026-11-05T19:35+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-06 00:13 台北時間"
+          "published_at_taipei": "2026-11-06 03:35 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "A wipeout for AI stocks sends Wall Street reeling, and the S&P 500 tumbles more than 3% - LancasterOnline",
-          "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNX19JTU13VW4xX2stUUp5bXFMS3ZtbGdOYnF6am02SlZiNENIRlVHRkJmVUNGdjd6bmphZE5CSjA1eVN1eExYUTc2TEJIbkdzaU8tVHhBSDM4RkhIT3ZEcnVEb3E4cXhTTnllbllmbVRRVUtNM1ZHNDJ3U2V5bEpaSFFMaENkOUtzNkE3dkpYTERoTG9IYlhyNkVNSUplVkV2MmtKUkNBcUlXVlZFWTY0b3V1TTBXRDRwZHR6TGl2V09JQ2dDZHBmVUhMX0hwclZzby1SU25jeldoRjVLa2xSVWhMd3J5dk0zWW9qam5qLXVWNHVCZXhodGZBOVpBLVI5b3d3?oc=5",
-          "source": "LancasterOnline",
-          "published_at": "2026-11-05T16:12+00:00",
+          "title": "Is the Chip Bubble Bursting? - RealMoney Pro",
+          "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzREZvUUFFRDBhMHFISTI0Wi1QaEJWWmFXQ0VKS2JDXzJ0bEFsQlBkMmFjcEk2aW9TY1dVQVFuU1VkZWNQLS1uanVOZDRkcHVSM214eklnZmhOUTlSWmFVQk81RWMtaUR5RFBsZ3l1YXFEbHB0Q0tvZ1FQSQ?oc=5",
+          "source": "RealMoney Pro",
+          "published_at": "2026-11-05T15:52+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-06 00:12 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Cleveland Fed's Hammack Says Rates Must Turn Restrictive as Inflation Runs Near 6-Year High - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05bDVSZEFqVERlOHYyZlVOTE9PU2ptUkRzTnljbHpFdFltLWREX0FrYTRpRWJpeWJ1VE0wYTFQVmROLXJDWURTbDViRThnR19QUUVKejBkVmdBZnY0Um9qTmpZb3QxRUdDTjEwaV8yZjJuWlZHbVE?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-11-05T15:35+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-05 23:35 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Wall Street's midterm sugar high fades as tech rout wipes out $2T (SP500:) - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNX3hGbDRyZTNuQUpIRi1Bb0d3YW8wcm14VUl5SjBfTWRHOVdHWE1kQnRlT2JDaUhOY1d6X0Y4Z0R2SE1xMDE4VXRUcmcwTGpVa3VoZFdZZmxsTU5aWWxfQ1FBcnR2MWZBamVmazE2bkdMYTVZa0ZHNmNpXzRoczdjYWRDbm9rVEtEVWFjaFVSN3owT2lrTFlPS0tPcW1wN1pQYU1r?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-05T15:34+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-05 23:34 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Tech stocks plunge on worries about AI and Democrats’ midterm landslide - NBC News",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOOTNfLWhKbG1YQW94UmZzUGpiYlNJUlNhZWstcGdKNE9mVnRlWDhTcE1FSW9iZkpwTDI3S1R2QWNoTFhndEN4bFpwMXQwQ1paZDlNbXNxSlBRNVh5MlVKOVNKMHowZVNiN00xX2FfcHVyeFBIVzhaVF96azRNWE5VZ1VndXItWmdwelE?oc=5",
-          "source": "NBC News",
-          "published_at": "2026-11-05T15:32+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-05 23:32 台北時間"
+          "published_at_taipei": "2026-11-05 23:52 台北時間"
         }
       ],
       "domestic_news": [
         {
           "category": "台灣市場",
-          "title": "台幣逼近33元還會再貶？富邦金羅瑋：弱勢恐延續至明年Q1 央行年底或重估政策 | Newtalk - LINE TODAY",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pclRMOTUwV2tSS2xWd21kTEFpMHNDYkdqRTNWVVVlWW16bGpRYnNCYjJjS2lTbW01SWNrRmJVZFBWMXJnTkRwSnB6ZFM0cE1MUUhuNkF3?oc=5",
-          "source": "LINE TODAY",
-          "published_at": "2026-11-05T10:25+00:00",
+          "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5",
+          "source": "信傳媒",
+          "published_at": "2026-11-05T21:54+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-05 18:25 台北時間"
+          "published_at_taipei": "2026-11-06 05:54 台北時間"
         },
         {
           "category": "台灣市場",

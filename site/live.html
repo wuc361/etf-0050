@@ -65,7 +65,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
   try{
    const a=await fetch("./data/intraday.json?ts="+Date.now(),{cache:"no-store"});
    if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();
-   $("status").textContent=live.label||live.status;const quoteRows=live.quotes||[];const twQuote=quoteRows.find(x=>x.ticker==="0050.TW");const usQuote=quoteRows.filter(x=>!x.ticker.endsWith(".TW")&&x.latest_bar_time).sort((a,b)=>String(b.latest_bar_time).localeCompare(String(a.latest_bar_time)))[0];$("updated").textContent="台灣市場資料日："+((twQuote&&twQuote.market_date_taipei)||"—")+"｜美股／期貨最新觀測（台灣時間）："+((usQuote&&usQuote.latest_bar_time)||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
+   $("status").textContent=live.label||live.status;const twQuote=(live.quotes||[]).find(x=>x.ticker==="0050.TW");$("updated").textContent="0050 交易日期："+((twQuote&&twQuote.market_date_taipei)||"—")+"｜最新K線時間："+((twQuote&&twQuote.latest_bar_time)||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜更新目標：每5分鐘";
    const etf=(live.quotes||[]).find(x=>x.ticker==="0050.TW");
    if(etf&&etf.price!=null){
     $("price").textContent=fmt(etf.price);$("change").textContent="最近一根5分鐘K："+pct(etf.five_min_change_pct);$("change").className=cls(etf.five_min_change_pct);

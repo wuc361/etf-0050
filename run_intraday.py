@@ -20,6 +20,11 @@ WATCHLIST = {
     "0050.TW": "元大台灣50",
     "2330.TW": "台積電",
     "^TWII": "台灣加權指數",
+    "^SOX": "費城半導體指數",
+    "^IXIC": "NASDAQ 綜合指數",
+    "TSM": "台積電 ADR",
+    "NVDA": "NVIDIA",
+    "^VIX": "VIX 波動率指數",
     "NQ=F": "NASDAQ 100 期貨",
     "ES=F": "S&P 500 期貨",
 }
@@ -34,7 +39,7 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
     result = {"ticker": ticker, "name": label, "status": "unavailable"}
     try:
         bars = yf.Ticker(ticker).history(
-            period="1d", interval="5m", auto_adjust=False, prepost=False, timeout=15
+            period="1d", interval="5m", auto_adjust=False, prepost=True, timeout=15
         )
         if bars is None or bars.empty:
             result["message"] = "資料供應商目前沒有回傳 5 分鐘行情"

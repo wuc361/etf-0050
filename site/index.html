@@ -41,6 +41,8 @@
     .chart-panel { background:#101a2b; border:1px solid #34445d; border-radius:12px; padding:10px; }
     .chart-panel h3 { margin:4px 4px 10px; font-size:1rem; }
     .chart-panel canvas { height:300px; cursor:crosshair; touch-action:pan-y; }
+    #margin-history-chart { height:300px; }
+    #margin-history-summary .metric strong { font-variant-numeric:tabular-nums; }
     #chart-crosshair-info { margin:10px 0 14px; padding:12px 14px; border:1px solid #3b4c66; border-radius:10px; background:#0b1628; color:#dbeafe; font-size:.88rem; line-height:1.7; font-variant-numeric:tabular-nums; }
     #chart-crosshair-info strong { color:#fff; }
     .chart-hint { color:#9ca3af; font-size:.82rem; margin:6px 2px 10px; }
@@ -103,6 +105,14 @@
     <h2>🧪 模型比較（相同樣本外測試區間）</h2>
     <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
     <p class="section-caption">正式模型依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；若沒有候選模型通過門檻，退回 Logistic Regression。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+  </section>
+  <section class="card" id="margin-history-section">
+    <h2>🛡️ 0050 歷史融資維持率與成本趨勢</h2>
+    <p class="section-caption">每日收盤後更新。曲線為 0050 市場平均融資成本推估值，非個人帳戶實際維持率；移動游標可查看日期、維持率、推估成本及收盤價。</p>
+    <div class="metric-grid" id="margin-history-summary"><div class="metric"><span>最新維持率</span><strong>載入中…</strong></div><div class="metric"><span>推估融資成本</span><strong>—</strong></div><div class="metric"><span>資料日期</span><strong>—</strong></div></div>
+    <div class="chart-panel" style="margin-top:12px"><h3>0050 融資維持率（%）</h3><canvas id="margin-history-chart" aria-label="0050歷史融資維持率趨勢圖"></canvas></div>
+    <p id="margin-history-point" class="chart-hint" aria-live="polite">載入歷史資料後，可將游標移到圖表查看每日推估融資成本。</p>
+    <p id="margin-history-meta" class="section-caption">資料來源與計算口徑載入中…</p>
   </section>
   <section class="card">
     <h2>🛡️ 市場恐慌偵測與風險狀態</h2>
@@ -207,6 +217,15 @@
     if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
     const d = await response.json();
     if (d.status !== 'ok') throw new Error('最近一次模型執行未成功。');
+    try {
+      const marginResponse = await fetch('./data/intraday.json?ts=' + Date.now(), { cache: 'no-store' });
+      if (marginResponse.ok) {
+        const liveSnapshot = await marginResponse.json();
+        renderMarginHistory(liveSnapshot.margin_maintenance || {});
+      } else {
+        renderMarginHistory({});
+      }
+    } catch (_) { renderMarginHistory({}); }
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     setupChartTimeframes(d.history || []);
@@ -242,6 +261,78 @@
   } catch (e) {
     $('status').textContent = '尚未取得有效預測';
     $('error').textContent = e.message + ' 請至 GitHub Actions 查看最近一次執行紀錄。';
+  }
+  function renderMarginHistory(margin) {
+    const history = Array.isArray(margin.history) ? margin.history.filter(x =>
+      Number.isFinite(Number(x.maintenance_pct)) && x.date
+    ) : [];
+    const summary = $('margin-history-summary');
+    const latest = margin.etf_0050 || history[history.length - 1];
+    if (latest) {
+      summary.innerHTML = [
+        ['最新維持率', Number(latest.maintenance_pct).toFixed(2) + '%'],
+        ['推估融資成本', Number(latest.margin_cost_estimate).toFixed(2) + ' 元'],
+        ['資料日期', latest.date || '—']
+      ].map(([label, value]) => '<div class="metric"><span>' + label + '</span><strong>' + value + '</strong></div>').join('');
+    } else {
+      summary.innerHTML = '<div class="metric"><span>歷史維持率</span><strong>暫無資料</strong></div>';
+    }
+    const canvas = $('margin-history-chart');
+    const info = $('margin-history-point');
+    const meta = $('margin-history-meta');
+    if (!canvas) return;
+    const cssWidth = Math.max(320, canvas.clientWidth || 900);
+    const cssHeight = 300;
+    const ratio = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.round(cssWidth * ratio);
+    canvas.height = Math.round(cssHeight * ratio);
+    canvas.style.width = '100%';
+    canvas.style.height = cssHeight + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
+    if (history.length < 2) {
+      ctx.fillStyle = '#9ca3af'; ctx.font = '14px sans-serif';
+      ctx.fillText('目前尚無足夠的歷史維持率資料', 18, 36);
+      meta.textContent = margin.error || '等待每日融資資料更新。';
+      return;
+    }
+    const left=54, right=18, top=18, bottom=42;
+    const values=history.map(x=>Number(x.maintenance_pct));
+    const min=Math.min(120, Math.floor((Math.min(...values)-5)/10)*10);
+    const max=Math.max(180, Math.ceil((Math.max(...values)+5)/10)*10);
+    const x=i=>left+i*(cssWidth-left-right)/(history.length-1);
+    const y=v=>top+(max-v)*(cssHeight-top-bottom)/(max-min);
+    ctx.font='11px sans-serif';ctx.textAlign='right';ctx.textBaseline='middle';
+    for(let v=Math.ceil(min/10)*10;v<=max;v+=10){
+      const yy=y(v);ctx.strokeStyle='#29364c';ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(cssWidth-right,yy);ctx.stroke();
+      ctx.fillStyle='#9ca3af';ctx.fillText(v+'%',left-8,yy);
+    }
+    [130,150].forEach(v=>{
+      if(v<min||v>max)return;
+      ctx.setLineDash([5,4]);ctx.strokeStyle=v===130?'#ef4444':'#d97706';ctx.beginPath();ctx.moveTo(left,y(v));ctx.lineTo(cssWidth-right,y(v));ctx.stroke();ctx.setLineDash([]);
+    });
+    ctx.strokeStyle='#60a5fa';ctx.lineWidth=2;ctx.beginPath();
+    values.forEach((v,i)=>i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)));ctx.stroke();
+    ctx.fillStyle='#60a5fa';values.forEach((v,i)=>{if(i===0||i===values.length-1||i%Math.ceil(values.length/20)===0){ctx.beginPath();ctx.arc(x(i),y(v),2.5,0,Math.PI*2);ctx.fill();}});
+    ctx.fillStyle='#9ca3af';ctx.textAlign='center';ctx.textBaseline='top';
+    const ticks=Math.min(6,history.length);
+    for(let k=0;k<ticks;k++){const i=Math.round(k*(history.length-1)/(ticks-1||1));ctx.fillText(history[i].date.slice(5),x(i),cssHeight-bottom+10);}
+    const showPoint=i=>{
+      const row=history[Math.max(0,Math.min(history.length-1,i))];
+      info.textContent=row.date+'｜維持率 '+Number(row.maintenance_pct).toFixed(2)+'%｜推估融資成本 '+Number(row.margin_cost_estimate).toFixed(2)+' 元｜收盤 '+Number(row.close).toFixed(2)+' 元';
+    };
+    showPoint(history.length-1);
+    if(!canvas.dataset.bound){
+      canvas.addEventListener('pointermove',event=>{
+        const rect=canvas.getBoundingClientRect();
+        const px=event.clientX-rect.left;
+        const idx=Math.round((px-left)*(history.length-1)/(cssWidth-left-right));
+        showPoint(idx);
+      });
+      canvas.dataset.bound='1';
+    }
+    meta.textContent='資料日期 '+history[0].date+' 至 '+history[history.length-1].date+'｜共 '+history.length+' 個交易日｜來源：FinMind 個股每日融資與收盤價｜估算值，非個人帳戶維持率。';
   }
   function toneClass(tone) {
     if (tone === '偏多') return 'positive';

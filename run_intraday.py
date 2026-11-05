@@ -117,47 +117,121 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
         result["message"] = f"{type(exc).__name__}: {str(exc)[:180]}"
     return result
 
-def fetch_market_margin_maintenance() -> dict:
-    """Fetch the latest published third-party market-wide maintenance estimate."""
-    url = "https://www.istock.tw/post/twmarginrequirement"
-    try:
-        request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; ETF-0050-monitor/1.0)"})
-        with urlopen(request, timeout=18) as response:
-            raw = response.read().decode("utf-8", errors="replace")
-        text = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
-        text = re.sub(r"\s+", " ", text)
-        match = re.search(
-            r"最新大盤融資維持率.*?上市[）)]?\s*([0-9]+(?:\.[0-9]+)?)%.*?(20\d{2}-\d{2}-\d{2}).*?上櫃\s*([0-9]+(?:\.[0-9]+)?)%.*?整體\s*([0-9]+(?:\.[0-9]+)?)%",
-            text,
+def fetch_0050_margin_maintenance() -> dict:
+    """Estimate 0050's margin maintenance ratio from public daily price/financing data.
+
+    This is an aggregate position-cost estimate, not a broker's account-level ratio.
+    FinMind's free per-symbol datasets provide daily close and margin transactions.
+    """
+    from urllib.parse import urlencode
+    import os
+
+    base_url = "https://api.finmindtrade.com/api/v4/data"
+    headers = {"User-Agent": "ETF-0050-monitor/1.0"}
+    token = os.getenv("FINMIND_TOKEN", "").strip()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    def fetch_dataset(dataset: str) -> list[dict]:
+        params = {
+            "dataset": dataset,
+            "data_id": "0050",
+            "start_date": "2024-01-01",
+        }
+        request = Request(
+            f"{base_url}?{urlencode(params)}",
+            headers=headers,
         )
-        if not match:
-            raise ValueError("頁面未找到上市、上櫃及整體融資維持率")
-        listed, date, otc, overall = match.groups()
+        with urlopen(request, timeout=25) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        rows = payload.get("data")
+        if not isinstance(rows, list) or not rows:
+            raise ValueError(f"{dataset} 沒有回傳有效資料：{payload.get('msg', 'empty data')}")
+        return rows
+
+    try:
+        prices = fetch_dataset("TaiwanStockPrice")
+        margins = fetch_dataset("TaiwanStockMarginPurchaseShortSale")
+        close_by_date = {
+            str(row.get("date"))[:10]: float(row["close"])
+            for row in prices
+            if row.get("date") and row.get("close") not in (None, "")
+        }
+        margin_by_date = {
+            str(row.get("date"))[:10]: row
+            for row in margins
+            if row.get("date")
+        }
+
+        # 0050 completed a 4-for-1 split on 2025-06-18.
+        # Convert the pre-split moving cost into post-split price units.
+        split_factors = {"2025-06-18": 4.0}
+        moving_cost = None
+        latest = None
+        for day in sorted(set(close_by_date).intersection(margin_by_date)):
+            close = close_by_date[day]
+            row = margin_by_date[day]
+            balance = float(row.get("MarginPurchaseTodayBalance") or 0)
+            buy = float(row.get("MarginPurchaseBuy") or 0)
+
+            if day in split_factors and moving_cost is not None:
+                moving_cost /= split_factors[day]
+
+            if balance <= 0:
+                moving_cost = None
+                continue
+
+            if moving_cost is None:
+                # Initial observable balance: seed with that day's close.
+                moving_cost = close
+            else:
+                # XQ-style moving average estimate. Sales and cash repayments
+                # reduce the old position; the current balance less today's buys
+                # is treated as the remaining old position.
+                old_balance = max(balance - buy, 0.0)
+                moving_cost = (
+                    moving_cost * old_balance + close * buy
+                ) / balance if balance else None
+
+            if moving_cost and moving_cost > 0:
+                ratio = close / (moving_cost * 0.60) * 100
+                latest = {
+                    "date": day,
+                    "close": round(close, 4),
+                    "margin_balance_shares": int(balance),
+                    "margin_cost_estimate": round(moving_cost, 4),
+                    "financing_ratio": 0.60,
+                    "maintenance_pct": round(ratio, 2),
+                }
+
+        if not latest:
+            raise ValueError("0050 融資資料與收盤價沒有可計算的共同日期")
+
         return {
             "status": "estimated",
-            "data_date": date,
-            "listed_pct": float(listed),
-            "otc_pct": float(otc),
-            "overall_pct": float(overall),
-            "source": "愛玩股（彙整市場公開資料）",
-            "source_url": url,
-            "is_official_aggregate": False,
-            "note": "第三方彙整／推估的市場平均值，不是證交所逐戶整戶維持率，也不是個人帳戶數字。",
+            "etf_0050": latest,
+            "source": "FinMind 免費個股每日資料（融資交易＋收盤價）",
+            "source_url": "https://finmind.github.io/tutor/TaiwanMarket/Chip/",
+            "method": "依每日融資買進、融資餘額與收盤價推估移動平均融資成本；維持率＝收盤價÷（推估成本×60%）×100%。",
+            "history_start": "2024-01-01",
+            "note": "0050 個股市場平均估算，不是券商逐戶實際維持率；融資成數採法定最高 60%，個別帳戶與個別部位可能不同。",
+            "market_wide": {
+                "status": "not_calculated",
+                "note": "上市／上櫃整體維持率暫不自行推算：公開資料的融資餘額張數與融資金額、擔保品市值未能在同一口徑完整核對，避免產生誤導數字。",
+            },
         }
     except Exception as exc:
         return {
             "status": "unavailable",
-            "data_date": None,
-            "listed_pct": None,
-            "otc_pct": None,
-            "overall_pct": None,
-            "source": "愛玩股",
-            "source_url": url,
-            "is_official_aggregate": False,
-            "error": f"{type(exc).__name__}: {str(exc)[:160]}",
-            "note": "目前無法取得最新估算值；請勿以舊資料冒充最新維持率。",
+            "etf_0050": None,
+            "source": "FinMind 公開個股每日資料",
+            "error": f"{type(exc).__name__}: {str(exc)[:180]}",
+            "market_wide": {
+                "status": "not_calculated",
+                "note": "上市／上櫃整體維持率暫不自行推算，避免以不完整資料產生誤導數字。",
+            },
+            "note": "目前無法取得新的 0050 融資維持率估算；不以舊資料冒充最新數值。",
         }
-
 
 def main():
     now = datetime.now(TAIPEI)
@@ -180,7 +254,15 @@ def main():
             fallback["is_stale_fallback"] = True
             fallback["message"] = "本次來源暫時無回傳；保留上次成功資料並明確標示時間，避免顯示空值。"
             quotes[quotes.index(quote)] = fallback
-    margin_maintenance = fetch_market_margin_maintenance()
+    margin_maintenance = fetch_0050_margin_maintenance()
+    if margin_maintenance.get("status") == "unavailable":
+        old_margin = previous_payload.get("margin_maintenance", {})
+        old_etf = old_margin.get("etf_0050") if isinstance(old_margin, dict) else None
+        if old_etf and old_margin.get("status") in ("estimated", "stale"):
+            margin_maintenance["etf_0050"] = old_etf
+            margin_maintenance["status"] = "stale"
+            margin_maintenance["previous_data_date"] = old_etf.get("date")
+            margin_maintenance["note"] = "本次資料來源暫時無回傳；保留上次成功估算並標示原資料日期，不視為最新值。"
     etf = next((q for q in quotes if q["ticker"] == "0050.TW"), None)
     in_cash_hours = time(9, 0) <= now.time().replace(tzinfo=None) <= time(13, 35)
     etf_has_price = bool(etf and etf.get("price") is not None)

@@ -76,7 +76,7 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
   try{
    const [a,b]=await Promise.all([fetch("https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
    if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();const daily=b.ok?await b.json():{};
-   $("status").textContent=live.label||live.status;$("updated").textContent="台灣資料日期："+(live.trading_date_taipei||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
+   $("status").textContent=live.label||live.status;const quoteRows=live.quotes||[];const twQuote=quoteRows.find(x=>x.ticker==="0050.TW");const usQuote=quoteRows.filter(x=>!x.ticker.endsWith(".TW")&&x.latest_bar_time).sort((a,b)=>String(b.latest_bar_time).localeCompare(String(a.latest_bar_time)))[0];$("updated").textContent="台灣市場資料日："+((twQuote&&twQuote.market_date_taipei)||"—")+"｜美股／期貨最新觀測（台灣時間）："+((usQuote&&usQuote.latest_bar_time)||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
    const margin=live.margin_maintenance||{};
    const marginHost=$("margin-ratio-cards");
    const marginMeta=$("margin-ratio-meta");
@@ -101,11 +101,11 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
     $("prev-close").textContent="前一交易日收盤："+fmt(etf.previous_close);
     $("range").textContent=fmt(etf.low)+" – "+fmt(etf.high);$("volume").textContent="當日累計成交量："+(etf.volume==null?"—":Number(etf.volume).toLocaleString("zh-TW"));
     draw(etf.bars||[]);$("chart-note").textContent="最新行情時間："+(etf.latest_bar_time||"—");
-   }else{$("chart-note").textContent="目前未取得今日 0050 盤中報價；請留意資料供應商或台灣休市日。"}
+   }else{$("chart-note").textContent="目前沒有可用的0050價格；若供應商暫時中斷，系統會優先保留上次成功資料並標示實際時間。"}
    const f=daily.forecasts&&daily.forecasts["1d"];
    $("forecast").textContent=f?(f.direction==="UP"?"偏多":"偏空")+" "+fmt(f.up_probability*100,1)+"%":"—";
    $("forecast-meta").textContent=f?"模型資料截至 "+(daily.data_as_of||"—")+"；此為最近一次每日模型結果，非盤中重新訓練":"每日預測尚未載入";
-   $("quotes").innerHTML=(live.quotes||[]).map(q=>'<tr><td>'+q.name+'<br><small>'+q.ticker+'</small></td><td>'+fmt(q.price)+'</td><td class="'+cls(q.change_pct)+'">'+pct(q.change_pct)+'</td><td class="'+cls(q.five_min_change_pct)+'">'+pct(q.five_min_change_pct)+'</td><td>'+((q.latest_bar_time||"—").replace("T"," "))+'</td><td>'+(q.status==="live"?"已取得當日資料":"無當日資料")+'</td></tr>').join("")||'<tr><td colspan="6">目前沒有行情</td></tr>';
+   $("quotes").innerHTML=(live.quotes||[]).map(q=>{const state=q.status==="live"?"當日行情":q.status==="latest"?"最近交易日（已收盤）":q.status==="stale"?"沿用上次成功資料":q.status==="latest_today"?"今日最新資料":"資料暫缺";return '<tr><td>'+q.name+'<br><small>'+q.ticker+'</small></td><td>'+fmt(q.price)+'</td><td class="'+cls(q.change_pct)+'">'+pct(q.change_pct)+'</td><td class="'+cls(q.five_min_change_pct)+'">'+pct(q.five_min_change_pct)+'</td><td>'+((q.latest_bar_time||"—").replace("T"," ")) +'</td><td>'+state+'</td></tr>';}).join("")||'<tr><td colspan="6">目前沒有行情</td></tr>';
    $("note").textContent=live.note||"—";
   }catch(e){$("status").textContent="資料載入失敗";$("updated").textContent=e.message}
  }

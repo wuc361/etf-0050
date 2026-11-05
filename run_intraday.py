@@ -49,18 +49,19 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
             return result
 
         bars = bars.dropna(subset=["Close"]).copy()
+        # Keep the exchange-local session date separate from the Taipei
+        # observation date. A US session on Nov 5 spans Nov 5 and Nov 6 in Taipei.
         bars["taipei_time"] = [taipei_timestamp(x) for x in bars.index]
-        bars["market_date_taipei"] = [x.date().isoformat() for x in bars["taipei_time"]]
-        today_bars = bars[bars["market_date_taipei"] == today]
-        is_today = not today_bars.empty
-        quote_date = today if is_today else str(bars["market_date_taipei"].iloc[-1])
-        session_bars = bars[bars["market_date_taipei"] == quote_date]
+        bars["exchange_session_date"] = [pd.Timestamp(x).date().isoformat() for x in bars.index]
+        latest_time = bars["taipei_time"].iloc[-1]
+        quote_taipei_date = latest_time.date().isoformat()
+        quote_exchange_date = str(bars["exchange_session_date"].iloc[-1])
+        session_bars = bars[bars["exchange_session_date"] == quote_exchange_date]
         if session_bars.empty:
             result["message"] = "沒有可用的有效交易時段K線"
             return result
 
         latest = session_bars.iloc[-1]
-        latest_time = session_bars["taipei_time"].iloc[-1]
         previous_close = None
         try:
             daily = yf.Ticker(ticker).history(
@@ -68,11 +69,10 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
             )
             if daily is not None and not daily.empty:
                 daily = daily.dropna(subset=["Close"])
-                prior = []
-                for idx, row in daily.iterrows():
-                    day = taipei_timestamp(idx).date().isoformat()
-                    if day < quote_date:
-                        prior.append(float(row["Close"]))
+                prior = [
+                    float(row["Close"]) for idx, row in daily.iterrows()
+                    if pd.Timestamp(idx).date().isoformat() < quote_exchange_date
+                ]
                 if prior:
                     previous_close = prior[-1]
         except Exception:
@@ -84,10 +84,12 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
         change_pct = (last_price / previous_close - 1) * 100 if previous_close else None
         five_min_pct = (last_price / previous_bar_close - 1) * 100 if previous_bar_close else None
         volume = float(session_bars["Volume"].fillna(0).sum()) if "Volume" in session_bars else None
+        is_today = quote_taipei_date == today
         status = "live" if is_today else "latest"
         result.update({
             "status": status,
-            "market_date_taipei": quote_date,
+            "market_date_taipei": quote_taipei_date,
+            "exchange_session_date": quote_exchange_date,
             "is_current_taipei_date": is_today,
             "latest_bar_time": latest_time.isoformat(timespec="seconds"),
             "price": last_price,

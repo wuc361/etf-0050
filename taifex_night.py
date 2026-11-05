@@ -234,7 +234,8 @@ def build_night_dashboard(records, fetch_status, latest_taiwan_date):
     elif fresh:
         label = "夜盤已收盤，可供下一交易日開盤模型使用"
     else:
-        label = "已保存最近夜盤；等待下一交易日所屬夜盤收盤"
+        latest_date = latest.get("date", "未知日期")
+        label = f"夜盤資料尚未更新：目前最新官方資料為 {latest_date}；尚無晚於最近台股收盤日（{latest_taiwan_date}）的夜盤，暫不提供隔日開盤訊號"
     model_enabled = history_count >= MIN_NIGHT_HISTORY
     return {
         "status": "available" if latest else "unavailable",

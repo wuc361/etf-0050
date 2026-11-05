@@ -13,7 +13,8 @@ a{color:#93c5fd}.muted{color:#9ca3af}.status{display:inline-block;padding:6px 11
 .label{color:#9ca3af;font-size:.9rem}.value{font-size:1.65rem;font-weight:750;margin-top:7px}
 .up{color:#f87171}.down{color:#34d399}.neutral{color:#cbd5e1}
 table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:right;padding:10px 8px;border-bottom:1px solid #29364c;white-space:nowrap}th:first-child,td:first-child{text-align:left}
-.scroll{overflow-x:auto}canvas{width:100%;height:260px;background:#101a2b;border-radius:10px}
+.scroll{overflow-x:auto}canvas{display:block;width:100%;height:320px;background:#101a2b;border-radius:10px}
+#chart{height:320px} .chart-caption{font-size:.85rem;color:#9ca3af;line-height:1.6}
 small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #475569;border-radius:8px;padding:4px 7px}
 .margin-value{font-size:2rem;font-weight:800;margin:8px 0;font-variant-numeric:tabular-nums}.margin-sub{color:#9ca3af;font-size:.82rem;line-height:1.5}.margin-alert{border-color:#a16207}.margin-good{border-color:#2563eb}
 
@@ -27,19 +28,9 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
  <article class="card"><div class="label">0050 最新 5 分鐘報價</div><div id="price" class="value">—</div><p id="change" class="muted">—</p></article>
  <article class="card"><div class="label">相對前一交易日收盤</div><div id="day-change" class="value">—</div><p id="prev-close" class="muted">—</p></article>
  <article class="card"><div class="label">當日區間</div><div id="range" class="value">—</div><p id="volume" class="muted">—</p></article>
- <article class="card"><div class="label">每日模型預測（最近一次正式計算）</div><div id="forecast" class="value">—</div><p id="forecast-meta" class="muted">—</p></article>
+ 
 </div>
-<section class="card"><h2>台灣市場與美股期貨觀察</h2><div class="scroll"><table><thead><tr><th>標的</th><th>最新價格</th><th>日漲跌</th><th>5分鐘變化</th><th>行情時間</th><th>狀態</th></tr></thead><tbody id="quotes"><tr><td colspan="6">載入中…</td></tr></tbody></table></div></section>
-<section class="card"><h2>0050 今日 5 分鐘走勢</h2><canvas id="chart" width="1000" height="260"></canvas><p id="chart-note" class="muted">—</p></section>
-<section class="card" id="margin-monitor">
- <h2>🛡️ 0050 融資維持率與市場槓桿風險</h2>
- <p class="muted">0050 個股融資維持率估算，每日盤後更新；不是盤中即時值，也不是任何個人帳戶的實際維持率。</p>
- <div id="margin-ratio-cards" class="grid">
-  <article class="card"><div class="label">0050 個股融資維持率（估算）</div><div class="margin-value">等待資料…</div></article>
- </div>
- <p id="margin-ratio-meta" class="margin-sub">等待 0050 融資維持率資料…</p>
- <p class="muted">上市／上櫃整體維持率：目前不以不完整的融資餘額資料自行換算，避免產生錯誤百分比。此處的 0050 數值採每日融資交易與收盤價推估移動平均成本，並非券商逐戶實際數字。</p>
-</section>
+<section class="card"><h2>0050 今日 5 分鐘走勢</h2><p id="chart-session" class="chart-caption">台灣時間｜日期與每個時間刻度將顯示於圖表下方</p><canvas id="chart" width="1000" height="320" aria-label="0050今日五分鐘走勢，橫軸為台灣時間"></canvas><p id="chart-note" class="muted">—</p></section>
 <section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
 <p class="muted"><a href="./index.html">返回每日預測與歷史 K 線</a></p>
 </main>
@@ -50,39 +41,31 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
  const pct=v=>v==null?"—":(v>0?"+":"")+fmt(v,2)+"%";
  const cls=v=>v==null?"neutral":v>0?"up":v<0?"down":"neutral";
  function draw(bars){
-  const c=$("chart"),ctx=c.getContext("2d"),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);
-  if(!bars||bars.length<2){ctx.fillStyle="#9ca3af";ctx.fillText("尚無足夠的今日 0050 5 分鐘資料",20,35);return}
-  const values=bars.map(x=>x.close).filter(Number.isFinite),lo=Math.min(...values),hi=Math.max(...values),pad=(hi-lo)*.12||.1;
-  ctx.strokeStyle="#34445d";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=15+i*(h-35)/4;ctx.beginPath();ctx.moveTo(45,y);ctx.lineTo(w-10,y);ctx.stroke()}
-  ctx.fillStyle="#9ca3af";ctx.font="12px sans-serif";ctx.fillText(fmt(hi+pad),4,20);ctx.fillText(fmt(lo-pad),4,h-12);
+  const c=$("chart"),ctx=c.getContext("2d"),w=1000,h=320;
+  c.width=w;c.height=h;ctx.clearRect(0,0,w,h);
+  if(!bars||bars.length<2){ctx.fillStyle="#9ca3af";ctx.font="14px sans-serif";ctx.fillText("尚無足夠的今日 0050 5 分鐘資料",20,35);return}
+  const points=bars.filter(x=>Number.isFinite(Number(x.close)));
+  const values=points.map(x=>Number(x.close)),lo=Math.min(...values),hi=Math.max(...values),pad=(hi-lo)*.12||.1;
+  const left=58,right=18,top=18,bottom=48;
+  const x=i=>left+i*(w-left-right)/(points.length-1);
+  const y=v=>top+(hi+pad-v)*(h-top-bottom)/(hi-lo+2*pad);
+  ctx.font="12px sans-serif";ctx.textAlign="right";ctx.textBaseline="middle";
+  for(let i=0;i<5;i++){const yy=top+i*(h-top-bottom)/4;ctx.strokeStyle="#34445d";ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(w-right,yy);ctx.stroke();const val=hi+pad-i*(hi-lo+2*pad)/4;ctx.fillStyle="#9ca3af";ctx.fillText(fmt(val),left-8,yy);}
   ctx.strokeStyle="#60a5fa";ctx.lineWidth=2;ctx.beginPath();
-  values.forEach((v,i)=>{const x=45+i*(w-60)/(values.length-1),y=15+(hi+pad-v)/(hi-lo+2*pad)*(h-35);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();
-  const last=values[values.length-1],x=w-15,y=15+(hi+pad-last)/(hi-lo+2*pad)*(h-35);ctx.fillStyle="#f8fafc";ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();
+  values.forEach((v,i)=>i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)));ctx.stroke();
+  ctx.fillStyle="#f8fafc";ctx.beginPath();ctx.arc(x(points.length-1),y(values[values.length-1]),4,0,Math.PI*2);ctx.fill();
+  ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#9ca3af";
+  const ticks=Math.min(7,points.length);
+  for(let k=0;k<ticks;k++){const i=Math.round(k*(points.length-1)/(ticks-1||1));const time=String(points[i].time||"").slice(11,16);ctx.fillText(time,x(i),h-bottom+12);}
+  $("chart-session").textContent="交易日期："+String(points[0].time||"").slice(0,10)+"｜台灣時間（UTC+8）｜每根K線代表5分鐘";
+  $("chart-note").textContent="最新一根："+String(points[points.length-1].time||"—").replace("T"," ")+"｜收盤 "+fmt(values[values.length-1])+" 元";
  }
+
  async function load(){
   try{
-   const [a,b]=await Promise.all([fetch("https://raw.githubusercontent.com/wuc361/etf-0050/main/site/data/intraday.json?ts="+Date.now(),{cache:"no-store"}),fetch("./data/latest.json?ts="+Date.now(),{cache:"no-store"})]);
-   if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();const daily=b.ok?await b.json():{};
+   const a=await fetch("./data/intraday.json?ts="+Date.now(),{cache:"no-store"});
+   if(!a.ok)throw new Error("盤中資料尚未發布");const live=await a.json();
    $("status").textContent=live.label||live.status;const quoteRows=live.quotes||[];const twQuote=quoteRows.find(x=>x.ticker==="0050.TW");const usQuote=quoteRows.filter(x=>!x.ticker.endsWith(".TW")&&x.latest_bar_time).sort((a,b)=>String(b.latest_bar_time).localeCompare(String(a.latest_bar_time)))[0];$("updated").textContent="台灣市場資料日："+((twQuote&&twQuote.market_date_taipei)||"—")+"｜美股／期貨最新觀測（台灣時間）："+((usQuote&&usQuote.latest_bar_time)||"—")+"｜最後抓取："+(live.generated_at_taipei||"—")+"｜目標更新頻率：5分鐘";
-   const margin=live.margin_maintenance||{};
-   const etfMargin=margin.etf_0050||null;
-   const marginHost=$("margin-ratio-cards");
-   const marginMeta=$("margin-ratio-meta");
-   if(etfMargin&&Number.isFinite(Number(etfMargin.maintenance_pct))){
-    const value=Number(etfMargin.maintenance_pct);
-    const card=document.createElement("article");
-    card.className="card"+(value<150?" margin-alert":value>=170?" margin-good":"");
-    const title=document.createElement("div");title.className="label";title.textContent="0050 個股融資維持率（估算）";
-    const number=document.createElement("div");number.className="margin-value";number.textContent=value.toFixed(2)+"%";
-    const note=document.createElement("div");note.className="margin-sub";
-    note.textContent="收盤價 "+fmt(etfMargin.close)+" 元｜推估融資成本 "+fmt(etfMargin.margin_cost_estimate)+" 元";
-    card.append(title,number,note);marginHost.replaceChildren(card);
-    const freshness=margin.status==="stale"?"｜資料狀態：沿用上次成功資料（非最新）":"｜資料狀態：最新成功估算";
-    marginMeta.textContent="資料日期："+(etfMargin.date||"—")+"｜融資餘額："+Number(etfMargin.margin_balance_lots??etfMargin.margin_balance_shares??0).toLocaleString("zh-TW")+" 張"+freshness+"｜來源："+(margin.source||"—");
-   }else{
-    marginHost.textContent="目前無法取得新的 0050 融資維持率估算。";
-    marginMeta.textContent=margin.error||"等待下一次每日資料更新；不會以舊數字冒充最新行情。";
-   }
    const etf=(live.quotes||[]).find(x=>x.ticker==="0050.TW");
    if(etf&&etf.price!=null){
     $("price").textContent=fmt(etf.price);$("change").textContent="最近一根5分鐘K："+pct(etf.five_min_change_pct);$("change").className=cls(etf.five_min_change_pct);
@@ -91,10 +74,6 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
     $("range").textContent=fmt(etf.low)+" – "+fmt(etf.high);$("volume").textContent="當日累計成交量："+(etf.volume==null?"—":Number(etf.volume).toLocaleString("zh-TW"));
     draw(etf.bars||[]);$("chart-note").textContent="最新行情時間："+(etf.latest_bar_time||"—");
    }else{$("chart-note").textContent="目前沒有可用的0050價格；若供應商暫時中斷，系統會優先保留上次成功資料並標示實際時間。"}
-   const f=daily.forecasts&&daily.forecasts["1d"];
-   $("forecast").textContent=f?(f.direction==="UP"?"偏多":"偏空")+" "+fmt(f.up_probability*100,1)+"%":"—";
-   $("forecast-meta").textContent=f?"模型資料截至 "+(daily.data_as_of||"—")+"；此為最近一次每日模型結果，非盤中重新訓練":"每日預測尚未載入";
-   $("quotes").innerHTML=(live.quotes||[]).map(q=>{const state=q.status==="live"?"當日行情":q.status==="latest"?"最近交易日（已收盤）":q.status==="stale"?"沿用上次成功資料":q.status==="latest_today"?"今日最新資料":"資料暫缺";return '<tr><td>'+q.name+'<br><small>'+q.ticker+'</small></td><td>'+fmt(q.price)+'</td><td class="'+cls(q.change_pct)+'">'+pct(q.change_pct)+'</td><td class="'+cls(q.five_min_change_pct)+'">'+pct(q.five_min_change_pct)+'</td><td>'+((q.latest_bar_time||"—").replace("T"," ")) +'</td><td>'+state+'</td></tr>';}).join("")||'<tr><td colspan="6">目前沒有行情</td></tr>';
    $("note").textContent=live.note||"—";
   }catch(e){$("status").textContent="資料載入失敗";$("updated").textContent=e.message}
  }

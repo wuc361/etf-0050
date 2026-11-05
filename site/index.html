@@ -87,7 +87,7 @@
     <p id="briefing-dates" class="section-caption">台灣資料日與美股資料日將分別顯示。</p>
     <h3>🇺🇸 美股核心觀察指標（最近完成交易日）</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
-    <p class="section-caption">只保留與0050較相關的6項指標：S&P 500（大盤）、NASDAQ（科技股）、費半（半導體）、台積電 ADR、NVIDIA（AI晶片）及美國10年期公債殖利率（利率環境）。盤中行情請看「盤中即時監控」。若日期仍是前一日，代表美國當日現貨尚未收盤，不是資料日期錯置。</p>
+    <p class="section-caption">只保留與0050較相關的5項核心指標：S&P 500（大盤）、NASDAQ（科技股）、費半（半導體）、台積電 ADR及NVIDIA（AI晶片）。利率資料目前先不顯示，避免殖利率換算未確認前造成誤讀。盤中行情請看「盤中即時監控」。若日期仍是前一日，代表美國當日現貨尚未收盤，不是資料日期錯置。</p>
     <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
     <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
     <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
@@ -257,7 +257,7 @@
       '。美股日期依美東現貨收盤確認；台灣時間凌晨若美股尚未收盤，顯示前一個已完成交易日是正常情況。即時期貨請看盤中監控頁。';
     const usHost = $('us-market-table'); usHost.replaceChildren();
     // Core US indicators most relevant to Taiwan 0050.
-    const coreUsTickers = new Set(["^GSPC", "^IXIC", "^SOX", "TSM", "NVDA", "^TNX"]);
+    const coreUsTickers = new Set(["^GSPC", "^IXIC", "^SOX", "TSM", "NVDA"]);
     const allUsRows = b.us_market || [];
     const usRows = allUsRows.filter(row => coreUsTickers.has(row.ticker));
     if (usRows.length) {

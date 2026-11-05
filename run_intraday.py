@@ -257,16 +257,31 @@ def main():
             fallback["is_stale_fallback"] = True
             fallback["message"] = "本次來源暫時無回傳；保留上次成功資料並明確標示時間，避免顯示空值。"
             quotes[quotes.index(quote)] = fallback
-    margin_maintenance = fetch_0050_margin_maintenance()
-    if margin_maintenance.get("status") == "unavailable":
-        old_margin = previous_payload.get("margin_maintenance", {})
-        old_etf = old_margin.get("etf_0050") if isinstance(old_margin, dict) else None
-        if old_etf and old_margin.get("status") in ("estimated", "stale"):
-            margin_maintenance["etf_0050"] = old_etf
-            margin_maintenance["history"] = old_margin.get("history", [])
-            margin_maintenance["status"] = "stale"
-            margin_maintenance["previous_data_date"] = old_etf.get("date")
-            margin_maintenance["note"] = "本次資料來源暫時無回傳；保留上次成功估算並標示原資料日期，不視為最新值。"
+    old_margin = previous_payload.get("margin_maintenance", {})
+    if not isinstance(old_margin, dict):
+        old_margin = {}
+    # Margin data is a daily close-based statistic. Avoid requesting the full
+    # FinMind history on every 5-minute quote refresh. Refresh once after the
+    # Taiwan cash session; reuse the snapshot for all other intraday cycles.
+    if now.time().replace(tzinfo=None) < time(14, 0):
+        margin_maintenance = old_margin or {
+            "status": "unavailable",
+            "history": [],
+            "note": "0050 融資維持率將於台灣收盤後更新。",
+        }
+    elif old_margin.get("checked_date_taipei") == today:
+        margin_maintenance = old_margin
+    else:
+        margin_maintenance = fetch_0050_margin_maintenance()
+        margin_maintenance["checked_date_taipei"] = today
+        if margin_maintenance.get("status") == "unavailable":
+            old_etf = old_margin.get("etf_0050")
+            if old_etf and old_margin.get("status") in ("estimated", "stale"):
+                margin_maintenance["etf_0050"] = old_etf
+                margin_maintenance["history"] = old_margin.get("history", [])
+                margin_maintenance["status"] = "stale"
+                margin_maintenance["previous_data_date"] = old_etf.get("date")
+                margin_maintenance["note"] = "本次資料來源暫時無回傳；保留上次成功估算並標示原資料日期，不視為最新值。"
     etf = next((q for q in quotes if q["ticker"] == "0050.TW"), None)
     in_cash_hours = time(9, 0) <= now.time().replace(tzinfo=None) <= time(13, 35)
     etf_has_price = bool(etf and etf.get("price") is not None)

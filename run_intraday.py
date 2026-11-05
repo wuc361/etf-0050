@@ -289,10 +289,10 @@ def main():
                         and str(etf.get("latest_bar_time", "")).startswith(today))
     if etf_is_today and in_cash_hours:
         status = "live"
-        label = "台灣盤中行情更新中；美股行情依台灣時間持續更新"
+        label = "0050 盤中行情更新中（每 5 分鐘更新）"
     elif etf_has_price:
         status = "latest_data"
-        label = f"台灣市場顯示最近有效交易日 {etf.get('market_date_taipei') or etf.get('latest_bar_time', '')[:10]}；美股期貨持續顯示最新可用資料"
+        label = f"0050 最近有效交易日：{etf.get('market_date_taipei') or etf.get('latest_bar_time', '')[:10]}"
     else:
         status = "partial_data"
         label = "部分市場資料暫缺；其餘標的仍顯示各自最新成功資料"

@@ -36,16 +36,22 @@ small{color:#9ca3af;line-height:1.6}.pill{font-size:.8rem;border:1px solid #4755
 <section class="card"><h2>0050 今日 5 分鐘走勢</h2><canvas id="chart" width="1000" height="260"></canvas><p id="chart-note" class="muted">—</p></section>
 <section class="card" id="margin-monitor">
  <h2>🛡️ 融資維持率與市場槓桿風險</h2>
- <p class="muted">監控全市場信用交易擔保狀況，觀察融資槓桿是否升高，以及市場下跌時可能出現的追繳與處分壓力。</p>
+ <p class="muted">直接監控上市、上櫃市場融資維持率估算值。這是每日盤後資料，不是盤中即時報價。</p>
+ <div id="margin-ratio-cards" class="grid">
+  <article class="card"><div class="label">上市融資維持率（估算）</div><div class="margin-value">載入中…</div></article>
+  <article class="card"><div class="label">上櫃融資維持率（估算）</div><div class="margin-value">載入中…</div></article>
+ </div>
+ <p id="margin-ratio-meta" class="margin-sub">等待市場融資維持率資料…</p>
  <div class="margin-note">
-  <strong>官方市場監控</strong><br>
-  融資維持率、融資餘額占市值比重、追繳／處分戶數與金額，請以證交所「臺股儀表板－信用交易」頁面為準。官方信用交易數據主要為每日更新，並非盤中即時報價。
+  <strong>資料來源與定義</strong><br>
+  上方百分比由第三方依公開融資餘額與收盤價推估，並非證交所逐戶整戶擔保維持率，也不是你的個人帳戶維持率。證交所官方儀表板可查融資餘額、融資餘額占市值比重及信用交易資料。
   <br><a class="margin-link" href="https://www.twse.com.tw/dashboard/zh/credit/margin.html" target="_blank" rel="noopener noreferrer">開啟證交所信用交易儀表板 ↗</a>
-  <p class="muted">若下方官方儀表板未能嵌入，請使用上方按鈕另開官方頁面。</p>
+  <br><a href="https://toalpha.tw/market/chips?mlimit=100&amp;mscope=hot&amp;view=margin" target="_blank" rel="noopener noreferrer">查看融資維持率估算來源 ↗</a>
+  <p class="muted">官方與第三方資料主要於盤後更新；資料日期會與數值一併顯示。</p>
  </div>
  <iframe class="margin-dashboard" title="證交所臺股儀表板－信用交易" src="https://www.twse.com.tw/dashboard/zh/credit/margin.html" loading="lazy" referrerpolicy="no-referrer"></iframe>
- <p class="muted">觀察參考：150%以下可提高警覺，140%以下代表市場平均緩衝空間偏低；130%是個別信用帳戶追繳門檻的常見法定參考，不能直接當作全市場平均維持率的斷頭線。若維持率快速下降，同時融資餘額大減，應留意槓桿去化壓力。</p>
- <p class="muted">提醒：這是全市場風險資料，不是你的個人融資帳戶維持率。個人整戶維持率與是否追繳，應以往來券商帳戶資料及通知為準。</p>
+ <p class="muted">觀察參考：150%以下可提高警覺，140%以下代表市場平均緩衝空間偏低；130%是個別信用帳戶追繳門檻的常見參考，不能直接當作全市場平均維持率的斷頭線。若維持率快速下降，同時融資餘額大減，應留意槓桿去化壓力。</p>
+ <p class="muted">提醒：這是全市場風險資料，不是個人融資帳戶維持率。個人整戶維持率與是否追繳，應以往來券商帳戶資料及通知為準。</p>
 </section>
 <section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
 <p class="muted"><a href="./index.html">返回每日預測與歷史 K 線</a></p>

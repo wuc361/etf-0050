@@ -12,8 +12,8 @@ from zoneinfo import ZoneInfo
 TWSE_URL = "https://www.twse.com.tw/rwd/zh/fund/BFI82U"
 TWSE_REPORT_URL = "https://www.twse.com.tw/zh/fund/BFI82U?response=html&type=day"
 US_TICKERS = {
-    "^GSPC": "S&P 500", "^IXIC": "NASDAQ 綜合指數",
-    "^SOX": "費城半導體指數", "^DJI": "道瓊指數",
+    "^GSPC": "S&P 500", "^IXIC": "NASDAQ",
+    "^SOX": "費半", "^DJI": "道瓊指數",
     "TSM": "台積電 ADR", "NVDA": "NVIDIA", "AMD": "AMD",
     "MU": "美光", "ASML": "ASML", "^VIX": "VIX 波動率指數",
     "^TNX": "美國10年期公債殖利率", "^FVX": "美國5年期公債殖利率"

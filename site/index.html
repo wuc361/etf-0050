@@ -257,6 +257,7 @@
   let chartTimeframe = 'daily';
   let chartRowsCurrent = [];
   let chartHoverIndex = null;
+  let marginHistorySnapshot = {};
   try {
     const response = await fetch('./data/latest.json?ts=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
@@ -266,11 +267,13 @@
       const marginResponse = await fetch('./data/intraday.json?ts=' + Date.now(), { cache: 'no-store' });
       if (marginResponse.ok) {
         const liveSnapshot = await marginResponse.json();
-        renderMarginHistory(liveSnapshot.margin_maintenance || {});
+        marginHistorySnapshot = liveSnapshot.margin_maintenance || {};
+        renderMarginHistory(marginHistorySnapshot);
       } else {
-        renderMarginHistory({});
+        marginHistorySnapshot = {};
+        renderMarginHistory(marginHistorySnapshot);
       }
-    } catch (_) { renderMarginHistory({}); }
+    } catch (_) { marginHistorySnapshot = {}; renderMarginHistory(marginHistorySnapshot); }
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     setupChartTimeframes(d.history || []);
@@ -412,9 +415,10 @@
       ['市場／標的','資料日期','收盤','漲跌幅'].forEach(v => { const th=document.createElement('th'); th.textContent=v; head.append(th); });
       const thead=document.createElement('thead'); thead.append(head); table.append(thead);
       const tbody=document.createElement('tbody');
+      const usLabels={'^GSPC':'S&P 500','^IXIC':'NASDAQ','^SOX':'費半','TSM':'台積電 ADR','NVDA':'NVIDIA'};
       usRows.forEach(row => {
         const tr=document.createElement('tr');
-        [row.name,row.date,row.display_close||Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),row.display_change||((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
+        [usLabels[row.ticker]||row.name,row.date,row.display_close||Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),row.display_change||((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
           const td=document.createElement('td'); td.textContent=v; if(i===3) td.className=toneClass(row.tone); tr.append(td);
         });
         tbody.append(tr);
@@ -489,7 +493,7 @@
     const host=$('market-risk');host.replaceChildren();
     const card=document.createElement('div');card.className='metric';
     const title=document.createElement('span');title.className='chart-note';title.textContent='目前風險狀態';
-    const strong=document.createElement('strong');strong.textContent=risk.label||'資料不足';
+    const strong=document.createElement('strong');strong.textContent=(risk.label||'資料不足').replace(/SOX/g,'費半').replace(/TSM ADR/g,'台積電 ADR').replace(/TSM/g,'台積電 ADR');
     const detail=document.createElement('p');detail.className='chart-note';
     detail.textContent='觸發 '+(risk.trigger_count??'—')+'/3 項同步重挫條件';
     card.append(title,strong,detail);host.append(card);
@@ -913,7 +917,9 @@
     if (!(g.items || []).length) host.textContent='目前沒有取得新聞，請稍後重新整理。';
   }
   function percent(x) { return Number.isFinite(Number(x)) ? (Number(x) * 100).toFixed(1) + '%' : 'N/A'; }
-  window.addEventListener('resize',()=>{ if(!$('tab-research')?.hidden) renderSelectedCharts(); });
+  window.addEventListener('resize',()=>{
+    if(!$('tab-charts')?.hidden){renderSelectedCharts();renderMarginHistory(marginHistorySnapshot);}
+  });
 })();
 </script>
 </body>

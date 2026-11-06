@@ -1,31 +1,31 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-06T03:23:43+00:00",
-  "data_as_of": "2026-11-05",
-  "latest_close": 97.15,
+  "generated_at_utc": "2026-11-06T07:10:14+00:00",
+  "data_as_of": "2026-11-06",
+  "latest_close": 92.5,
   "price_validation": {
-    "date": "2026-11-05",
-    "close": 97.15,
-    "open": 99.4,
-    "high": 99.75,
-    "low": 96.9,
-    "volume": 487502467,
+    "date": "2026-11-06",
+    "close": 92.5,
+    "open": 89.95,
+    "high": 94.45,
+    "low": 87.55,
+    "volume": 943224572,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-04",
+    "yahoo_previous_latest_date": "2026-11-06",
     "yahoo_latest_date_received": "2026-11-06",
-    "yahoo_lag_calendar_days": 1,
+    "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
   },
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.195615,
-      "down_probability": 0.804385,
+      "up_probability": 0.17149,
+      "down_probability": 0.82851,
       "backtest": {
         "accuracy": 0.6918367346938775,
         "balanced_accuracy": 0.689904046725073,
         "up_recall": 0.7372549019607844,
-        "brier_score": 0.19669615699570167,
+        "brier_score": 0.19653531113144315,
         "majority_baseline_accuracy": 0.5204081632653061,
         "accuracy_lift_vs_baseline": 0.17142857142857137,
         "base_rate": 0.5204081632653061,
@@ -36,13 +36,13 @@
     },
     "2d": {
       "direction": "DOWN",
-      "up_probability": 0.218252,
-      "down_probability": 0.781748,
+      "up_probability": 0.367615,
+      "down_probability": 0.632385,
       "backtest": {
         "accuracy": 0.5950920245398773,
         "balanced_accuracy": 0.5871367884451997,
         "up_recall": 0.6509090909090909,
-        "brier_score": 0.2428202389448893,
+        "brier_score": 0.24282023894570234,
         "majority_baseline_accuracy": 0.5623721881390593,
         "accuracy_lift_vs_baseline": 0.03271983640081799,
         "base_rate": 0.5623721881390593,
@@ -53,13 +53,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.594734,
-      "down_probability": 0.405266,
+      "up_probability": 0.631174,
+      "down_probability": 0.368826,
       "backtest": {
         "accuracy": 0.5420081967213115,
         "balanced_accuracy": 0.5173776079322454,
         "up_recall": 0.675531914893617,
-        "brier_score": 0.25089193358362283,
+        "brier_score": 0.2508919335784579,
         "majority_baseline_accuracy": 0.5778688524590164,
         "accuracy_lift_vs_baseline": -0.035860655737704916,
         "base_rate": 0.5778688524590164,
@@ -71,15 +71,15 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.178435,
-    "down_probability": 0.821565,
+    "up_probability": 0.174893,
+    "down_probability": 0.825107,
     "backtest": {
-      "accuracy": 0.7755102040816326,
-      "balanced_accuracy": 0.7736818364073776,
+      "accuracy": 0.7765306122448979,
+      "balanced_accuracy": 0.7747594226142742,
       "up_recall": 0.8081395348837209,
-      "brier_score": 0.15035103305756894,
+      "brier_score": 0.15000232172681097,
       "majority_baseline_accuracy": 0.5265306122448979,
-      "accuracy_lift_vs_baseline": 0.24897959183673468,
+      "accuracy_lift_vs_baseline": 0.25,
       "base_rate": 0.5265306122448979,
       "n_test": 980
     },
@@ -92,12 +92,12 @@
     "trigger_count": 3,
     "observations": {
       "^SOX": {
-        "return": -0.12246134082630522,
+        "return": -0.12246115062360807,
         "threshold": -0.03,
         "triggered": true
       },
       "^IXIC": {
-        "return": -0.055233274896064,
+        "return": -0.05523319900679158,
         "threshold": -0.02,
         "triggered": true
       },
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-05；尚無晚於最近台股收盤日（2026-11-05）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-05；尚無晚於最近台股收盤日（2026-11-06）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-05",
       "contract": "TX",
@@ -136,24 +136,24 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2221,
       "stored_rows": 61,
-      "updated_at_taipei": "2026-11-06T11:23:56+08:00",
+      "updated_at_taipei": "2026-11-06T15:10:23+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.828,
+    "available_features": 77,
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.09171154803211078,
-      "Random Forest": 0.19561487891816304,
-      "Extra Trees": 0.06531447936275261
+      "Logistic Regression": 0.30756830912236116,
+      "Random Forest": 0.1714898139464221,
+      "Extra Trees": 0.0663567353951451
     },
     "historical_balanced_accuracy": 0.6920317062995411,
-    "historical_brier_score": 0.19684446204686346,
+    "historical_brier_score": 0.19668361618260496,
     "historical_test_count": 980,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -167,9 +167,9 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6316326530612245,
-        "balanced_accuracy": 0.6304755944931164,
-        "brier_score": 0.2239803447832206,
+        "accuracy": 0.6326530612244898,
+        "balanced_accuracy": 0.6315394242803505,
+        "brier_score": 0.22355043965274107,
         "n_test": 980,
         "majority_baseline_accuracy": 0.5204081632653061
       },
@@ -177,7 +177,7 @@
         "name": "Random Forest",
         "accuracy": 0.6938775510204082,
         "balanced_accuracy": 0.6920317062995411,
-        "brier_score": 0.19684446204686346,
+        "brier_score": 0.19668361618260496,
         "n_test": 980,
         "majority_baseline_accuracy": 0.5204081632653061
       },
@@ -185,7 +185,7 @@
         "name": "Extra Trees",
         "accuracy": 0.6877551020408164,
         "balanced_accuracy": 0.6853984146850229,
-        "brier_score": 0.1961490350717247,
+        "brier_score": 0.19601726430804764,
         "n_test": 980,
         "majority_baseline_accuracy": 0.5204081632653061
       }
@@ -14575,28 +14575,28 @@
       "bb_lower": 99.36377960017617
     },
     {
-      "date": "2026-11-05",
-      "open": 99.4,
-      "high": 99.75,
-      "low": 96.9,
-      "close": 97.15,
-      "volume": 487502467.0,
-      "ma5": 101.32999847412108,
-      "ma20": 107.78000022888185,
-      "ma60": 108.03166692097982,
-      "rsi14": 17.08684452736712,
-      "macd": -2.6177241432300633,
-      "macd_signal": -1.3348956930495046,
-      "macd_hist": -1.2828284501805587,
-      "bb_upper": 117.76880601426838,
-      "bb_mid": 107.78000022888185,
-      "bb_lower": 97.79119444349531
+      "date": "2026-11-06",
+      "open": 89.95,
+      "high": 94.45,
+      "low": 87.55,
+      "close": 92.5,
+      "volume": 943224572.0,
+      "ma5": 100.39999847412109,
+      "ma20": 107.54750022888183,
+      "ma60": 107.95416692097982,
+      "rsi14": 13.555564522445849,
+      "macd": -2.9886643141702365,
+      "macd_signal": -1.4090837272375394,
+      "macd_hist": -1.579580586932697,
+      "bb_upper": 118.72395595146803,
+      "bb_mid": 107.54750022888183,
+      "bb_lower": 96.37104450629563
     }
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.195615,
-    "down_probability": 0.804385,
+    "up_probability": 0.17149,
+    "down_probability": 0.82851,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.024554,
+        "latest_return": -0.046875,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.029921,
+        "latest_return": -0.045053,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.004259,
+        "latest_return": 0.001456,
         "tone": "偏多"
       },
       {
@@ -14672,12 +14672,12 @@
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": -0.017274,
+        "latest_return": -0.017275,
         "tone": "偏空"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-06T03:24:46+00:00",
+      "generated_at_utc": "2026-11-06T07:11:44+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
@@ -14730,45 +14730,33 @@
           },
           {
             "category": "國際市場",
-            "title": "美國最新通膨數據低於預期 美股漲跌互見！僅那斯達克收高 - 台視新聞網",
-            "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tQlhZN0thdE9ja3lrbFd3V1BDekVnMHZEUEJuMUV5Ums4dUVwdEdhc1VudG5qcWpjV0ZIc1E3Qmx1dnJzbS1CeUs2bHZiQlI2empEQUdXODA0VUhuS0ctREdZNEc?oc=5",
-            "source": "台視新聞網",
-            "published_at": "2026-10-01T07:00+00:00",
-            "keyword_score": -1,
-            "positive_terms": [],
-            "negative_terms": [
-              "低於預期"
-            ]
-          },
-          {
-            "category": "國際市場",
-            "title": "小摩轉「戰術性看多」美股！五大理由曝光：科技、半導體成核心布局 - 鉅亨網",
-            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1qS2RkNHl1aW5tWEdYZkZPNHlpYXM1UkRCNUtrTUUxY21RU0RzU3R3ay14N2JOVHpYQmt0RGVacE84bFJ1Zjk0MHA1Z3h6V1k?oc=5",
-            "source": "鉅亨網",
-            "published_at": "2026-09-30T07:00+00:00",
+            "title": "Yield Curve's Subtle Steepening: Bond Market Questions Fed's Rate Path - InteractiveCrypto",
+            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZmJTTGdVdTItNjJZOU93c0Nub1RlT0I1TE9VMjgzOTVpc1E0MmhLYlUzOWpvQ2czbHNRdUw3aGs5by1La3NaM1NGSFNubjVHSkJRZGtPRmJDbGsxVi1CVGFsMlpmY3RrZ2ZRSVU0ckZ1ZnZQcUdnWUJUYmVZaXk5ams5WjZVZHdjLUNkMTh1ZC1VNG0wWi1FLW54YkFyOWFXT0d4bG1B?oc=5",
+            "source": "InteractiveCrypto",
+            "published_at": "2026-11-02T02:47+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "美國通膨高於預期引發升息疑慮 美股那斯達克指數重挫 - 民視財經網",
+            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYMjJHLXI2QWhlbnBBTHV5VGtwQVdpTV9fUjBHd1ZMYVN1dzB2d2V3MUFYc1ZxLUs4M09zazVEVWY5YlgwV2xuNjlKN0FKb3QyS2pnLXcyRzJXMTZPVERzc0tKN0VEdw?oc=5",
+            "source": "民視財經網",
+            "published_at": "2026-10-15T07:00+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "升息"
+            ]
           }
         ]
       },
       "domestic": {
         "tone": "偏多",
-        "keyword_score": 3,
+        "keyword_score": 2,
         "article_count": 6,
         "items": [
-          {
-            "category": "台灣市場",
-            "title": "【1106台股盤前】市場擔憂民主黨AI禁令，外資近五日四度倒貨千億！台幣貶破33元櫃買摜破年線，投信逆勢買超225億鎖定投本比【騰輝電子-KY】、【富喬】、【頎邦】｜豐雲學堂2026 年 11 月 - 永豐金證券",
-            "url": "https://news.google.com/rss/articles/CBMiugZBVV95cUxQaVVuU0dxaFVsTndfdmQxNlBuSDNnTm1BSmljY00zVnozXzhjS25kTVQ4NHhoaVlXQ1BwWURDUGNuNHZYTzFYdVdBS2ppMkNtT1F2NDRyZ3FPTEVYbTNjLXk1M2FZMndOS0VzQnYwVkFJOXBlTlVXc3NVZms0ZEFpM2ZBdmxxRzBfU2M3eU8xOG1CcFRmcEtnZ2xYS0ZJNGN2MDBLY3Bua2ZGTE9NenhpYXdWT0RzWmVlbG05a2dSaGFrVmlycGEtU2ZXU2FjSVVzTlE3QmpnT1ZWampVUEV3ZWtJQ3RrQ2IxZTVwYWJQenl5WTU2ZmNNZTdnbFhZSHFFSkZmSjdKV2lrYkM3V2xUX3ZoYkNMQ3VsTnRZYWtubGxYVmV3cmh2LV9oSVlWZldENDdxMXBiT21mVUU3dEcxcWJ4M2o3dGRkbFNLVGo5c21rc1pXbnVOZGVKNHI5cEloTjkwZGtiTWtVMnZ6Z0RLWWpiQVg4VlV1V0hpQ0d3SE1Va0x0RHpfb3dZUlNjaDdBakhjRVVxbzN0XzBWeTVJeGZ1d0J5R1dVNjZOWk9wLUpGMjc4VFVaT1VSbzIzRUtkZTU3NGh3dGpIelZnMFkwcFVLdGN4Z1JFZ19vOHlZSUhLZC1wODRYdnRPQnRHbVpWMXpJY2NyeWdZMkt1T0ZTd053VDdYSjlaXzJvTDBmN0tqLU9xenRDamI1TmRCTDBzdnN4dHVHNXRVVnRJMGIwazJEYVVtQW5qQ2VFVzZxQU1MOUdfUV9kQy1OMGlBSldEV1dFdGRZbEhhdldXUVBxLW5vb2dWRnpYSkJDcE9sbXdZUTBDYkhUSTdTMmtrNDd2QjZycHJHV01QM1pqWW1jTjZvYk9EZWZEbEdaSXpzUllPVG5IQ1RsOVktbEZCNHFNam9OREFNdEVtSV9Cc2NOYkFvb0VmRy1rQzc2QlBIUUhWTGthR01LTmFRUlJEX09MSDdnWWtxcWktS3dIbjRfdllwN2RFS24wVGJDcXl3NVVIbEFVM05ZeFhSYzZtOEpkeTNUMjVqOXBTVTVXSXN0YVBIc1FJNFVreEVuSHhvcWdMSkVFci12em53?oc=5",
-            "source": "永豐金證券",
-            "published_at": "2026-11-06T00:12+00:00",
-            "keyword_score": 1,
-            "positive_terms": [
-              "買超"
-            ],
-            "negative_terms": []
-          },
           {
             "category": "台灣市場",
             "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
@@ -14819,6 +14807,16 @@
             "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1KNk9pangyaXNRSTZwRjJCWWZVdkw4c2xjbUwzcXBTQXF2LWdhdGRndkpxcWY1MF8yMG5ENnY3WUJpVWJjWEN6LUVDR3NEbUNmWmFrcE1xekJrWWlsYWVZ0gFkQVVfeXFMTlpuaWxwRWRMbFhOR3Y5NmVFLXpmYmlzeURwN1VFMk1MeVdMM3huWk5JZUpZMjBFM2RwU3I5bGp4WkhtTzhpeEVSVW5rR01pakdyeUFuYUNMOGw4OEREUGRMVkdnWA?oc=5",
             "source": "自由財經",
             "published_at": "2026-10-15T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "外資拋售韓股市值比重為台股4倍 這些層面凸顯台灣展韌性 - 自由財經",
+            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Vc0NXS1dBcS1qRzRiajItS1BqVFEwdmNXck9DTXkxVWdlcGxUZU96bmZHd0pZXzVqUGc4UGUzY0tRUk5fNFlSSkIzek9lSDRCQWstV0N2c290eFJiSGtJ0gFkQVVfeXFMTUtwWFY4RWFMc1IwNnM5aDNKYVUtZU1EN0tGV3ljMTBpdTBhMDM0b2dtaHRPRFpIdmpfM1REUXZLdkcwaGFIYmhDWmV3eWV0M2o5R0t0WV9Eb0NTUHhqaFFfR2Q2bw?oc=5",
+            "source": "自由財經",
+            "published_at": "2026-10-14T07:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14893,18 +14891,6 @@
         ]
       },
       "items": [
-        {
-          "category": "台灣市場",
-          "title": "【1106台股盤前】市場擔憂民主黨AI禁令，外資近五日四度倒貨千億！台幣貶破33元櫃買摜破年線，投信逆勢買超225億鎖定投本比【騰輝電子-KY】、【富喬】、【頎邦】｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMiugZBVV95cUxQaVVuU0dxaFVsTndfdmQxNlBuSDNnTm1BSmljY00zVnozXzhjS25kTVQ4NHhoaVlXQ1BwWURDUGNuNHZYTzFYdVdBS2ppMkNtT1F2NDRyZ3FPTEVYbTNjLXk1M2FZMndOS0VzQnYwVkFJOXBlTlVXc3NVZms0ZEFpM2ZBdmxxRzBfU2M3eU8xOG1CcFRmcEtnZ2xYS0ZJNGN2MDBLY3Bua2ZGTE9NenhpYXdWT0RzWmVlbG05a2dSaGFrVmlycGEtU2ZXU2FjSVVzTlE3QmpnT1ZWampVUEV3ZWtJQ3RrQ2IxZTVwYWJQenl5WTU2ZmNNZTdnbFhZSHFFSkZmSjdKV2lrYkM3V2xUX3ZoYkNMQ3VsTnRZYWtubGxYVmV3cmh2LV9oSVlWZldENDdxMXBiT21mVUU3dEcxcWJ4M2o3dGRkbFNLVGo5c21rc1pXbnVOZGVKNHI5cEloTjkwZGtiTWtVMnZ6Z0RLWWpiQVg4VlV1V0hpQ0d3SE1Va0x0RHpfb3dZUlNjaDdBakhjRVVxbzN0XzBWeTVJeGZ1d0J5R1dVNjZOWk9wLUpGMjc4VFVaT1VSbzIzRUtkZTU3NGh3dGpIelZnMFkwcFVLdGN4Z1JFZ19vOHlZSUhLZC1wODRYdnRPQnRHbVpWMXpJY2NyeWdZMkt1T0ZTd053VDdYSjlaXzJvTDBmN0tqLU9xenRDamI1TmRCTDBzdnN4dHVHNXRVVnRJMGIwazJEYVVtQW5qQ2VFVzZxQU1MOUdfUV9kQy1OMGlBSldEV1dFdGRZbEhhdldXUVBxLW5vb2dWRnpYSkJDcE9sbXdZUTBDYkhUSTdTMmtrNDd2QjZycHJHV01QM1pqWW1jTjZvYk9EZWZEbEdaSXpzUllPVG5IQ1RsOVktbEZCNHFNam9OREFNdEVtSV9Cc2NOYkFvb0VmRy1rQzc2QlBIUUhWTGthR01LTmFRUlJEX09MSDdnWWtxcWktS3dIbjRfdllwN2RFS24wVGJDcXl3NVVIbEFVM05ZeFhSYzZtOEpkeTNUMjVqOXBTVTVXSXN0YVBIc1FJNFVreEVuSHhvcWdMSkVFci12em53?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-11-06T00:12+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "買超"
-          ],
-          "negative_terms": []
-        },
         {
           "category": "國際市場",
           "title": "美股收盤／費半暴跌12.3%、那斯達克陷修正晶片財報AI建設疑慮掀賣壓| 全球財經| 全球 - UDN",
@@ -14982,6 +14968,16 @@
           "negative_terms": []
         },
         {
+          "category": "國際市場",
+          "title": "Yield Curve's Subtle Steepening: Bond Market Questions Fed's Rate Path - InteractiveCrypto",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZmJTTGdVdTItNjJZOU93c0Nub1RlT0I1TE9VMjgzOTVpc1E0MmhLYlUzOWpvQ2czbHNRdUw3aGs5by1La3NaM1NGSFNubjVHSkJRZGtPRmJDbGsxVi1CVGFsMlpmY3RrZ2ZRSVU0ckZ1ZnZQcUdnWUJUYmVZaXk5ams5WjZVZHdjLUNkMTh1ZC1VNG0wWi1FLW54YkFyOWFXT0d4bG1B?oc=5",
+          "source": "InteractiveCrypto",
+          "published_at": "2026-11-02T02:47+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "台灣市場",
           "title": "《農經人語》經濟成長創半世紀新高，臺幣為何還再貶？ - 台灣醒報 Awakening News Network",
           "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9FTHFLR3A3OXhkczFVRjh0Sm4xeFdZcUdkcWxvUHlLdFpzcHhJRTBUOGxURmI3bzhQNzU0ODFPUWtkZ2FPSXRYU3RtNC1KUm9oVE9zWldodw?oc=5",
@@ -15034,11 +15030,33 @@
           "negative_terms": []
         },
         {
+          "category": "國際市場",
+          "title": "美國通膨高於預期引發升息疑慮 美股那斯達克指數重挫 - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYMjJHLXI2QWhlbnBBTHV5VGtwQVdpTV9fUjBHd1ZMYVN1dzB2d2V3MUFYc1ZxLUs4M09zazVEVWY5YlgwV2xuNjlKN0FKb3QyS2pnLXcyRzJXMTZPVERzc0tKN0VEdw?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "升息"
+          ]
+        },
+        {
           "category": "台灣市場",
           "title": "外資殺紅眼、單日狂砍3025億 金管會「這樣說」 - 自由財經",
           "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1KNk9pangyaXNRSTZwRjJCWWZVdkw4c2xjbUwzcXBTQXF2LWdhdGRndkpxcWY1MF8yMG5ENnY3WUJpVWJjWEN6LUVDR3NEbUNmWmFrcE1xekJrWWlsYWVZ0gFkQVVfeXFMTlpuaWxwRWRMbFhOR3Y5NmVFLXpmYmlzeURwN1VFMk1MeVdMM3huWk5JZUpZMjBFM2RwU3I5bGp4WkhtTzhpeEVSVW5rR01pakdyeUFuYUNMOGw4OEREUGRMVkdnWA?oc=5",
           "source": "自由財經",
           "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "外資拋售韓股市值比重為台股4倍 這些層面凸顯台灣展韌性 - 自由財經",
+          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Vc0NXS1dBcS1qRzRiajItS1BqVFEwdmNXck9DTXkxVWdlcGxUZU96bmZHd0pZXzVqUGc4UGUzY0tRUk5fNFlSSkIzek9lSDRCQWstV0N2c290eFJiSGtJ0gFkQVVfeXFMTUtwWFY4RWFMc1IwNnM5aDNKYVUtZU1EN0tGV3ljMTBpdTBhMDM0b2dtaHRPRFpIdmpfM1REUXZLdkcwaGFIYmhDWmV3eWV0M2o5R0t0WV9Eb0NTUHhqaFFfR2Q2bw?oc=5",
+          "source": "自由財經",
+          "published_at": "2026-10-14T07:00+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -15062,28 +15080,6 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "美國最新通膨數據低於預期 美股漲跌互見！僅那斯達克收高 - 台視新聞網",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tQlhZN0thdE9ja3lrbFd3V1BDekVnMHZEUEJuMUV5Ums4dUVwdEdhc1VudG5qcWpjV0ZIc1E3Qmx1dnJzbS1CeUs2bHZiQlI2empEQUdXODA0VUhuS0ctREdZNEc?oc=5",
-          "source": "台視新聞網",
-          "published_at": "2026-10-01T07:00+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "低於預期"
-          ]
-        },
-        {
-          "category": "國際市場",
-          "title": "小摩轉「戰術性看多」美股！五大理由曝光：科技、半導體成核心布局 - 鉅亨網",
-          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1qS2RkNHl1aW5tWEdYZkZPNHlpYXM1UkRCNUtrTUUxY21RU0RzU3R3ay14N2JOVHpYQmt0RGVacE84bFJ1Zjk0MHA1Z3h6V1k?oc=5",
-          "source": "鉅亨網",
-          "published_at": "2026-09-30T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -15094,10 +15090,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-06T03:24:46+00:00",
-      "taiwan_data_date": "2026-11-05",
+      "generated_at_utc": "2026-11-06T07:11:44+00:00",
+      "taiwan_data_date": "2026-11-06",
       "us_session_date": "2026-11-05",
-      "us_timezone_checked_at": "2026-11-05T22:24-05:00",
+      "us_timezone_checked_at": "2026-11-06T02:11-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15115,7 +15111,7 @@
           "ticker": "^IXIC",
           "name": "NASDAQ",
           "date": "2026-11-05",
-          "close": 24314.998046875,
+          "close": 24315.0,
           "previous_close": 25736.509765625,
           "display_close": "24,315.00",
           "display_change": "-5.52%",
@@ -15127,7 +15123,7 @@
           "ticker": "^SOX",
           "name": "費半",
           "date": "2026-11-05",
-          "close": 9011.1376953125,
+          "close": 9011.1396484375,
           "previous_close": 10268.650390625,
           "display_close": "9,011.14",
           "display_change": "-12.25%",
@@ -15235,7 +15231,7 @@
           "ticker": "^FVX",
           "name": "美國5年期公債殖利率",
           "date": "2026-11-05",
-          "close": 4.6080002784729,
+          "close": 4.607999801635742,
           "previous_close": 4.689000129699707,
           "display_close": "0.46%",
           "display_change": "-0.8 bps",
@@ -15244,86 +15240,21 @@
           "tone": "殖利率下降"
         }
       ],
-      "institutional": {
-        "date": "2026-11-05",
-        "foreign_net_ntd": -102460621838,
-        "trust_net_ntd": 22594451141,
-        "dealer_net_ntd": -43527495658,
-        "total_net_ntd": -123393666355,
-        "foreign_net_100m": -1024.606,
-        "trust_net_100m": 225.945,
-        "dealer_net_100m": -435.275,
-        "total_net_100m": -1233.937,
-        "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261105&type=day",
-        "0050_foreign_net_shares": -72289241,
-        "0050_trust_net_shares": 4051000,
-        "0050_dealer_net_shares": -273401024,
-        "0050_total_net_shares": -341639265,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261105&selectType=ALLBUT0999"
-      },
-      "etf_0050_institutional": {
-        "date": "2026-11-05",
-        "foreign_net_shares": -72289241,
-        "trust_net_shares": 4051000,
-        "dealer_net_shares": -273401024,
-        "total_net_shares": -341639265,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261105&selectType=ALLBUT0999"
-      },
+      "institutional": null,
+      "etf_0050_institutional": null,
       "institutional_errors": [
+        "2026-11-06: T86找不到0050資料",
+        "2026-11-06: BFI82U無資料或非交易日",
         "2026-10-23: T86找不到0050資料",
         "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 1,024.6 億元",
-          "date": "2026-11-05",
-          "tone": "偏空",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "投信買超 225.9 億元",
-          "date": "2026-11-05",
-          "tone": "偏多",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "自營商賣超 435.3 億元",
-          "date": "2026-11-05",
-          "tone": "偏空",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "三大法人合計賣超 1,233.9 億元",
-          "date": "2026-11-05",
-          "tone": "偏空",
-          "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資賣超 72,289,241 股",
-          "date": "2026-11-05",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 4,051,000 股",
-          "date": "2026-11-05",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商賣超 273,401,024 股",
-          "date": "2026-11-05",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
+          "title": "尚未取得前一台灣交易日法人資料",
+          "date": "2026-11-06",
+          "tone": "資料不足",
+          "detail": "TWSE BFI82U 未回傳有效資料；不以其他日期資料代替。"
         },
         {
           "group": "美股前夜",
@@ -15363,14 +15294,6 @@
           "tone": "偏多",
           "detail": "Yahoo Finance UK｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNZ01vbW1nbE9aRS1nVmhNcHcwTlNIU3VKV1FqNnF1WjFxSnRCNFZrUVE4c29meS1FRGlrS2F0TlBtMzlQcTB3TENjRzNlX2E2YzFncGRpbDBIcWlMZloySFpJLVM0NkdxQ25BUktFSnJQN0hiVE1vYVNCamYtNTg3RllzeEdWc1FXOEE?oc=5"
-        },
-        {
-          "group": "台灣新聞",
-          "title": "【1106台股盤前】市場擔憂民主黨AI禁令，外資近五日四度倒貨千億！台幣貶破33元櫃買摜破年線，投信逆勢買超225億鎖定投本比【騰輝電子-KY】、【富喬】、【頎邦】｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "date": "2026-11-06T00:12+00:00",
-          "tone": "偏多",
-          "detail": "永豐金證券｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiugZBVV95cUxQaVVuU0dxaFVsTndfdmQxNlBuSDNnTm1BSmljY00zVnozXzhjS25kTVQ4NHhoaVlXQ1BwWURDUGNuNHZYTzFYdVdBS2ppMkNtT1F2NDRyZ3FPTEVYbTNjLXk1M2FZMndOS0VzQnYwVkFJOXBlTlVXc3NVZms0ZEFpM2ZBdmxxRzBfU2M3eU8xOG1CcFRmcEtnZ2xYS0ZJNGN2MDBLY3Bua2ZGTE9NenhpYXdWT0RzWmVlbG05a2dSaGFrVmlycGEtU2ZXU2FjSVVzTlE3QmpnT1ZWampVUEV3ZWtJQ3RrQ2IxZTVwYWJQenl5WTU2ZmNNZTdnbFhZSHFFSkZmSjdKV2lrYkM3V2xUX3ZoYkNMQ3VsTnRZYWtubGxYVmV3cmh2LV9oSVlWZldENDdxMXBiT21mVUU3dEcxcWJ4M2o3dGRkbFNLVGo5c21rc1pXbnVOZGVKNHI5cEloTjkwZGtiTWtVMnZ6Z0RLWWpiQVg4VlV1V0hpQ0d3SE1Va0x0RHpfb3dZUlNjaDdBakhjRVVxbzN0XzBWeTVJeGZ1d0J5R1dVNjZOWk9wLUpGMjc4VFVaT1VSbzIzRUtkZTU3NGh3dGpIelZnMFkwcFVLdGN4Z1JFZ19vOHlZSUhLZC1wODRYdnRPQnRHbVpWMXpJY2NyeWdZMkt1T0ZTd053VDdYSjlaXzJvTDBmN0tqLU9xenRDamI1TmRCTDBzdnN4dHVHNXRVVnRJMGIwazJEYVVtQW5qQ2VFVzZxQU1MOUdfUV9kQy1OMGlBSldEV1dFdGRZbEhhdldXUVBxLW5vb2dWRnpYSkJDcE9sbXdZUTBDYkhUSTdTMmtrNDd2QjZycHJHV01QM1pqWW1jTjZvYk9EZWZEbEdaSXpzUllPVG5IQ1RsOVktbEZCNHFNam9OREFNdEVtSV9Cc2NOYkFvb0VmRy1rQzc2QlBIUUhWTGthR01LTmFRUlJEX09MSDdnWWtxcWktS3dIbjRfdllwN2RFS24wVGJDcXl3NVVIbEFVM05ZeFhSYzZtOEpkeTNUMjVqOXBTVTVXSXN0YVBIc1FJNFVreEVuSHhvcWdMSkVFci12em53?oc=5"
         },
         {
           "group": "台灣新聞",
@@ -15442,19 +15365,6 @@
       "domestic_news": [
         {
           "category": "台灣市場",
-          "title": "【1106台股盤前】市場擔憂民主黨AI禁令，外資近五日四度倒貨千億！台幣貶破33元櫃買摜破年線，投信逆勢買超225億鎖定投本比【騰輝電子-KY】、【富喬】、【頎邦】｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMiugZBVV95cUxQaVVuU0dxaFVsTndfdmQxNlBuSDNnTm1BSmljY00zVnozXzhjS25kTVQ4NHhoaVlXQ1BwWURDUGNuNHZYTzFYdVdBS2ppMkNtT1F2NDRyZ3FPTEVYbTNjLXk1M2FZMndOS0VzQnYwVkFJOXBlTlVXc3NVZms0ZEFpM2ZBdmxxRzBfU2M3eU8xOG1CcFRmcEtnZ2xYS0ZJNGN2MDBLY3Bua2ZGTE9NenhpYXdWT0RzWmVlbG05a2dSaGFrVmlycGEtU2ZXU2FjSVVzTlE3QmpnT1ZWampVUEV3ZWtJQ3RrQ2IxZTVwYWJQenl5WTU2ZmNNZTdnbFhZSHFFSkZmSjdKV2lrYkM3V2xUX3ZoYkNMQ3VsTnRZYWtubGxYVmV3cmh2LV9oSVlWZldENDdxMXBiT21mVUU3dEcxcWJ4M2o3dGRkbFNLVGo5c21rc1pXbnVOZGVKNHI5cEloTjkwZGtiTWtVMnZ6Z0RLWWpiQVg4VlV1V0hpQ0d3SE1Va0x0RHpfb3dZUlNjaDdBakhjRVVxbzN0XzBWeTVJeGZ1d0J5R1dVNjZOWk9wLUpGMjc4VFVaT1VSbzIzRUtkZTU3NGh3dGpIelZnMFkwcFVLdGN4Z1JFZ19vOHlZSUhLZC1wODRYdnRPQnRHbVpWMXpJY2NyeWdZMkt1T0ZTd053VDdYSjlaXzJvTDBmN0tqLU9xenRDamI1TmRCTDBzdnN4dHVHNXRVVnRJMGIwazJEYVVtQW5qQ2VFVzZxQU1MOUdfUV9kQy1OMGlBSldEV1dFdGRZbEhhdldXUVBxLW5vb2dWRnpYSkJDcE9sbXdZUTBDYkhUSTdTMmtrNDd2QjZycHJHV01QM1pqWW1jTjZvYk9EZWZEbEdaSXpzUllPVG5IQ1RsOVktbEZCNHFNam9OREFNdEVtSV9Cc2NOYkFvb0VmRy1rQzc2QlBIUUhWTGthR01LTmFRUlJEX09MSDdnWWtxcWktS3dIbjRfdllwN2RFS24wVGJDcXl3NVVIbEFVM05ZeFhSYzZtOEpkeTNUMjVqOXBTVTVXSXN0YVBIc1FJNFVreEVuSHhvcWdMSkVFci12em53?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-11-06T00:12+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "買超"
-          ],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-06 08:12 台北時間"
-        },
-        {
-          "category": "台灣市場",
           "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
           "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5",
           "source": "信傳媒",
@@ -15477,7 +15387,7 @@
         }
       ],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 1,233.9 億元。",
+      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {

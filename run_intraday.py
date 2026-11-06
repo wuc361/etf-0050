@@ -23,8 +23,8 @@ WATCHLIST = {
     "0050.TW": "元大台灣50",
     "2330.TW": "台積電",
     "^TWII": "台灣加權指數",
-    "^SOX": "費城半導體指數",
-    "^IXIC": "NASDAQ 綜合指數",
+    "^SOX": "費半",
+    "^IXIC": "NASDAQ",
     "TSM": "台積電 ADR",
     "NVDA": "NVIDIA",
     "^VIX": "VIX 波動率指數",
@@ -38,7 +38,7 @@ def taipei_timestamp(value) -> datetime:
         return stamp.to_pydatetime().replace(tzinfo=TAIPEI)
     return stamp.tz_convert(TAIPEI).to_pydatetime()
 
-def fetch_quote(ticker: str, label: str, today: str) -> dict:
+def fetch_quote(ticker: str, label: str, today: str, previous_quote: dict | None = None) -> dict:
     result = {"ticker": ticker, "name": label, "status": "unavailable", "price": None}
     try:
         bars = yf.Ticker(ticker).history(
@@ -53,15 +53,46 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
         # observation date. A US session on Nov 5 spans Nov 5 and Nov 6 in Taipei.
         bars["taipei_time"] = [taipei_timestamp(x) for x in bars.index]
         bars["exchange_session_date"] = [pd.Timestamp(x).date().isoformat() for x in bars.index]
-        latest_time = bars["taipei_time"].iloc[-1]
-        quote_taipei_date = latest_time.date().isoformat()
         quote_exchange_date = str(bars["exchange_session_date"].iloc[-1])
         session_bars = bars[bars["exchange_session_date"] == quote_exchange_date]
         if session_bars.empty:
             result["message"] = "沒有可用的有效交易時段K線"
             return result
 
-        latest = session_bars.iloc[-1]
+        # Merge this fetch with the previously published bars for the same
+        # exchange session. This keeps already-published 09:00/09:05 bars if a
+        # later provider response is temporarily incomplete, while new bars
+        # are appended by timestamp and duplicate timestamps are replaced.
+        merged_by_time = {}
+        if (previous_quote
+                and previous_quote.get("exchange_session_date") == quote_exchange_date):
+            for old_bar in previous_quote.get("bars", []):
+                old_time = old_bar.get("time")
+                if old_time:
+                    merged_by_time[old_time] = old_bar
+
+        for _, row in session_bars.iterrows():
+            bar_time = row["taipei_time"].isoformat(timespec="minutes")
+            merged_by_time[bar_time] = {
+                "time": bar_time,
+                "open": float(row["Open"]) if pd.notna(row["Open"]) else None,
+                "high": float(row["High"]) if pd.notna(row["High"]) else None,
+                "low": float(row["Low"]) if pd.notna(row["Low"]) else None,
+                "close": float(row["Close"]) if pd.notna(row["Close"]) else None,
+                "volume": int(row["Volume"]) if pd.notna(row["Volume"]) else 0,
+            }
+
+        merged_bars = [
+            merged_by_time[key] for key in sorted(merged_by_time)
+            if merged_by_time[key].get("close") is not None
+        ]
+        if not merged_bars:
+            result["message"] = "沒有可用的有效交易時段K線"
+            return result
+
+        latest_bar = merged_bars[-1]
+        latest_time = pd.Timestamp(latest_bar["time"])
+        quote_taipei_date = latest_time.date().isoformat()
         previous_close = None
         try:
             daily = yf.Ticker(ticker).history(
@@ -78,12 +109,12 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
         except Exception:
             previous_close = None
 
-        closes = session_bars["Close"].astype(float)
-        previous_bar_close = float(closes.iloc[-2]) if len(closes) > 1 else None
-        last_price = float(latest["Close"])
+        closes = [float(item["close"]) for item in merged_bars]
+        previous_bar_close = closes[-2] if len(closes) > 1 else None
+        last_price = float(latest_bar["close"])
         change_pct = (last_price / previous_close - 1) * 100 if previous_close else None
         five_min_pct = (last_price / previous_bar_close - 1) * 100 if previous_bar_close else None
-        volume = float(session_bars["Volume"].fillna(0).sum()) if "Volume" in session_bars else None
+        volume = sum(int(item.get("volume") or 0) for item in merged_bars)
         is_today = quote_taipei_date == today
         status = "live" if is_today else "latest"
         result.update({
@@ -96,21 +127,11 @@ def fetch_quote(ticker: str, label: str, today: str) -> dict:
             "previous_close": previous_close,
             "change_pct": round(change_pct, 4) if change_pct is not None else None,
             "five_min_change_pct": round(five_min_pct, 4) if five_min_pct is not None else None,
-            "open": float(session_bars["Open"].dropna().iloc[0]) if session_bars["Open"].notna().any() else None,
-            "high": float(session_bars["High"].max()) if session_bars["High"].notna().any() else None,
-            "low": float(session_bars["Low"].min()) if session_bars["Low"].notna().any() else None,
-            "volume": int(volume) if volume is not None else None,
-            "bars": [
-                {
-                    "time": row["taipei_time"].isoformat(timespec="minutes"),
-                    "open": float(row["Open"]) if pd.notna(row["Open"]) else None,
-                    "high": float(row["High"]) if pd.notna(row["High"]) else None,
-                    "low": float(row["Low"]) if pd.notna(row["Low"]) else None,
-                    "close": float(row["Close"]) if pd.notna(row["Close"]) else None,
-                    "volume": int(row["Volume"]) if pd.notna(row["Volume"]) else 0,
-                }
-                for _, row in session_bars.tail(78).iterrows()
-            ],
+            "open": next((item["open"] for item in merged_bars if item.get("open") is not None), None),
+            "high": max((item["high"] for item in merged_bars if item.get("high") is not None), default=None),
+            "low": min((item["low"] for item in merged_bars if item.get("low") is not None), default=None),
+            "volume": volume,
+            "bars": merged_bars[-78:],
             "message": "" if is_today else "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。",
         })
     except Exception as exc:
@@ -249,7 +270,7 @@ def main():
         item.get("ticker"): item for item in previous_payload.get("quotes", [])
         if item.get("ticker") and item.get("price") is not None
     }
-    quotes = [fetch_quote(ticker, label, today) for ticker, label in WATCHLIST.items()]
+    quotes = [fetch_quote(ticker, label, today, previous_quotes.get(ticker)) for ticker, label in WATCHLIST.items()]
     for quote in quotes:
         if quote.get("price") is None and quote.get("ticker") in previous_quotes:
             fallback = dict(previous_quotes[quote["ticker"]])
@@ -302,7 +323,7 @@ def main():
         "trading_date_taipei": today,
         "generated_at_taipei": now.isoformat(timespec="seconds"),
         "refresh_interval_minutes": 5,
-        "market_hours_taipei": "09:30-13:30（台灣證券交易日）",
+        "market_hours_taipei": "09:00-13:30（台灣證券交易日）",
         "source": "Yahoo Finance 5-minute bars; indicative data, not an official exchange feed",
         "quotes": quotes,
         "margin_maintenance": margin_maintenance,

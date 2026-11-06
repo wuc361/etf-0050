@@ -33,7 +33,7 @@ small{color:#9ca3af;line-height:1.6}
  
 </div>
 <section class="card"><h2>0050 今日 5 分鐘走勢</h2><p id="chart-session" class="chart-caption">台灣時間｜日期與每個時間刻度將顯示於圖表下方</p><canvas id="chart" width="1000" height="320" aria-label="0050今日五分鐘走勢，橫軸為台灣時間"></canvas><p id="chart-note" class="muted">—</p></section>
-<section class="card"><h2>更新與資料說明</h2><p id="note"></p><small>排程目標：台灣交易日 09:30–13:30 每 5 分鐘抓取一次；GitHub Actions 排程可能因平台負載延後，並非交易所專線或保證每五分鐘成交級即時報價。休市日不會產生當日行情。盤中資料不會取代每日收盤後的官方 TWSE 校驗及下一交易日量化預測。</small></section>
+
 <p class="muted"><a href="./index.html">返回每日預測與歷史 K 線</a></p>
 </main>
 <script>
@@ -45,11 +45,12 @@ small{color:#9ca3af;line-height:1.6}
  function draw(bars){
   const c=$("chart"),ctx=c.getContext("2d"),w=1000,h=320;
   c.width=w;c.height=h;ctx.clearRect(0,0,w,h);
-  if(!bars||bars.length<2){ctx.fillStyle="#9ca3af";ctx.font="14px sans-serif";ctx.fillText("尚無足夠的今日 0050 5 分鐘資料",20,35);return}
+  if(!bars||!bars.length){ctx.fillStyle="#9ca3af";ctx.font="14px sans-serif";ctx.fillText("尚無今日 0050 5 分鐘資料",20,35);return}
   const points=bars.filter(x=>Number.isFinite(Number(x.close)));
+  if(!points.length){ctx.fillStyle="#9ca3af";ctx.font="14px sans-serif";ctx.fillText("尚無有效的今日 0050 5 分鐘資料",20,35);return}
   const values=points.map(x=>Number(x.close)),lo=Math.min(...values),hi=Math.max(...values),pad=(hi-lo)*.12||.1;
   const left=58,right=18,top=18,bottom=48;
-  const x=i=>left+i*(w-left-right)/(points.length-1);
+  const x=i=>points.length===1?(left+w-right)/2:left+i*(w-left-right)/(points.length-1);
   const y=v=>top+(hi+pad-v)*(h-top-bottom)/(hi-lo+2*pad);
   ctx.font="12px sans-serif";ctx.textAlign="right";ctx.textBaseline="middle";
   for(let i=0;i<5;i++){const yy=top+i*(h-top-bottom)/4;ctx.strokeStyle="#34445d";ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(w-right,yy);ctx.stroke();const val=hi+pad-i*(hi-lo+2*pad)/4;ctx.fillStyle="#9ca3af";ctx.fillText(fmt(val),left-8,yy);}
@@ -76,7 +77,6 @@ small{color:#9ca3af;line-height:1.6}
     $("range").textContent=fmt(etf.low)+" – "+fmt(etf.high);$("volume").textContent="當日累計成交量："+(etf.volume==null?"—":Number(etf.volume).toLocaleString("zh-TW"));
     draw(etf.bars||[]);$("chart-note").textContent="最新行情時間："+(etf.latest_bar_time||"—");
    }else{$("chart-note").textContent="目前沒有可用的0050價格；若供應商暫時中斷，系統會優先保留上次成功資料並標示實際時間。"}
-   $("note").textContent=live.note||"—";
   }catch(e){$("status").textContent="資料載入失敗";$("updated").textContent=e.message}
  }
  await load();setInterval(load,60000);

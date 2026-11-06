@@ -63,11 +63,15 @@
     .market-table th:first-child,.market-table td:first-child { text-align:left; }
     .section-caption { color:#9ca3af; font-size:.82rem; line-height:1.5; }
 
-    .tab-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:18px 0 16px;position:sticky;top:0;z-index:20;padding:8px 0;background:#0b1220}
+    .tab-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:18px 0 16px;position:sticky;top:0;z-index:20;padding:8px 0;background:#0b1220}
     .tab-button{border:1px solid #475569;border-radius:12px;padding:12px 8px;color:#cbd5e1;background:#172338;font:inherit;font-weight:700;cursor:pointer}
     .tab-button.active{background:#2563eb;border-color:#60a5fa;color:#fff}
     .tab-button:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
     .tab-panel[hidden]{display:none}
+    .date-slider-wrap{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;margin:10px 2px 14px;padding:12px;border:1px solid #34445d;border-radius:10px;background:#0b1628}
+    .date-slider-wrap input[type=range]{grid-column:1/-1;width:100%;min-height:32px;accent-color:#60a5fa;touch-action:pan-y}
+    .date-slider-date{font-size:.9rem;font-weight:700;color:#e2e8f0;font-variant-numeric:tabular-nums}
+    @media(max-width:520px){.tab-button{font-size:.82rem;padding:10px 2px}.date-slider-wrap{padding:10px}.date-slider-wrap input[type=range]{min-height:40px}}
     .live-frame{display:block;width:100%;height:900px;border:1px solid #34445d;border-radius:14px;background:#0b1220}
     @media(max-width:520px){.tab-button{font-size:.88rem;padding:10px 4px}.live-frame{height:1050px}}
     footer { margin-top: 26px; border-top: 1px solid #29364c; padding-top: 16px; font-size: .9rem; }
@@ -78,23 +82,21 @@
 <main>
   <header>
     <h1>📈 0050 AI 預測中心</h1>
-    <div class="muted">GitHub Actions 自動執行｜靜態網頁，不需要 Streamlit</div>
     <p id="status" class="status">正在載入最近一次預測…</p>
   
 
 
-    <!-- LIVE_MONITOR_LINK --><p><a href="./live.html" style="font-weight:700">📡 開啟 0050 盤中即時監控（每 5 分鐘更新）</a></p>
 </header>
   <nav class="tab-nav" aria-label="0050 功能分頁">
-    <button class="tab-button active" type="button" data-tab="prediction" aria-selected="true">📈 預測</button>
-    <button class="tab-button" type="button" data-tab="realtime" aria-selected="false">📡 即時</button>
-    <button class="tab-button" type="button" data-tab="research" aria-selected="false">📰 新聞與技術</button>
+    <button class="tab-button active" type="button" data-tab="prediction" aria-selected="true">預測</button>
+    <button class="tab-button" type="button" data-tab="realtime" aria-selected="false">即時</button>
+    <button class="tab-button" type="button" data-tab="research" aria-selected="false">新聞與技術</button>
+    <button class="tab-button" type="button" data-tab="charts" aria-selected="false">圖表</button>
   </nav>
   <div id="tab-prediction" class="tab-panel"></div>
-  <div id="tab-realtime" class="tab-panel" hidden>
-    <iframe class="live-frame" src="./live.html" title="0050 盤中即時監控" loading="lazy"></iframe>
-  </div>
+  <div id="tab-realtime" class="tab-panel" hidden><iframe class="live-frame" src="./live.html" title="0050 盤中即時監控" loading="lazy"></iframe></div>
   <div id="tab-research" class="tab-panel" hidden></div>
+  <div id="tab-charts" class="tab-panel" hidden></div>
   <div id="error" class="error" role="alert"></div>
   <div class="grid">
     <article class="card"><div class="label">預測方向</div><div id="direction" class="value">—</div><p id="target" class="muted">—</p></article>
@@ -110,12 +112,7 @@
     <h3>🇺🇸 美股核心觀察指標（最近完成交易日）</h3>
     <div id="us-market-table" class="table-scroll"><p>資料載入中…</p></div>
     <p class="section-caption">只保留與0050較相關的5項核心指標：S&P 500（大盤）、NASDAQ（科技股）、費半（半導體）、台積電 ADR及NVIDIA（AI晶片）。利率資料目前先不顯示，避免殖利率換算未確認前造成誤讀。盤中行情請看「盤中即時監控」。若日期仍是前一日，代表美國當日現貨尚未收盤，不是資料日期錯置。</p>
-    <h3>🇹🇼 前一個台灣交易日三大法人買賣超</h3>
-    <div id="institutional-summary" class="market-grid"><p>資料載入中…</p></div>
-    <p class="section-caption">單位：新台幣億元。外資、投信、自營商為全上市市場統計；自營商含自行買賣及避險。</p>
-    <h3>🎯 0050 ETF 本身的法人買賣超</h3>
-    <div id="etf-0050-summary" class="market-grid"><p>資料載入中…</p></div>
-    <p class="section-caption">單位：股。此區使用 TWSE T86 個別證券資料，與上方全市場金額分開呈現，避免將整體市場法人資金誤認為0050直接流入。</p>
+    <div hidden id="institutional-summary"></div><div hidden id="etf-0050-summary"></div>
     <h3>📰 本次觀測日重大新聞與事件</h3>
     <div id="major-events" class="event-grid"><p>資料載入中…</p></div>
     <div id="briefing-sources" class="source-grid"></div>
@@ -124,30 +121,24 @@
   <section class="card">
     <h2>🧪 模型比較（相同樣本外測試區間）</h2>
     <div id="model-comparison" class="metric-grid"><p>等待模型比較…</p></div>
-    <p class="section-caption">正式模型依相同 expanding-window 樣本外測試的平衡準確率與 Brier Score guardrails 自動選擇；若沒有候選模型通過門檻，退回 Logistic Regression。比較指標包括方向準確率、平衡準確率與 Brier Score。</p>
+    <p class="section-caption">正式模型依相同樣本外測試的平衡準確率與 Brier Score 門檻選擇；未達標時退回 Logistic Regression。</p><h3>模型與資料狀態</h3><p id="model-meta">—</p><p id="generated" class="muted">—</p><p id="source" class="muted">—</p>
   </section>
   <section class="card" id="margin-history-section">
     <h2>🛡️ 0050 歷史融資維持率與成本趨勢</h2>
     <p class="section-caption">每日收盤後更新。曲線為 0050 市場平均融資成本推估值，非個人帳戶實際維持率；移動游標可查看日期、維持率、推估成本及收盤價。</p>
     <div class="metric-grid" id="margin-history-summary"><div class="metric"><span>最新維持率</span><strong>載入中…</strong></div><div class="metric"><span>推估融資成本</span><strong>—</strong></div><div class="metric"><span>資料日期</span><strong>—</strong></div></div>
     <div class="chart-panel" style="margin-top:12px"><h3>0050 融資維持率（%）</h3><canvas id="margin-history-chart" aria-label="0050歷史融資維持率趨勢圖"></canvas></div>
-    <p id="margin-history-point" class="chart-hint" aria-live="polite">載入歷史資料後，可將游標移到圖表查看每日推估融資成本。</p>
+    <div class="date-slider-wrap"><label for="margin-date-slider">每日資料</label><span id="margin-date-label" class="date-slider-date">—</span><input id="margin-date-slider" type="range" min="0" max="0" value="0" step="1" aria-label="選擇融資維持率資料日期"></div><p id="margin-history-point" class="chart-hint" aria-live="polite">使用下方滑桿查閱每日維持率與推估成本。</p>
     <p id="margin-history-meta" class="section-caption">資料來源與計算口徑載入中…</p>
   </section>
   <section class="card">
     <h2>🛡️ 市場恐慌偵測與風險狀態</h2>
     <div id="market-risk" class="metric-grid"><p>等待風險資料…</p></div>
-    <p class="section-caption">規則式風險警示獨立呈現，不會偷偷覆寫模型方向機率。SOX、NASDAQ、台積電 ADR 同步重挫時提高警戒；警示門檻不是自動賣出指令。</p>
+    <p class="section-caption">費半 ≤ -3%、NASDAQ ≤ -2%、台積電 ADR ≤ -3%；任兩項觸發為風險升高，三項同時觸發為高風險。</p>
   </section>
   <section class="card">
-    <h2>🌙 台指期夜盤行情與隔日開盤訊號</h2>
+    <h2>🌙 台指期夜盤訊號</h2>
     <div id="taifex-night" class="metric-grid"><p>等待 TAIFEX 夜盤資料…</p></div>
-    <p class="section-caption">資料來源為臺灣期貨交易所 TX 官方日報。夜盤交易資料依期交所規則歸屬隔日交易日；若夜盤尚未收盤或資料未更新，模型不會拿舊夜盤冒充最新訊號。夜盤特徵累積至少120個有效交易日後才納入模型機率。</p>
-  </section>
-  <section class="card">
-    <h2>🌅 下一交易日開盤跳空預測</h2>
-    <div id="opening-gap" class="forecast-grid"><p>等待開盤模型…</p></div>
-    <p class="section-caption">獨立預測下一交易日開盤價相對最近一個台灣交易日收盤價的方向，不與收盤方向預測混合。</p>
   </section>
   <section class="card">
     <h2>🎯 預測可信度檢查</h2>
@@ -167,14 +158,14 @@
       <button type="button" class="timeframe-button" data-timeframe="weekly" aria-pressed="false">每週</button>
       <button type="button" class="timeframe-button" data-timeframe="monthly" aria-pressed="false">每月</button>
     </div>
-    <p class="chart-hint">將滑鼠移到K線或技術指標圖上，或在觸控螢幕上點選／拖曳，即可同步查看該日期數據。</p>
+    <p class="chart-hint">使用下方滑桿選擇日期，K線、RSI、MACD 與數值資訊會同步更新。</p>
     <div id="chart-crosshair-info" aria-live="polite">移動游標至圖表，即可查看日期、開高低收、成交量、均線與技術指標。</div>
     <div class="chart-stack">
       <div class="chart-panel"><h3>K線、MA5、MA20、MA60、布林通道及成交量</h3><canvas id="candlestick-chart" aria-label="0050歷史K線與均線圖"></canvas></div>
       <div class="chart-panel"><h3>RSI（14日相對強弱指標）</h3><canvas id="rsi-chart" aria-label="0050 RSI 技術指標圖"></canvas></div>
       <div class="chart-panel"><h3>MACD（12、26、9）</h3><canvas id="macd-chart" aria-label="0050 MACD 技術指標圖"></canvas></div>
     </div>
-    <p id="chart-range" class="chart-note">圖表資料載入中…</p>
+<div class="date-slider-wrap"><label for="chart-date-slider">每日／週／月資料</label><span id="chart-date-label" class="date-slider-date">—</span><input id="chart-date-slider" type="range" min="0" max="0" value="0" step="1" aria-label="選擇K線與技術指標日期"></div><p id="chart-range" class="chart-note">圖表資料載入中…</p>
   </section>
   <section class="card">
     <h2>🧪 模型回測品質檢查</h2>
@@ -196,12 +187,6 @@
     <h2>🔗 可查證的研究資料與工具</h2>
     <div id="reference-links" class="source-grid"><p>資料來源載入中…</p></div>
     <p class="chart-note">建議以官方資料核對價格、三大法人與期貨籌碼。此版本列出研究入口，但尚未全部接入模型特徵。</p>
-  </section>
-  <section class="card">
-    <h2>模型與資料狀態</h2>
-    <p id="model-meta">—</p>
-    <p id="generated" class="muted">—</p>
-    <p id="source" class="muted">—</p>
   </section>
   <section class="card">
     <h2>📊 預測來源與市場因素</h2>
@@ -227,27 +212,39 @@
   const prediction=document.getElementById('tab-prediction');
   const research=document.getElementById('tab-research');
   const realtime=document.getElementById('tab-realtime');
+  const charts=document.getElementById('tab-charts');
   const nav=[...document.querySelectorAll('.tab-button[data-tab]')];
-  const predictionHeads=['🛡️ 市場恐慌偵測與風險狀態','🌙 台指期夜盤行情與隔日開盤訊號','🌅 下一交易日開盤跳空預測','🔮 未來 1～3 個交易日預測','模型與資料狀態','使用限制'];
+  const predictionHeads=['🛡️ 市場恐慌偵測與風險狀態','🌙 台指期夜盤訊號','🔮 未來 1～3 個交易日預測'];
+  const chartHeads=['📈 0050 歷史 K 線與技術指標','🛡️ 0050 歷史融資維持率與成本趨勢'];
   [...main.children].forEach(node=>{
     if(node.matches('header,.tab-nav,.tab-panel')) return;
     if(node.id==='error'||node.classList.contains('grid')||node.tagName==='FOOTER'){prediction.append(node);return;}
     if(node.tagName==='SECTION'){
       const title=(node.querySelector('h1,h2')?.textContent||'').trim();
-      (predictionHeads.some(x=>title.includes(x))?prediction:research).append(node);
+      if(chartHeads.some(x=>title.includes(x))) charts.append(node);
+      else (predictionHeads.some(x=>title.includes(x))?prediction:research).append(node);
       return;
     }
     prediction.append(node);
   });
+  const chartSections=Array.prototype.slice.call(charts.children);
+  const kline=chartSections.find(node=>node.querySelector&&node.querySelector('#candlestick-chart'));
+  const margin=charts.querySelector('#margin-history-section');
+  if(kline) charts.prepend(kline);
+  if(margin) charts.append(margin);
+  const researchSections=Array.prototype.slice.call(research.children);
+  const sourceSection=researchSections.find(x=>x.querySelector&&x.querySelector('#explanation-summary'));
+  const newsSection=researchSections.find(x=>x.querySelector&&x.querySelector('#major-events'));
+  if(sourceSection&&newsSection) research.insertBefore(sourceSection,newsSection);
   function activate(name,updateHash=true){
-    const target=name==='realtime'?realtime:name==='research'?research:prediction;
-    [prediction,realtime,research].forEach(p=>p.hidden=p!==target);
+    const target=name==='realtime'?realtime:name==='research'?research:name==='charts'?charts:prediction;
+    [prediction,realtime,research,charts].forEach(p=>p.hidden=p!==target);
     nav.forEach(b=>{const active=b.dataset.tab===name;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});
     if(updateHash) history.replaceState(null,'','#'+name);
-    if(name==='research') requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
+    if(name==='research'||name==='charts') requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
   }
   nav.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.tab)));
-  const initial=location.hash==='#realtime'?'realtime':location.hash==='#research'?'research':'prediction';
+  const initial=['realtime','research','charts'].includes(location.hash.slice(1))?location.hash.slice(1):'prediction';
   activate(initial,false);
 })();
 (async function () {
@@ -260,6 +257,7 @@
   let chartTimeframe = 'daily';
   let chartRowsCurrent = [];
   let chartHoverIndex = null;
+  let marginHistorySnapshot = {};
   try {
     const response = await fetch('./data/latest.json?ts=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('目前還沒有成功產生的預測資料（HTTP ' + response.status + '）。');
@@ -269,11 +267,13 @@
       const marginResponse = await fetch('./data/intraday.json?ts=' + Date.now(), { cache: 'no-store' });
       if (marginResponse.ok) {
         const liveSnapshot = await marginResponse.json();
-        renderMarginHistory(liveSnapshot.margin_maintenance || {});
+        marginHistorySnapshot = liveSnapshot.margin_maintenance || {};
+        renderMarginHistory(marginHistorySnapshot);
       } else {
-        renderMarginHistory({});
+        marginHistorySnapshot = {};
+        renderMarginHistory(marginHistorySnapshot);
       }
-    } catch (_) { renderMarginHistory({}); }
+    } catch (_) { marginHistorySnapshot = {}; renderMarginHistory(marginHistorySnapshot); }
     const f = d.forecast || {}, b = d.backtest || {};
     renderHorizons(d.forecasts || {});
     setupChartTimeframes(d.history || []);
@@ -283,7 +283,6 @@
     renderModelComparison(d.model_comparison || {});
     renderMarketRisk(d.market_risk || {});
     renderTaifexNight(d.taifex_night || {});
-    renderOpeningGap(d.opening_gap_forecast || {});
     renderConfidence(d.confidence || {});
     $('status').textContent = '資料已載入';
     $('direction').textContent = f.direction === 'UP' ? '預測上漲' : '預測下跌';
@@ -298,7 +297,13 @@
     $('model-meta').textContent = (d.model?.name || '模型') + '｜因子數：' + (d.model?.feature_count ?? '—') + '｜訓練樣本：' + (d.model?.training_rows ?? '—');
     $('generated').textContent = '最後產生時間（UTC）：' + (d.generated_at_utc || '未知');
     $('source').textContent = '資料來源：' + (d.data_source || '未知');
-    $('limitations').replaceChildren(...(d.limitations || []).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
+    $('limitations').replaceChildren(...[
+      '僅供個人研究，不構成投資建議；歷史績效不代表未來結果。',
+      '台灣交易日標籤尚未串接官方交易日曆；資料供應商可能延遲，日期以實際資料為準。',
+      '美股特徵採台灣開盤前最近已完成的美股常規交易時段；新聞僅整理 RSS 標題，未納入模型訓練或回測。',
+      '法人資料歷史回填仍有限，僅使用當時已公開資料；夜盤樣本不足時只顯示行情、不調整模型機率。',
+      '2日與3日預測是各自獨立的累積方向分類，不代表逐日價格路徑；回測準確率不等於扣除交易成本後的投資報酬。'
+    ].map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
     const ex = d.explanation || {}, n = ex.news || {};
     $('explanation-summary').textContent = ex.summary || '尚無綜合說明。';
     $('model-interpretation').textContent = ex.model_interpretation || '尚無模型解讀。';
@@ -327,6 +332,8 @@
     }
     const canvas = $('margin-history-chart');
     const info = $('margin-history-point');
+    const slider = $('margin-date-slider');
+    const sliderLabel = $('margin-date-label');
     const meta = $('margin-history-meta');
     if (!canvas) return;
     const cssWidth = Math.max(320, canvas.clientWidth || 900);
@@ -370,13 +377,16 @@
       const row=history[Math.max(0,Math.min(history.length-1,i))];
       info.textContent=row.date+'｜維持率 '+Number(row.maintenance_pct).toFixed(2)+'%｜推估融資成本 '+Number(row.margin_cost_estimate).toFixed(2)+' 元｜收盤 '+Number(row.close).toFixed(2)+' 元';
     };
-    showPoint(history.length-1);
+    const showSelectedPoint=i=>{const index=Math.max(0,Math.min(history.length-1,Number(i)||0));showPoint(index);if(sliderLabel)sliderLabel.textContent=history[index].date;};
+    if(slider){slider.min='0';slider.max=String(history.length-1);slider.step='1';slider.value=String(history.length-1);if(!slider.dataset.bound){slider.addEventListener('input',()=>showSelectedPoint(slider.value));slider.dataset.bound='1';}}
+    showSelectedPoint(history.length-1);
     if(!canvas.dataset.bound){
       canvas.addEventListener('pointermove',event=>{
         const rect=canvas.getBoundingClientRect();
         const px=event.clientX-rect.left;
         const idx=Math.round((px-left)*(history.length-1)/(cssWidth-left-right));
-        showPoint(idx);
+        if(slider)slider.value=String(Math.max(0,Math.min(history.length-1,idx)));
+        showSelectedPoint(idx);
       });
       canvas.dataset.bound='1';
     }
@@ -405,9 +415,10 @@
       ['市場／標的','資料日期','收盤','漲跌幅'].forEach(v => { const th=document.createElement('th'); th.textContent=v; head.append(th); });
       const thead=document.createElement('thead'); thead.append(head); table.append(thead);
       const tbody=document.createElement('tbody');
+      const usLabels={'^GSPC':'S&P 500','^IXIC':'NASDAQ','^SOX':'費半','TSM':'台積電 ADR','NVDA':'NVIDIA'};
       usRows.forEach(row => {
         const tr=document.createElement('tr');
-        [row.name,row.date,row.display_close||Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),row.display_change||((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
+        [usLabels[row.ticker]||row.name,row.date,row.display_close||Number(row.close).toLocaleString('en-US',{maximumFractionDigits:2}),row.display_change||((row.change_pct>0?'+':'')+Number(row.change_pct).toFixed(2)+'%')].forEach((v,i)=>{
           const td=document.createElement('td'); td.textContent=v; if(i===3) td.className=toneClass(row.tone); tr.append(td);
         });
         tbody.append(tr);
@@ -482,18 +493,18 @@
     const host=$('market-risk');host.replaceChildren();
     const card=document.createElement('div');card.className='metric';
     const title=document.createElement('span');title.className='chart-note';title.textContent='目前風險狀態';
-    const strong=document.createElement('strong');strong.textContent=risk.label||'資料不足';
+    const strong=document.createElement('strong');strong.textContent=(risk.label||'資料不足').replace(/SOX/g,'費半').replace(/TSM ADR/g,'台積電 ADR').replace(/TSM/g,'台積電 ADR');
     const detail=document.createElement('p');detail.className='chart-note';
     detail.textContent='觸發 '+(risk.trigger_count??'—')+'/3 項同步重挫條件';
     card.append(title,strong,detail);host.append(card);
     Object.entries(risk.observations||{}).forEach(([ticker,item])=>{
       const el=document.createElement('div');el.className='metric';
-      const name=document.createElement('span');name.className='chart-note';name.textContent=ticker;
+      const riskNames={'^SOX':'費半','^IXIC':'NASDAQ','TSM':'台積電 ADR'};
+      const name=document.createElement('span');name.className='chart-note';name.textContent=riskNames[ticker]||ticker;
       const value=document.createElement('strong');value.textContent=item.return==null?'N/A':percent(item.return);
       const note=document.createElement('p');note.className='chart-note';note.textContent='警戒門檻 '+percent(item.threshold)+'｜'+(item.triggered?'已觸發':'未觸發');
       el.append(name,value,note);host.append(el);
     });
-    const rule=document.createElement('p');rule.className='chart-note';rule.textContent=risk.rule||'';host.append(rule);
   }
   function renderTaifexNight(night) {
     const host=$('taifex-night');host.replaceChildren();
@@ -501,7 +512,9 @@
     const fresh=night.prediction_session||null;
     const card=document.createElement('div');card.className='metric';
     const title=document.createElement('span');title.className='chart-note';title.textContent='夜盤資料狀態';
-    const strong=document.createElement('strong');strong.textContent=night.label||'尚無資料';
+    const strong=document.createElement('strong');
+    const nightLabel=night.label||'尚無資料';
+    strong.textContent=nightLabel.includes('夜盤資料尚未更新')?'夜盤資料待更新':nightLabel.includes('尚無')?'尚無可用夜盤資料':nightLabel;
     const detail=document.createElement('p');detail.className='chart-note';
     detail.textContent='資料日期 '+(row?.date||'—')+'｜累積 '+(night.history_sessions??0)+' 個夜盤交易日';
     card.append(title,strong,detail);host.append(card);
@@ -523,7 +536,7 @@
       host.append(ready);
     }
     const fetched=document.createElement('p');fetched.className='chart-note';
-    fetched.textContent='最後擷取時間：'+(night.fetch?.updated_at_taipei||'未知')+'｜來源：TAIFEX 官方公開日報';
+    fetched.textContent='更新時間：'+(night.fetch?.updated_at_taipei||'未知');
     host.append(fetched);
     (night.fetch?.errors||[]).forEach(message=>{const warning=document.createElement('p');warning.className='chart-note';warning.textContent='資料更新提醒：'+message;host.append(warning);});
   }
@@ -583,6 +596,8 @@
       renderSelectedCharts();
     });
     renderSelectedCharts();
+    const dateSlider=$('chart-date-slider');
+    if(dateSlider&&!dateSlider.dataset.bound){dateSlider.addEventListener('input',()=>{chartHoverIndex=Number(dateSlider.value);renderSelectedCharts();});dateSlider.dataset.bound='1';}
     ['candlestick-chart','rsi-chart','macd-chart'].forEach(id => {
       const canvas = $(id);
       if (!canvas || canvas.dataset.hoverReady) return;
@@ -661,8 +676,8 @@
       const quotes = live.quotes || [];
       const byTicker = Object.fromEntries(quotes.map(q => [q.ticker, q]));
       const watched = ['^SOX', '^IXIC', 'TSM', 'NVDA', 'NQ=F', 'ES=F'];
-      const labels = {'^SOX':'費半 SOX','^IXIC':'NASDAQ','TSM':'台積電 ADR','NVDA':'NVIDIA','NQ=F':'NASDAQ 100 期貨','ES=F':'S&P 500 期貨'};
-      const thresholds = {'^SOX':-5, '^IXIC':-3, 'TSM':-4};
+      const labels = {'^SOX':'費半','^IXIC':'NASDAQ','TSM':'台積電 ADR','NVDA':'NVIDIA','NQ=F':'NASDAQ 100 期貨','ES=F':'S&P 500 期貨'};
+      const thresholds = {'^SOX':-3, '^IXIC':-2, 'TSM':-3};
       const fmtPct = v => v == null || !Number.isFinite(Number(v)) ? '—' : (Number(v)>0?'+':'') + Number(v).toFixed(2) + '%';
       const usable = watched.map(t => byTicker[t]).filter(q => q && q.status === 'live');
       const staleMins = q => {
@@ -726,6 +741,8 @@
   function renderSelectedCharts() {
     const grouped = buildChartRows(chartSourceRows, chartTimeframe);
     chartRowsCurrent = grouped;
+    const dateSlider=$('chart-date-slider'),dateLabel=$('chart-date-label');
+    if(dateSlider){dateSlider.min='0';dateSlider.max=String(Math.max(0,grouped.length-1));dateSlider.step='1';const selected=chartHoverIndex===null?Math.max(0,grouped.length-1):Math.max(0,Math.min(grouped.length-1,chartHoverIndex));dateSlider.value=String(selected);if(dateLabel)dateLabel.textContent=grouped[selected]?.date||'—';}
     if (chartHoverIndex !== null && chartHoverIndex >= grouped.length) chartHoverIndex = grouped.length - 1;
     drawCandles(grouped);
     drawIndicatorLine('rsi-chart', grouped, 'rsi14', 'RSI 14', 0, 100, [30,70]);
@@ -900,7 +917,9 @@
     if (!(g.items || []).length) host.textContent='目前沒有取得新聞，請稍後重新整理。';
   }
   function percent(x) { return Number.isFinite(Number(x)) ? (Number(x) * 100).toFixed(1) + '%' : 'N/A'; }
-  window.addEventListener('resize',()=>{ if(!$('tab-research')?.hidden) renderSelectedCharts(); });
+  window.addEventListener('resize',()=>{
+    if(!$('tab-charts')?.hidden){renderSelectedCharts();renderMarginHistory(marginHistorySnapshot);}
+  });
 })();
 </script>
 </body>

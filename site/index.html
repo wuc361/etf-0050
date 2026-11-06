@@ -227,12 +227,14 @@
     }
     prediction.append(node);
   });
-  const kline=charts.querySelector('section:has(#candlestick-chart)');
+  const chartSections=Array.prototype.slice.call(charts.children);
+  const kline=chartSections.find(node=>node.querySelector&&node.querySelector('#candlestick-chart'));
   const margin=charts.querySelector('#margin-history-section');
   if(kline) charts.prepend(kline);
   if(margin) charts.append(margin);
-  const sourceSection=[...research.querySelectorAll(':scope > section')].find(x=>x.querySelector('#explanation-summary'));
-  const newsSection=[...research.querySelectorAll(':scope > section')].find(x=>x.querySelector('#major-events'));
+  const researchSections=Array.prototype.slice.call(research.children);
+  const sourceSection=researchSections.find(x=>x.querySelector&&x.querySelector('#explanation-summary'));
+  const newsSection=researchSections.find(x=>x.querySelector&&x.querySelector('#major-events'));
   if(sourceSection&&newsSection) research.insertBefore(sourceSection,newsSection);
   function activate(name,updateHash=true){
     const target=name==='realtime'?realtime:name==='research'?research:name==='charts'?charts:prediction;
@@ -499,7 +501,6 @@
       const note=document.createElement('p');note.className='chart-note';note.textContent='警戒門檻 '+percent(item.threshold)+'｜'+(item.triggered?'已觸發':'未觸發');
       el.append(name,value,note);host.append(el);
     });
-    const rule=document.createElement('p');rule.className='chart-note';rule.textContent=risk.rule||'';host.append(rule);
   }
   function renderTaifexNight(night) {
     const host=$('taifex-night');host.replaceChildren();

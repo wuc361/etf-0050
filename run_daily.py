@@ -140,13 +140,13 @@ def main():
                                        "triggered": bool(value is not None and value <= threshold)}
     stress_count = sum(1 for x in stress_observations.values() if x["triggered"])
     if stress_count == 3:
-        risk_level, risk_label = "HIGH", "高風險：SOX、NASDAQ、台積電 ADR 同時重挫"
+        risk_level, risk_label = "HIGH", "高風險：費半、NASDAQ、台積電 ADR 同步重挫"
     elif stress_count == 2:
-        risk_level, risk_label = "ELEVATED", "風險升高：三項國際指標中有兩項重挫"
+        risk_level, risk_label = "ELEVATED", "風險升高：三項核心指標中有兩項重挫"
     elif stress_count == 1:
-        risk_level, risk_label = "WATCH", "風險觀察：一項國際指標達重挫門檻"
+        risk_level, risk_label = "WATCH", "風險觀察：一項核心指標達重挫門檻"
     else:
-        risk_level, risk_label = "NORMAL", "未觸發國際市場同步重挫條件"
+        risk_level, risk_label = "NORMAL", "未觸發核心市場同步重挫條件"
 
     # Compare live directional votes across all three calibrated model families.
     live_model_probabilities = {}
@@ -181,7 +181,7 @@ def main():
     risk_assessment = {
         "level": risk_level, "label": risk_label, "trigger_count": stress_count,
         "observations": stress_observations,
-        "rule": "SOX <= -3%, NASDAQ <= -2%, TSM ADR <= -3%; 兩項觸發為風險升高，三項同時觸發為高風險"
+        "rule": "費半 <= -3%、NASDAQ <= -2%、台積電 ADR <= -3%；任兩項觸發為風險升高，三項同時觸發為高風險"
     }
 
     prices = raw["0050.TW"].dropna(subset=["Close"])

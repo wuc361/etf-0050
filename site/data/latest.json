@@ -1,17 +1,17 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-09T01:45:36+00:00",
-  "data_as_of": "2026-11-06",
-  "latest_close": 92.5,
+  "generated_at_utc": "2026-11-09T07:00:16+00:00",
+  "data_as_of": "2026-11-09",
+  "latest_close": 97.45,
   "price_validation": {
-    "date": "2026-11-06",
-    "close": 92.5,
-    "open": 89.95,
-    "high": 94.45,
-    "low": 87.55,
-    "volume": 943224572,
+    "date": "2026-11-09",
+    "close": 97.45,
+    "open": 95.65,
+    "high": 99.0,
+    "low": 94.5,
+    "volume": 293980451,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-06",
+    "yahoo_previous_latest_date": "2026-11-09",
     "yahoo_latest_date_received": "2026-11-09",
     "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
@@ -19,51 +19,51 @@
   "forecasts": {
     "1d": {
       "direction": "UP",
-      "up_probability": 0.720696,
-      "down_probability": 0.279304,
+      "up_probability": 0.683475,
+      "down_probability": 0.316525,
       "backtest": {
-        "accuracy": 0.6931702344546381,
-        "balanced_accuracy": 0.6909391782190584,
-        "up_recall": 0.7470588235294118,
-        "brier_score": 0.1959385263073987,
-        "majority_baseline_accuracy": 0.5198776758409785,
-        "accuracy_lift_vs_baseline": 0.17329255861365955,
-        "base_rate": 0.5198776758409785,
-        "n_test": 981
+        "accuracy": 0.6934826883910387,
+        "balanced_accuracy": 0.6911866744778358,
+        "up_recall": 0.7475538160469667,
+        "brier_score": 0.1957809859356275,
+        "majority_baseline_accuracy": 0.5203665987780041,
+        "accuracy_lift_vs_baseline": 0.1731160896130346,
+        "base_rate": 0.5203665987780041,
+        "n_test": 982
       },
       "model_name": "Random Forest",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.852181,
-      "down_probability": 0.147819,
+      "up_probability": 0.599768,
+      "down_probability": 0.400232,
       "backtest": {
-        "accuracy": 0.5934627170582226,
-        "balanced_accuracy": 0.5856177156177156,
-        "up_recall": 0.649090909090909,
-        "brier_score": 0.24308470225750559,
-        "majority_baseline_accuracy": 0.5617977528089888,
-        "accuracy_lift_vs_baseline": 0.03166496424923382,
-        "base_rate": 0.5617977528089888,
-        "n_test": 979
+        "accuracy": 0.5928571428571429,
+        "balanced_accuracy": 0.585028703903477,
+        "up_recall": 0.647912885662432,
+        "brier_score": 0.2433051042593473,
+        "majority_baseline_accuracy": 0.5622448979591836,
+        "accuracy_lift_vs_baseline": 0.030612244897959218,
+        "base_rate": 0.5622448979591836,
+        "n_test": 980
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 2 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.602785,
-      "down_probability": 0.397215,
+      "up_probability": 0.525807,
+      "down_probability": 0.474193,
       "backtest": {
-        "accuracy": 0.5404298874104401,
-        "balanced_accuracy": 0.5160561880720553,
+        "accuracy": 0.5398773006134969,
+        "balanced_accuracy": 0.5156233939767705,
         "up_recall": 0.6737588652482269,
-        "brier_score": 0.25107420336380665,
-        "majority_baseline_accuracy": 0.5772773797338793,
-        "accuracy_lift_vs_baseline": -0.0368474923234392,
-        "base_rate": 0.5772773797338793,
-        "n_test": 977
+        "brier_score": 0.2512305878234597,
+        "majority_baseline_accuracy": 0.5766871165644172,
+        "accuracy_lift_vs_baseline": -0.036809815950920255,
+        "base_rate": 0.5766871165644172,
+        "n_test": 978
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 3 個台灣交易日收盤方向（不是開盤跳空預測）"
@@ -71,17 +71,17 @@
   },
   "opening_gap_forecast": {
     "direction": "UP",
-    "up_probability": 0.841208,
-    "down_probability": 0.158792,
+    "up_probability": 0.819112,
+    "down_probability": 0.180888,
     "backtest": {
-      "accuracy": 0.7838939857288482,
-      "balanced_accuracy": 0.7818204551137784,
-      "up_recall": 0.8217054263565892,
-      "brier_score": 0.15106501591337052,
-      "majority_baseline_accuracy": 0.5259938837920489,
-      "accuracy_lift_vs_baseline": 0.25790010193679924,
-      "base_rate": 0.5259938837920489,
-      "n_test": 981
+      "accuracy": 0.7841140529531568,
+      "balanced_accuracy": 0.7819928870031821,
+      "up_recall": 0.8220502901353965,
+      "brier_score": 0.15091947033445463,
+      "majority_baseline_accuracy": 0.5264765784114053,
+      "accuracy_lift_vs_baseline": 0.25763747454175157,
+      "base_rate": 0.5264765784114053,
+      "n_test": 982
     },
     "model_name": "Random Forest",
     "target_definition": "下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-06；尚無晚於最近台股收盤日（2026-11-06）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-06；尚無晚於最近台股收盤日（2026-11-09）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-06",
       "contract": "TX",
@@ -136,25 +136,25 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2262,
       "stored_rows": 84,
-      "updated_at_taipei": "2026-11-09T09:45:45+08:00",
+      "updated_at_taipei": "2026-11-09T15:00:29+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.828,
+    "available_features": 77,
     "total_features": 93,
-    "signal_consensus": 1.0,
+    "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.9753398294055662,
-      "Random Forest": 0.7206962054755135,
-      "Extra Trees": 0.7643984843956654
+      "Logistic Regression": 0.40214593853668334,
+      "Random Forest": 0.6834750065088502,
+      "Extra Trees": 0.7317727766730884
     },
-    "historical_balanced_accuracy": 0.6877544648432621,
-    "historical_brier_score": 0.19681553047126066,
-    "historical_test_count": 981,
+    "historical_balanced_accuracy": 0.6880019611020396,
+    "historical_brier_score": 0.1966570970198929,
+    "historical_test_count": 982,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
   "model_comparison": {
@@ -167,49 +167,31 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6309887869520897,
-        "balanced_accuracy": 0.6299175721243911,
-        "brier_score": 0.2238192841804334,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5198776758409785
+        "accuracy": 0.6313645621181263,
+        "balanced_accuracy": 0.6302533228630427,
+        "brier_score": 0.22361149908888492,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.6901121304791029,
-        "balanced_accuracy": 0.6877544648432621,
-        "brier_score": 0.19681553047126066,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5198776758409785
+        "accuracy": 0.6904276985743381,
+        "balanced_accuracy": 0.6880019611020396,
+        "brier_score": 0.1966570970198929,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.6860346585117227,
-        "balanced_accuracy": 0.6838328962158111,
-        "brier_score": 0.195666580956327,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5198776758409785
+        "accuracy": 0.6863543788187373,
+        "balanced_accuracy": 0.6840880667771864,
+        "brier_score": 0.1955336723543628,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       }
     ]
   },
   "history": [
-    {
-      "date": "2023-07-24",
-      "open": 31.75,
-      "high": 31.912500381469727,
-      "low": 31.649999618530273,
-      "close": 31.8125,
-      "volume": 38900724.0,
-      "ma5": 32.12000045776367,
-      "ma20": 32.348750019073485,
-      "ma60": 31.427291742960612,
-      "rsi14": 37.20138651646072,
-      "macd": 0.05542506331079977,
-      "macd_signal": 0.1784000201885584,
-      "macd_hist": -0.12297495687775864,
-      "bb_upper": 33.10067313143685,
-      "bb_mid": 32.348750019073485,
-      "bb_lower": 31.59682690671012
-    },
     {
       "date": "2023-07-25",
       "open": 31.924999237060547,
@@ -14576,11 +14558,11 @@
     },
     {
       "date": "2026-11-06",
-      "open": 89.95,
-      "high": 94.45,
-      "low": 87.55,
+      "open": 89.94999694824219,
+      "high": 94.44999694824219,
+      "low": 87.55000305175781,
       "close": 92.5,
-      "volume": 943224572.0,
+      "volume": 862920367.0,
       "ma5": 98.83999938964844,
       "ma20": 106.6025001525879,
       "ma60": 107.8358336130778,
@@ -14591,21 +14573,39 @@
       "bb_upper": 117.94680031292293,
       "bb_mid": 106.6025001525879,
       "bb_lower": 95.25819999225286
+    },
+    {
+      "date": "2026-11-09",
+      "open": 95.65,
+      "high": 99.0,
+      "low": 94.5,
+      "close": 97.45,
+      "volume": 293980451.0,
+      "ma5": 97.50999969482422,
+      "ma20": 105.72750030517577,
+      "ma60": 107.71666697184244,
+      "rsi14": 29.811326012994613,
+      "macd": -3.495626690555582,
+      "macd_signal": -2.089905916384457,
+      "macd_hist": -1.405720774171125,
+      "bb_upper": 117.06042862779935,
+      "bb_mid": 105.72750030517577,
+      "bb_lower": 94.39457198255218
     }
   ],
   "forecast": {
     "direction": "UP",
-    "up_probability": 0.720696,
-    "down_probability": 0.279304,
+    "up_probability": 0.683475,
+    "down_probability": 0.316525,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.6931702344546381,
-    "up_recall": 0.7470588235294118,
+    "accuracy": 0.6934826883910387,
+    "up_recall": 0.7475538160469667,
     "coverage": 1.0,
-    "base_rate": 0.5198776758409785,
-    "n_test": 981
+    "base_rate": 0.5203665987780041,
+    "n_test": 982
   },
   "explanation": {
     "model_interpretation": "量化模型偏向上漲。",
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": 0.037471,
+        "latest_return": 0.046838,
         "tone": "偏多"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.040556,
+        "latest_return": 0.04937,
         "tone": "偏多"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.006291,
+        "latest_return": -0.009734,
         "tone": "偏空"
       },
       {
@@ -14677,19 +14677,41 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-09T01:47:05+00:00",
+      "generated_at_utc": "2026-11-09T07:01:20+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 14,
+        "keyword_score": -2,
+        "article_count": 12,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "US stocks face volatile week as AI selloff, inflation data and tech earnings loom - The Economic Times",
+            "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNT1dxQ3pucFRvVXNjUzljU01vY20tNnhLUzJKMmV5ZUZiODUwTTlnUWtuTXlfT240WGExZU9XSURlTjZOb0lETlJPb0F6bXJtcTdiNE50bGxSMGhURENjb0FWQ3FnS19TU1lRSUZzRW15ZnJDS2JGaVJYeXJGZjFQWGdpUHY4ZnR4ZHNQVHZRTUJzZ0QzOE5MM3hwVmtRMGpVeldYSGhwZ3BvYXhHWTNoSHNSM1hRSVo3bzNNVXFJNG15ZDZ0eGVIRW85NmRfYV9nRHhKNWtZaWpBUGZLTURTTlQxaTViTHZHZmhpa2hB0gHzAUFVX3lxTE9iQ21mZ2NvamJIbF83bHBXMFFuU0l3Tkl0YWJFWmUxU0QxSTZhLW55b19UTk95Q2NoeU9ldXlfNG0xcG5aRU5DT2xGM2VPMHNzVjNtRDJGU3NDOGl4ekpJRUhhNENsc1NoQTJOTGVlaXhLVTYwNDMtNXgwNFNQckFOU2RiN1pwaDZmMlMyeFFJWEVfdFhTWXZJcFdsbEc0cUFwb0RReVZrS1hNQ1F4ZVJzX1gwclFhVDF0RjhETVBzY0FyMWt4LW9IVEtnS0NoMGtTUmIxamFJYUxhbXRLVm9SaGhNWm10dXFOV0ItTG1Hem11Yw?oc=5",
+            "source": "The Economic Times",
+            "published_at": "2026-11-09T05:23+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "selloff"
+            ]
+          },
           {
             "category": "國際市場",
             "title": "Opinion: The S&P 500 could be dangerously exposed to AI. Here are some simple alternatives. - MarketWatch",
             "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTnpIbXZUVFBYTU9iZUk0X1RJU21paDFkelEtU3Vpa0w1aTlFdGp3TFVkVDB1T0p3R1E0VHUxUXUzMk4zQXkwU1JLLXpudmUxSUJRajdqeVZtNHplVU1BUlBhR2hmNGhPZWNkdG43THdfZHdVc3pKVE5hT19kbkR6ckoyMnB4MWViU1o3dmpVc3lIeVlzZU1QOHdtaUVKeTd3ZHpqc0tjMTY0Q2JxN1JJcHhB?oc=5",
             "source": "MarketWatch",
             "published_at": "2026-11-09T00:40+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "S&P500: I Was Wrong, The Technicals Were Right; Here's What They Say Is Next (SP500) - Seeking Alpha",
+            "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNd2Ryalp2eXdQM2M4RHBpQU5DbzRwNElwXzR3VUloTGxpSm95YkNPS3JDcWxadTMtZWFfY2c5VjUtdVdlWWZ4SkJsektBUzJ2NkFSMGdIeVE0dHhrVUZXY3MzbEs2Zy1BY0h3cWpkZW91NEgyd25vTXg4eUM3T2ltWUNJSURhQm5PS3pOcHphQVhkZTZTbGZMUEg0QVFObWczdGw1RnRzLUQ1eG5mQ0JSQ3FzVm91azFR?oc=5",
+            "source": "Seeking Alpha",
+            "published_at": "2026-11-08T21:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14706,42 +14728,20 @@
           },
           {
             "category": "國際市場",
-            "title": "US Inflation Report Becomes Next Test for Fed Rate Hike After 165,000 Jobs Added in October - CryptoRank",
-            "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeS1wX3hkLXhCY2VjbEllaUtPQnN5T2xfcVFNUUl5bjBWdHBLelJrUlR2RnlFWkg2eC1oWFE3U3YxYlhmT3U4NjVzYy1aV3JUdU9KTUhmUS0wZEtwMEdJMGEyTHViQ2tWR1FLY2F1N1MzNlh6NWswbUNaMjVKekpmUGgyNmZacDZsMm44bnQ5djNmQlV6UnVYUzR5a3VFRjRqaHJrU1lHUUFPcmhyRmh0N0VTM3lYdkI3Zk4zOFlyQ0w2UGp0MEhYRQ?oc=5",
-            "source": "CryptoRank",
-            "published_at": "2026-11-07T18:04+00:00",
-            "keyword_score": -1,
-            "positive_terms": [],
-            "negative_terms": [
-              "rate hike"
-            ]
-          },
-          {
-            "category": "國際市場",
-            "title": "Nasdaq attempts to recover from worst rout in 19 months as AI stocks see some buying: Live updates - CNBC",
-            "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBGUGtVSmh2dDhaUDJWN2x5SWlLSW93SDgyMm5ybTd4TFo5R3NmZ3I0aDdHSHRNT2VxRVdVLS00NjZXeUE2ZDFSTExOaGtIaFY3MEFWYndKUENSWmMwVml3cVlMb1lnUk83RThmTDNvZGlCaVV0YkJn0gF8QVVfeXFMTmQ2ZmxnbU5Md3JkdGNYVG9TUVhLRDhETG9vY0lFaTZ0elZnYXBfN0hrRGU1S3pXN0kyazlXMHBxUkZ1cnNmOW1OVmxEX25VeHVJMzZ2V1dCczBhUHZaVGV1R0lvVUtkZmVBbk9KakpzUWc4QWlwX0UzSngyWQ?oc=5",
-            "source": "CNBC",
-            "published_at": "2026-11-06T21:22+00:00",
+            "title": "Buy the dip or wait? BofA maps out 3 scenarios for chip stocks and top picks - Investing.com",
+            "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdVFkdVhjMldHNG5OWVpCRzZHanVoTWJiM29QN3ZCbmVtbEtXT3dCaEJPU0ZvTXFjYWF6LWt0dkI3MWdUaGZXTVZtSWR5eXRENEw5ckMzaWR5a1FzME1KTTZvVWNSdldvRzlFdU4wUzRjQU9YMDFDTEN0emRDbk1DUTR4Y180a1lHYUFybE9OSFhYZEhGeGF1UWF5dFNlSGRCYU1ab0JxQUROY29HR3lpNG0xYkZlRkJLSm5hTTR1dHNKZkxlS3k4MFA1TXk?oc=5",
+            "source": "Investing.com",
+            "published_at": "2026-11-08T11:28+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Nasdaq 100 Rebounds 2% After Worst Day Since 2020, Payrolls Smash Estimates: Stock Market Today - Benzinga",
-            "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOOHJsVUh6bkZRWEVoV1IzRmVhR01mb0JiQnFvMW9Xck1TdHhxNUJHMHdFb2tnNEJ4WnczaUlwWlk5SXpjZTVjeDlPeVNQampSQk9fSVFwVGhqenVOellnaDBuOWU0UjVKb1lCSUxkX3lRZVBRV0FiaGg2cHFBS2toUDEwNXVRWmlxQzRPTWhYZ2o1bjlGWU1kSkpsTWFKZTZWTjFrTXNLM1ZTQjJ5R0tmUEdhbzVlS0xyb3lPMHl3?oc=5",
-            "source": "Benzinga",
-            "published_at": "2026-11-06T17:38+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Chip Stocks Have Been Hit Hard. Nvidia and 4 More at Fire-Sale Prices. - Barron's",
-            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZ2JpNmpFX3NFWURNaTBlZDB5WDI2THhydmtNeDJUTk1YenZfU290TWh5VlR1RnZCVWdkZWxFWkswVnhXUm1tVGtRaThmM0trRTRmMFY0VW4tbk1DTkVfeWpEWWpPT3NuRERrZ255RXpwQ1RGRFRTV1k2WUt3Ymx5M19mSGw0Q1pC?oc=5",
-            "source": "Barron's",
-            "published_at": "2026-11-06T15:18+00:00",
+            "title": "Markets News, Nov. 6, 2026: Nasdaq, S&P 500 Rise as Chip Stocks Bounce Back from AI Tailspin; Major Indexes Post Weekly Losses - Investopedia",
+            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQWVltdUhaRW1fN2xnN3FoVUFxTmkzRDlIZGQzcnFDZUNTLVdrZExfcG12MnRSR01WN0ZycTBQUmF5YlhhbjB1dEh6Skd2bTdyQUw2T3hubU16azc5QmhCRVlweTN0eGdsSG80R2JkQkRyUExySEFCcjdjLW5EbWMxY25iZVVYd3lxdUt4Z2tCdFc?oc=5",
+            "source": "Investopedia",
+            "published_at": "2026-11-06T22:04+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14749,10 +14749,20 @@
         ]
       },
       "domestic": {
-        "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 3,
+        "tone": "中性或訊號不足",
+        "keyword_score": 0,
+        "article_count": 5,
         "items": [
+          {
+            "category": "台灣市場",
+            "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+            "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
+            "source": "三立新聞網SETN.com",
+            "published_at": "2026-11-09T02:35+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
           {
             "category": "台灣市場",
             "title": "台股週報》擔憂AI緊箍咒 外資逃殺逾5千億 - 卡優新聞網",
@@ -14784,6 +14794,18 @@
             "negative_terms": [
               "升息"
             ]
+          },
+          {
+            "category": "台灣市場",
+            "title": "〈社論〉台幣貶值、物價上漲，不容輕忽的考驗 - 中華新聞雲／中華日報",
+            "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9wQmc5RWprb0lxRXRueWUtc0U5VEd5eTJzYjdiS3lnQlB0bW9KbWp2MFVjNFh3bEZ1UTVpTnVEVWVHQXFsUDVkU29Uc0VGa0JKMVE?oc=5",
+            "source": "中華新聞雲／中華日報",
+            "published_at": "2026-11-02T13:21+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "上漲"
+            ],
+            "negative_terms": []
           }
         ]
       },
@@ -14807,10 +14829,42 @@
       "items": [
         {
           "category": "國際市場",
+          "title": "US stocks face volatile week as AI selloff, inflation data and tech earnings loom - The Economic Times",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNT1dxQ3pucFRvVXNjUzljU01vY20tNnhLUzJKMmV5ZUZiODUwTTlnUWtuTXlfT240WGExZU9XSURlTjZOb0lETlJPb0F6bXJtcTdiNE50bGxSMGhURENjb0FWQ3FnS19TU1lRSUZzRW15ZnJDS2JGaVJYeXJGZjFQWGdpUHY4ZnR4ZHNQVHZRTUJzZ0QzOE5MM3hwVmtRMGpVeldYSGhwZ3BvYXhHWTNoSHNSM1hRSVo3bzNNVXFJNG15ZDZ0eGVIRW85NmRfYV9nRHhKNWtZaWpBUGZLTURTTlQxaTViTHZHZmhpa2hB0gHzAUFVX3lxTE9iQ21mZ2NvamJIbF83bHBXMFFuU0l3Tkl0YWJFWmUxU0QxSTZhLW55b19UTk95Q2NoeU9ldXlfNG0xcG5aRU5DT2xGM2VPMHNzVjNtRDJGU3NDOGl4ekpJRUhhNENsc1NoQTJOTGVlaXhLVTYwNDMtNXgwNFNQckFOU2RiN1pwaDZmMlMyeFFJWEVfdFhTWXZJcFdsbEc0cUFwb0RReVZrS1hNQ1F4ZVJzX1gwclFhVDF0RjhETVBzY0FyMWt4LW9IVEtnS0NoMGtTUmIxamFJYUxhbXRLVm9SaGhNWm10dXFOV0ItTG1Hem11Yw?oc=5",
+          "source": "The Economic Times",
+          "published_at": "2026-11-09T05:23+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "selloff"
+          ]
+        },
+        {
+          "category": "台灣市場",
+          "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
+          "source": "三立新聞網SETN.com",
+          "published_at": "2026-11-09T02:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "Opinion: The S&P 500 could be dangerously exposed to AI. Here are some simple alternatives. - MarketWatch",
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTnpIbXZUVFBYTU9iZUk0X1RJU21paDFkelEtU3Vpa0w1aTlFdGp3TFVkVDB1T0p3R1E0VHUxUXUzMk4zQXkwU1JLLXpudmUxSUJRajdqeVZtNHplVU1BUlBhR2hmNGhPZWNkdG43THdfZHdVc3pKVE5hT19kbkR6ckoyMnB4MWViU1o3dmpVc3lIeVlzZU1QOHdtaUVKeTd3ZHpqc0tjMTY0Q2JxN1JJcHhB?oc=5",
           "source": "MarketWatch",
           "published_at": "2026-11-09T00:40+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "S&P500: I Was Wrong, The Technicals Were Right; Here's What They Say Is Next (SP500) - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNd2Ryalp2eXdQM2M4RHBpQU5DbzRwNElwXzR3VUloTGxpSm95YkNPS3JDcWxadTMtZWFfY2c5VjUtdVdlWWZ4SkJsektBUzJ2NkFSMGdIeVE0dHhrVUZXY3MzbEs2Zy1BY0h3cWpkZW91NEgyd25vTXg4eUM3T2ltWUNJSURhQm5PS3pOcHphQVhkZTZTbGZMUEg0QVFObWczdGw1RnRzLUQ1eG5mQ0JSQ3FzVm91azFR?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-08T21:00+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14837,32 +14891,50 @@
         },
         {
           "category": "國際市場",
-          "title": "US Inflation Report Becomes Next Test for Fed Rate Hike After 165,000 Jobs Added in October - CryptoRank",
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeS1wX3hkLXhCY2VjbEllaUtPQnN5T2xfcVFNUUl5bjBWdHBLelJrUlR2RnlFWkg2eC1oWFE3U3YxYlhmT3U4NjVzYy1aV3JUdU9KTUhmUS0wZEtwMEdJMGEyTHViQ2tWR1FLY2F1N1MzNlh6NWswbUNaMjVKekpmUGgyNmZacDZsMm44bnQ5djNmQlV6UnVYUzR5a3VFRjRqaHJrU1lHUUFPcmhyRmh0N0VTM3lYdkI3Zk4zOFlyQ0w2UGp0MEhYRQ?oc=5",
-          "source": "CryptoRank",
-          "published_at": "2026-11-07T18:04+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ]
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq attempts to recover from worst rout in 19 months as AI stocks see some buying: Live updates - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBGUGtVSmh2dDhaUDJWN2x5SWlLSW93SDgyMm5ybTd4TFo5R3NmZ3I0aDdHSHRNT2VxRVdVLS00NjZXeUE2ZDFSTExOaGtIaFY3MEFWYndKUENSWmMwVml3cVlMb1lnUk83RThmTDNvZGlCaVV0YkJn0gF8QVVfeXFMTmQ2ZmxnbU5Md3JkdGNYVG9TUVhLRDhETG9vY0lFaTZ0elZnYXBfN0hrRGU1S3pXN0kyazlXMHBxUkZ1cnNmOW1OVmxEX25VeHVJMzZ2V1dCczBhUHZaVGV1R0lvVUtkZmVBbk9KakpzUWc4QWlwX0UzSngyWQ?oc=5",
-          "source": "CNBC",
-          "published_at": "2026-11-06T21:22+00:00",
+          "title": "Buy the dip or wait? BofA maps out 3 scenarios for chip stocks and top picks - Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdVFkdVhjMldHNG5OWVpCRzZHanVoTWJiM29QN3ZCbmVtbEtXT3dCaEJPU0ZvTXFjYWF6LWt0dkI3MWdUaGZXTVZtSWR5eXRENEw5ckMzaWR5a1FzME1KTTZvVWNSdldvRzlFdU4wUzRjQU9YMDFDTEN0emRDbk1DUTR4Y180a1lHYUFybE9OSFhYZEhGeGF1UWF5dFNlSGRCYU1ab0JxQUROY29HR3lpNG0xYkZlRkJLSm5hTTR1dHNKZkxlS3k4MFA1TXk?oc=5",
+          "source": "Investing.com",
+          "published_at": "2026-11-08T11:28+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Nasdaq 100 Rebounds 2% After Worst Day Since 2020, Payrolls Smash Estimates: Stock Market Today - Benzinga",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOOHJsVUh6bkZRWEVoV1IzRmVhR01mb0JiQnFvMW9Xck1TdHhxNUJHMHdFb2tnNEJ4WnczaUlwWlk5SXpjZTVjeDlPeVNQampSQk9fSVFwVGhqenVOellnaDBuOWU0UjVKb1lCSUxkX3lRZVBRV0FiaGg2cHFBS2toUDEwNXVRWmlxQzRPTWhYZ2o1bjlGWU1kSkpsTWFKZTZWTjFrTXNLM1ZTQjJ5R0tmUEdhbzVlS0xyb3lPMHl3?oc=5",
+          "title": "Markets News, Nov. 6, 2026: Nasdaq, S&P 500 Rise as Chip Stocks Bounce Back from AI Tailspin; Major Indexes Post Weekly Losses - Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQWVltdUhaRW1fN2xnN3FoVUFxTmkzRDlIZGQzcnFDZUNTLVdrZExfcG12MnRSR01WN0ZycTBQUmF5YlhhbjB1dEh6Skd2bTdyQUw2T3hubU16azc5QmhCRVlweTN0eGdsSG80R2JkQkRyUExySEFCcjdjLW5EbWMxY25iZVVYd3lxdUt4Z2tCdFc?oc=5",
+          "source": "Investopedia",
+          "published_at": "2026-11-06T22:04+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Nasdaq rallies as chip stocks recover from brutal losses - Fox Business",
+          "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1YbFR4UldUSzBaT3pnbkdCX2lETmkwbEFzMkh4YjByV0pzODNGWnBSc1dHTXpOZ05aYzFRZWlpQjlZajRaMDNpMkphdGVCV3RLS2FJTV9SbWJ6X0VFd1MzdDdB0gFnQVVfeXFMTUpTNzdXTjNteTkwcDkwU0t5R21sMFRONnNMa1RKaXhNVG43SDNzLWdQVGdqcGRtelhpTi1oZmpXNzhndXNDUGVza0EwejZGS3J4ZThYUmJhLXhsQ21hdWdabjc4TFBJcw?oc=5",
+          "source": "Fox Business",
+          "published_at": "2026-11-06T21:48+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Stock Indexes Settle Mostly Higher as Chipmakers Rebound - Barchart.com",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQOURXd0xxbEZtWktyQnZXMF9iNnE3VUd6STlTdExXaWUwZ0hIV2VVSTExSGEwRE5YNjgteDNYa29RZmVGQ01WYXREMzdXTi16Q3FSQTNfcFI5UjNOX2NQWjNsWFRiUkVQaVRoODMxeHZlMGktNko4ZV9KRDZfWU5XYUtzMzdrdE5oQTZCckJhV0FmZUtNVHdhRlBHZnRJTURfNXc?oc=5",
+          "source": "Barchart.com",
+          "published_at": "2026-11-06T21:39+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Chip Stocks Cheaper Than S&P 500 as AI Premium Vanishes - Invesco PHLX Semiconductor ETF (NASDAQ:SOXQ) - Benzinga",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPUktJeUkyY1QtX0dHQTlTWXY0QVI3cWMxMGt1XzFSTGpFV1lSUU45cF84RkdOb0tBdDhHNUMtam01Z0p4S2JfdVZGcU9hRGt4eE9LU084Z3huejNIZU5fMnNMck11eW40OS1lU2kzMFQ4dm0wWFN5MG5BSUxQanRXQ1RMX3hxMGZrWEEwT29TT2dvX2R6dkV0YW1KS3FUalpkSU1OMk5CZzR0QkFoY0owd3drTjlmSUJEREJr?oc=5",
           "source": "Benzinga",
-          "published_at": "2026-11-06T17:38+00:00",
+          "published_at": "2026-11-06T17:25+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14879,20 +14951,20 @@
         },
         {
           "category": "國際市場",
-          "title": "Chip Stocks Have Been Hit Hard. Nvidia and 4 More at Fire-Sale Prices. - Barron's",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZ2JpNmpFX3NFWURNaTBlZDB5WDI2THhydmtNeDJUTk1YenZfU290TWh5VlR1RnZCVWdkZWxFWkswVnhXUm1tVGtRaThmM0trRTRmMFY0VW4tbk1DTkVfeWpEWWpPT3NuRERrZ255RXpwQ1RGRFRTV1k2WUt3Ymx5M19mSGw0Q1pC?oc=5",
-          "source": "Barron's",
-          "published_at": "2026-11-06T15:18+00:00",
+          "title": "Nasdaq Futures Climb as Chip Stocks Bounce After Rout; Key U.S. Jobs Report in Focus - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPZGZhdGt2dVpmcDFsMHRqYzJwaEdQNWYxYkxMdEtqWXB6MU5IS0J1VldjZ0Q0MENXVHVJLXFKcEU2QTR6MkNxUkthRVU0Wkd4dW4weUFoTGM3Nll4Vkp6cGxkbGtPZ2JXZjN5aERNM0tHancxYm9lZTVCM2xHSEoxWm90d2p0TFRZQ0IzSUs5R0gyMndwSElFNXVJay1lZw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-06T11:33+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Stocks rebound after tech selloff that pushed Nasdaq into correction - CBS News",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9wQm5VYTdUdFdHMmVJQVZZN0JweHdoYXVsNXBaY21ONkE2NmZaTGd4V3lnLXpVVE05WlpvR3NiTUJIdEZMRHFCNlZqaXlWS29IOWF3VkRKTEdLVnR2SGpuZ2Q3dzhGYWVhWU9mN1NNT0pKSmdOTnV3NzRCZzk?oc=5",
-          "source": "CBS News",
-          "published_at": "2026-11-06T15:10+00:00",
+          "title": "Nasdaq Futures Rise After Steep AI Selloff as Chip Stocks Stabilize - U.S. News - Money",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOcmZCQVJ5RTNVWFFreVVyT2paa2dHUU1nZUFxVmt0dE5xbXJ0YmtmU3hhbm8wbEp1S1dGcnoySTRxcXRaU1UyRXoxR0FtSXd6U1lTSlRZSXB6cFhpc3RrVXk1NnM0NzJrZ2I4Ykd6VUsxVFFDVXp3UEdtNnZzUjd4VjRWd25SYkNzN2NvYk5CUWVZR093ZkFvQ2dVeUtzLXdCUWlwQW5jdXc1cHNwcWl6THFzVXZhcGVvYkhCem9fS2hoa2RtdFE?oc=5",
+          "source": "U.S. News - Money",
+          "published_at": "2026-11-06T09:41+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
@@ -14900,73 +14972,11 @@
           ]
         },
         {
-          "category": "國際市場",
-          "title": "US stock market today: Why is the Nasdaq up 1% while the Dow Jones falls? S&P 500 turns green amid tech st - The Economic Times",
-          "url": "https://news.google.com/rss/articles/CBMi7wJBVV95cUxOLTQ4a3Q3b3c2cS02M1lBY0xCU3dzRGt6dnkxY0d5LUlYaGkwMUtMN0RlcFhwcmM0MDBlTzYzeThVNnc5Qi14MTNaU3JiZkctQWRGaTZ4R2NhQ040MlplWFg4VGxMUVFIanBtME1vMTViQnJtOGZaWXNFdVByX3VwaTNEZldGcU1NMnAxT1NSbHFCd2xUN2tBS1NaenYzU2tONVVQOUpJenBDU3k4Y2tCaUFFeUFoY0t2VlNCSjY5LVVFeWdmVEI2RjdsYm1DczdMWS1Qa0k5LUxrdk5GemJUcnhBdUQ0OGFGVG9xT3lCRDR2U3pPVmszTDdNN3kwcHU1ZkhjMkJHa3lnQzNJWi1uZXQzOHI5aGw1TVFPUGdRbWhDWW91SW0tWktmQ05sWUFaN1V2ZDZmT2RzVng0a0dHUk9sVmRHcUxFcVFsLXlNNFhyYnVZRkFiNTlBWl8tV3F2NmdobDcwTUxwQ0tPX3Nv0gH0AkFVX3lxTE01RENrRE5GT0dSdjlFY2RZUkVLYTVVTnhRX3dqTTl4SXBXdnR6OVBLdGZhWGFWSzNET2QyZ1RpM1ItUklHb2VQbkg1aE9QQVdMbFgxdnZSOTROaXR1QXVsQ1NxSE5QNFNDY3NzLXBMSUVNeE1lR180dlAtWmlWQWM0S05UVHhkYkotLXN2V0RFenhDX0VHX1RrQXo2MHpXX04ycDRhQmpIcUdGbHctSUNHQ1pJb1Mwb0IwSWQwekRnNXJfNUdPYlhxMWxWcFZCclN4SFdZUzVxeFhtQnQ0cXhreGhKaC1ESnhTenFoRnFRaHkwZzQwdnpRRnZxN0w0Z3R1MW1mQlZIdHQ5M18wUmYtSU5sRERiNXlSOGRUb0NaS0VuWFo2RXNKQVJtM09KNm1zV2NqS0tPNDR2LUtvTXAzWDR6MHZ2TVl1bzJ1WWI1a3hIVXpRcVhuaFdDbE1vVXpUTTVjUUlPZ2tpQnVRZlh0eG8zVg?oc=5",
-          "source": "The Economic Times",
-          "published_at": "2026-11-06T14:54+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "US Adds 165,000 Jobs in October, Blowing Past Forecasts as Traders Boost Bets on a December Fed Hike - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1KWE5uczdCeXNGa2RfMmNoaXRjaVNkU1V4bnhNbjA3a3FFSTU1UzY4OEdnQVBIVGdWcXdTLTNSaklSaFBuVmJBa0RJZ0gybm5fNmQ1ZjhBbWNCR21IRUQya3lHM2ZvY3NIS1pXM1JlbmRrclZqZkE?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-11-06T14:05+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Stocks plunge as election outcome and AI worries crush tech shares - NBC News",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOOTNfLWhKbG1YQW94UmZzUGpiYlNJUlNhZWstcGdKNE9mVnRlWDhTcE1FSW9iZkpwTDI3S1R2QWNoTFhndEN4bFpwMXQwQ1paZDlNbXNxSlBRNVh5MlVKOVNKMHowZVNiN00xX2FfcHVyeFBIVzhaVF96azRNWE5VZ1VndXItWmdwelE?oc=5",
-          "source": "NBC News",
-          "published_at": "2026-11-06T13:06+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Wall St Week Ahead As tech swoon roils market, US inflation data on tap - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPYWlPMS1sdHZxcTUxa3RDeUkwRFNDMFhEeGVNRktDVW9xeTNnMTFXbWMxQjlOTkttTkx5b19EVlVZOThRRGNCX0FrR2dIVTZpUHQzblctejRubG4yTWNyajJVaU8yV3JoYjZ1T19HY1U2dHBlMVE2a2oyUHpBZFZtb2g0T3FtSWRaT0hscHhkdGMwNktlb092R2g4cUFWWE9QS2RCOHh6d1QteW5pcWc?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-06T11:06+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
           "category": "台灣市場",
           "title": "郭恭克專欄》政治風險降溫、AI產業重新定價，美、台股展望與資金配置策略 - 信傳媒",
           "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NkYycG1aeU1Ta1pENE5fVVhMd3g5TExRVGtUWV9uVVZicjBjQnBCMjlaWThMYWFRVGhXNEYxTlRLUDJRWkNGNUh6U0huUDZHbTA4Y2x2NWxVZw?oc=5",
           "source": "信傳媒",
           "published_at": "2026-11-05T21:54+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock market today: Nasdaq plunges 5% amid chip stock wipeout, Dow and S&P 500 erase post-election rally gains - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZTZIZ0tKbklnYWJvNVFoSXUtcEFER2lUNXBpaUpWeW0zMVgxakZfODVnb0NwdG0tUDFVcGFoakZPbWhNRUlBcHFSM2dlN2RmQ256c19feE1PNjFNclZwQl9aSXFSRi10eGNoc1JjQUxpRGhEa05JT0dJdzBXLXI1LXNoa3pQZEJ4ZjAyNjBLSkF3VGhMckwzVFl4SnJLSlBtTEJXLUc4S2x4NFk3S1lsUGxDc3BKZ3dkeEZ5TmRNbVptdjFxOGFXMUFsQy1UR2l1UklaMUd3?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-05T19:38+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "rally"
-          ],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Massive tech sell-off wipes $2.5 trillion from the stock market - CNN",
-          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBRNUYxQ2c5VUJvNkd2RExjdVJ1YU5UNmpYYzh2dzgzT2FOZFFaNmlpd0ZUSVViTzZkRG91RmRad3MxNXdncmt4aFFuR2U5di11dmlYSG9hODllU2RNZXFTUHR1UlhpYzhESlpfMS15OVdETTNP?oc=5",
-          "source": "CNN",
-          "published_at": "2026-11-05T15:47+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14992,6 +15002,18 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "〈社論〉台幣貶值、物價上漲，不容輕忽的考驗 - 中華新聞雲／中華日報",
+          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9wQmc5RWprb0lxRXRueWUtc0U5VEd5eTJzYjdiS3lnQlB0bW9KbWp2MFVjNFh3bEZ1UTVpTnVEVWVHQXFsUDVkU29Uc0VGa0JKMVE?oc=5",
+          "source": "中華新聞雲／中華日報",
+          "published_at": "2026-11-02T13:21+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "上漲"
+          ],
+          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -15002,10 +15024,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-09T01:47:05+00:00",
-      "taiwan_data_date": "2026-11-06",
+      "generated_at_utc": "2026-11-09T07:01:20+00:00",
+      "taiwan_data_date": "2026-11-09",
       "us_session_date": "2026-11-06",
-      "us_timezone_checked_at": "2026-11-08T20:47-05:00",
+      "us_timezone_checked_at": "2026-11-09T02:01-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15152,85 +15174,21 @@
           "tone": "殖利率上升"
         }
       ],
-      "institutional": {
-        "date": "2026-11-06",
-        "foreign_net_ntd": -91188249259,
-        "trust_net_ntd": 26691208730,
-        "dealer_net_ntd": -49475935504,
-        "total_net_ntd": -113972976033,
-        "foreign_net_100m": -911.882,
-        "trust_net_100m": 266.912,
-        "dealer_net_100m": -494.759,
-        "total_net_100m": -1139.73,
-        "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261106&type=day",
-        "0050_foreign_net_shares": -88713607,
-        "0050_trust_net_shares": 8361000,
-        "0050_dealer_net_shares": -457625140,
-        "0050_total_net_shares": -537977747,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261106&selectType=ALLBUT0999"
-      },
-      "etf_0050_institutional": {
-        "date": "2026-11-06",
-        "foreign_net_shares": -88713607,
-        "trust_net_shares": 8361000,
-        "dealer_net_shares": -457625140,
-        "total_net_shares": -537977747,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261106&selectType=ALLBUT0999"
-      },
+      "institutional": null,
+      "etf_0050_institutional": null,
       "institutional_errors": [
-        "2026-10-23: HTTPError"
+        "2026-11-09: T86找不到0050資料",
+        "2026-11-09: BFI82U無資料或非交易日",
+        "2026-10-23: T86找不到0050資料",
+        "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 911.9 億元",
-          "date": "2026-11-06",
-          "tone": "偏空",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "投信買超 266.9 億元",
-          "date": "2026-11-06",
-          "tone": "偏多",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "自營商賣超 494.8 億元",
-          "date": "2026-11-06",
-          "tone": "偏空",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "三大法人合計賣超 1,139.7 億元",
-          "date": "2026-11-06",
-          "tone": "偏空",
-          "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資賣超 88,713,607 股",
-          "date": "2026-11-06",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 8,361,000 股",
-          "date": "2026-11-06",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商賣超 457,625,140 股",
-          "date": "2026-11-06",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
+          "title": "尚未取得前一台灣交易日法人資料",
+          "date": "2026-11-09",
+          "tone": "資料不足",
+          "detail": "TWSE BFI82U 未回傳有效資料；不以其他日期資料代替。"
         },
         {
           "group": "美股前夜",
@@ -15238,6 +15196,14 @@
           "date": "2026-11-06",
           "tone": "偏多",
           "detail": "單日漲幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
+        },
+        {
+          "group": "國際新聞",
+          "title": "US stocks face volatile week as AI selloff, inflation data and tech earnings loom - The Economic Times",
+          "date": "2026-11-09 13:23 台北時間",
+          "tone": "偏空",
+          "detail": "The Economic Times｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNT1dxQ3pucFRvVXNjUzljU01vY20tNnhLUzJKMmV5ZUZiODUwTTlnUWtuTXlfT240WGExZU9XSURlTjZOb0lETlJPb0F6bXJtcTdiNE50bGxSMGhURENjb0FWQ3FnS19TU1lRSUZzRW15ZnJDS2JGaVJYeXJGZjFQWGdpUHY4ZnR4ZHNQVHZRTUJzZ0QzOE5MM3hwVmtRMGpVeldYSGhwZ3BvYXhHWTNoSHNSM1hRSVo3bzNNVXFJNG15ZDZ0eGVIRW85NmRfYV9nRHhKNWtZaWpBUGZLTURTTlQxaTViTHZHZmhpa2hB0gHzAUFVX3lxTE9iQ21mZ2NvamJIbF83bHBXMFFuU0l3Tkl0YWJFWmUxU0QxSTZhLW55b19UTk95Q2NoeU9ldXlfNG0xcG5aRU5DT2xGM2VPMHNzVjNtRDJGU3NDOGl4ekpJRUhhNENsc1NoQTJOTGVlaXhLVTYwNDMtNXgwNFNQckFOU2RiN1pwaDZmMlMyeFFJWEVfdFhTWXZJcFdsbEc0cUFwb0RReVZrS1hNQ1F4ZVJzX1gwclFhVDF0RjhETVBzY0FyMWt4LW9IVEtnS0NoMGtTUmIxamFJYUxhbXRLVm9SaGhNWm10dXFOV0ItTG1Hem11Yw?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15249,6 +15215,14 @@
         },
         {
           "group": "國際新聞",
+          "title": "S&P500: I Was Wrong, The Technicals Were Right; Here's What They Say Is Next (SP500) - Seeking Alpha",
+          "date": "2026-11-09 05:00 台北時間",
+          "tone": "待判讀",
+          "detail": "Seeking Alpha｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNd2Ryalp2eXdQM2M4RHBpQU5DbzRwNElwXzR3VUloTGxpSm95YkNPS3JDcWxadTMtZWFfY2c5VjUtdVdlWWZ4SkJsektBUzJ2NkFSMGdIeVE0dHhrVUZXY3MzbEs2Zy1BY0h3cWpkZW91NEgyd25vTXg4eUM3T2ltWUNJSURhQm5PS3pOcHphQVhkZTZTbGZMUEg0QVFObWczdGw1RnRzLUQ1eG5mQ0JSQ3FzVm91azFR?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "A $57 Billion Storm May Hit Semiconductor Stocks This Week - Seeking Alpha",
           "date": "2026-11-08 22:55 台北時間",
           "tone": "待判讀",
@@ -15257,11 +15231,19 @@
         },
         {
           "group": "國際新聞",
-          "title": "US Inflation Report Becomes Next Test for Fed Rate Hike After 165,000 Jobs Added in October - CryptoRank",
-          "date": "2026-11-08 02:04 台北時間",
-          "tone": "偏空",
-          "detail": "CryptoRank｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeS1wX3hkLXhCY2VjbEllaUtPQnN5T2xfcVFNUUl5bjBWdHBLelJrUlR2RnlFWkg2eC1oWFE3U3YxYlhmT3U4NjVzYy1aV3JUdU9KTUhmUS0wZEtwMEdJMGEyTHViQ2tWR1FLY2F1N1MzNlh6NWswbUNaMjVKekpmUGgyNmZacDZsMm44bnQ5djNmQlV6UnVYUzR5a3VFRjRqaHJrU1lHUUFPcmhyRmh0N0VTM3lYdkI3Zk4zOFlyQ0w2UGp0MEhYRQ?oc=5"
+          "title": "Buy the dip or wait? BofA maps out 3 scenarios for chip stocks and top picks - Investing.com",
+          "date": "2026-11-08 19:28 台北時間",
+          "tone": "待判讀",
+          "detail": "Investing.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdVFkdVhjMldHNG5OWVpCRzZHanVoTWJiM29QN3ZCbmVtbEtXT3dCaEJPU0ZvTXFjYWF6LWt0dkI3MWdUaGZXTVZtSWR5eXRENEw5ckMzaWR5a1FzME1KTTZvVWNSdldvRzlFdU4wUzRjQU9YMDFDTEN0emRDbk1DUTR4Y180a1lHYUFybE9OSFhYZEhGeGF1UWF5dFNlSGRCYU1ab0JxQUROY29HR3lpNG0xYkZlRkJLSm5hTTR1dHNKZkxlS3k4MFA1TXk?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+          "date": "2026-11-09T02:35+00:00",
+          "tone": "待判讀",
+          "detail": "三立新聞網SETN.com｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5"
         },
         {
           "group": "台灣新聞",
@@ -15275,6 +15257,19 @@
       "us_news": [
         {
           "category": "國際市場",
+          "title": "US stocks face volatile week as AI selloff, inflation data and tech earnings loom - The Economic Times",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNT1dxQ3pucFRvVXNjUzljU01vY20tNnhLUzJKMmV5ZUZiODUwTTlnUWtuTXlfT240WGExZU9XSURlTjZOb0lETlJPb0F6bXJtcTdiNE50bGxSMGhURENjb0FWQ3FnS19TU1lRSUZzRW15ZnJDS2JGaVJYeXJGZjFQWGdpUHY4ZnR4ZHNQVHZRTUJzZ0QzOE5MM3hwVmtRMGpVeldYSGhwZ3BvYXhHWTNoSHNSM1hRSVo3bzNNVXFJNG15ZDZ0eGVIRW85NmRfYV9nRHhKNWtZaWpBUGZLTURTTlQxaTViTHZHZmhpa2hB0gHzAUFVX3lxTE9iQ21mZ2NvamJIbF83bHBXMFFuU0l3Tkl0YWJFWmUxU0QxSTZhLW55b19UTk95Q2NoeU9ldXlfNG0xcG5aRU5DT2xGM2VPMHNzVjNtRDJGU3NDOGl4ekpJRUhhNENsc1NoQTJOTGVlaXhLVTYwNDMtNXgwNFNQckFOU2RiN1pwaDZmMlMyeFFJWEVfdFhTWXZJcFdsbEc0cUFwb0RReVZrS1hNQ1F4ZVJzX1gwclFhVDF0RjhETVBzY0FyMWt4LW9IVEtnS0NoMGtTUmIxamFJYUxhbXRLVm9SaGhNWm10dXFOV0ItTG1Hem11Yw?oc=5",
+          "source": "The Economic Times",
+          "published_at": "2026-11-09T05:23+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "selloff"
+          ],
+          "published_at_taipei": "2026-11-09 13:23 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "Opinion: The S&P 500 could be dangerously exposed to AI. Here are some simple alternatives. - MarketWatch",
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTnpIbXZUVFBYTU9iZUk0X1RJU21paDFkelEtU3Vpa0w1aTlFdGp3TFVkVDB1T0p3R1E0VHUxUXUzMk4zQXkwU1JLLXpudmUxSUJRajdqeVZtNHplVU1BUlBhR2hmNGhPZWNkdG43THdfZHdVc3pKVE5hT19kbkR6ckoyMnB4MWViU1o3dmpVc3lIeVlzZU1QOHdtaUVKeTd3ZHpqc0tjMTY0Q2JxN1JJcHhB?oc=5",
           "source": "MarketWatch",
@@ -15283,6 +15278,17 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-09 08:40 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "S&P500: I Was Wrong, The Technicals Were Right; Here's What They Say Is Next (SP500) - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNd2Ryalp2eXdQM2M4RHBpQU5DbzRwNElwXzR3VUloTGxpSm95YkNPS3JDcWxadTMtZWFfY2c5VjUtdVdlWWZ4SkJsektBUzJ2NkFSMGdIeVE0dHhrVUZXY3MzbEs2Zy1BY0h3cWpkZW91NEgyd25vTXg4eUM3T2ltWUNJSURhQm5PS3pOcHphQVhkZTZTbGZMUEg0QVFObWczdGw1RnRzLUQ1eG5mQ0JSQ3FzVm91azFR?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-08T21:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-09 05:00 台北時間"
         },
         {
           "category": "國際市場",
@@ -15297,19 +15303,28 @@
         },
         {
           "category": "國際市場",
-          "title": "US Inflation Report Becomes Next Test for Fed Rate Hike After 165,000 Jobs Added in October - CryptoRank",
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNeS1wX3hkLXhCY2VjbEllaUtPQnN5T2xfcVFNUUl5bjBWdHBLelJrUlR2RnlFWkg2eC1oWFE3U3YxYlhmT3U4NjVzYy1aV3JUdU9KTUhmUS0wZEtwMEdJMGEyTHViQ2tWR1FLY2F1N1MzNlh6NWswbUNaMjVKekpmUGgyNmZacDZsMm44bnQ5djNmQlV6UnVYUzR5a3VFRjRqaHJrU1lHUUFPcmhyRmh0N0VTM3lYdkI3Zk4zOFlyQ0w2UGp0MEhYRQ?oc=5",
-          "source": "CryptoRank",
-          "published_at": "2026-11-07T18:04+00:00",
-          "keyword_score": -1,
+          "title": "Buy the dip or wait? BofA maps out 3 scenarios for chip stocks and top picks - Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdVFkdVhjMldHNG5OWVpCRzZHanVoTWJiM29QN3ZCbmVtbEtXT3dCaEJPU0ZvTXFjYWF6LWt0dkI3MWdUaGZXTVZtSWR5eXRENEw5ckMzaWR5a1FzME1KTTZvVWNSdldvRzlFdU4wUzRjQU9YMDFDTEN0emRDbk1DUTR4Y180a1lHYUFybE9OSFhYZEhGeGF1UWF5dFNlSGRCYU1ab0JxQUROY29HR3lpNG0xYkZlRkJLSm5hTTR1dHNKZkxlS3k4MFA1TXk?oc=5",
+          "source": "Investing.com",
+          "published_at": "2026-11-08T11:28+00:00",
+          "keyword_score": 0,
           "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ],
-          "published_at_taipei": "2026-11-08 02:04 台北時間"
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-08 19:28 台北時間"
         }
       ],
       "domestic_news": [
+        {
+          "category": "台灣市場",
+          "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
+          "source": "三立新聞網SETN.com",
+          "published_at": "2026-11-09T02:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-09 10:35 台北時間"
+        },
         {
           "category": "台灣市場",
           "title": "台股週報》擔憂AI緊箍咒 外資逃殺逾5千億 - 卡優新聞網",
@@ -15323,7 +15338,7 @@
         }
       ],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏強，可能對台灣電子權值及0050開盤情緒形成支撐；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 1,139.7 億元。",
+      "narrative": "美股科技與半導體觀察組合偏強，可能對台灣電子權值及0050開盤情緒形成支撐；仍需搭配台灣法人籌碼與匯率確認。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {
@@ -15370,7 +15385,7 @@
       0.99
     ],
     "feature_count": 93,
-    "training_rows": 1231
+    "training_rows": 1232
   },
   "data_source": "Yahoo Finance (unofficial; verify independently)",
   "reference_links": [

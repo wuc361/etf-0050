@@ -1,33 +1,33 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-12T03:05:03+00:00",
-  "data_as_of": "2026-11-11",
-  "latest_close": 103.2,
+  "generated_at_utc": "2026-11-12T07:31:01+00:00",
+  "data_as_of": "2026-11-12",
+  "latest_close": 100.95,
   "price_validation": {
-    "date": "2026-11-11",
-    "close": 103.2,
-    "open": 101.0,
-    "high": 103.25,
-    "low": 99.8,
-    "volume": 123895015,
+    "date": "2026-11-12",
+    "close": 100.95,
+    "open": 103.5,
+    "high": 104.2,
+    "low": 100.8,
+    "volume": 138078921,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-10",
+    "yahoo_previous_latest_date": "2026-11-12",
     "yahoo_latest_date_received": "2026-11-12",
-    "yahoo_lag_calendar_days": 1,
+    "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
   },
   "forecasts": {
     "1d": {
       "direction": "UP",
-      "up_probability": 0.756801,
-      "down_probability": 0.243199,
+      "up_probability": 0.788798,
+      "down_probability": 0.211202,
       "backtest": {
-        "accuracy": 0.6941896024464832,
-        "balanced_accuracy": 0.6917641325536061,
-        "up_recall": 0.7446393762183235,
-        "brier_score": 0.1968501572333514,
+        "accuracy": 0.6952089704383282,
+        "balanced_accuracy": 0.6927387914230019,
+        "up_recall": 0.746588693957115,
+        "brier_score": 0.1963646623579086,
         "majority_baseline_accuracy": 0.5229357798165137,
-        "accuracy_lift_vs_baseline": 0.17125382262996947,
+        "accuracy_lift_vs_baseline": 0.17227319062181445,
         "base_rate": 0.5229357798165137,
         "n_test": 981
       },
@@ -36,13 +36,13 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.6476,
-      "down_probability": 0.3524,
+      "up_probability": 0.743678,
+      "down_probability": 0.256322,
       "backtest": {
         "accuracy": 0.5934627170582226,
         "balanced_accuracy": 0.5827305605786619,
         "up_recall": 0.6654611211573237,
-        "brier_score": 0.24329504238851551,
+        "brier_score": 0.24329504242403088,
         "majority_baseline_accuracy": 0.5648621041879469,
         "accuracy_lift_vs_baseline": 0.02860061287027571,
         "base_rate": 0.5648621041879469,
@@ -53,13 +53,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.563808,
-      "down_probability": 0.436192,
+      "up_probability": 0.615858,
+      "down_probability": 0.384142,
       "backtest": {
         "accuracy": 0.5383828045035824,
         "balanced_accuracy": 0.5137962883409227,
         "up_recall": 0.6707964601769911,
-        "brier_score": 0.2537199510210544,
+        "brier_score": 0.2537199276605629,
         "majority_baseline_accuracy": 0.5783009211873081,
         "accuracy_lift_vs_baseline": -0.03991811668372569,
         "base_rate": 0.5783009211873081,
@@ -71,15 +71,15 @@
   },
   "opening_gap_forecast": {
     "direction": "UP",
-    "up_probability": 0.847558,
-    "down_probability": 0.152442,
+    "up_probability": 0.887083,
+    "down_probability": 0.112917,
     "backtest": {
-      "accuracy": 0.7726809378185525,
-      "balanced_accuracy": 0.770530867183135,
-      "up_recall": 0.8088803088803089,
-      "brier_score": 0.1496693077890933,
+      "accuracy": 0.7737003058103975,
+      "balanced_accuracy": 0.7714961181483859,
+      "up_recall": 0.8108108108108109,
+      "brier_score": 0.14934199368090237,
       "majority_baseline_accuracy": 0.528032619775739,
-      "accuracy_lift_vs_baseline": 0.2446483180428135,
+      "accuracy_lift_vs_baseline": 0.2456676860346585,
       "base_rate": 0.528032619775739,
       "n_test": 981
     },
@@ -92,7 +92,7 @@
     "trigger_count": 0,
     "observations": {
       "^SOX": {
-        "return": 0.05658757468288167,
+        "return": 0.05658747701032096,
         "threshold": -0.03,
         "triggered": false
       },
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-11；尚無晚於最近台股收盤日（2026-11-11）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-11；尚無晚於最近台股收盤日（2026-11-12）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-11",
       "contract": "TX",
@@ -136,24 +136,24 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2278,
       "stored_rows": 138,
-      "updated_at_taipei": "2026-11-12T11:05:10+08:00",
+      "updated_at_taipei": "2026-11-12T15:31:09+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.957,
+    "available_features": 89,
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.5104560671548809,
-      "Random Forest": 0.756801067795555,
-      "Extra Trees": 0.8497168088431539
+      "Logistic Regression": 0.7205865246484829,
+      "Random Forest": 0.7887982336336348,
+      "Extra Trees": 0.8578345054785629
     },
-    "historical_balanced_accuracy": 0.6967311440995652,
-    "historical_brier_score": 0.19733244995460175,
+    "historical_balanced_accuracy": 0.6977058029689609,
+    "historical_brier_score": 0.19684695507915892,
     "historical_test_count": 981,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -167,25 +167,25 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6299694189602446,
-        "balanced_accuracy": 0.6282051282051282,
-        "brier_score": 0.22608954741891193,
+        "accuracy": 0.6309887869520897,
+        "balanced_accuracy": 0.6291797870745239,
+        "brier_score": 0.22570527688083591,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.6992864424057085,
-        "balanced_accuracy": 0.6967311440995652,
-        "brier_score": 0.19733244995460175,
+        "accuracy": 0.7003058103975535,
+        "balanced_accuracy": 0.6977058029689609,
+        "brier_score": 0.19684695507915892,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.6778797145769623,
-        "balanced_accuracy": 0.6748575498575498,
-        "brier_score": 0.19698625137142875,
+        "accuracy": 0.6788990825688074,
+        "balanced_accuracy": 0.6758322087269455,
+        "brier_score": 0.19648117832200918,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       }
@@ -14575,34 +14575,34 @@
       "bb_lower": 94.18568984078394
     },
     {
-      "date": "2026-11-11",
-      "open": 101.0,
-      "high": 103.25,
-      "low": 99.8,
-      "close": 103.2,
-      "volume": 123895015.0,
-      "ma5": 97.99999908447265,
-      "ma20": 104.51249977111816,
-      "ma60": 107.56666697184245,
-      "rsi14": 41.871920713247235,
-      "macd": -2.9862335979775594,
-      "macd_signal": -2.4768998453298665,
-      "macd_hist": -0.5093337526476929,
-      "bb_upper": 114.73558516579268,
-      "bb_mid": 104.51249977111816,
-      "bb_lower": 94.28941437644363
+      "date": "2026-11-12",
+      "open": 103.5,
+      "high": 104.2,
+      "low": 100.8,
+      "close": 100.95,
+      "volume": 138078921.0,
+      "ma5": 97.54999908447266,
+      "ma20": 104.39999977111816,
+      "ma60": 107.52916697184244,
+      "rsi14": 37.234043301509764,
+      "macd": -3.1657207774647276,
+      "macd_signal": -2.5127972812273,
+      "macd_hist": -0.6529234962374275,
+      "bb_upper": 114.73283073957032,
+      "bb_mid": 104.39999977111816,
+      "bb_lower": 94.067168802666
     }
   ],
   "forecast": {
     "direction": "UP",
-    "up_probability": 0.756801,
-    "down_probability": 0.243199,
+    "up_probability": 0.788798,
+    "down_probability": 0.211202,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.6941896024464832,
-    "up_recall": 0.7446393762183235,
+    "accuracy": 0.6952089704383282,
+    "up_recall": 0.746588693957115,
     "coverage": 1.0,
     "base_rate": 0.5229357798165137,
     "n_test": 981
@@ -14612,7 +14612,7 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": 0.056588,
+        "latest_return": 0.056587,
         "tone": "偏多"
       },
       {
@@ -14642,13 +14642,13 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.002088,
+        "latest_return": -0.022965,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.004564,
-        "tone": "偏多"
+        "latest_return": -0.02633,
+        "tone": "偏空"
       },
       {
         "name": "台灣 ETF",
@@ -14657,8 +14657,8 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.001542,
-        "tone": "偏空"
+        "latest_return": 0.000249,
+        "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
@@ -14677,13 +14677,25 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-12T03:06:33+00:00",
+      "generated_at_utc": "2026-11-12T07:32:37+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -1,
+        "keyword_score": -2,
         "article_count": 18,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "Treasury Yields Rise as Fed Rate Hike Expectations Remain Strong - WSJ",
+            "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPc0VSTVFyMVRIR1EtM1J2eWU0MW45b3BmWVMwTWRwbmQzcmhvVlBuTEFQNWowTEI2SUd2cngzbmZ3VXMwYTVxc2NaSTg0WnZ4VndDaHVGNWZGcFcxN1NOUWsyMHd2RTJVNjJqZ2JiQy1XRDNpM2VGRFpiX1RVaTBnM01FSTVLUXJOYkFSRnhKaFBhNzZfUUZsZGJTWlBZbjRxV29UR0k5NVJ5U3ZVdXpYZ2NLeVlKb2ZC?oc=5",
+            "source": "WSJ",
+            "published_at": "2026-11-12T07:24+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "rate hike"
+            ]
+          },
           {
             "category": "國際市場",
             "title": "Markets News, Nov. 11, 2026: S&P 500, Nasdaq Surge as CoreWeave Paces Big AI Rally; Chip Stocks Jump as Nvidia Rebounds - Investopedia",
@@ -14723,37 +14735,23 @@
           },
           {
             "category": "國際市場",
-            "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
-            "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
-            "source": "Seeking Alpha",
-            "published_at": "2026-11-11T14:28+00:00",
-            "keyword_score": 1,
-            "positive_terms": [
-              "rally"
-            ],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
-            "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
-            "source": "Investing.com",
-            "published_at": "2026-11-11T14:02+00:00",
+            "title": "After US market shake-out, signs suggest too soon to say worst is over - Reuters",
+            "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdDNPMm44clZfWEJ5a0o3NTNEYVl5Y0ZuOHJTbnUyc2dDRjVITnk0akVVQnJiWWFIZnVGek5WTTBWN0JLTEV6YmhNS2tmV0NrWkc3aFNKWDZCdjVyNjRxd3JKSjVZcGtXM29kWEJlMGVvS3JYeTV6aU5tLXk2RUNEUEhpOHkzRlBURUpvbWd2NXllQXllZzVDOHkydnpZU0E2UWNZRDhUYXVIbGFVNzR2cWo3eE5PaTZscnNB?oc=5",
+            "source": "Reuters",
+            "published_at": "2026-11-11T17:04+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Inflation rises faster than expected, boosting odds of Fed rate hike - CFO Dive",
-            "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNY1hqSFFQSVJiU0tuaF9JLU1rem9pb1hBRE9mekxacjNFWWRHTzlPNG9NdU41NXhuTUtkdEFoUjF4TDd2Z2tzbnFadE52WEpDdGZUTVVNbzE1S0d0Q2NXeDQzcUxTWXZOdFdkcmhUX0ZaS1JOSWtUSDdGaXVseDlPUW11RGZqT1FfbHNUNmtiNDFxajlMejExQTRmZ1VpY3RKMDI1YXNJWXpBc3k0Y2Jyc2xYUTU0OE5rdkdN?oc=5",
-            "source": "CFO Dive",
-            "published_at": "2026-11-10T21:42+00:00",
-            "keyword_score": -1,
+            "title": "Inflation data raises stakes for the Fed’s December decision - Baton Rouge Business Report",
+            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNC1OSjhnSDZpWml3YTgydDdEVnB3amU3LVhiYTVQUzdxRUN4Yjd3UzNjZTJzeWUta3ktN0NxY1FfYkU1Y0NWaFV4UjdBMzN4X2xmeXkyZjR4MDlCdThaTjFTYkRhYWMzM2hTM2s1TjBnVF9QSWFzbG52YTRtSUhMOUhqQmNnNVQyc3hZcndDdm9LMGNRMVE?oc=5",
+            "source": "Baton Rouge Business Report",
+            "published_at": "2026-11-11T15:32+00:00",
+            "keyword_score": 0,
             "positive_terms": [],
-            "negative_terms": [
-              "rate hike"
-            ]
+            "negative_terms": []
           }
         ]
       },
@@ -14770,6 +14768,18 @@
         "items": []
       },
       "items": [
+        {
+          "category": "國際市場",
+          "title": "Treasury Yields Rise as Fed Rate Hike Expectations Remain Strong - WSJ",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPc0VSTVFyMVRIR1EtM1J2eWU0MW45b3BmWVMwTWRwbmQzcmhvVlBuTEFQNWowTEI2SUd2cngzbmZ3VXMwYTVxc2NaSTg0WnZ4VndDaHVGNWZGcFcxN1NOUWsyMHd2RTJVNjJqZ2JiQy1XRDNpM2VGRFpiX1RVaTBnM01FSTVLUXJOYkFSRnhKaFBhNzZfUUZsZGJTWlBZbjRxV29UR0k5NVJ5U3ZVdXpYZ2NLeVlKb2ZC?oc=5",
+          "source": "WSJ",
+          "published_at": "2026-11-12T07:24+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike"
+          ]
+        },
         {
           "category": "國際市場",
           "title": "Markets News, Nov. 11, 2026: S&P 500, Nasdaq Surge as CoreWeave Paces Big AI Rally; Chip Stocks Jump as Nvidia Rebounds - Investopedia",
@@ -14809,59 +14819,43 @@
         },
         {
           "category": "國際市場",
-          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-11T14:28+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "rally"
-          ],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
-          "source": "Investing.com",
-          "published_at": "2026-11-11T14:02+00:00",
+          "title": "After US market shake-out, signs suggest too soon to say worst is over - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdDNPMm44clZfWEJ5a0o3NTNEYVl5Y0ZuOHJTbnUyc2dDRjVITnk0akVVQnJiWWFIZnVGek5WTTBWN0JLTEV6YmhNS2tmV0NrWkc3aFNKWDZCdjVyNjRxd3JKSjVZcGtXM29kWEJlMGVvS3JYeTV6aU5tLXk2RUNEUEhpOHkzRlBURUpvbWd2NXllQXllZzVDOHkydnpZU0E2UWNZRDhUYXVIbGFVNzR2cWo3eE5PaTZscnNB?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-11T17:04+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Inflation rises faster than expected, boosting odds of Fed rate hike - CFO Dive",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNY1hqSFFQSVJiU0tuaF9JLU1rem9pb1hBRE9mekxacjNFWWRHTzlPNG9NdU41NXhuTUtkdEFoUjF4TDd2Z2tzbnFadE52WEpDdGZUTVVNbzE1S0d0Q2NXeDQzcUxTWXZOdFdkcmhUX0ZaS1JOSWtUSDdGaXVseDlPUW11RGZqT1FfbHNUNmtiNDFxajlMejExQTRmZ1VpY3RKMDI1YXNJWXpBc3k0Y2Jyc2xYUTU0OE5rdkdN?oc=5",
-          "source": "CFO Dive",
-          "published_at": "2026-11-10T21:42+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ]
-        },
-        {
-          "category": "國際市場",
-          "title": "investingLive Americas FX news wrap 10 Nov: It’s a Wrap. Hot US CPI puts a bigger Fed hike in play - investingLive",
-          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPb2pZTmRVS2RMdV83Z0VsYlI3dU5ObERfSGpRYXNWRWNMWDF4M2plUFJqVF9vT01XTmZuajE0VUx5OGpadWVyWDhMV0h1NmtDQ20wLVAxNWtIalRYWFFmaHprSVVmbEQ2ZzFyUnplU0pGLTNMcjl0UHRILUNrS2Q3TC1yS3Z1Z1FOaTY3TmRkLTl5ZVpzcTFaMjVIT1BDR1ZIRThyYmVHZkp6VS1DRGdrdjdlc1hHTjVsTktHN0dvX2pEMWpKbXVn?oc=5",
-          "source": "investingLive",
-          "published_at": "2026-11-10T21:33+00:00",
+          "title": "Inflation data raises stakes for the Fed’s December decision - Baton Rouge Business Report",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNC1OSjhnSDZpWml3YTgydDdEVnB3amU3LVhiYTVQUzdxRUN4Yjd3UzNjZTJzeWUta3ktN0NxY1FfYkU1Y0NWaFV4UjdBMzN4X2xmeXkyZjR4MDlCdThaTjFTYkRhYWMzM2hTM2s1TjBnVF9QSWFzbG52YTRtSUhMOUhqQmNnNVQyc3hZcndDdm9LMGNRMVE?oc=5",
+          "source": "Baton Rouge Business Report",
+          "published_at": "2026-11-11T15:32+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Get ready for rate hike(s) - Axios",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAyLVlJUXRHemFLVF9LbGJ3QjJUd3ZObWI3d1djRlVJOWttTFNURzFlLWhOSGkyR2ZvM29FcGhxX1czd3VxZ3lmQm9TLUF4cXluYUY1Tlk0anBjUjc1T0N1LV8xYUF2aUl1TWVZ?oc=5",
-          "source": "Axios",
-          "published_at": "2026-11-10T21:26+00:00",
-          "keyword_score": -1,
+          "title": "Goldman Sachs calls chip stocks 'oversold.' Here are the names it says to buy. - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNT0pnN29CUTRORHVwTUNRSFY1dndZcjM1cGRqOWRVbVEwYm1UelIxUXE3VHNDbjhoU25kMmNKdHBXWVdjOVc0YXVubnNSV2lKUWdRdXNaM1JrbkdZaVVaLVUxd3gyeXI2WkhSR2FEU1BBV0FydDh5dm1ic2dOYUkzRmtiNl9xYnFlbm00RzdTbjZoaTZCM0RpcDY5a2lXRGhTR1FIWnZNLU5WTGx1dkRaaUNRVmQwUk5Ga3dabVVWTE1fNHBLaVFDcmx4dw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-11T06:00+00:00",
+          "keyword_score": 0,
           "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ]
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019 - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeGhUMWhtSk5Kdm9GOHhVaFlETXR3clBfSEI0VnRtTHNtWEFNWkIxelY4R2NyUjQzMjg5SF9JZ0xOZldPSGR3WlBhejJjNTdmM21HdFQzaGpwMEFrVGxMMFB1RHQ0MkVvOUtCeklOMFJmemRmUDRIRS1sS2VheW5UUDc4anhmQU5ZUV9HY09lTEpUWmFfLWZOOXhUcVZFeTRVQXZVeGE0TzhxdVVnaDRPTzdVWXY2TmQ1UEgyNGJHMFhFS241ZkJGa1o2NHphdmdSV0xCRjh0Q0k0MHdF?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-10T21:37+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14872,6 +14866,18 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Inflation rises faster than expected, boosting odds of Fed rate hike - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOalMzcnhmc2lTbmxsc2tOTHdXTDI4c0V5ZlZrTlE2dUo5Y2lXSW52bW9oTXVQNWZVZ24yc21scjNnd3FOMk9RdGdTcGYzY0FnWTZ3Q3otZ2NYbExzOFZxU29rNTlxTHJ0YkdXcG53YjBzZ3l6TXFwVURTa1R0clEtU2xjYWl1VUdwUHpmVHZndThjUzFiajUtazlkSUI1RjIyNjhpa2RzSmY?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-10T20:52+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike"
+          ]
         },
         {
           "category": "國際市場",
@@ -14897,20 +14903,22 @@
         },
         {
           "category": "國際市場",
-          "title": "U.S. 10-Year Treasury Tops 5% on Expectations of Higher Interest Rates - WSJ",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOM0tnS0Z3WEZsbnlFMG8xUXBhNlZjNllnVmhQTGRybWdQQThyMnk2b19EZlc0OWZXQjZjUl9XTlAxbmpSc2RCSG1zZzdIc0dIWUJ2TDBsQWZhTXNVd3JpY3BLSnFUdUc4VXBwZlVId0FIYVdIU2lBQ0tTRWtPX2ZpZjZ4U3kzM1FGQVUxV3RkbmM0Rm9mTFlfWVgwM1Jjd25sd0RBa0Npaw?oc=5",
-          "source": "WSJ",
-          "published_at": "2026-11-10T15:19+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "Fed officials open door to a quicker round of rate hikes as inflation worsens - Reuters",
           "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTXo5UzFWVEh5WllQOHNxS1Q2cERxOEM0X1QyN1dPX0R4XzdfT1BpajYxdi0xOEltNWh6cE15Z2ZvZ2dXV0Vwb3NkbWZ1VGQ2M2tvVVVSaWd6clhPcS1XUEU2QXE3c0tlLUhPX0c2emRnWVpwOGtoajlnSS1VRXRNZXFaNEpyVlVwcFVIOUdkT18yQ2t6a1psZGVlOFpiZl90QnVhcmxqQzNxNnlNSEdXcWpjcUdzYUNJSi1hcnl6ZEpUSUU?oc=5",
           "source": "Reuters",
           "published_at": "2026-11-10T14:51+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike"
+          ]
+        },
+        {
+          "category": "國際市場",
+          "title": "A 50-basis point December rate hike now looks to be on the table after CPI data - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZlc0allZYXhxRVBQTGNEaF9ldFFsa1B0RUp6ZmtnMkM4bUNESTdXaGlzaFdRbHBYVjhmb3k3V1FTT2oxdmxlTE51SDgya192X21Td0hMY0ZlR05vUFM0ZExjdzExZlFHQ1hLUkxtUG1CUFE1Zzh0cFhYSGVEWXNPYWRNMHl4cmczV20zckVlcU96aEJod1Rhd0xILUZDcENnWTZYd2xsUVdNZmVmZTVDYi1JTDlPZ2RJ?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-10T14:46+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
@@ -14958,18 +14966,6 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Latest semiconductor selloff should be seen as buying opportunity, says Yardeni Research - MarketWatch",
-          "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxOWi1WdWZXdGt5N2NTMFRCd2drazk1VEdYUVpuQ3o5c29DazJSZ3dCZS1HU3JIMnU5Z19tMTdrak9CYkV0b3d6VUlNTHZEaHFIdHIydEQ0R3I4ZVpUYmh2bm1ZNXM1WFM3aUZmSHdyblAwOEsyOWo5MGtPOEd3SERDSGRnZ3RNWjNna3Z6TGlTcFJYMVhIcll4TkR6VFVvUW1VVHRPV3JzOHM4QW42QWFoSmV2Zm5mcUs0YUxjMFJ1cHRkSGVhMUMwN2I0VTBxcVlTaHRMVkFwYVZDdkxGbWdJNGJUZUpESVpwUnRRdVdRSHV5N1JnYWJXSnRhX3k2azRpWHNYZ3g5MHl2eWRsSWRzZTBqZUJfN1RhNF9iRXFPWG9qSS1tQVlYdmV0bnpBS2FPcnpnYkVDVFpabVBHRURLVzRDdEg5ekNvVkNGT3JoSzg2VUtqa1AtcHo5aw?oc=5",
-          "source": "MarketWatch",
-          "published_at": "2026-11-10T10:10+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "selloff"
-          ]
         }
       ],
       "source_errors": [],
@@ -14980,10 +14976,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-12T03:06:33+00:00",
-      "taiwan_data_date": "2026-11-11",
+      "generated_at_utc": "2026-11-12T07:32:37+00:00",
+      "taiwan_data_date": "2026-11-12",
       "us_session_date": "2026-11-11",
-      "us_timezone_checked_at": "2026-11-11T22:06-05:00",
+      "us_timezone_checked_at": "2026-11-12T02:32-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15013,7 +15009,7 @@
           "ticker": "^SOX",
           "name": "費半",
           "date": "2026-11-11",
-          "close": 10564.111328125,
+          "close": 10564.1103515625,
           "previous_close": 9998.330078125,
           "display_close": "10,564.11",
           "display_change": "+5.66%",
@@ -15131,85 +15127,52 @@
         }
       ],
       "institutional": {
-        "date": "2026-11-11",
-        "foreign_net_ntd": -766443336,
-        "trust_net_ntd": 18585463465,
-        "dealer_net_ntd": 6256872866,
-        "total_net_ntd": 24075892995,
-        "foreign_net_100m": -7.664,
-        "trust_net_100m": 185.855,
-        "dealer_net_100m": 62.569,
-        "total_net_100m": 240.759,
+        "date": "2026-11-12",
+        "foreign_net_ntd": -684503883,
+        "trust_net_ntd": 12385430303,
+        "dealer_net_ntd": -6540968290,
+        "total_net_ntd": 5159958130,
+        "foreign_net_100m": -6.845,
+        "trust_net_100m": 123.854,
+        "dealer_net_100m": -65.41,
+        "total_net_100m": 51.6,
         "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261111&type=day",
-        "0050_foreign_net_shares": 22452348,
-        "0050_trust_net_shares": 4440000,
-        "0050_dealer_net_shares": 11197808,
-        "0050_total_net_shares": 38090156,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261111&selectType=ALLBUT0999"
+        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261112&type=day"
       },
-      "etf_0050_institutional": {
-        "date": "2026-11-11",
-        "foreign_net_shares": 22452348,
-        "trust_net_shares": 4440000,
-        "dealer_net_shares": 11197808,
-        "total_net_shares": 38090156,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261111&selectType=ALLBUT0999"
-      },
+      "etf_0050_institutional": null,
       "institutional_errors": [
+        "2026-11-12: T86找不到0050資料",
         "2026-10-23: T86找不到0050資料",
         "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 7.7 億元",
-          "date": "2026-11-11",
+          "title": "外資賣超 6.8 億元",
+          "date": "2026-11-12",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "投信買超 185.9 億元",
-          "date": "2026-11-11",
+          "title": "投信買超 123.9 億元",
+          "date": "2026-11-12",
           "tone": "偏多",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "自營商買超 62.6 億元",
-          "date": "2026-11-11",
-          "tone": "偏多",
+          "title": "自營商賣超 65.4 億元",
+          "date": "2026-11-12",
+          "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "三大法人合計買超 240.8 億元",
-          "date": "2026-11-11",
+          "title": "三大法人合計買超 51.6 億元",
+          "date": "2026-11-12",
           "tone": "偏多",
           "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資買超 22,452,348 股",
-          "date": "2026-11-11",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 4,440,000 股",
-          "date": "2026-11-11",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商買超 11,197,808 股",
-          "date": "2026-11-11",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
         },
         {
           "group": "美股前夜",
@@ -15217,6 +15180,14 @@
           "date": "2026-11-11",
           "tone": "偏多",
           "detail": "單日漲幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Treasury Yields Rise as Fed Rate Hike Expectations Remain Strong - WSJ",
+          "date": "2026-11-12 15:24 台北時間",
+          "tone": "偏空",
+          "detail": "WSJ｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPc0VSTVFyMVRIR1EtM1J2eWU0MW45b3BmWVMwTWRwbmQzcmhvVlBuTEFQNWowTEI2SUd2cngzbmZ3VXMwYTVxc2NaSTg0WnZ4VndDaHVGNWZGcFcxN1NOUWsyMHd2RTJVNjJqZ2JiQy1XRDNpM2VGRFpiX1RVaTBnM01FSTVLUXJOYkFSRnhKaFBhNzZfUUZsZGJTWlBZbjRxV29UR0k5NVJ5U3ZVdXpYZ2NLeVlKb2ZC?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15244,22 +15215,27 @@
         },
         {
           "group": "國際新聞",
-          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
-          "date": "2026-11-11 22:28 台北時間",
-          "tone": "偏多",
-          "detail": "Seeking Alpha｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
-          "date": "2026-11-11 22:02 台北時間",
+          "title": "After US market shake-out, signs suggest too soon to say worst is over - Reuters",
+          "date": "2026-11-12 01:04 台北時間",
           "tone": "待判讀",
-          "detail": "Investing.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5"
+          "detail": "Reuters｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdDNPMm44clZfWEJ5a0o3NTNEYVl5Y0ZuOHJTbnUyc2dDRjVITnk0akVVQnJiWWFIZnVGek5WTTBWN0JLTEV6YmhNS2tmV0NrWkc3aFNKWDZCdjVyNjRxd3JKSjVZcGtXM29kWEJlMGVvS3JYeTV6aU5tLXk2RUNEUEhpOHkzRlBURUpvbWd2NXllQXllZzVDOHkydnpZU0E2UWNZRDhUYXVIbGFVNzR2cWo3eE5PaTZscnNB?oc=5"
         }
       ],
       "us_news": [
+        {
+          "category": "國際市場",
+          "title": "Treasury Yields Rise as Fed Rate Hike Expectations Remain Strong - WSJ",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPc0VSTVFyMVRIR1EtM1J2eWU0MW45b3BmWVMwTWRwbmQzcmhvVlBuTEFQNWowTEI2SUd2cngzbmZ3VXMwYTVxc2NaSTg0WnZ4VndDaHVGNWZGcFcxN1NOUWsyMHd2RTJVNjJqZ2JiQy1XRDNpM2VGRFpiX1RVaTBnM01FSTVLUXJOYkFSRnhKaFBhNzZfUUZsZGJTWlBZbjRxV29UR0k5NVJ5U3ZVdXpYZ2NLeVlKb2ZC?oc=5",
+          "source": "WSJ",
+          "published_at": "2026-11-12T07:24+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike"
+          ],
+          "published_at_taipei": "2026-11-12 15:24 台北時間"
+        },
         {
           "category": "國際市場",
           "title": "Markets News, Nov. 11, 2026: S&P 500, Nasdaq Surge as CoreWeave Paces Big AI Rally; Chip Stocks Jump as Nvidia Rebounds - Investopedia",
@@ -15302,69 +15278,52 @@
         },
         {
           "category": "國際市場",
-          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-11T14:28+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "rally"
-          ],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-11 22:28 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
-          "source": "Investing.com",
-          "published_at": "2026-11-11T14:02+00:00",
+          "title": "After US market shake-out, signs suggest too soon to say worst is over - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdDNPMm44clZfWEJ5a0o3NTNEYVl5Y0ZuOHJTbnUyc2dDRjVITnk0akVVQnJiWWFIZnVGek5WTTBWN0JLTEV6YmhNS2tmV0NrWkc3aFNKWDZCdjVyNjRxd3JKSjVZcGtXM29kWEJlMGVvS3JYeTV6aU5tLXk2RUNEUEhpOHkzRlBURUpvbWd2NXllQXllZzVDOHkydnpZU0E2UWNZRDhUYXVIbGFVNzR2cWo3eE5PaTZscnNB?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-11T17:04+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-11 22:02 台北時間"
+          "published_at_taipei": "2026-11-12 01:04 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Inflation rises faster than expected, boosting odds of Fed rate hike - CFO Dive",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNY1hqSFFQSVJiU0tuaF9JLU1rem9pb1hBRE9mekxacjNFWWRHTzlPNG9NdU41NXhuTUtkdEFoUjF4TDd2Z2tzbnFadE52WEpDdGZUTVVNbzE1S0d0Q2NXeDQzcUxTWXZOdFdkcmhUX0ZaS1JOSWtUSDdGaXVseDlPUW11RGZqT1FfbHNUNmtiNDFxajlMejExQTRmZ1VpY3RKMDI1YXNJWXpBc3k0Y2Jyc2xYUTU0OE5rdkdN?oc=5",
-          "source": "CFO Dive",
-          "published_at": "2026-11-10T21:42+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ],
-          "published_at_taipei": "2026-11-11 05:42 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "investingLive Americas FX news wrap 10 Nov: It’s a Wrap. Hot US CPI puts a bigger Fed hike in play - investingLive",
-          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPb2pZTmRVS2RMdV83Z0VsYlI3dU5ObERfSGpRYXNWRWNMWDF4M2plUFJqVF9vT01XTmZuajE0VUx5OGpadWVyWDhMV0h1NmtDQ20wLVAxNWtIalRYWFFmaHprSVVmbEQ2ZzFyUnplU0pGLTNMcjl0UHRILUNrS2Q3TC1yS3Z1Z1FOaTY3TmRkLTl5ZVpzcTFaMjVIT1BDR1ZIRThyYmVHZkp6VS1DRGdrdjdlc1hHTjVsTktHN0dvX2pEMWpKbXVn?oc=5",
-          "source": "investingLive",
-          "published_at": "2026-11-10T21:33+00:00",
+          "title": "Inflation data raises stakes for the Fed’s December decision - Baton Rouge Business Report",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNC1OSjhnSDZpWml3YTgydDdEVnB3amU3LVhiYTVQUzdxRUN4Yjd3UzNjZTJzeWUta3ktN0NxY1FfYkU1Y0NWaFV4UjdBMzN4X2xmeXkyZjR4MDlCdThaTjFTYkRhYWMzM2hTM2s1TjBnVF9QSWFzbG52YTRtSUhMOUhqQmNnNVQyc3hZcndDdm9LMGNRMVE?oc=5",
+          "source": "Baton Rouge Business Report",
+          "published_at": "2026-11-11T15:32+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-11 05:33 台北時間"
+          "published_at_taipei": "2026-11-11 23:32 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Get ready for rate hike(s) - Axios",
-          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAyLVlJUXRHemFLVF9LbGJ3QjJUd3ZObWI3d1djRlVJOWttTFNURzFlLWhOSGkyR2ZvM29FcGhxX1czd3VxZ3lmQm9TLUF4cXluYUY1Tlk0anBjUjc1T0N1LV8xYUF2aUl1TWVZ?oc=5",
-          "source": "Axios",
-          "published_at": "2026-11-10T21:26+00:00",
-          "keyword_score": -1,
+          "title": "Goldman Sachs calls chip stocks 'oversold.' Here are the names it says to buy. - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNT0pnN29CUTRORHVwTUNRSFY1dndZcjM1cGRqOWRVbVEwYm1UelIxUXE3VHNDbjhoU25kMmNKdHBXWVdjOVc0YXVubnNSV2lKUWdRdXNaM1JrbkdZaVVaLVUxd3gyeXI2WkhSR2FEU1BBV0FydDh5dm1ic2dOYUkzRmtiNl9xYnFlbm00RzdTbjZoaTZCM0RpcDY5a2lXRGhTR1FIWnZNLU5WTGx1dkRaaUNRVmQwUk5Ga3dabVVWTE1fNHBLaVFDcmx4dw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-11T06:00+00:00",
+          "keyword_score": 0,
           "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ],
-          "published_at_taipei": "2026-11-11 05:26 台北時間"
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-11 14:00 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019 - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeGhUMWhtSk5Kdm9GOHhVaFlETXR3clBfSEI0VnRtTHNtWEFNWkIxelY4R2NyUjQzMjg5SF9JZ0xOZldPSGR3WlBhejJjNTdmM21HdFQzaGpwMEFrVGxMMFB1RHQ0MkVvOUtCeklOMFJmemRmUDRIRS1sS2VheW5UUDc4anhmQU5ZUV9HY09lTEpUWmFfLWZOOXhUcVZFeTRVQXZVeGE0TzhxdVVnaDRPTzdVWXY2TmQ1UEgyNGJHMFhFS241ZkJGa1o2NHphdmdSV0xCRjh0Q0k0MHdF?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-10T21:37+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-11 05:37 台北時間"
         }
       ],
       "domestic_news": [],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏強，可能對台灣電子權值及0050開盤情緒形成支撐；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計買超 240.8 億元。",
+      "narrative": "美股科技與半導體觀察組合偏強，可能對台灣電子權值及0050開盤情緒形成支撐；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計買超 51.6 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {

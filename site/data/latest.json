@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-12T02:33:16+00:00",
+  "generated_at_utc": "2026-11-12T03:05:03+00:00",
   "data_as_of": "2026-11-11",
   "latest_close": 103.2,
   "price_validation": {
@@ -18,9 +18,9 @@
   },
   "forecasts": {
     "1d": {
-      "direction": "DOWN",
-      "up_probability": 0.490809,
-      "down_probability": 0.509191,
+      "direction": "UP",
+      "up_probability": 0.756801,
+      "down_probability": 0.243199,
       "backtest": {
         "accuracy": 0.6941896024464832,
         "balanced_accuracy": 0.6917641325536061,
@@ -35,9 +35,9 @@
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
-      "direction": "DOWN",
-      "up_probability": 0.498796,
-      "down_probability": 0.501204,
+      "direction": "UP",
+      "up_probability": 0.6476,
+      "down_probability": 0.3524,
       "backtest": {
         "accuracy": 0.5934627170582226,
         "balanced_accuracy": 0.5827305605786619,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.602328,
-      "down_probability": 0.397672,
+      "up_probability": 0.563808,
+      "down_probability": 0.436192,
       "backtest": {
         "accuracy": 0.5383828045035824,
         "balanced_accuracy": 0.5137962883409227,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "UP",
-    "up_probability": 0.663503,
-    "down_probability": 0.336497,
+    "up_probability": 0.847558,
+    "down_probability": 0.152442,
     "backtest": {
       "accuracy": 0.7726809378185525,
       "balanced_accuracy": 0.770530867183135,
       "up_recall": 0.8088803088803089,
-      "brier_score": 0.14966930778888207,
+      "brier_score": 0.1496693077890933,
       "majority_baseline_accuracy": 0.528032619775739,
       "accuracy_lift_vs_baseline": 0.2446483180428135,
       "base_rate": 0.528032619775739,
@@ -102,7 +102,7 @@
         "triggered": false
       },
       "TSM": {
-        "return": 0.02022545408856402,
+        "return": 0.04254942153381158,
         "threshold": -0.03,
         "triggered": false
       }
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2278,
       "stored_rows": 138,
-      "updated_at_taipei": "2026-11-12T10:33:25+08:00",
+      "updated_at_taipei": "2026-11-12T11:05:10+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -146,11 +146,11 @@
     "data_quality_score": 1.0,
     "available_features": 93,
     "total_features": 93,
-    "signal_consensus": 0.6667,
+    "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.2712656124504741,
-      "Random Forest": 0.4908091148115604,
-      "Extra Trees": 0.5396026304219242
+      "Logistic Regression": 0.5104560671548809,
+      "Random Forest": 0.756801067795555,
+      "Extra Trees": 0.8497168088431539
     },
     "historical_balanced_accuracy": 0.6967311440995652,
     "historical_brier_score": 0.19733244995460175,
@@ -14594,9 +14594,9 @@
     }
   ],
   "forecast": {
-    "direction": "DOWN",
-    "up_probability": 0.490809,
-    "down_probability": 0.509191,
+    "direction": "UP",
+    "up_probability": 0.756801,
+    "down_probability": 0.243199,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14608,7 +14608,7 @@
     "n_test": 981
   },
   "explanation": {
-    "model_interpretation": "量化模型訊號接近中性。",
+    "model_interpretation": "量化模型偏向上漲。",
     "market_factors": [
       {
         "name": "費城半導體指數",
@@ -14632,13 +14632,13 @@
       },
       {
         "name": "台積電 ADR",
-        "latest_return": 0.020225,
+        "latest_return": 0.042549,
         "tone": "偏多"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.054738,
-        "tone": "偏空"
+        "latest_return": 0.028658,
+        "tone": "偏多"
       },
       {
         "name": "台積電",
@@ -14647,17 +14647,17 @@
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.03868,
+        "latest_return": 0.004564,
         "tone": "偏多"
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.010141,
-        "tone": "偏空"
+        "latest_return": 0.058196,
+        "tone": "偏多"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.002422,
+        "latest_return": -0.001542,
         "tone": "偏空"
       },
       {
@@ -14677,11 +14677,11 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-12T02:34:47+00:00",
+      "generated_at_utc": "2026-11-12T03:06:33+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -2,
+        "keyword_score": -1,
         "article_count": 18,
         "items": [
           {
@@ -14723,6 +14723,18 @@
           },
           {
             "category": "國際市場",
+            "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
+            "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
+            "source": "Seeking Alpha",
+            "published_at": "2026-11-11T14:28+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "rally"
+            ],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
             "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
             "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
             "source": "Investing.com",
@@ -14742,16 +14754,6 @@
             "negative_terms": [
               "rate hike"
             ]
-          },
-          {
-            "category": "國際市場",
-            "title": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019 - Yahoo Finance",
-            "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeGhUMWhtSk5Kdm9GOHhVaFlETXR3clBfSEI0VnRtTHNtWEFNWkIxelY4R2NyUjQzMjg5SF9JZ0xOZldPSGR3WlBhejJjNTdmM21HdFQzaGpwMEFrVGxMMFB1RHQ0MkVvOUtCeklOMFJmemRmUDRIRS1sS2VheW5UUDc4anhmQU5ZUV9HY09lTEpUWmFfLWZOOXhUcVZFeTRVQXZVeGE0TzhxdVVnaDRPTzdVWXY2TmQ1UEgyNGJHMFhFS241ZkJGa1o2NHphdmdSV0xCRjh0Q0k0MHdF?oc=5",
-            "source": "Yahoo Finance",
-            "published_at": "2026-11-10T21:37+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
           }
         ]
       },
@@ -14807,6 +14809,18 @@
         },
         {
           "category": "國際市場",
+          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-11T14:28+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
           "source": "Investing.com",
@@ -14826,16 +14840,6 @@
           "negative_terms": [
             "rate hike"
           ]
-        },
-        {
-          "category": "國際市場",
-          "title": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019 - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeGhUMWhtSk5Kdm9GOHhVaFlETXR3clBfSEI0VnRtTHNtWEFNWkIxelY4R2NyUjQzMjg5SF9JZ0xOZldPSGR3WlBhejJjNTdmM21HdFQzaGpwMEFrVGxMMFB1RHQ0MkVvOUtCeklOMFJmemRmUDRIRS1sS2VheW5UUDc4anhmQU5ZUV9HY09lTEpUWmFfLWZOOXhUcVZFeTRVQXZVeGE0TzhxdVVnaDRPTzdVWXY2TmQ1UEgyNGJHMFhFS241ZkJGa1o2NHphdmdSV0xCRjh0Q0k0MHdF?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-10T21:37+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14871,15 +14875,25 @@
         },
         {
           "category": "國際市場",
-          "title": "A Jumbo Rate Hike Debate is Brewing for the December Fed Meeting as Bond Yields Rip Higher on Hot Inflation Data - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZXZVZUUwcmZDcnFVdXY5cXFmRC1HUDk3b3VBTGlmSUczTGgwQjNLSlV0V1kzZ0dpTjh6eFlTaXM1cE1Ca1ZnN2trejVXei02X091ZjZEOFJ6MS1rWkxteXFSdU94SjY5UWtvV0FzdkpaWF9KTGl4cENBTG8wTG9oVlkwd2ptNm9CME0ycmhtLURNNUlxcXlwV0dJUQ?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-10T17:41+00:00",
+          "title": "US yields rise, stocks fall as inflation data boosts odds of larger December rate hike - Kitco",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNZm9sX2t4bTBwQkVFUVJDWnZMaG5GdHBTN3pQTlMyNjlrbG8zOEstMlVPNVlkM0FNUlh4bmFWZmtQTlFHWlhlWmp1bFl1ZGdKVDdFSVFHa09YdEZIaUo0ZFd0WmlzT2VkZFpONWEwOHZVbElKSnNQbE5JUkUwSFpEekh0WTFwR0dzYXE2NnItWTRCenNqdXRybHVOb1lMMDdLcUh5UmxQMW9XMlh3ZTE1LVhfZkpjS3pNQlZsMw?oc=5",
+          "source": "Kitco",
+          "published_at": "2026-11-10T18:31+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
             "rate hike"
           ]
+        },
+        {
+          "category": "國際市場",
+          "title": "Reaction roundup: Experts, analysts weigh in on October CPI report - Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOdk1RZ3hVT2FLXzQybS1wRzdYd3BNREl1eEhJcDZJa1RNOHQ3RDl1UUR5VkdDVjlUaldDTGRKTDMwQTI3UldrYktKX3h1c2hzQ0R0U0VhMkVHcFFJaVlka0xFZzVSLUNwVXU2THg3MUhxbC1qSWlRenZmNm8xTWRFRFBTUzFDclhKSEVwYnRmYnA4Mkh1TkpUT1NKVU04SDZRNHVtOENveVB4WWJ6eFJtY3hjTmxPV00?oc=5",
+          "source": "Investing.com",
+          "published_at": "2026-11-10T16:22+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14897,18 +14911,6 @@
           "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTXo5UzFWVEh5WllQOHNxS1Q2cERxOEM0X1QyN1dPX0R4XzdfT1BpajYxdi0xOEltNWh6cE15Z2ZvZ2dXV0Vwb3NkbWZ1VGQ2M2tvVVVSaWd6clhPcS1XUEU2QXE3c0tlLUhPX0c2emRnWVpwOGtoajlnSS1VRXRNZXFaNEpyVlVwcFVIOUdkT18yQ2t6a1psZGVlOFpiZl90QnVhcmxqQzNxNnlNSEdXcWpjcUdzYUNJSi1hcnl6ZEpUSUU?oc=5",
           "source": "Reuters",
           "published_at": "2026-11-10T14:51+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ]
-        },
-        {
-          "category": "國際市場",
-          "title": "A 50-basis point December rate hike now looks to be on the table after CPI data - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZlc0allZYXhxRVBQTGNEaF9ldFFsa1B0RUp6ZmtnMkM4bUNESTdXaGlzaFdRbHBYVjhmb3k3V1FTT2oxdmxlTE51SDgya192X21Td0hMY0ZlR05vUFM0ZExjdzExZlFHQ1hLUkxtUG1CUFE1Zzh0cFhYSGVEWXNPYWRNMHl4cmczV20zckVlcU96aEJod1Rhd0xILUZDcENnWTZYd2xsUVdNZmVmZTVDYi1JTDlPZ2RJ?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-10T14:46+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
@@ -14959,13 +14961,15 @@
         },
         {
           "category": "國際市場",
-          "title": "Chip sell-off sends volatility gauges jumping, SocGen says (SOXX:NASDAQ) - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPeFpBMHY4aGJTNXJZSkVvV0t0WUJrWkFBbDR1Z0t6WlNSOEsyT3lOV1RwU1AzSkd1cDBjTzZvbXMtVkRqaklFaTdFclZhVk1fNGpJa3k1Ni1tVUU5QTAwdkFpVl9fTTZBVHJmOHBtckhqODBmcGRiRkJ2U1ZNaHFXQ05uek8tcS1scHl6RksyRVZJbzFLMHFCamZ2VQ?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-10T10:15+00:00",
-          "keyword_score": 0,
+          "title": "Latest semiconductor selloff should be seen as buying opportunity, says Yardeni Research - MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxOWi1WdWZXdGt5N2NTMFRCd2drazk1VEdYUVpuQ3o5c29DazJSZ3dCZS1HU3JIMnU5Z19tMTdrak9CYkV0b3d6VUlNTHZEaHFIdHIydEQ0R3I4ZVpUYmh2bm1ZNXM1WFM3aUZmSHdyblAwOEsyOWo5MGtPOEd3SERDSGRnZ3RNWjNna3Z6TGlTcFJYMVhIcll4TkR6VFVvUW1VVHRPV3JzOHM4QW42QWFoSmV2Zm5mcUs0YUxjMFJ1cHRkSGVhMUMwN2I0VTBxcVlTaHRMVkFwYVZDdkxGbWdJNGJUZUpESVpwUnRRdVdRSHV5N1JnYWJXSnRhX3k2azRpWHNYZ3g5MHl2eWRsSWRzZTBqZUJfN1RhNF9iRXFPWG9qSS1tQVlYdmV0bnpBS2FPcnpnYkVDVFpabVBHRURLVzRDdEg5ekNvVkNGT3JoSzg2VUtqa1AtcHo5aw?oc=5",
+          "source": "MarketWatch",
+          "published_at": "2026-11-10T10:10+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "selloff"
+          ]
         }
       ],
       "source_errors": [],
@@ -14976,10 +14980,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-12T02:34:47+00:00",
+      "generated_at_utc": "2026-11-12T03:06:33+00:00",
       "taiwan_data_date": "2026-11-11",
       "us_session_date": "2026-11-11",
-      "us_timezone_checked_at": "2026-11-11T21:34-05:00",
+      "us_timezone_checked_at": "2026-11-11T22:06-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15032,62 +15036,62 @@
         {
           "ticker": "TSM",
           "name": "台積電 ADR",
-          "date": "2026-11-10",
-          "close": 396.4800109863281,
-          "previous_close": 388.6199951171875,
-          "display_close": "396.48",
-          "display_change": "+2.02%",
-          "change_pct": 2.023,
+          "date": "2026-11-11",
+          "close": 413.3500061035156,
+          "previous_close": 396.4800109863281,
+          "display_close": "413.35",
+          "display_change": "+4.25%",
+          "change_pct": 4.255,
           "yield_change_bps": null,
           "tone": "偏多"
         },
         {
           "ticker": "NVDA",
           "name": "NVIDIA",
-          "date": "2026-11-10",
-          "close": 168.88999938964844,
-          "previous_close": 178.6699981689453,
-          "display_close": "168.89",
-          "display_change": "-5.47%",
-          "change_pct": -5.474,
+          "date": "2026-11-11",
+          "close": 173.72999572753906,
+          "previous_close": 168.88999938964844,
+          "display_close": "173.73",
+          "display_change": "+2.87%",
+          "change_pct": 2.866,
           "yield_change_bps": null,
-          "tone": "偏空"
+          "tone": "偏多"
         },
         {
           "ticker": "AMD",
           "name": "AMD",
-          "date": "2026-11-10",
-          "close": 515.2100219726562,
-          "previous_close": 508.5799865722656,
-          "display_close": "515.21",
-          "display_change": "+1.30%",
-          "change_pct": 1.304,
+          "date": "2026-11-11",
+          "close": 552.9000244140625,
+          "previous_close": 515.2100219726562,
+          "display_close": "552.90",
+          "display_change": "+7.32%",
+          "change_pct": 7.315,
           "yield_change_bps": null,
           "tone": "偏多"
         },
         {
           "ticker": "MU",
           "name": "美光",
-          "date": "2026-11-10",
-          "close": 725.1099853515625,
-          "previous_close": 733.1500244140625,
-          "display_close": "725.11",
-          "display_change": "-1.10%",
-          "change_pct": -1.097,
+          "date": "2026-11-11",
+          "close": 811.2999877929688,
+          "previous_close": 725.1099853515625,
+          "display_close": "811.30",
+          "display_change": "+11.89%",
+          "change_pct": 11.886,
           "yield_change_bps": null,
-          "tone": "偏空"
+          "tone": "偏多"
         },
         {
           "ticker": "ASML",
           "name": "ASML",
-          "date": "2026-11-10",
-          "close": 1507.8499755859375,
-          "previous_close": 1513.25,
-          "display_close": "1,507.85",
-          "display_change": "-0.36%",
-          "change_pct": -0.357,
+          "date": "2026-11-11",
+          "close": 1534.4200439453125,
+          "previous_close": 1507.8499755859375,
+          "display_close": "1,534.42",
+          "display_change": "+1.76%",
+          "change_pct": 1.762,
           "yield_change_bps": null,
-          "tone": "偏空"
+          "tone": "偏多"
         },
         {
           "ticker": "^VIX",
@@ -15209,14 +15213,7 @@
         },
         {
           "group": "美股前夜",
-          "title": "美股市場出現較大跌幅：NVIDIA",
-          "date": "2026-11-11",
-          "tone": "偏空",
-          "detail": "單日跌幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
-        },
-        {
-          "group": "美股前夜",
-          "title": "美股市場出現較大漲幅：NASDAQ、費半、台積電 ADR",
+          "title": "美股市場出現較大漲幅：NASDAQ、費半、台積電 ADR、NVIDIA、AMD、美光、ASML",
           "date": "2026-11-11",
           "tone": "偏多",
           "detail": "單日漲幅達或超過1.5%的觀察標的；此為量化門檻，不代表事件因果。"
@@ -15247,19 +15244,19 @@
         },
         {
           "group": "國際新聞",
+          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
+          "date": "2026-11-11 22:28 台北時間",
+          "tone": "偏多",
+          "detail": "Seeking Alpha｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
           "date": "2026-11-11 22:02 台北時間",
           "tone": "待判讀",
           "detail": "Investing.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Inflation rises faster than expected, boosting odds of Fed rate hike - CFO Dive",
-          "date": "2026-11-11 05:42 台北時間",
-          "tone": "偏空",
-          "detail": "CFO Dive｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNY1hqSFFQSVJiU0tuaF9JLU1rem9pb1hBRE9mekxacjNFWWRHTzlPNG9NdU41NXhuTUtkdEFoUjF4TDd2Z2tzbnFadE52WEpDdGZUTVVNbzE1S0d0Q2NXeDQzcUxTWXZOdFdkcmhUX0ZaS1JOSWtUSDdGaXVseDlPUW11RGZqT1FfbHNUNmtiNDFxajlMejExQTRmZ1VpY3RKMDI1YXNJWXpBc3k0Y2Jyc2xYUTU0OE5rdkdN?oc=5"
         }
       ],
       "us_news": [
@@ -15305,6 +15302,19 @@
         },
         {
           "category": "國際市場",
+          "title": "The Year-End Rally Is Still In Full Swing - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdEk3Qk5UVnllM0N6M3hCUjV5YjcwZkdSZ21RWklaNE5LOGJiaEdSVFhhQlk1U2wxN3JZUExQRE1ZcEZkTk12N3J0TTlJQWdNNl9wZjBiSTY2cm0wemFQSXRPZFdxZjRyNnU0MEpiN3VpckFadk5KamhIZ3NUN2tFTnBKMTY?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-11T14:28+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-11 22:28 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "3 Undervalued Chip Stocks to Buy Amid Market Volatility - Investing.com",
           "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcVRBQUtjNmkyVDU3SnVKZlNNclJtaFBuZUhYYlJYcThaU2ViWjFGN1FPRkxjTUZfU3hqRkVxOXZ3YUFDdmJXMFh2eF9HQldaS25ROEFEX2docjdZQTRlS0tzM2lOanlDTTI5X2c3WXFHdUZYcmNLYk5tMUJwYWVRMHBaMmZLRXJ2ZEIxRy1CSkxOX1BQdFRfRV9VN1g1OF9ZaEE?oc=5",
           "source": "Investing.com",
@@ -15326,17 +15336,6 @@
             "rate hike"
           ],
           "published_at_taipei": "2026-11-11 05:42 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019 - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeGhUMWhtSk5Kdm9GOHhVaFlETXR3clBfSEI0VnRtTHNtWEFNWkIxelY4R2NyUjQzMjg5SF9JZ0xOZldPSGR3WlBhejJjNTdmM21HdFQzaGpwMEFrVGxMMFB1RHQ0MkVvOUtCeklOMFJmemRmUDRIRS1sS2VheW5UUDc4anhmQU5ZUV9HY09lTEpUWmFfLWZOOXhUcVZFeTRVQXZVeGE0TzhxdVVnaDRPTzdVWXY2TmQ1UEgyNGJHMFhFS241ZkJGa1o2NHphdmdSV0xCRjh0Q0k0MHdF?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-10T21:37+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-11 05:37 台北時間"
         },
         {
           "category": "國際市場",
@@ -15365,7 +15364,7 @@
       ],
       "domestic_news": [],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合變動有限，暫未形成明確單向訊號。 前一台灣交易日三大法人合計買超 240.8 億元。",
+      "narrative": "美股科技與半導體觀察組合偏強，可能對台灣電子權值及0050開盤情緒形成支撐；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計買超 240.8 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {

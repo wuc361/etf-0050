@@ -1,8 +1,8 @@
 {
   "status": "latest_data",
   "label": "0050 最近有效交易日：2026-11-13",
-  "trading_date_taipei": "2026-11-14",
-  "generated_at_taipei": "2026-11-14T09:02:08+08:00",
+  "trading_date_taipei": "2026-11-15",
+  "generated_at_taipei": "2026-11-15T22:24:50+08:00",
   "refresh_interval_minutes": 5,
   "market_hours_taipei": "09:00-13:30（台灣證券交易日）",
   "source": "Yahoo Finance 5-minute bars; indicative data, not an official exchange feed",
@@ -1382,11 +1382,11 @@
     {
       "ticker": "^SOX",
       "name": "費半",
-      "status": "live",
+      "status": "latest",
       "price": 10146.3232421875,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T05:00:00+08:00",
       "previous_close": 10506.669921875,
       "change_pct": -3.4297,
@@ -2021,16 +2021,16 @@
           "volume": 0
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "^IXIC",
       "name": "NASDAQ",
-      "status": "live",
+      "status": "latest",
       "price": 25136.2734375,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T05:00:00+08:00",
       "previous_close": 25366.08984375,
       "change_pct": -0.906,
@@ -2038,7 +2038,7 @@
       "open": 25408.287109375,
       "high": 25420.625,
       "low": 24873.263671875,
-      "volume": 5483777000,
+      "volume": 5329498000,
       "bars": [
         {
           "time": "2026-11-13T22:35+08:00",
@@ -2665,16 +2665,16 @@
           "volume": 0
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "TSM",
       "name": "台積電 ADR",
-      "status": "live",
+      "status": "latest",
       "price": 394.5,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T08:55:00+08:00",
       "previous_close": 405.489990234375,
       "change_pct": -2.7103,
@@ -2682,7 +2682,7 @@
       "open": 405.5,
       "high": 412.0,
       "low": 376.2422,
-      "volume": 10500267,
+      "volume": 9845984,
       "bars": [
         {
           "time": "2026-11-14T02:30+08:00",
@@ -2698,7 +2698,7 @@
           "high": 397.69989013671875,
           "low": 396.760009765625,
           "close": 397.29998779296875,
-          "volume": 45030
+          "volume": 44982
         },
         {
           "time": "2026-11-14T02:40+08:00",
@@ -2826,7 +2826,7 @@
           "high": 399.0400085449219,
           "low": 397.44940185546875,
           "close": 398.9649963378906,
-          "volume": 48771
+          "volume": 48701
         },
         {
           "time": "2026-11-14T04:00+08:00",
@@ -2882,7 +2882,7 @@
           "high": 399.1000061035156,
           "low": 398.2300109863281,
           "close": 398.7049865722656,
-          "volume": 57141
+          "volume": 57107
         },
         {
           "time": "2026-11-14T04:35+08:00",
@@ -2930,7 +2930,7 @@
           "high": 399.05,
           "low": 395.0,
           "close": 395.73,
-          "volume": 653925
+          "volume": 0
         },
         {
           "time": "2026-11-14T05:05+08:00",
@@ -3294,9 +3294,9 @@
         },
         {
           "time": "2026-11-14T08:50+08:00",
-          "open": 394.76,
+          "open": 394.75,
           "high": 395.0,
-          "low": 394.7042,
+          "low": 394.65,
           "close": 394.75,
           "volume": 0
         },
@@ -3309,16 +3309,16 @@
           "volume": 0
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA",
-      "status": "live",
+      "status": "latest",
       "price": 161.01,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T08:55:00+08:00",
       "previous_close": 166.19000244140625,
       "change_pct": -3.1169,
@@ -3326,7 +3326,7 @@
       "open": 166.83,
       "high": 171.48,
       "low": 158.38999938964844,
-      "volume": 3687570574,
+      "volume": 926751272,
       "bars": [
         {
           "time": "2026-11-14T02:30+08:00",
@@ -3342,7 +3342,7 @@
           "high": 162.10000610351562,
           "low": 161.4499969482422,
           "close": 161.88999938964844,
-          "volume": 264708632
+          "volume": 2595118
         },
         {
           "time": "2026-11-14T02:40+08:00",
@@ -3358,7 +3358,7 @@
           "high": 162.19000244140625,
           "low": 161.75,
           "close": 162.19000244140625,
-          "volume": 2215789
+          "volume": 2215783
         },
         {
           "time": "2026-11-14T02:50+08:00",
@@ -3366,7 +3366,7 @@
           "high": 162.6699981689453,
           "low": 162.17010498046875,
           "close": 162.55499267578125,
-          "volume": 2894868
+          "volume": 2894862
         },
         {
           "time": "2026-11-14T02:55+08:00",
@@ -3406,7 +3406,7 @@
           "high": 162.85000610351562,
           "low": 162.42999267578125,
           "close": 162.78500366210938,
-          "volume": 2025506
+          "volume": 0
         },
         {
           "time": "2026-11-14T03:20+08:00",
@@ -3414,7 +3414,7 @@
           "high": 162.7960968017578,
           "low": 162.5128936767578,
           "close": 162.52000427246094,
-          "volume": 284317450
+          "volume": 284317448
         },
         {
           "time": "2026-11-14T03:25+08:00",
@@ -3438,7 +3438,7 @@
           "high": 162.50999450683594,
           "low": 162.23500061035156,
           "close": 162.4600067138672,
-          "volume": 293800676
+          "volume": 2646242
         },
         {
           "time": "2026-11-14T03:40+08:00",
@@ -3494,7 +3494,7 @@
           "high": 163.16000366210938,
           "low": 162.8000030517578,
           "close": 162.96290588378906,
-          "volume": 2481344
+          "volume": 0
         },
         {
           "time": "2026-11-14T04:15+08:00",
@@ -3534,7 +3534,7 @@
           "high": 161.97000122070312,
           "low": 161.58999633789062,
           "close": 161.8939971923828,
-          "volume": 2555894
+          "volume": 2555844
         },
         {
           "time": "2026-11-14T04:40+08:00",
@@ -3550,7 +3550,7 @@
           "high": 162.5399932861328,
           "low": 161.82000732421875,
           "close": 162.47500610351562,
-          "volume": 326156315
+          "volume": 2882948
         },
         {
           "time": "2026-11-14T04:50+08:00",
@@ -3574,7 +3574,7 @@
           "high": 162.97,
           "low": 161.81,
           "close": 161.81,
-          "volume": 15522230
+          "volume": 0
         },
         {
           "time": "2026-11-14T05:05+08:00",
@@ -3948,21 +3948,21 @@
           "time": "2026-11-14T08:55+08:00",
           "open": 161.2,
           "high": 161.2,
-          "low": 161.01,
+          "low": 161.0,
           "close": 161.01,
           "volume": 0
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "^VIX",
       "name": "VIX 波動率指數",
-      "status": "live",
+      "status": "latest",
       "price": 19.299999237060547,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T05:15:00+08:00",
       "previous_close": 18.700000762939453,
       "change_pct": 3.2085,
@@ -4597,24 +4597,24 @@
           "volume": 0
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "NQ=F",
       "name": "NASDAQ 100 期貨",
-      "status": "live",
-      "price": 27927.25,
+      "status": "latest",
+      "price": 28034.75,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T05:55:00+08:00",
       "previous_close": 28384.5,
-      "change_pct": -1.6109,
-      "five_min_change_pct": -0.0501,
+      "change_pct": -1.2322,
+      "five_min_change_pct": 0.3346,
       "open": 28356.5,
       "high": 28583.75,
       "low": 27695.25,
-      "volume": 742750,
+      "volume": 743926,
       "bars": [
         {
           "time": "2026-11-13T23:30+08:00",
@@ -5235,30 +5235,30 @@
         {
           "time": "2026-11-14T05:55+08:00",
           "open": 27941.0,
-          "high": 27941.0,
+          "high": 28034.75,
           "low": 27902.0,
-          "close": 27927.25,
+          "close": 28034.75,
           "volume": 697
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     },
     {
       "ticker": "ES=F",
       "name": "S&P 500 期貨",
-      "status": "live",
-      "price": 7561.0,
+      "status": "latest",
+      "price": 7583.0,
       "market_date_taipei": "2026-11-14",
       "exchange_session_date": "2026-11-13",
-      "is_current_taipei_date": true,
+      "is_current_taipei_date": false,
       "latest_bar_time": "2026-11-14T05:55:00+08:00",
       "previous_close": 7615.25,
-      "change_pct": -0.7124,
-      "five_min_change_pct": -0.0397,
+      "change_pct": -0.4235,
+      "five_min_change_pct": 0.2512,
       "open": 7615.75,
       "high": 7669.25,
       "low": 7519.25,
-      "volume": 1814749,
+      "volume": 1816281,
       "bars": [
         {
           "time": "2026-11-13T23:30+08:00",
@@ -5879,34 +5879,26 @@
         {
           "time": "2026-11-14T05:55+08:00",
           "open": 7564.0,
-          "high": 7564.0,
+          "high": 7583.0,
           "low": 7557.5,
-          "close": 7561.0,
+          "close": 7583.0,
           "volume": 2467
         }
       ],
-      "message": ""
+      "message": "今日尚未產生新K線；顯示最近一個有效交易日資料，並標示實際日期。"
     }
   ],
   "margin_maintenance": {
     "status": "estimated",
     "etf_0050": {
-      "date": "2026-11-12",
-      "close": 100.95,
-      "margin_balance_lots": 38200,
-      "margin_cost_estimate": 100.9275,
+      "date": "2026-11-13",
+      "close": 102.5,
+      "margin_balance_lots": 37150,
+      "margin_cost_estimate": 101.007,
       "financing_ratio": 0.6,
-      "maintenance_pct": 166.7
+      "maintenance_pct": 169.13
     },
     "history": [
-      {
-        "date": "2024-10-15",
-        "close": 196.4,
-        "margin_balance_lots": 1205,
-        "margin_cost_estimate": 186.9576,
-        "financing_ratio": 0.6,
-        "maintenance_pct": 175.08
-      },
       {
         "date": "2024-10-16",
         "close": 193.0,
@@ -9898,6 +9890,14 @@
         "margin_cost_estimate": 100.9275,
         "financing_ratio": 0.6,
         "maintenance_pct": 166.7
+      },
+      {
+        "date": "2026-11-13",
+        "close": 102.5,
+        "margin_balance_lots": 37150,
+        "margin_cost_estimate": 101.007,
+        "financing_ratio": 0.6,
+        "maintenance_pct": 169.13
       }
     ],
     "source": "FinMind 免費個股每日資料（融資交易＋收盤價）",
@@ -9909,7 +9909,7 @@
       "status": "not_calculated",
       "note": "上市／上櫃整體維持率暫不自行推算：公開資料的融資餘額張數與融資金額、擔保品市值未能在同一口徑完整核對，避免產生誤導數字。"
     },
-    "checked_date_taipei": "2026-11-13"
+    "checked_date_taipei": "2026-11-15"
   },
   "note": "盤中行情為參考資料，可能有供應商延遲或缺漏；不會冒充 TWSE 官方收盤價，也不會直接改寫每日量化模型機率。收盤後由每日模型流程以官方收盤資料重新計算下一交易日預測。"
 }

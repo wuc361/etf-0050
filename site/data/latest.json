@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-16T01:26:10+00:00",
+  "generated_at_utc": "2026-11-16T02:13:13+00:00",
   "data_as_of": "2026-11-13",
   "latest_close": 102.5,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.285477,
-      "down_probability": 0.714523,
+      "up_probability": 0.344699,
+      "down_probability": 0.655301,
       "backtest": {
         "accuracy": 0.6870540265035678,
         "balanced_accuracy": 0.6849144718752864,
@@ -36,13 +36,13 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.594116,
-      "down_probability": 0.405884,
+      "up_probability": 0.607995,
+      "down_probability": 0.392005,
       "backtest": {
         "accuracy": 0.5914198161389173,
         "balanced_accuracy": 0.5809222423146474,
         "up_recall": 0.6618444846292948,
-        "brier_score": 0.24566624160956596,
+        "brier_score": 0.2456662139465686,
         "majority_baseline_accuracy": 0.5648621041879469,
         "accuracy_lift_vs_baseline": 0.026557711950970342,
         "base_rate": 0.5648621041879469,
@@ -53,13 +53,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.614744,
-      "down_probability": 0.385256,
+      "up_probability": 0.633335,
+      "down_probability": 0.366665,
       "backtest": {
         "accuracy": 0.5414534288638689,
         "balanced_accuracy": 0.5180943380015465,
         "up_recall": 0.6672566371681415,
-        "brier_score": 0.25275128013434306,
+        "brier_score": 0.2527512781517862,
         "majority_baseline_accuracy": 0.5783009211873081,
         "accuracy_lift_vs_baseline": -0.0368474923234392,
         "base_rate": 0.5783009211873081,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.159767,
-    "down_probability": 0.840233,
+    "up_probability": 0.18687,
+    "down_probability": 0.81313,
     "backtest": {
       "accuracy": 0.7787971457696228,
       "balanced_accuracy": 0.7764432099692216,
       "up_recall": 0.8169556840077071,
-      "brier_score": 0.14973249168385025,
+      "brier_score": 0.14973249168544556,
       "majority_baseline_accuracy": 0.5290519877675841,
       "accuracy_lift_vs_baseline": 0.24974515800203867,
       "base_rate": 0.5290519877675841,
@@ -134,10 +134,12 @@
     "model_feature_status": "夜盤歷史累積 10/120 個交易日；樣本不足，暫不加入模型機率",
     "fetch": {
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
-      "fetched_rows": 2305,
+      "fetched_rows": 0,
       "stored_rows": 180,
-      "updated_at_taipei": "2026-11-16T09:26:18+08:00",
-      "errors": []
+      "updated_at_taipei": "2026-11-16T10:13:20+08:00",
+      "errors": [
+        "JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)"
+      ]
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
@@ -148,9 +150,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.46074521800712553,
-      "Random Forest": 0.2854774439930047,
-      "Extra Trees": 0.33535046897539517
+      "Logistic Regression": 0.45865833073512513,
+      "Random Forest": 0.3446987412819868,
+      "Extra Trees": 0.353774629191267
     },
     "historical_balanced_accuracy": 0.6919196127279847,
     "historical_brier_score": 0.19662440378940355,
@@ -169,7 +171,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6187563710499491,
         "balanced_accuracy": 0.6177813512860464,
-        "brier_score": 0.2261919161409824,
+        "brier_score": 0.22619192373171687,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5239551478083588
       },
@@ -185,7 +187,7 @@
         "name": "Extra Trees",
         "accuracy": 0.6839959225280327,
         "balanced_accuracy": 0.6807234687841092,
-        "brier_score": 0.19740816706414205,
+        "brier_score": 0.19740816706414208,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5239551478083588
       }
@@ -14595,8 +14597,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.285477,
-    "down_probability": 0.714523,
+    "up_probability": 0.344699,
+    "down_probability": 0.655301,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14644,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.006383,
+        "latest_return": -0.017021,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.014091,
+        "latest_return": -0.028542,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14659,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.001093,
+        "latest_return": -0.001123,
         "tone": "偏空"
       },
       {
@@ -14677,13 +14679,23 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-16T01:27:41+00:00",
+      "generated_at_utc": "2026-11-16T02:14:15+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
         "keyword_score": -4,
-        "article_count": 15,
+        "article_count": 16,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "U.S. stock futures little changed as investors await Nvidia earnings By Investing.com - Investing.com",
+            "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZTQ0T1lmRGYwSk9XVTB1M1lJSWUzR1pjTXRvaHN2WXZpc0pjUjE2M2l1VVdHbnpEMGRmcG9tY2ZlZ05JbmxlTS0zRHdkdzlXNmhUYjZSYnREQlJRWnlTdjNicGx3NjBmUnAtUXlSME5vdERTcFUyX1dKdWxBWjRXeHJySmhveUltbEstY0Uwck52OHJaUmlWeEF6TmI0ckEwSGhyN0ExcTdtemZOQ3hKS1V1bndtMWY3ZVJ3Tzd6MFk?oc=5",
+            "source": "Investing.com",
+            "published_at": "2026-11-16T01:38+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
           {
             "category": "國際市場",
             "title": "ICYMI: Fed’s Jefferson says inflation is the key signal for rates, with PCE still at 3.6% - investingLive",
@@ -14730,16 +14742,6 @@
           },
           {
             "category": "國際市場",
-            "title": "S&P 500, Nasdaq end lower as Nvidia uncertainty weighs on tech shares By Reuters - Investing.com",
-            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNZXNGd0JzV3JVR243T0FXSWtGT3NUREdfTERGZGtRT3BsS1l2ZURxVHlfbVhtWmVpVWNZSGtCRVNKMGdpYlpERzNscF95Tm5JMzE1WWRRbzRjd183X094ZzRvcFBOQVRPd3FrUHNzZW82UElYQXEzX1RUSi1zN3lseTlxbE1VRXZndzJENkxLRm5hZXBUZDN0MDE5bGsyWUhDY1J2VkdKeG1sZjl0VlVENTNCTDNfU00?oc=5",
-            "source": "Investing.com",
-            "published_at": "2026-11-13T22:36+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
             "title": "PCE Inflation Report Due Nov. 25 May Settle Fed's December Rate Decision - BigGo Finance",
             "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBIUjhiMXZXa2lzNVRoc2lyeDRGcUU3OG1Jell2U0NLVnlLV0NuYXE4ZDc1Uk1kT2YteHRmY2NJa3o5ZU8wZzlvYWVGRVQyNFdxYzRFMFpzb0dSSjJ4VXRaRXlvR2hSN3BEWGd1VWpTRjNmeUlSMEE?oc=5",
             "source": "BigGo Finance",
@@ -14782,21 +14784,20 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 1,
-        "items": [
-          {
-            "category": "產業消息",
-            "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-            "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-            "source": "永豐金證券",
-            "published_at": "2026-10-29T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          }
-        ]
+        "article_count": 0,
+        "items": []
       },
       "items": [
+        {
+          "category": "國際市場",
+          "title": "U.S. stock futures little changed as investors await Nvidia earnings By Investing.com - Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZTQ0T1lmRGYwSk9XVTB1M1lJSWUzR1pjTXRvaHN2WXZpc0pjUjE2M2l1VVdHbnpEMGRmcG9tY2ZlZ05JbmxlTS0zRHdkdzlXNmhUYjZSYnREQlJRWnlTdjNicGx3NjBmUnAtUXlSME5vdERTcFUyX1dKdWxBWjRXeHJySmhveUltbEstY0Uwck52OHJaUmlWeEF6TmI0ckEwSGhyN0ExcTdtemZOQ3hKS1V1bndtMWY3ZVJ3Tzd6MFk?oc=5",
+          "source": "Investing.com",
+          "published_at": "2026-11-16T01:38+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
         {
           "category": "國際市場",
           "title": "ICYMI: Fed’s Jefferson says inflation is the key signal for rates, with PCE still at 3.6% - investingLive",
@@ -14843,16 +14844,6 @@
         },
         {
           "category": "國際市場",
-          "title": "S&P 500, Nasdaq end lower as Nvidia uncertainty weighs on tech shares By Reuters - Investing.com",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNZXNGd0JzV3JVR243T0FXSWtGT3NUREdfTERGZGtRT3BsS1l2ZURxVHlfbVhtWmVpVWNZSGtCRVNKMGdpYlpERzNscF95Tm5JMzE1WWRRbzRjd183X094ZzRvcFBOQVRPd3FrUHNzZW82UElYQXEzX1RUSi1zN3lseTlxbE1VRXZndzJENkxLRm5hZXBUZDN0MDE5bGsyWUhDY1J2VkdKeG1sZjl0VlVENTNCTDNfU00?oc=5",
-          "source": "Investing.com",
-          "published_at": "2026-11-13T22:36+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "PCE Inflation Report Due Nov. 25 May Settle Fed's December Rate Decision - BigGo Finance",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBIUjhiMXZXa2lzNVRoc2lyeDRGcUU3OG1Jell2U0NLVnlLV0NuYXE4ZDc1Uk1kT2YteHRmY2NJa3o5ZU8wZzlvYWVGRVQyNFdxYzRFMFpzb0dSSjJ4VXRaRXlvR2hSN3BEWGd1VWpTRjNmeUlSMEE?oc=5",
           "source": "BigGo Finance",
@@ -14877,6 +14868,16 @@
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPQ1dYUno0MzNFUEd1RG02ODg5Qy1mMm1GZVlpanlfZ1NsbEtDYzhmb25ocjJYaVdhRFhOUXA2YzU4VDBYZnR0dGFoY2VSVHRnRDlQaDA3dloycFJ1eGhYTlFOUi16WENFZFRjRW1mQXpQS0xyMlcwS2dFZ0xFRXhMX3NiZGZzdDJTZERJLXgxT3hfNWZiWVhqVnd3Z2o3QQ?oc=5",
           "source": "Barchart.com",
           "published_at": "2026-11-13T21:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "S&P 500, Nasdaq end lower as Nvidia uncertainty weighs on tech shares - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOXzBOQUVtbkVkek5raFFhaFJ3MTczWHlJdWgzZC1yZnB2TTAxbC1sUDJYeXBqcXdyYzFiTVljTDRETUNCTFhscDV6YXJJeDV4WHAzdEdUZl9IZXU5V2xPMkJfa0p6RDVqLTRFUVFCclFsOVU3LWVmNkd4Qk1GWWhMSEVLRnlDYWhpOFJUd2tSemhDV0piNkJtczdFTzV5Zw?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-13T21:34+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14975,16 +14976,6 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-10-29T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -14995,10 +14986,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-16T01:27:41+00:00",
+      "generated_at_utc": "2026-11-16T02:14:15+00:00",
       "taiwan_data_date": "2026-11-13",
       "us_session_date": "2026-11-13",
-      "us_timezone_checked_at": "2026-11-15T20:27-05:00",
+      "us_timezone_checked_at": "2026-11-15T21:14-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15235,6 +15226,14 @@
         },
         {
           "group": "國際新聞",
+          "title": "U.S. stock futures little changed as investors await Nvidia earnings By Investing.com - Investing.com",
+          "date": "2026-11-16 09:38 台北時間",
+          "tone": "待判讀",
+          "detail": "Investing.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZTQ0T1lmRGYwSk9XVTB1M1lJSWUzR1pjTXRvaHN2WXZpc0pjUjE2M2l1VVdHbnpEMGRmcG9tY2ZlZ05JbmxlTS0zRHdkdzlXNmhUYjZSYnREQlJRWnlTdjNicGx3NjBmUnAtUXlSME5vdERTcFUyX1dKdWxBWjRXeHJySmhveUltbEstY0Uwck52OHJaUmlWeEF6TmI0ckEwSGhyN0ExcTdtemZOQ3hKS1V1bndtMWY3ZVJ3Tzd6MFk?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "ICYMI: Fed’s Jefferson says inflation is the key signal for rates, with PCE still at 3.6% - investingLive",
           "date": "2026-11-16 08:54 台北時間",
           "tone": "待判讀",
@@ -15251,6 +15250,17 @@
         }
       ],
       "us_news": [
+        {
+          "category": "國際市場",
+          "title": "U.S. stock futures little changed as investors await Nvidia earnings By Investing.com - Investing.com",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZTQ0T1lmRGYwSk9XVTB1M1lJSWUzR1pjTXRvaHN2WXZpc0pjUjE2M2l1VVdHbnpEMGRmcG9tY2ZlZ05JbmxlTS0zRHdkdzlXNmhUYjZSYnREQlJRWnlTdjNicGx3NjBmUnAtUXlSME5vdERTcFUyX1dKdWxBWjRXeHJySmhveUltbEstY0Uwck52OHJaUmlWeEF6TmI0ckEwSGhyN0ExcTdtemZOQ3hKS1V1bndtMWY3ZVJ3Tzd6MFk?oc=5",
+          "source": "Investing.com",
+          "published_at": "2026-11-16T01:38+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-16 09:38 台北時間"
+        },
         {
           "category": "國際市場",
           "title": "ICYMI: Fed’s Jefferson says inflation is the key signal for rates, with PCE still at 3.6% - investingLive",

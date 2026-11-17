@@ -1,17 +1,17 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-17T04:33:31+00:00",
-  "data_as_of": "2026-11-16",
-  "latest_close": 96.45,
+  "generated_at_utc": "2026-11-17T08:17:24+00:00",
+  "data_as_of": "2026-11-17",
+  "latest_close": 94.0,
   "price_validation": {
-    "date": "2026-11-16",
-    "close": 96.45,
-    "open": 101.2,
-    "high": 101.45,
-    "low": 96.45,
-    "volume": 357525464,
+    "date": "2026-11-17",
+    "close": 94.0,
+    "open": 94.55,
+    "high": 97.45,
+    "low": 93.25,
+    "volume": 408019094,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-16",
+    "yahoo_previous_latest_date": "2026-11-17",
     "yahoo_latest_date_received": "2026-11-17",
     "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
@@ -19,51 +19,51 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.198262,
-      "down_probability": 0.801738,
+      "up_probability": 0.184336,
+      "down_probability": 0.815664,
       "backtest": {
-        "accuracy": 0.691131498470948,
-        "balanced_accuracy": 0.6881841355525566,
+        "accuracy": 0.6914460285132383,
+        "balanced_accuracy": 0.6885850613266167,
         "up_recall": 0.7524366471734892,
-        "brier_score": 0.19479230424870117,
-        "majority_baseline_accuracy": 0.5229357798165137,
-        "accuracy_lift_vs_baseline": 0.16819571865443428,
-        "base_rate": 0.5229357798165137,
-        "n_test": 981
+        "brier_score": 0.19460780880964498,
+        "majority_baseline_accuracy": 0.5224032586558045,
+        "accuracy_lift_vs_baseline": 0.16904276985743383,
+        "base_rate": 0.5224032586558045,
+        "n_test": 982
       },
       "model_name": "Random Forest",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.624156,
-      "down_probability": 0.375844,
+      "up_probability": 0.710371,
+      "down_probability": 0.289629,
       "backtest": {
-        "accuracy": 0.5883554647599591,
-        "balanced_accuracy": 0.5792795200760276,
+        "accuracy": 0.5877551020408164,
+        "balanced_accuracy": 0.5786858323174862,
         "up_recall": 0.6503623188405797,
-        "brier_score": 0.24498240200482838,
-        "majority_baseline_accuracy": 0.5638406537282942,
-        "accuracy_lift_vs_baseline": 0.024514811031664974,
-        "base_rate": 0.5638406537282942,
-        "n_test": 979
+        "brier_score": 0.24516236945388709,
+        "majority_baseline_accuracy": 0.563265306122449,
+        "accuracy_lift_vs_baseline": 0.02448979591836742,
+        "base_rate": 0.563265306122449,
+        "n_test": 980
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 2 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.650776,
-      "down_probability": 0.349224,
+      "up_probability": 0.622439,
+      "down_probability": 0.377561,
       "backtest": {
-        "accuracy": 0.5424769703172978,
-        "balanced_accuracy": 0.5191257534387719,
+        "accuracy": 0.5419222903885481,
+        "balanced_accuracy": 0.5186812622057766,
         "up_recall": 0.6702127659574468,
-        "brier_score": 0.2529150163749135,
-        "majority_baseline_accuracy": 0.5772773797338793,
-        "accuracy_lift_vs_baseline": -0.03480040941658147,
-        "base_rate": 0.5772773797338793,
-        "n_test": 977
+        "brier_score": 0.253193693260198,
+        "majority_baseline_accuracy": 0.5766871165644172,
+        "accuracy_lift_vs_baseline": -0.03476482617586907,
+        "base_rate": 0.5766871165644172,
+        "n_test": 978
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 3 個台灣交易日收盤方向（不是開盤跳空預測）"
@@ -71,17 +71,17 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.101298,
-    "down_probability": 0.898702,
+    "up_probability": 0.100409,
+    "down_probability": 0.899591,
     "backtest": {
-      "accuracy": 0.7767584097859327,
-      "balanced_accuracy": 0.7748505216107808,
+      "accuracy": 0.7769857433808554,
+      "balanced_accuracy": 0.7751298096125683,
       "up_recall": 0.8088803088803089,
-      "brier_score": 0.14959217188702717,
-      "majority_baseline_accuracy": 0.528032619775739,
-      "accuracy_lift_vs_baseline": 0.24872579001019368,
-      "base_rate": 0.528032619775739,
-      "n_test": 981
+      "brier_score": 0.14944626655438562,
+      "majority_baseline_accuracy": 0.5274949083503055,
+      "accuracy_lift_vs_baseline": 0.2494908350305498,
+      "base_rate": 0.5274949083503055,
+      "n_test": 982
     },
     "model_name": "Random Forest",
     "target_definition": "下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
@@ -92,12 +92,12 @@
     "trigger_count": 3,
     "observations": {
       "^SOX": {
-        "return": -0.05279430889739123,
+        "return": -0.05279450139328523,
         "threshold": -0.03,
         "triggered": true
       },
       "^IXIC": {
-        "return": -0.024924610152318172,
+        "return": -0.02492453245085191,
         "threshold": -0.02,
         "triggered": true
       },
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-16；尚無晚於最近台股收盤日（2026-11-16）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-16；尚無晚於最近台股收盤日（2026-11-17）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-16",
       "contract": "TX",
@@ -136,25 +136,25 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2341,
       "stored_rows": 201,
-      "updated_at_taipei": "2026-11-17T12:33:40+08:00",
+      "updated_at_taipei": "2026-11-17T16:17:31+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.957,
+    "available_features": 89,
     "total_features": 93,
     "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.7518404043093339,
-      "Random Forest": 0.19826184829375523,
-      "Extra Trees": 0.06526437369098684
+      "Logistic Regression": 0.8168020476439158,
+      "Random Forest": 0.18433619629017842,
+      "Extra Trees": 0.06969355546161286
     },
-    "historical_balanced_accuracy": 0.6808929374718848,
-    "historical_brier_score": 0.1962575584405194,
-    "historical_test_count": 981,
+    "historical_balanced_accuracy": 0.681305253182708,
+    "historical_brier_score": 0.1960715708892516,
+    "historical_test_count": 982,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
   "model_comparison": {
@@ -167,49 +167,31 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6197757390417941,
-        "balanced_accuracy": 0.6188334083070925,
-        "brier_score": 0.22506943512974015,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5229357798165137
+        "accuracy": 0.6191446028513238,
+        "balanced_accuracy": 0.6181955718483605,
+        "brier_score": 0.2252389880313867,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5224032586558045
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.6839959225280327,
-        "balanced_accuracy": 0.6808929374718848,
-        "brier_score": 0.1962575584405194,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5229357798165137
+        "accuracy": 0.6843177189409368,
+        "balanced_accuracy": 0.681305253182708,
+        "brier_score": 0.1960715708892516,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5224032586558045
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.6799184505606524,
-        "balanced_accuracy": 0.6768068675963412,
-        "brier_score": 0.19699401869665648,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5229357798165137
+        "accuracy": 0.6802443991853361,
+        "balanced_accuracy": 0.6772237392818696,
+        "brier_score": 0.19679639903315704,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5224032586558045
       }
     ]
   },
   "history": [
-    {
-      "date": "2023-08-01",
-      "open": 32.25,
-      "high": 32.38750076293945,
-      "low": 32.212501525878906,
-      "close": 32.36249923706055,
-      "volume": 17791060.0,
-      "ma5": 32.2875,
-      "ma20": 32.308125019073486,
-      "ma60": 31.72312510808309,
-      "rsi14": 50.0,
-      "macd": 0.041566485069608916,
-      "macd_signal": 0.07672316365509353,
-      "macd_hist": -0.035156678585484616,
-      "bb_upper": 33.025405996013674,
-      "bb_mid": 32.308125019073486,
-      "bb_lower": 31.5908440421333
-    },
     {
       "date": "2023-08-02",
       "open": 32.349998474121094,
@@ -14576,43 +14558,61 @@
     },
     {
       "date": "2026-11-16",
-      "open": 101.2,
-      "high": 101.45,
-      "low": 96.45,
-      "close": 96.45,
-      "volume": 357525464.0,
-      "ma5": 100.55999816894531,
-      "ma20": 102.96249938964843,
-      "ma60": 107.26916687011719,
-      "rsi14": 36.90322932248267,
-      "macd": -2.7559739636745917,
-      "macd_signal": -2.584427346763551,
-      "macd_hist": -0.17154661691104067,
-      "bb_upper": 112.35117660952736,
-      "bb_mid": 102.96249938964843,
-      "bb_lower": 93.5738221697695
+      "open": 101.19999694824219,
+      "high": 101.44999694824219,
+      "low": 96.44999694824219,
+      "close": 96.44999694824219,
+      "volume": 319901752.0,
+      "ma5": 100.55999755859375,
+      "ma20": 102.96249923706054,
+      "ma60": 107.26916681925455,
+      "rsi14": 36.90322641616793,
+      "macd": -2.755974207119664,
+      "macd_signal": -2.5844273954525656,
+      "macd_hist": -0.17154681166709818,
+      "bb_upper": 112.35117690259554,
+      "bb_mid": 102.96249923706054,
+      "bb_lower": 93.57382157152554
+    },
+    {
+      "date": "2026-11-17",
+      "open": 94.55,
+      "high": 97.45,
+      "low": 93.25,
+      "close": 94.0,
+      "volume": 408019094.0,
+      "ma5": 99.41999816894531,
+      "ma20": 102.2549991607666,
+      "ma60": 107.1175001780192,
+      "rsi14": 31.289909380725092,
+      "macd": -3.0984470712357535,
+      "macd_signal": -2.6872313306092037,
+      "macd_hist": -0.41121574062654975,
+      "bb_upper": 112.1183242100105,
+      "bb_mid": 102.2549991607666,
+      "bb_lower": 92.3916741115227
     }
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.198262,
-    "down_probability": 0.801738,
+    "up_probability": 0.184336,
+    "down_probability": 0.815664,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.691131498470948,
+    "accuracy": 0.6914460285132383,
     "up_recall": 0.7524366471734892,
     "coverage": 1.0,
-    "base_rate": 0.5229357798165137,
-    "n_test": 981
+    "base_rate": 0.5224032586558045,
+    "n_test": 982
   },
   "explanation": {
     "model_interpretation": "量化模型偏向下跌。",
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.052794,
+        "latest_return": -0.052795,
         "tone": "偏空"
       },
       {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.011287,
+        "latest_return": -0.020316,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.017834,
+        "latest_return": -0.060333,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.003395,
+        "latest_return": 0.001265,
         "tone": "偏多"
       },
       {
@@ -14677,11 +14677,11 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-17T04:35:03+00:00",
+      "generated_at_utc": "2026-11-17T08:18:34+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -4,
+        "keyword_score": -5,
         "article_count": 15,
         "items": [
           {
@@ -14689,37 +14689,7 @@
             "title": "Nasdaq falls more than 2%, extending slide to third day as Nvidia drags down AI trade - CNBC",
             "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mcjluX1NZUEVzZ0dXVXFRX3c3SkZubmJJclpoSlNQVDV2TTloVERqNU54dnBhNG9oVTVObVJzMExPSkQyVEZzNkpmQ09sTWRTaWZwSjc1cEJiZ0k1U1NNZ1pJSVlKQlNidFcwT2NRLVJCbGVLMzln0gF8QVVfeXFMUG1YMkpQVmR5RkUzM0x4dkxzdjZsbV9MUTZWbl92M3BvT1lfWWYwX3RxZjBIMHd1cGdBYndYbkdXVmk4Y2hObFVKVUVlT0xmdTBNR21qd3M1YV80ZFI1eFQtbUpqbG1kQUpqSlVDc3hWbVJRUV8yU2lhcmRpeA?oc=5",
             "source": "CNBC",
-            "published_at": "2026-11-17T01:48+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "S&P 500, Dow, Nasdaq End Lower As Investors Hold Back Ahead Of Nvidia Earnings, Anthropic IPO This Week — NVDA, TSLA, ANT In Focus - TradingView",
-            "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNdWZTRER5WGgzV3U3NEQ1NGpJVjA3eXItUGpqT0FtTFgxaHYzNlRJQl9jLVR1SmVZRDJ5WkZ1MFpKdWkyZ0U5MV82R2tzMkowd0NsSFlOMlk5MEZncm94aWR2VllqZHBHNVIxUVJmRFdySTFQYndDZnFQb2FZUWRfVThXaWcybmRxNFl5QVg0b2o3NG5SQlJtNWlkb3pzaTVJYmlVeVNqd3NXUEI2dDFHWVV2cHp4MEVvWEZCTnlENmtjNTZ0UVhpbzYtNHpPaTZvN0FBdjh1NVNQaXhfSzZSSkR3SXNNc0hPNTc0dDFPdkt2VHNOMVdlTlR3TkY1YkVGVEl3UzZiLXR0bkV3b2pQdWR3?oc=5",
-            "source": "TradingView",
-            "published_at": "2026-11-17T00:09+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
-            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
-            "source": "Reuters",
-            "published_at": "2026-11-16T23:45+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-            "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
-            "source": "Investor's Business Daily",
-            "published_at": "2026-11-16T23:01+00:00",
+            "published_at": "2026-11-17T04:48+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14745,92 +14715,128 @@
             "negative_terms": [
               "selloff"
             ]
+          },
+          {
+            "category": "國際市場",
+            "title": "Markets News, Nov. 16, 2026: Stocks Sink at the Start of a Big Week for the AI Trade; Nvidia Sell-Off Intensifies Ahead of Earnings - Investopedia",
+            "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWVlTXzFaX2JjLVRyVC1aeUgyZWI0S1lTaE9ybXdac1FtXzd0WVdqVkxjVkVEbnpLVk80YmpvYTRaM0xZdGk4TmRaX2ZiakJSY0hpdE9sTDJuR3ZNYjJsbVhYTUpaN2NyeDlhZ093NFpwUnd0YnRwdVFVanNhRjVNSDNaYzNvM0VlVEJpSXJCWmFRZGtheUM2aVlR?oc=5",
+            "source": "Investopedia",
+            "published_at": "2026-11-16T22:02+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Nvidia Plunges 4%, Dragging New York Stocks Down With It; Fear Gauge Breaches 20 Again - BigGo Finance",
+            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zaGpvZGhQTm5iXzNMT09xdU8wTlp1X0gxaHpmTmV2cTlTT0dIUFgzZ0s2YVhUYnpZUFhlaUh5eWRpLWVoQ25rbjNMSFNTWkdhM3hiVU9zYW83NlR0eXNIYnRnUks2Yk1yaXBPOUJjMnBER1RjMUE?oc=5",
+            "source": "BigGo Finance",
+            "published_at": "2026-11-16T21:55+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Micron, AMD and other AI stocks fall as the chip sector’s selloff intensifies - MarketWatch",
+            "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPbzJiOHRPNHFvdUhKTGlYRXJxeUgtSXJrdlQ3Tk0xLXI4d3RkOXpsNXFyaTh3ZHdPMGI4bGxJQ2dVS1hjOFVQVkh5clBOQlFkUEFTak1XWGlza19SYjJ0QWlQb1ZvRUE2OVV4VUFVSmZZWHlPVWVsYjlWSVlTMEtXZ1hnVEFaYkJuODdVWWo1MWRxa2hraWFyQmttX2RVNWp2LUlUSWdfNEZMR3NfQmFqenBib3MxaUNpOFE?oc=5",
+            "source": "MarketWatch",
+            "published_at": "2026-11-16T21:17+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "selloff"
+            ]
           }
         ]
       },
       "domestic": {
+        "tone": "偏空",
+        "keyword_score": -1,
+        "article_count": 3,
+        "items": [
+          {
+            "category": "台灣市場",
+            "title": "盤後／台股黑翻紅翻黑跌947點 戰犯是它 - 鏡週刊Mirror Media",
+            "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5xNUdWeWVRNVNPX2RyZ25WU2FfRFd6M3ZMdnk1SkNEbGtzNDJvTDNENEJQekwyQVNZcndjYzN3NFpFajFfWm45RkRWX29ZSUF1MkNfUEdjQmstTFpX?oc=5",
+            "source": "鏡週刊Mirror Media",
+            "published_at": "2026-11-17T06:44+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
+            "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
+            "source": "CMoney",
+            "published_at": "2026-11-17T02:52+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "台股暴跌2635點又在跌什麼？台指期結算日倒數、外資空單逼近9.7萬口，國內法人示警2大變數| 下班經濟學| 財經 - 風傳媒",
+            "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA3MS1BRmRDTHN2cWdFSFVVdm1YZENKdTJwQkRPeXlUbVlnLW05M1VoVERvS09PXzBpZDB3YlZjaUJaeC1wZUZwVnBWMTJOZw?oc=5",
+            "source": "風傳媒",
+            "published_at": "2026-11-17T02:41+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "暴跌"
+            ]
+          }
+        ]
+      },
+      "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
         "article_count": 0,
         "items": []
       },
-      "industry": {
-        "tone": "中性或訊號不足",
-        "keyword_score": 0,
-        "article_count": 3,
-        "items": [
-          {
-            "category": "產業消息",
-            "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-            "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-            "source": "永豐金證券",
-            "published_at": "2026-10-29T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-16T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-13T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          }
-        ]
-      },
       "items": [
+        {
+          "category": "台灣市場",
+          "title": "盤後／台股黑翻紅翻黑跌947點 戰犯是它 - 鏡週刊Mirror Media",
+          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5xNUdWeWVRNVNPX2RyZ25WU2FfRFd6M3ZMdnk1SkNEbGtzNDJvTDNENEJQekwyQVNZcndjYzN3NFpFajFfWm45RkRWX29ZSUF1MkNfUEdjQmstTFpX?oc=5",
+          "source": "鏡週刊Mirror Media",
+          "published_at": "2026-11-17T06:44+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
         {
           "category": "國際市場",
           "title": "Nasdaq falls more than 2%, extending slide to third day as Nvidia drags down AI trade - CNBC",
           "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mcjluX1NZUEVzZ0dXVXFRX3c3SkZubmJJclpoSlNQVDV2TTloVERqNU54dnBhNG9oVTVObVJzMExPSkQyVEZzNkpmQ09sTWRTaWZwSjc1cEJiZ0k1U1NNZ1pJSVlKQlNidFcwT2NRLVJCbGVLMzln0gF8QVVfeXFMUG1YMkpQVmR5RkUzM0x4dkxzdjZsbV9MUTZWbl92M3BvT1lfWWYwX3RxZjBIMHd1cGdBYndYbkdXVmk4Y2hObFVKVUVlT0xmdTBNR21qd3M1YV80ZFI1eFQtbUpqbG1kQUpqSlVDc3hWbVJRUV8yU2lhcmRpeA?oc=5",
           "source": "CNBC",
-          "published_at": "2026-11-17T01:48+00:00",
+          "published_at": "2026-11-17T04:48+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
-          "category": "國際市場",
-          "title": "S&P 500, Dow, Nasdaq End Lower As Investors Hold Back Ahead Of Nvidia Earnings, Anthropic IPO This Week — NVDA, TSLA, ANT In Focus - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNdWZTRER5WGgzV3U3NEQ1NGpJVjA3eXItUGpqT0FtTFgxaHYzNlRJQl9jLVR1SmVZRDJ5WkZ1MFpKdWkyZ0U5MV82R2tzMkowd0NsSFlOMlk5MEZncm94aWR2VllqZHBHNVIxUVJmRFdySTFQYndDZnFQb2FZUWRfVThXaWcybmRxNFl5QVg0b2o3NG5SQlJtNWlkb3pzaTVJYmlVeVNqd3NXUEI2dDFHWVV2cHp4MEVvWEZCTnlENmtjNTZ0UVhpbzYtNHpPaTZvN0FBdjh1NVNQaXhfSzZSSkR3SXNNc0hPNTc0dDFPdkt2VHNOMVdlTlR3TkY1YkVGVEl3UzZiLXR0bkV3b2pQdWR3?oc=5",
-          "source": "TradingView",
-          "published_at": "2026-11-17T00:09+00:00",
+          "category": "台灣市場",
+          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-17T02:52+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
-          "category": "國際市場",
-          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-16T23:45+00:00",
-          "keyword_score": 0,
+          "category": "台灣市場",
+          "title": "台股暴跌2635點又在跌什麼？台指期結算日倒數、外資空單逼近9.7萬口，國內法人示警2大變數| 下班經濟學| 財經 - 風傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA3MS1BRmRDTHN2cWdFSFVVdm1YZENKdTJwQkRPeXlUbVlnLW05M1VoVERvS09PXzBpZDB3YlZjaUJaeC1wZUZwVnBWMTJOZw?oc=5",
+          "source": "風傳媒",
+          "published_at": "2026-11-17T02:41+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
-          "source": "Investor's Business Daily",
-          "published_at": "2026-11-16T23:01+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "暴跌"
+          ]
         },
         {
           "category": "國際市場",
@@ -14866,10 +14872,42 @@
         },
         {
           "category": "國際市場",
+          "title": "Nvidia Plunges 4%, Dragging New York Stocks Down With It; Fear Gauge Breaches 20 Again - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zaGpvZGhQTm5iXzNMT09xdU8wTlp1X0gxaHpmTmV2cTlTT0dIUFgzZ0s2YVhUYnpZUFhlaUh5eWRpLWVoQ25rbjNMSFNTWkdhM3hiVU9zYW83NlR0eXNIYnRnUks2Yk1yaXBPOUJjMnBER1RjMUE?oc=5",
+          "source": "BigGo Finance",
+          "published_at": "2026-11-16T21:55+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Micron, AMD and other AI stocks fall as the chip sector’s selloff intensifies - MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPbzJiOHRPNHFvdUhKTGlYRXJxeUgtSXJrdlQ3Tk0xLXI4d3RkOXpsNXFyaTh3ZHdPMGI4bGxJQ2dVS1hjOFVQVkh5clBOQlFkUEFTak1XWGlza19SYjJ0QWlQb1ZvRUE2OVV4VUFVSmZZWHlPVWVsYjlWSVlTMEtXZ1hnVEFaYkJuODdVWWo1MWRxa2hraWFyQmttX2RVNWp2LUlUSWdfNEZMR3NfQmFqenBib3MxaUNpOFE?oc=5",
+          "source": "MarketWatch",
+          "published_at": "2026-11-16T21:17+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "selloff"
+          ]
+        },
+        {
+          "category": "國際市場",
           "title": "Stocks Fall Before Nvidia Earnings, Anthropic IPO: Markets Wrap - Bloomberg.com",
           "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOU3BQd2lUam5YX1RGekdqV203U1BmRzNUQnlhem10ajRycVpfTUYzRWtOM2h1ZDd5M2tvUnNXeG1VOHRGTEl4VkJsSUhuQk41UlcyNU1EZDJaSTNTd2NvM3lDUDV5NU95SUtxSHZaZEpjSnMxRGgtamUtb0lYWUtHMTFZZDBLblVaeXhVTEhSa2ZPeF9y?oc=5",
           "source": "Bloomberg.com",
           "published_at": "2026-11-16T21:05+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "US stock markets slump badly as chipmakers struggle once again - investingLive",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPQnlRM1BkMVhVMzUwTjdSUE15dFVLY29UZm1nQmZGN3ZPY1RFRnltN3RnSkk5eFFGYXE3aFNiaHNxTjdFRldLUWF3UkI0QmUydG9VQWhiMGdnSTVzMGIyWnBGcFI2Y05KbUhXWXlPSVkxQ004TTlxX1EzUmFLWVF1VHUzVWlYOHpyckNkR2g1Q2E0NERxWmRZYThMTm4?oc=5",
+          "source": "investingLive",
+          "published_at": "2026-11-16T21:03+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14918,6 +14956,16 @@
         },
         {
           "category": "國際市場",
+          "title": "Stocks end lower ahead of Nvidia earnings and Anthropic IPO; oil drops - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPa3g3MVMxZ2lSN1ZpTmpaWkdYR25ZdDZ4M3BELXQ3ZC1PZDhtNTVjYmpQdHlJZUFtLWxiUkFLbXhUVHM0OHNScEUyTWFHUU5MMmZYb0EyVW51dXd1OWJFak1NbVFwazhlVzBIcHB3TENzRG1IZ2FvVFlpS0xubFBadXlPYw?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-16T01:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "U.S. Core CPI Beats Forecast for Third Straight Month: Could the Fed Hike Rates Again? - KuCoin",
           "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBVMkV6T0ZYY3VKZjlmelRkTkxjdU5qUkJncFJpRTJ1bFRxTHd2QlYxdjY4YjVWZEdhbzFRVjBZbDMzMGxOTkhfempBel9pUFZjd3NKaFVCOHUwMHNJaGJ4aE15MlQ5V0ROMTBqVnV5LVY4Wkp1?oc=5",
           "source": "KuCoin",
@@ -14938,53 +14986,9 @@
             "rate hike",
             "war"
           ]
-        },
-        {
-          "category": "國際市場",
-          "title": "The CPI Trap: Wall Street Is Pricing the Hike, but Goldman Sees the Inflation Surprise Going the Other Way - The Dark Side Of The Boom",
-          "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOQi16djF1eUdJVTF1d3ZjdS1TZnBzQWxuNDFTbS1jdlZ5RTlRZkJEc283MHBORDBqWnoyUG9mMXdwR2k4dGUzMlBOVVotRmx4LU02QmVHZE1Ia3ltRjJpRWFvUV9jYXJIei1LUE5MSzhQUHlkem8xa2xHSXF4RFlVZzJoelNMZw?oc=5",
-          "source": "The Dark Side Of The Boom",
-          "published_at": "2026-11-10T08:06+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-10-29T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-16T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-13T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         }
       ],
-      "source_errors": [
-        "國際市場新聞來源讀取失敗：HTTPError",
-        "台灣市場新聞來源讀取失敗：HTTPError",
-        "台灣市場新聞來源讀取失敗：HTTPError"
-      ],
+      "source_errors": [],
       "limitations": [
         "僅分析 RSS 新聞標題，不代表已閱讀全文或核實事件。",
         "關鍵字可能誤判語境、反諷及利多出盡等情況。",
@@ -14992,10 +14996,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-17T04:35:03+00:00",
-      "taiwan_data_date": "2026-11-16",
+      "generated_at_utc": "2026-11-17T08:18:34+00:00",
+      "taiwan_data_date": "2026-11-17",
       "us_session_date": "2026-11-16",
-      "us_timezone_checked_at": "2026-11-16T23:35-05:00",
+      "us_timezone_checked_at": "2026-11-17T03:18-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15013,7 +15017,7 @@
           "ticker": "^IXIC",
           "name": "NASDAQ",
           "date": "2026-11-16",
-          "close": 24509.7578125,
+          "close": 24509.759765625,
           "previous_close": 25136.26953125,
           "display_close": "24,509.76",
           "display_change": "-2.49%",
@@ -15025,7 +15029,7 @@
           "ticker": "^SOX",
           "name": "費半",
           "date": "2026-11-16",
-          "close": 9610.65234375,
+          "close": 9610.650390625,
           "previous_close": 10146.3203125,
           "display_close": "9,610.65",
           "display_change": "-5.28%",
@@ -15037,9 +15041,9 @@
           "ticker": "^DJI",
           "name": "道瓊指數",
           "date": "2026-11-16",
-          "close": 51608.19921875,
+          "close": 51608.171875,
           "previous_close": 52347.55078125,
-          "display_close": "51,608.20",
+          "display_close": "51,608.17",
           "display_change": "-1.41%",
           "change_pct": -1.412,
           "yield_change_bps": null,
@@ -15143,85 +15147,52 @@
         }
       ],
       "institutional": {
-        "date": "2026-11-16",
-        "foreign_net_ntd": -70189212163,
-        "trust_net_ntd": -18301702536,
-        "dealer_net_ntd": -25903139498,
-        "total_net_ntd": -114394054197,
-        "foreign_net_100m": -701.892,
-        "trust_net_100m": -183.017,
-        "dealer_net_100m": -259.031,
-        "total_net_100m": -1143.941,
+        "date": "2026-11-17",
+        "foreign_net_ntd": -38093637437,
+        "trust_net_ntd": -934960749,
+        "dealer_net_ntd": -15696495525,
+        "total_net_ntd": -54725093711,
+        "foreign_net_100m": -380.936,
+        "trust_net_100m": -9.35,
+        "dealer_net_100m": -156.965,
+        "total_net_100m": -547.251,
         "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261116&type=day",
-        "0050_foreign_net_shares": -111815510,
-        "0050_trust_net_shares": 2213000,
-        "0050_dealer_net_shares": -102440620,
-        "0050_total_net_shares": -212043130,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261116&selectType=ALLBUT0999"
+        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261117&type=day"
       },
-      "etf_0050_institutional": {
-        "date": "2026-11-16",
-        "foreign_net_shares": -111815510,
-        "trust_net_shares": 2213000,
-        "dealer_net_shares": -102440620,
-        "total_net_shares": -212043130,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261116&selectType=ALLBUT0999"
-      },
+      "etf_0050_institutional": null,
       "institutional_errors": [
+        "2026-11-17: T86找不到0050資料",
         "2026-10-23: T86找不到0050資料",
         "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 701.9 億元",
-          "date": "2026-11-16",
+          "title": "外資賣超 380.9 億元",
+          "date": "2026-11-17",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "投信賣超 183.0 億元",
-          "date": "2026-11-16",
+          "title": "投信賣超 9.3 億元",
+          "date": "2026-11-17",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "自營商賣超 259.0 億元",
-          "date": "2026-11-16",
+          "title": "自營商賣超 157.0 億元",
+          "date": "2026-11-17",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "三大法人合計賣超 1,143.9 億元",
-          "date": "2026-11-16",
+          "title": "三大法人合計賣超 547.3 億元",
+          "date": "2026-11-17",
           "tone": "偏空",
           "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資賣超 111,815,510 股",
-          "date": "2026-11-16",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 2,213,000 股",
-          "date": "2026-11-16",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商賣超 102,440,620 股",
-          "date": "2026-11-16",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
         },
         {
           "group": "美股前夜",
@@ -15233,34 +15204,10 @@
         {
           "group": "國際新聞",
           "title": "Nasdaq falls more than 2%, extending slide to third day as Nvidia drags down AI trade - CNBC",
-          "date": "2026-11-17 09:48 台北時間",
+          "date": "2026-11-17 12:48 台北時間",
           "tone": "待判讀",
           "detail": "CNBC｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mcjluX1NZUEVzZ0dXVXFRX3c3SkZubmJJclpoSlNQVDV2TTloVERqNU54dnBhNG9oVTVObVJzMExPSkQyVEZzNkpmQ09sTWRTaWZwSjc1cEJiZ0k1U1NNZ1pJSVlKQlNidFcwT2NRLVJCbGVLMzln0gF8QVVfeXFMUG1YMkpQVmR5RkUzM0x4dkxzdjZsbV9MUTZWbl92M3BvT1lfWWYwX3RxZjBIMHd1cGdBYndYbkdXVmk4Y2hObFVKVUVlT0xmdTBNR21qd3M1YV80ZFI1eFQtbUpqbG1kQUpqSlVDc3hWbVJRUV8yU2lhcmRpeA?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "S&P 500, Dow, Nasdaq End Lower As Investors Hold Back Ahead Of Nvidia Earnings, Anthropic IPO This Week — NVDA, TSLA, ANT In Focus - TradingView",
-          "date": "2026-11-17 08:09 台北時間",
-          "tone": "待判讀",
-          "detail": "TradingView｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNdWZTRER5WGgzV3U3NEQ1NGpJVjA3eXItUGpqT0FtTFgxaHYzNlRJQl9jLVR1SmVZRDJ5WkZ1MFpKdWkyZ0U5MV82R2tzMkowd0NsSFlOMlk5MEZncm94aWR2VllqZHBHNVIxUVJmRFdySTFQYndDZnFQb2FZUWRfVThXaWcybmRxNFl5QVg0b2o3NG5SQlJtNWlkb3pzaTVJYmlVeVNqd3NXUEI2dDFHWVV2cHp4MEVvWEZCTnlENmtjNTZ0UVhpbzYtNHpPaTZvN0FBdjh1NVNQaXhfSzZSSkR3SXNNc0hPNTc0dDFPdkt2VHNOMVdlTlR3TkY1YkVGVEl3UzZiLXR0bkV3b2pQdWR3?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
-          "date": "2026-11-17 07:45 台北時間",
-          "tone": "待判讀",
-          "detail": "Reuters｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-          "date": "2026-11-17 07:01 台北時間",
-          "tone": "待判讀",
-          "detail": "Investor's Business Daily｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15269,6 +15216,54 @@
           "tone": "待判讀",
           "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQQm1pRzVJd0lQc2F6aUtMUGIzUnVtazZTRFQtUndVeHZCSzhTTkVTSEJJRnIyN0JhVnN0eTVuZkFiVEN5a0xWbk54cjlXejFPTjlkb3JhTDdjQnNNMXFvblF0S3ZNUmtiTmFDdEd2NkdpZmtLSG01eldfYWZDT3lIcldSc2VlZnNQSGRkWmRmYmh3b195WDY1bnNoU25neEFTc3dwX21yTkRGdkRiSW5FMDZrdmpRZTdDZUpHaw?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq - The Motley Fool",
+          "date": "2026-11-17 06:05 台北時間",
+          "tone": "偏空",
+          "detail": "The Motley Fool｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPSkpBVy04WmZsdTNnX0dFTml6UW5NVUxLQXhrWF8zSTV6SjRlM1BMRDJCZzZnV1RrbDJtTE5ZcWRXZjRublJTc0pCSkR1WWFWWjVKVUItcjBGcnlSQzE1QzVYSzNQcnJBUUZNREY5LS1mZDBPMzVVajRoY0NIdFoyeDFOeVNFeUFlNUx2RlEyOUU4S2hacHdseGg4MExLWGNyVVBrRG9FTWxmaUVQcmE4WURrWTgxRUd5NUlsUzk4LWQ2TGNPWGY3cWRaNlpNbUV1eVpJalpwc2h4V08ydkVV?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Markets News, Nov. 16, 2026: Stocks Sink at the Start of a Big Week for the AI Trade; Nvidia Sell-Off Intensifies Ahead of Earnings - Investopedia",
+          "date": "2026-11-17 06:02 台北時間",
+          "tone": "待判讀",
+          "detail": "Investopedia｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWVlTXzFaX2JjLVRyVC1aeUgyZWI0S1lTaE9ybXdac1FtXzd0WVdqVkxjVkVEbnpLVk80YmpvYTRaM0xZdGk4TmRaX2ZiakJSY0hpdE9sTDJuR3ZNYjJsbVhYTUpaN2NyeDlhZ093NFpwUnd0YnRwdVFVanNhRjVNSDNaYzNvM0VlVEJpSXJCWmFRZGtheUM2aVlR?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Nvidia Plunges 4%, Dragging New York Stocks Down With It; Fear Gauge Breaches 20 Again - BigGo Finance",
+          "date": "2026-11-17 05:55 台北時間",
+          "tone": "待判讀",
+          "detail": "BigGo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zaGpvZGhQTm5iXzNMT09xdU8wTlp1X0gxaHpmTmV2cTlTT0dIUFgzZ0s2YVhUYnpZUFhlaUh5eWRpLWVoQ25rbjNMSFNTWkdhM3hiVU9zYW83NlR0eXNIYnRnUks2Yk1yaXBPOUJjMnBER1RjMUE?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "盤後／台股黑翻紅翻黑跌947點 戰犯是它 - 鏡週刊Mirror Media",
+          "date": "2026-11-17T06:44+00:00",
+          "tone": "待判讀",
+          "detail": "鏡週刊Mirror Media｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5xNUdWeWVRNVNPX2RyZ25WU2FfRFd6M3ZMdnk1SkNEbGtzNDJvTDNENEJQekwyQVNZcndjYzN3NFpFajFfWm45RkRWX29ZSUF1MkNfUEdjQmstTFpX?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
+          "date": "2026-11-17T02:52+00:00",
+          "tone": "待判讀",
+          "detail": "CMoney｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "台股暴跌2635點又在跌什麼？台指期結算日倒數、外資空單逼近9.7萬口，國內法人示警2大變數| 下班經濟學| 財經 - 風傳媒",
+          "date": "2026-11-17T02:41+00:00",
+          "tone": "偏空",
+          "detail": "風傳媒｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA3MS1BRmRDTHN2cWdFSFVVdm1YZENKdTJwQkRPeXlUbVlnLW05M1VoVERvS09PXzBpZDB3YlZjaUJaeC1wZUZwVnBWMTJOZw?oc=5"
         }
       ],
       "us_news": [
@@ -15277,44 +15272,11 @@
           "title": "Nasdaq falls more than 2%, extending slide to third day as Nvidia drags down AI trade - CNBC",
           "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mcjluX1NZUEVzZ0dXVXFRX3c3SkZubmJJclpoSlNQVDV2TTloVERqNU54dnBhNG9oVTVObVJzMExPSkQyVEZzNkpmQ09sTWRTaWZwSjc1cEJiZ0k1U1NNZ1pJSVlKQlNidFcwT2NRLVJCbGVLMzln0gF8QVVfeXFMUG1YMkpQVmR5RkUzM0x4dkxzdjZsbV9MUTZWbl92M3BvT1lfWWYwX3RxZjBIMHd1cGdBYndYbkdXVmk4Y2hObFVKVUVlT0xmdTBNR21qd3M1YV80ZFI1eFQtbUpqbG1kQUpqSlVDc3hWbVJRUV8yU2lhcmRpeA?oc=5",
           "source": "CNBC",
-          "published_at": "2026-11-17T01:48+00:00",
+          "published_at": "2026-11-17T04:48+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-17 09:48 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "S&P 500, Dow, Nasdaq End Lower As Investors Hold Back Ahead Of Nvidia Earnings, Anthropic IPO This Week — NVDA, TSLA, ANT In Focus - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNdWZTRER5WGgzV3U3NEQ1NGpJVjA3eXItUGpqT0FtTFgxaHYzNlRJQl9jLVR1SmVZRDJ5WkZ1MFpKdWkyZ0U5MV82R2tzMkowd0NsSFlOMlk5MEZncm94aWR2VllqZHBHNVIxUVJmRFdySTFQYndDZnFQb2FZUWRfVThXaWcybmRxNFl5QVg0b2o3NG5SQlJtNWlkb3pzaTVJYmlVeVNqd3NXUEI2dDFHWVV2cHp4MEVvWEZCTnlENmtjNTZ0UVhpbzYtNHpPaTZvN0FBdjh1NVNQaXhfSzZSSkR3SXNNc0hPNTc0dDFPdkt2VHNOMVdlTlR3TkY1YkVGVEl3UzZiLXR0bkV3b2pQdWR3?oc=5",
-          "source": "TradingView",
-          "published_at": "2026-11-17T00:09+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-17 08:09 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-16T23:45+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-17 07:45 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
-          "source": "Investor's Business Daily",
-          "published_at": "2026-11-16T23:01+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-17 07:01 台北時間"
+          "published_at_taipei": "2026-11-17 12:48 台北時間"
         },
         {
           "category": "國際市場",
@@ -15353,6 +15315,30 @@
         },
         {
           "category": "國際市場",
+          "title": "Nvidia Plunges 4%, Dragging New York Stocks Down With It; Fear Gauge Breaches 20 Again - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zaGpvZGhQTm5iXzNMT09xdU8wTlp1X0gxaHpmTmV2cTlTT0dIUFgzZ0s2YVhUYnpZUFhlaUh5eWRpLWVoQ25rbjNMSFNTWkdhM3hiVU9zYW83NlR0eXNIYnRnUks2Yk1yaXBPOUJjMnBER1RjMUE?oc=5",
+          "source": "BigGo Finance",
+          "published_at": "2026-11-16T21:55+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 05:55 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "Micron, AMD and other AI stocks fall as the chip sector’s selloff intensifies - MarketWatch",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPbzJiOHRPNHFvdUhKTGlYRXJxeUgtSXJrdlQ3Tk0xLXI4d3RkOXpsNXFyaTh3ZHdPMGI4bGxJQ2dVS1hjOFVQVkh5clBOQlFkUEFTak1XWGlza19SYjJ0QWlQb1ZvRUE2OVV4VUFVSmZZWHlPVWVsYjlWSVlTMEtXZ1hnVEFaYkJuODdVWWo1MWRxa2hraWFyQmttX2RVNWp2LUlUSWdfNEZMR3NfQmFqenBib3MxaUNpOFE?oc=5",
+          "source": "MarketWatch",
+          "published_at": "2026-11-16T21:17+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "selloff"
+          ],
+          "published_at_taipei": "2026-11-17 05:17 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "Stocks Fall Before Nvidia Earnings, Anthropic IPO: Markets Wrap - Bloomberg.com",
           "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOU3BQd2lUam5YX1RGekdqV203U1BmRzNUQnlhem10ajRycVpfTUYzRWtOM2h1ZDd5M2tvUnNXeG1VOHRGTEl4VkJsSUhuQk41UlcyNU1EZDJaSTNTd2NvM3lDUDV5NU95SUtxSHZaZEpjSnMxRGgtamUtb0lYWUtHMTFZZDBLblVaeXhVTEhSa2ZPeF9y?oc=5",
           "source": "Bloomberg.com",
@@ -15361,11 +15347,58 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-17 05:05 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "US stock markets slump badly as chipmakers struggle once again - investingLive",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPQnlRM1BkMVhVMzUwTjdSUE15dFVLY29UZm1nQmZGN3ZPY1RFRnltN3RnSkk5eFFGYXE3aFNiaHNxTjdFRldLUWF3UkI0QmUydG9VQWhiMGdnSTVzMGIyWnBGcFI2Y05KbUhXWXlPSVkxQ004TTlxX1EzUmFLWVF1VHUzVWlYOHpyckNkR2g1Q2E0NERxWmRZYThMTm4?oc=5",
+          "source": "investingLive",
+          "published_at": "2026-11-16T21:03+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 05:03 台北時間"
         }
       ],
-      "domestic_news": [],
+      "domestic_news": [
+        {
+          "category": "台灣市場",
+          "title": "盤後／台股黑翻紅翻黑跌947點 戰犯是它 - 鏡週刊Mirror Media",
+          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5xNUdWeWVRNVNPX2RyZ25WU2FfRFd6M3ZMdnk1SkNEbGtzNDJvTDNENEJQekwyQVNZcndjYzN3NFpFajFfWm45RkRWX29ZSUF1MkNfUEdjQmstTFpX?oc=5",
+          "source": "鏡週刊Mirror Media",
+          "published_at": "2026-11-17T06:44+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 14:44 台北時間"
+        },
+        {
+          "category": "台灣市場",
+          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-17T02:52+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 10:52 台北時間"
+        },
+        {
+          "category": "台灣市場",
+          "title": "台股暴跌2635點又在跌什麼？台指期結算日倒數、外資空單逼近9.7萬口，國內法人示警2大變數| 下班經濟學| 財經 - 風傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA3MS1BRmRDTHN2cWdFSFVVdm1YZENKdTJwQkRPeXlUbVlnLW05M1VoVERvS09PXzBpZDB3YlZjaUJaeC1wZUZwVnBWMTJOZw?oc=5",
+          "source": "風傳媒",
+          "published_at": "2026-11-17T02:41+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "暴跌"
+          ],
+          "published_at_taipei": "2026-11-17 10:41 台北時間"
+        }
+      ],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 1,143.9 億元。",
+      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 547.3 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {
@@ -15412,7 +15445,7 @@
       0.99
     ],
     "feature_count": 93,
-    "training_rows": 1231
+    "training_rows": 1232
   },
   "data_source": "Yahoo Finance (unofficial; verify independently)",
   "reference_links": [

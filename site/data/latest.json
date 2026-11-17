@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-17T04:12:28+00:00",
+  "generated_at_utc": "2026-11-17T04:33:31+00:00",
   "data_as_of": "2026-11-16",
   "latest_close": 96.45,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.184974,
-      "down_probability": 0.815026,
+      "up_probability": 0.198262,
+      "down_probability": 0.801738,
       "backtest": {
         "accuracy": 0.691131498470948,
         "balanced_accuracy": 0.6881841355525566,
@@ -36,13 +36,13 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.620022,
-      "down_probability": 0.379978,
+      "up_probability": 0.624156,
+      "down_probability": 0.375844,
       "backtest": {
         "accuracy": 0.5883554647599591,
         "balanced_accuracy": 0.5792795200760276,
         "up_recall": 0.6503623188405797,
-        "brier_score": 0.2449824019833754,
+        "brier_score": 0.24498240200482838,
         "majority_baseline_accuracy": 0.5638406537282942,
         "accuracy_lift_vs_baseline": 0.024514811031664974,
         "base_rate": 0.5638406537282942,
@@ -53,13 +53,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.645932,
-      "down_probability": 0.354068,
+      "up_probability": 0.650776,
+      "down_probability": 0.349224,
       "backtest": {
         "accuracy": 0.5424769703172978,
         "balanced_accuracy": 0.5191257534387719,
         "up_recall": 0.6702127659574468,
-        "brier_score": 0.2529150163759928,
+        "brier_score": 0.2529150163749135,
         "majority_baseline_accuracy": 0.5772773797338793,
         "accuracy_lift_vs_baseline": -0.03480040941658147,
         "base_rate": 0.5772773797338793,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.100008,
-    "down_probability": 0.899992,
+    "up_probability": 0.101298,
+    "down_probability": 0.898702,
     "backtest": {
       "accuracy": 0.7767584097859327,
       "balanced_accuracy": 0.7748505216107808,
       "up_recall": 0.8088803088803089,
-      "brier_score": 0.14959217188711804,
+      "brier_score": 0.14959217188702717,
       "majority_baseline_accuracy": 0.528032619775739,
       "accuracy_lift_vs_baseline": 0.24872579001019368,
       "base_rate": 0.528032619775739,
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2341,
       "stored_rows": 201,
-      "updated_at_taipei": "2026-11-17T12:12:39+08:00",
+      "updated_at_taipei": "2026-11-17T12:33:40+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,12 +148,12 @@
     "total_features": 93,
     "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.7529540306790174,
-      "Random Forest": 0.18497397794263643,
-      "Extra Trees": 0.06120441618616249
+      "Logistic Regression": 0.7518404043093339,
+      "Random Forest": 0.19826184829375523,
+      "Extra Trees": 0.06526437369098684
     },
     "historical_balanced_accuracy": 0.6808929374718848,
-    "historical_brier_score": 0.19625755844051937,
+    "historical_brier_score": 0.1962575584405194,
     "historical_test_count": 981,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -169,7 +169,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6197757390417941,
         "balanced_accuracy": 0.6188334083070925,
-        "brier_score": 0.22506943471748142,
+        "brier_score": 0.22506943512974015,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       },
@@ -177,7 +177,7 @@
         "name": "Random Forest",
         "accuracy": 0.6839959225280327,
         "balanced_accuracy": 0.6808929374718848,
-        "brier_score": 0.19625755844051937,
+        "brier_score": 0.1962575584405194,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       },
@@ -185,7 +185,7 @@
         "name": "Extra Trees",
         "accuracy": 0.6799184505606524,
         "balanced_accuracy": 0.6768068675963412,
-        "brier_score": 0.1969940186966565,
+        "brier_score": 0.19699401869665648,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5229357798165137
       }
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.184974,
-    "down_probability": 0.815026,
+    "up_probability": 0.198262,
+    "down_probability": 0.801738,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.004515,
+        "latest_return": -0.011287,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.009643,
+        "latest_return": -0.017834,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.00309,
+        "latest_return": 0.003395,
         "tone": "偏多"
       },
       {
@@ -14677,11 +14677,11 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-17T04:13:55+00:00",
+      "generated_at_utc": "2026-11-17T04:35:03+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -3,
+        "keyword_score": -4,
         "article_count": 15,
         "items": [
           {
@@ -14700,6 +14700,16 @@
             "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNdWZTRER5WGgzV3U3NEQ1NGpJVjA3eXItUGpqT0FtTFgxaHYzNlRJQl9jLVR1SmVZRDJ5WkZ1MFpKdWkyZ0U5MV82R2tzMkowd0NsSFlOMlk5MEZncm94aWR2VllqZHBHNVIxUVJmRFdySTFQYndDZnFQb2FZUWRfVThXaWcybmRxNFl5QVg0b2o3NG5SQlJtNWlkb3pzaTVJYmlVeVNqd3NXUEI2dDFHWVV2cHp4MEVvWEZCTnlENmtjNTZ0UVhpbzYtNHpPaTZvN0FBdjh1NVNQaXhfSzZSSkR3SXNNc0hPNTc0dDFPdkt2VHNOMVdlTlR3TkY1YkVGVEl3UzZiLXR0bkV3b2pQdWR3?oc=5",
             "source": "TradingView",
             "published_at": "2026-11-17T00:09+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
+            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
+            "source": "Reuters",
+            "published_at": "2026-11-16T23:45+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14726,47 +14736,28 @@
           },
           {
             "category": "國際市場",
-            "title": "U.S. stocks close | Nasdaq leads the decline at 2.5%; chip index plunges 5%, Micron drops nearly 8%; blue-chip stocks Coca-Cola, Procter & Gamble, and Costco hit new highs; the dollar regains lost ground from \"Liberation Day\" - 富途牛牛",
-            "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSUhRZHNBaFp3MW42WjdCQzRmOF9TVGJoV3JCT3FWQkdzUjhjSE9jcEtjZVFCQ1JXbllENkptN1VrUFF5UEwzelJaVjAwd1ZLTVd2MVdQUjBIY3RhbmJBUGgwbnNiZ09MZWoteTJKQ09jc2ZZYXVPV1o4ZGVIbzVXMkZEanljX0g2bjIxaTlQQ09lLXNO?oc=5",
-            "source": "富途牛牛",
-            "published_at": "2026-11-16T22:29+00:00",
-            "keyword_score": 0,
+            "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq - The Motley Fool",
+            "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPSkpBVy04WmZsdTNnX0dFTml6UW5NVUxLQXhrWF8zSTV6SjRlM1BMRDJCZzZnV1RrbDJtTE5ZcWRXZjRublJTc0pCSkR1WWFWWjVKVUItcjBGcnlSQzE1QzVYSzNQcnJBUUZNREY5LS1mZDBPMzVVajRoY0NIdFoyeDFOeVNFeUFlNUx2RlEyOUU4S2hacHdseGg4MExLWGNyVVBrRG9FTWxmaUVQcmE4WURrWTgxRUd5NUlsUzk4LWQ2TGNPWGY3cWRaNlpNbUV1eVpJalpwc2h4V08ydkVV?oc=5",
+            "source": "The Motley Fool",
+            "published_at": "2026-11-16T22:05+00:00",
+            "keyword_score": -1,
             "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Markets News, Nov. 16, 2026: Stocks Sink at the Start of a Big Week for the AI Trade; Nvidia Sell-Off Intensifies Ahead of Earnings - Investopedia",
-            "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWVlTXzFaX2JjLVRyVC1aeUgyZWI0S1lTaE9ybXdac1FtXzd0WVdqVkxjVkVEbnpLVk80YmpvYTRaM0xZdGk4TmRaX2ZiakJSY0hpdE9sTDJuR3ZNYjJsbVhYTUpaN2NyeDlhZ093NFpwUnd0YnRwdVFVanNhRjVNSDNaYzNvM0VlVEJpSXJCWmFRZGtheUM2aVlR?oc=5",
-            "source": "Investopedia",
-            "published_at": "2026-11-16T22:02+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
+            "negative_terms": [
+              "selloff"
+            ]
           }
         ]
       },
       "domestic": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 1,
-        "items": [
-          {
-            "category": "台灣市場",
-            "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
-            "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
-            "source": "三立新聞網SETN.com",
-            "published_at": "2026-11-09T02:42+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          }
-        ]
+        "article_count": 0,
+        "items": []
       },
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 2,
+        "article_count": 3,
         "items": [
           {
             "category": "產業消息",
@@ -14784,6 +14775,16 @@
             "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
             "source": "TechNews 科技新報",
             "published_at": "2026-10-16T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "產業消息",
+            "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
+            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
+            "source": "TechNews 科技新報",
+            "published_at": "2026-10-13T07:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14813,6 +14814,16 @@
         },
         {
           "category": "國際市場",
+          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-16T23:45+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
           "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
           "source": "Investor's Business Daily",
@@ -14833,13 +14844,15 @@
         },
         {
           "category": "國際市場",
-          "title": "U.S. stocks close | Nasdaq leads the decline at 2.5%; chip index plunges 5%, Micron drops nearly 8%; blue-chip stocks Coca-Cola, Procter & Gamble, and Costco hit new highs; the dollar regains lost ground from \"Liberation Day\" - 富途牛牛",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSUhRZHNBaFp3MW42WjdCQzRmOF9TVGJoV3JCT3FWQkdzUjhjSE9jcEtjZVFCQ1JXbllENkptN1VrUFF5UEwzelJaVjAwd1ZLTVd2MVdQUjBIY3RhbmJBUGgwbnNiZ09MZWoteTJKQ09jc2ZZYXVPV1o4ZGVIbzVXMkZEanljX0g2bjIxaTlQQ09lLXNO?oc=5",
-          "source": "富途牛牛",
-          "published_at": "2026-11-16T22:29+00:00",
-          "keyword_score": 0,
+          "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq - The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPSkpBVy04WmZsdTNnX0dFTml6UW5NVUxLQXhrWF8zSTV6SjRlM1BMRDJCZzZnV1RrbDJtTE5ZcWRXZjRublJTc0pCSkR1WWFWWjVKVUItcjBGcnlSQzE1QzVYSzNQcnJBUUZNREY5LS1mZDBPMzVVajRoY0NIdFoyeDFOeVNFeUFlNUx2RlEyOUU4S2hacHdseGg4MExLWGNyVVBrRG9FTWxmaUVQcmE4WURrWTgxRUd5NUlsUzk4LWQ2TGNPWGY3cWRaNlpNbUV1eVpJalpwc2h4V08ydkVV?oc=5",
+          "source": "The Motley Fool",
+          "published_at": "2026-11-16T22:05+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "selloff"
+          ]
         },
         {
           "category": "國際市場",
@@ -14853,10 +14866,10 @@
         },
         {
           "category": "國際市場",
-          "title": "Stocks slide to kick off major week for Wall Street - CNN",
-          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5XNnJ2aVJmdnhfSDlwVHd6dU9kalV4cWo4dEN3NlViemFRTnNUeXZCMk1PSWh5NVhWSlVHWjVoMGJSWFp0eDB1eDlkbHdIbVp5VzdGdHdycUFDQmNLSllhNlRIcHY5bXJKRHJkNmxfX0o3WVdD?oc=5",
-          "source": "CNN",
-          "published_at": "2026-11-16T21:57+00:00",
+          "title": "Stocks Fall Before Nvidia Earnings, Anthropic IPO: Markets Wrap - Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOU3BQd2lUam5YX1RGekdqV203U1BmRzNUQnlhem10ajRycVpfTUYzRWtOM2h1ZDd5M2tvUnNXeG1VOHRGTEl4VkJsSUhuQk41UlcyNU1EZDJaSTNTd2NvM3lDUDV5NU95SUtxSHZaZEpjSnMxRGgtamUtb0lYWUtHMTFZZDBLblVaeXhVTEhSa2ZPeF9y?oc=5",
+          "source": "Bloomberg.com",
+          "published_at": "2026-11-16T21:05+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14875,16 +14888,6 @@
         },
         {
           "category": "國際市場",
-          "title": "Weakness in Chipmakers and AI Stocks Weighs on Stock Indexes - Barchart.com",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMlBZcG5TLW5vWlRybVNIeVlXRTdFaGlxOUtjc21VOTJqaHNhLXZFZ2o3S0NWZU4tdHBuYXBObk1rWXdLT3FUQ09KNGdpQXdUUTVRRmk1WWlRRXMwVExMVXIyWUIzUWpzWVF4bHNEMmZOUTd2dlY5QTRzZmpZdWQ1bHNyMFAxTGFYMmd4d3JlMXN3eFh2OFZGZFdKTTIyMzdrSjd0Rkw0QQ?oc=5",
-          "source": "Barchart.com",
-          "published_at": "2026-11-16T15:04+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "Nasdaq opens 1.5% lower as Nvidia earnings and Anthropic IPO weigh on AI stocks - TradingView",
           "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRnFOTGU1QTVrVy1Sdm9sd0szMmJwSTF6Z1VXR2x1LUQtOGFLUGR1bWQ5Zi1nXzcxMXh5c2ZRM1FLdkNzSk9VMVBSQXA4azN6QWdJc1c4anpTbEJNODlTWFczSGtNOHg1aFJkMGpxb0VNYTA0Y0lsQ3M1V2RHNEVwQ2ltYXpJcWo4NzNVSGpXMHVGZkJTSmJrdkVRZzFua05WeGtlNnBDYWNkOV9hLW5RV1dmcjVKYVllaXJtLTJmUGluamtvR2xxQXF1ajItQnNB?oc=5",
           "source": "TradingView",
@@ -14895,20 +14898,20 @@
         },
         {
           "category": "國際市場",
-          "title": "Money Is Rotating Out Of AI And Semiconductor Stocks: Where Is It Going? (SOX) - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOalNjWnk5MVMzeWZCOUdoczVjeHkxS0lBcENsNGxTN3NSaWYzZmJfQURhT2ZsMVdYcjB4Nm9CR1c2cHBjLUlzTElyS0l4cEZEOHBNWUVPeFN1aU9UclhNTTBfS1doUDV1R1Ezcmt2WEtMclFaYzNRNWtycXhjVmp5WjZ2R05VRTlPVG1qb3BqVHZMb2ZaYWwtampQOWZzQ1RJczdLNGk4ZWJ3eWhWVDMyVw?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-16T10:18+00:00",
+          "title": "U.S. Futures Slip as Chip Stocks Extend Slump; Nvidia Earnings and Anthropic IPO Awaited - Barchart.com",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNQzFMN0FYNzRNdUhKdVZZT3Q4SGhLMTVnQmVkZnk5OURiZWk4MHVzbzFKZlphLUozNzQ2Y25NSDMzTmtzNFFBRkdTd2JDNWRfUEpPZkx2SnpWUFNjSTJRVDIzOUNVRWVQVUFZQ18wbkhUME5GVDNQYUpudGtLYjl0N2s1Z2prYUw4dGl4YjNraU00T0E4ajF4WVIyOFRUQWZ0X1dwVHJfQXpPcHpoZHl3NjhfT0J1YnpPYXpIeUwyNWQ2R1E0U0o0b29R?oc=5",
+          "source": "Barchart.com",
+          "published_at": "2026-11-16T11:32+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Stocks end lower ahead of Nvidia earnings and Anthropic IPO; oil drops - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPa3g3MVMxZ2lSN1ZpTmpaWkdYR25ZdDZ4M3BELXQ3ZC1PZDhtNTVjYmpQdHlJZUFtLWxiUkFLbXhUVHM0OHNScEUyTWFHUU5MMmZYb0EyVW51dXd1OWJFak1NbVFwazhlVzBIcHB3TENzRG1IZ2FvVFlpS0xubFBadXlPYw?oc=5",
-          "source": "Reuters",
-          "published_at": "2026-11-16T01:35+00:00",
+          "title": "Money Is Rotating Out Of AI And Semiconductor Stocks: Where Is It Going? (SOX) - Seeking Alpha",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOalNjWnk5MVMzeWZCOUdoczVjeHkxS0lBcENsNGxTN3NSaWYzZmJfQURhT2ZsMVdYcjB4Nm9CR1c2cHBjLUlzTElyS0l4cEZEOHBNWUVPeFN1aU9UclhNTTBfS1doUDV1R1Ezcmt2WEtMclFaYzNRNWtycXhjVmp5WjZ2R05VRTlPVG1qb3BqVHZMb2ZaYWwtampQOWZzQ1RJczdLNGk4ZWJ3eWhWVDMyVw?oc=5",
+          "source": "Seeking Alpha",
+          "published_at": "2026-11-16T10:18+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14947,16 +14950,6 @@
           "negative_terms": []
         },
         {
-          "category": "台灣市場",
-          "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
-          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
-          "source": "三立新聞網SETN.com",
-          "published_at": "2026-11-09T02:42+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
           "category": "產業消息",
           "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
           "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
@@ -14975,10 +14968,21 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "產業消息",
+          "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
+          "source": "TechNews 科技新報",
+          "published_at": "2026-10-13T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         }
       ],
       "source_errors": [
         "國際市場新聞來源讀取失敗：HTTPError",
+        "台灣市場新聞來源讀取失敗：HTTPError",
         "台灣市場新聞來源讀取失敗：HTTPError"
       ],
       "limitations": [
@@ -14988,10 +14992,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-17T04:13:55+00:00",
+      "generated_at_utc": "2026-11-17T04:35:03+00:00",
       "taiwan_data_date": "2026-11-16",
       "us_session_date": "2026-11-16",
-      "us_timezone_checked_at": "2026-11-16T23:13-05:00",
+      "us_timezone_checked_at": "2026-11-16T23:35-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15244,6 +15248,14 @@
         },
         {
           "group": "國際新聞",
+          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
+          "date": "2026-11-17 07:45 台北時間",
+          "tone": "待判讀",
+          "detail": "Reuters｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
           "date": "2026-11-17 07:01 台北時間",
           "tone": "待判讀",
@@ -15257,14 +15269,6 @@
           "tone": "待判讀",
           "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQQm1pRzVJd0lQc2F6aUtMUGIzUnVtazZTRFQtUndVeHZCSzhTTkVTSEJJRnIyN0JhVnN0eTVuZkFiVEN5a0xWbk54cjlXejFPTjlkb3JhTDdjQnNNMXFvblF0S3ZNUmtiTmFDdEd2NkdpZmtLSG01eldfYWZDT3lIcldSc2VlZnNQSGRkWmRmYmh3b195WDY1bnNoU25neEFTc3dwX21yTkRGdkRiSW5FMDZrdmpRZTdDZUpHaw?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "U.S. stocks close | Nasdaq leads the decline at 2.5%; chip index plunges 5%, Micron drops nearly 8%; blue-chip stocks Coca-Cola, Procter & Gamble, and Costco hit new highs; the dollar regains lost ground from \"Liberation Day\" - 富途牛牛",
-          "date": "2026-11-17 06:29 台北時間",
-          "tone": "待判讀",
-          "detail": "富途牛牛｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSUhRZHNBaFp3MW42WjdCQzRmOF9TVGJoV3JCT3FWQkdzUjhjSE9jcEtjZVFCQ1JXbllENkptN1VrUFF5UEwzelJaVjAwd1ZLTVd2MVdQUjBIY3RhbmJBUGgwbnNiZ09MZWoteTJKQ09jc2ZZYXVPV1o4ZGVIbzVXMkZEanljX0g2bjIxaTlQQ09lLXNO?oc=5"
         }
       ],
       "us_news": [
@@ -15292,6 +15296,17 @@
         },
         {
           "category": "國際市場",
+          "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
+          "source": "Reuters",
+          "published_at": "2026-11-16T23:45+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 07:45 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
           "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
           "source": "Investor's Business Daily",
@@ -15314,14 +15329,16 @@
         },
         {
           "category": "國際市場",
-          "title": "U.S. stocks close | Nasdaq leads the decline at 2.5%; chip index plunges 5%, Micron drops nearly 8%; blue-chip stocks Coca-Cola, Procter & Gamble, and Costco hit new highs; the dollar regains lost ground from \"Liberation Day\" - 富途牛牛",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSUhRZHNBaFp3MW42WjdCQzRmOF9TVGJoV3JCT3FWQkdzUjhjSE9jcEtjZVFCQ1JXbllENkptN1VrUFF5UEwzelJaVjAwd1ZLTVd2MVdQUjBIY3RhbmJBUGgwbnNiZ09MZWoteTJKQ09jc2ZZYXVPV1o4ZGVIbzVXMkZEanljX0g2bjIxaTlQQ09lLXNO?oc=5",
-          "source": "富途牛牛",
-          "published_at": "2026-11-16T22:29+00:00",
-          "keyword_score": 0,
+          "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq - The Motley Fool",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPSkpBVy04WmZsdTNnX0dFTml6UW5NVUxLQXhrWF8zSTV6SjRlM1BMRDJCZzZnV1RrbDJtTE5ZcWRXZjRublJTc0pCSkR1WWFWWjVKVUItcjBGcnlSQzE1QzVYSzNQcnJBUUZNREY5LS1mZDBPMzVVajRoY0NIdFoyeDFOeVNFeUFlNUx2RlEyOUU4S2hacHdseGg4MExLWGNyVVBrRG9FTWxmaUVQcmE4WURrWTgxRUd5NUlsUzk4LWQ2TGNPWGY3cWRaNlpNbUV1eVpJalpwc2h4V08ydkVV?oc=5",
+          "source": "The Motley Fool",
+          "published_at": "2026-11-16T22:05+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-17 06:29 台北時間"
+          "negative_terms": [
+            "selloff"
+          ],
+          "published_at_taipei": "2026-11-17 06:05 台北時間"
         },
         {
           "category": "國際市場",
@@ -15336,27 +15353,14 @@
         },
         {
           "category": "國際市場",
-          "title": "Stocks slide to kick off major week for Wall Street - CNN",
-          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5XNnJ2aVJmdnhfSDlwVHd6dU9kalV4cWo4dEN3NlViemFRTnNUeXZCMk1PSWh5NVhWSlVHWjVoMGJSWFp0eDB1eDlkbHdIbVp5VzdGdHdycUFDQmNLSllhNlRIcHY5bXJKRHJkNmxfX0o3WVdD?oc=5",
-          "source": "CNN",
-          "published_at": "2026-11-16T21:57+00:00",
+          "title": "Stocks Fall Before Nvidia Earnings, Anthropic IPO: Markets Wrap - Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOU3BQd2lUam5YX1RGekdqV203U1BmRzNUQnlhem10ajRycVpfTUYzRWtOM2h1ZDd5M2tvUnNXeG1VOHRGTEl4VkJsSUhuQk41UlcyNU1EZDJaSTNTd2NvM3lDUDV5NU95SUtxSHZaZEpjSnMxRGgtamUtb0lYWUtHMTFZZDBLblVaeXhVTEhSa2ZPeF9y?oc=5",
+          "source": "Bloomberg.com",
+          "published_at": "2026-11-16T21:05+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-17 05:57 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Warsh Speech Preview: Fed Chair on 16 November 2026 - Admirals",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNU0VQaVhWM1RiOUU0Slg1cllRR2poSGdYTHYxUDgwTGNIaVJuUS1LZ25pVndWTEZxdTBDc2FiUDFTdzRjMlJ6czd0ZUhwYk5TVEJUSURxSUN5NUlDQUFCeXZwQ005b2I3dXQ3Q0lxNmh3aWs1dEpjc0RaZ3pxSDBYQS1ldEU5S0ZSNDhmNnJoYURHRHFtZmh5QjFIZThncjlvNmFrQ1NqYw?oc=5",
-          "source": "Admirals",
-          "published_at": "2026-11-16T19:19+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "war"
-          ],
-          "published_at_taipei": "2026-11-17 03:19 台北時間"
+          "published_at_taipei": "2026-11-17 05:05 台北時間"
         }
       ],
       "domestic_news": [],

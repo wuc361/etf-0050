@@ -1,31 +1,31 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-18T03:43:54+00:00",
-  "data_as_of": "2026-11-17",
-  "latest_close": 94.0,
+  "generated_at_utc": "2026-11-18T07:49:42+00:00",
+  "data_as_of": "2026-11-18",
+  "latest_close": 94.1,
   "price_validation": {
-    "date": "2026-11-17",
-    "close": 94.0,
-    "open": 94.55,
-    "high": 97.45,
-    "low": 93.25,
-    "volume": 408719094,
+    "date": "2026-11-18",
+    "close": 94.1,
+    "open": 95.7,
+    "high": 95.95,
+    "low": 92.35,
+    "volume": 303494049,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-16",
+    "yahoo_previous_latest_date": "2026-11-18",
     "yahoo_latest_date_received": "2026-11-18",
-    "yahoo_lag_calendar_days": 1,
+    "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
   },
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.355326,
-      "down_probability": 0.644674,
+      "up_probability": 0.331201,
+      "down_probability": 0.668799,
       "backtest": {
         "accuracy": 0.6982670744138634,
         "balanced_accuracy": 0.6955373800639659,
         "up_recall": 0.7578125,
-        "brier_score": 0.19438049713243338,
+        "brier_score": 0.19442449447160257,
         "majority_baseline_accuracy": 0.5219164118246687,
         "accuracy_lift_vs_baseline": 0.17635066258919463,
         "base_rate": 0.5219164118246687,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.721831,
-      "down_probability": 0.278169,
+      "up_probability": 0.718875,
+      "down_probability": 0.281125,
       "backtest": {
         "accuracy": 0.585291113381001,
         "balanced_accuracy": 0.5775968078430043,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.628461,
-      "down_probability": 0.371539,
+      "up_probability": 0.621628,
+      "down_probability": 0.378372,
       "backtest": {
         "accuracy": 0.5373592630501536,
         "balanced_accuracy": 0.5167537604791447,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.327368,
-    "down_probability": 0.672632,
+    "up_probability": 0.303024,
+    "down_probability": 0.696976,
     "backtest": {
       "accuracy": 0.7777777777777778,
       "balanced_accuracy": 0.7759120923097446,
       "up_recall": 0.8104448742746615,
-      "brier_score": 0.14934902890693502,
+      "brier_score": 0.14938167207089437,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25076452599388377,
       "base_rate": 0.527013251783894,
@@ -92,12 +92,12 @@
     "trigger_count": 1,
     "observations": {
       "^SOX": {
-        "return": 0.0033533150986262417,
+        "return": 0.003353518323685911,
         "threshold": -0.03,
         "triggered": false
       },
       "^IXIC": {
-        "return": -0.007400193019410195,
+        "return": -0.00740027270705379,
         "threshold": -0.02,
         "triggered": false
       },
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-17；尚無晚於最近台股收盤日（2026-11-17）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-17；尚無晚於最近台股收盤日（2026-11-18）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-17",
       "contract": "TX",
@@ -136,24 +136,24 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2342,
       "stored_rows": 220,
-      "updated_at_taipei": "2026-11-18T11:44:07+08:00",
+      "updated_at_taipei": "2026-11-18T15:49:51+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.957,
+    "available_features": 89,
     "total_features": 93,
     "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.7427707426138606,
-      "Random Forest": 0.35532586227465,
-      "Extra Trees": 0.28439644252883406
+      "Logistic Regression": 0.7396479226501643,
+      "Random Forest": 0.33120093949901863,
+      "Extra Trees": 0.2689864079314085
     },
     "historical_balanced_accuracy": 0.6851450059968017,
-    "historical_brier_score": 0.19586964956474778,
+    "historical_brier_score": 0.195913646903917,
     "historical_test_count": 981,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
@@ -169,7 +169,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6299694189602446,
         "balanced_accuracy": 0.6295704790778252,
-        "brier_score": 0.224626878929834,
+        "brier_score": 0.2247271071081554,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
@@ -177,7 +177,7 @@
         "name": "Random Forest",
         "accuracy": 0.6880733944954128,
         "balanced_accuracy": 0.6851450059968017,
-        "brier_score": 0.19586964956474778,
+        "brier_score": 0.195913646903917,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
@@ -185,7 +185,7 @@
         "name": "Extra Trees",
         "accuracy": 0.6799184505606524,
         "balanced_accuracy": 0.6768848280916844,
-        "brier_score": 0.19772708116162194,
+        "brier_score": 0.19778814976746337,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       }
@@ -14575,28 +14575,28 @@
       "bb_lower": 93.57382157152554
     },
     {
-      "date": "2026-11-17",
-      "open": 94.55,
-      "high": 97.45,
-      "low": 93.25,
-      "close": 94.0,
-      "volume": 408719094.0,
-      "ma5": 99.41999816894531,
-      "ma20": 102.2549991607666,
-      "ma60": 107.1175001780192,
-      "rsi14": 31.289909380725092,
-      "macd": -3.0984470712357535,
-      "macd_signal": -2.6872313306092037,
-      "macd_hist": -0.41121574062654975,
-      "bb_upper": 112.1183242100105,
-      "bb_mid": 102.2549991607666,
-      "bb_lower": 92.3916741115227
+      "date": "2026-11-18",
+      "open": 95.7,
+      "high": 95.95,
+      "low": 92.35,
+      "close": 94.1,
+      "volume": 303494049.0,
+      "ma5": 99.43999816894532,
+      "ma20": 102.2599991607666,
+      "ma60": 107.11916684468588,
+      "rsi14": 31.370037186507602,
+      "macd": -3.090469863258562,
+      "macd_signal": -2.6856358890137653,
+      "macd_hist": -0.40483397424479683,
+      "bb_upper": 112.10579024706382,
+      "bb_mid": 102.2599991607666,
+      "bb_lower": 92.41420807446937
     }
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.355326,
-    "down_probability": 0.644674,
+    "up_probability": 0.331201,
+    "down_probability": 0.668799,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14612,7 +14612,7 @@
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": 0.003353,
+        "latest_return": 0.003354,
         "tone": "偏多"
       },
       {
@@ -14642,13 +14642,13 @@
       },
       {
         "name": "台積電",
-        "latest_return": 0.004608,
+        "latest_return": 0.002304,
         "tone": "偏多"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.003516,
-        "tone": "偏空"
+        "latest_return": 0.002564,
+        "tone": "偏多"
       },
       {
         "name": "台灣 ETF",
@@ -14657,8 +14657,8 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.000846,
-        "tone": "偏空"
+        "latest_return": 3.3e-05,
+        "tone": "偏多"
       },
       {
         "name": "VIX 波動率指數",
@@ -14677,29 +14677,29 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-18T03:44:58+00:00",
+      "generated_at_utc": "2026-11-18T07:50:54+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
-        "tone": "偏空",
-        "keyword_score": -2,
-        "article_count": 17,
+        "tone": "中性或訊號不足",
+        "keyword_score": 0,
+        "article_count": 16,
         "items": [
           {
             "category": "國際市場",
-            "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
-            "source": "BigGo Finance",
-            "published_at": "2026-11-17T23:25+00:00",
+            "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
+            "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
+            "source": "Yahoo Finance",
+            "published_at": "2026-11-18T00:25+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
-            "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
-            "source": "Investopedia",
-            "published_at": "2026-11-17T21:46+00:00",
+            "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
+            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
+            "source": "BigGo Finance",
+            "published_at": "2026-11-17T23:25+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14766,26 +14766,37 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 0,
-        "items": []
+        "article_count": 1,
+        "items": [
+          {
+            "category": "產業消息",
+            "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
+            "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
+            "source": "永豐金證券",
+            "published_at": "2026-10-29T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          }
+        ]
       },
       "items": [
         {
           "category": "國際市場",
-          "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-11-17T23:25+00:00",
+          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-18T00:25+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "國際市場",
-          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
-          "source": "Investopedia",
-          "published_at": "2026-11-17T21:46+00:00",
+          "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
+          "source": "BigGo Finance",
+          "published_at": "2026-11-17T23:25+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14832,6 +14843,16 @@
         },
         {
           "category": "國際市場",
+          "title": "Stock Market Today, Nov. 17: U.S. Stocks Jittery Ahead of Nvidia Results - TipRanks",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOSkkzeW5HdXBDVmFCQmFaVWhYNUtYZGNZNTNtZkJyTDNST0FWTEZhLVpzSThGVW40a1ZXejFpblh6QVo2RF9FMW83UVNWMkY2T3l3TUJQNThMbDVFNEFSMnZ1dzNmZS1CU0hkajhLSHNUdnozOWlYN056c2RYSlBHMUNNenAzamgzV0ZQQV8wVXFacVlDM3lVUENLTkFnblE?oc=5",
+          "source": "TipRanks",
+          "published_at": "2026-11-17T10:43+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
           "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
           "source": "Reuters",
@@ -14842,10 +14863,10 @@
         },
         {
           "category": "國際市場",
-          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
-          "source": "Investor's Business Daily",
-          "published_at": "2026-11-16T23:01+00:00",
+          "title": "Markets News, Nov. 16, 2026: Stocks Sink at the Start of a Big Week for the AI Trade; Nvidia Sell-Off Intensifies Ahead of Earnings - Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWVlTXzFaX2JjLVRyVC1aeUgyZWI0S1lTaE9ybXdac1FtXzd0WVdqVkxjVkVEbnpLVk80YmpvYTRaM0xZdGk4TmRaX2ZiakJSY0hpdE9sTDJuR3ZNYjJsbVhYTUpaN2NyeDlhZ093NFpwUnd0YnRwdVFVanNhRjVNSDNaYzNvM0VlVEJpSXJCWmFRZGtheUM2aVlR?oc=5",
+          "source": "Investopedia",
+          "published_at": "2026-11-16T22:02+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14873,16 +14894,6 @@
           "negative_terms": [
             "war"
           ]
-        },
-        {
-          "category": "國際市場",
-          "title": "U.S. chip stocks slide as traders unwind Nvidia rival bets before earnings - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPeGdqTmxUYkJodWxvTzVSRWtrd1hTSktodGtkazVKOUdQLVMwT3ZjMTVmdG5lX0JOeThKTWtzMFhnZHhVbXhWTE5UV2pNc2lGWmE1OWxOX0lBb3RaRFpVdHZhWWM1dEdPeUp5WXc0cm8yenIzVTVXWGN5YXZPdndUTG5mOEpRQ1hWTEg2VlJvOWlUZnRuNFJ3?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-16T16:06+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14916,19 +14927,6 @@
         },
         {
           "category": "國際市場",
-          "title": "ANZ Warns: U.S. Inflation Pressure Is Spreading, Fed Rate Hikes May Exceed Expectations - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE4zalR4aEVON2JEdkpQX29TQTBOajdYZHIxV2RTQ3VreTJfSENtYVBVYkhwMzhKczJYVXZTRlBpcjc4TENrenlLU3p4V0ZtU2VEQzJuMDJYYnFNWXdYbmloMXU1NVN6TGpsSTZNNXpZemZNdjI2R2c?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-11-12T10:06+00:00",
-          "keyword_score": -2,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike",
-            "war"
-          ]
-        },
-        {
-          "category": "國際市場",
           "title": "USD/CAD Forecast: Pair Near 1.42 After Hot US CPI Data - Admirals",
           "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPRHhuMDd1LUlrTTdRTGZaUWFVTjAyTHpFd2Mzdl8yRmNRLTV0azZXdDFZb0xCUUJLTDNiamNNWGVPUWMtUHZ3Z0xldmw5SGdfQkEzNkFaVWhfUjBxaXFiSXhveVBLdzhkX2lsMTNhb3cxVmdMbVQ1TXBOVU81WUJ0bFJFVWNVWlVYeHNhM09UZw?oc=5",
           "source": "Admirals",
@@ -14956,6 +14954,16 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "產業消息",
+          "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
+          "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
+          "source": "永豐金證券",
+          "published_at": "2026-10-29T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -14966,10 +14974,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-18T03:44:58+00:00",
-      "taiwan_data_date": "2026-11-17",
+      "generated_at_utc": "2026-11-18T07:50:54+00:00",
+      "taiwan_data_date": "2026-11-18",
       "us_session_date": "2026-11-17",
-      "us_timezone_checked_at": "2026-11-17T22:44-05:00",
+      "us_timezone_checked_at": "2026-11-18T02:50-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -14987,7 +14995,7 @@
           "ticker": "^IXIC",
           "name": "NASDAQ",
           "date": "2026-11-17",
-          "close": 24328.3828125,
+          "close": 24328.380859375,
           "previous_close": 24509.759765625,
           "display_close": "24,328.38",
           "display_change": "-0.74%",
@@ -14999,7 +15007,7 @@
           "ticker": "^SOX",
           "name": "費半",
           "date": "2026-11-17",
-          "close": 9642.8779296875,
+          "close": 9642.8798828125,
           "previous_close": 9610.650390625,
           "display_close": "9,642.88",
           "display_change": "+0.34%",
@@ -15095,7 +15103,7 @@
           "ticker": "^TNX",
           "name": "美國10年期公債殖利率",
           "date": "2026-11-17",
-          "close": 5.102999687194824,
+          "close": 5.103000164031982,
           "previous_close": 5.120999813079834,
           "display_close": "0.51%",
           "display_change": "-0.2 bps",
@@ -15117,85 +15125,52 @@
         }
       ],
       "institutional": {
-        "date": "2026-11-17",
-        "foreign_net_ntd": -38093637437,
-        "trust_net_ntd": -934960749,
-        "dealer_net_ntd": -15696495525,
-        "total_net_ntd": -54725093711,
-        "foreign_net_100m": -380.936,
-        "trust_net_100m": -9.35,
-        "dealer_net_100m": -156.965,
-        "total_net_100m": -547.251,
+        "date": "2026-11-18",
+        "foreign_net_ntd": -76563675949,
+        "trust_net_ntd": 17558413018,
+        "dealer_net_ntd": -4202092366,
+        "total_net_ntd": -63207355297,
+        "foreign_net_100m": -765.637,
+        "trust_net_100m": 175.584,
+        "dealer_net_100m": -42.021,
+        "total_net_100m": -632.074,
         "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261117&type=day",
-        "0050_foreign_net_shares": -55584414,
-        "0050_trust_net_shares": 3165000,
-        "0050_dealer_net_shares": -131971587,
-        "0050_total_net_shares": -184391001,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261117&selectType=ALLBUT0999"
+        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261118&type=day"
       },
-      "etf_0050_institutional": {
-        "date": "2026-11-17",
-        "foreign_net_shares": -55584414,
-        "trust_net_shares": 3165000,
-        "dealer_net_shares": -131971587,
-        "total_net_shares": -184391001,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261117&selectType=ALLBUT0999"
-      },
+      "etf_0050_institutional": null,
       "institutional_errors": [
+        "2026-11-18: T86找不到0050資料",
         "2026-10-23: T86找不到0050資料",
         "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 380.9 億元",
-          "date": "2026-11-17",
+          "title": "外資賣超 765.6 億元",
+          "date": "2026-11-18",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "投信賣超 9.3 億元",
-          "date": "2026-11-17",
+          "title": "投信買超 175.6 億元",
+          "date": "2026-11-18",
+          "tone": "偏多",
+          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
+        },
+        {
+          "group": "台灣法人籌碼",
+          "title": "自營商賣超 42.0 億元",
+          "date": "2026-11-18",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "自營商賣超 157.0 億元",
-          "date": "2026-11-17",
-          "tone": "偏空",
-          "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
-        },
-        {
-          "group": "台灣法人籌碼",
-          "title": "三大法人合計賣超 547.3 億元",
-          "date": "2026-11-17",
+          "title": "三大法人合計賣超 632.1 億元",
+          "date": "2026-11-18",
           "tone": "偏空",
           "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資賣超 55,584,414 股",
-          "date": "2026-11-17",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 3,165,000 股",
-          "date": "2026-11-17",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商賣超 131,971,587 股",
-          "date": "2026-11-17",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
         },
         {
           "group": "美股前夜",
@@ -15206,19 +15181,19 @@
         },
         {
           "group": "國際新聞",
+          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
+          "date": "2026-11-18 08:25 台北時間",
+          "tone": "待判讀",
+          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
           "date": "2026-11-18 07:25 台北時間",
           "tone": "待判讀",
           "detail": "BigGo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
-          "date": "2026-11-18 05:46 台北時間",
-          "tone": "待判讀",
-          "detail": "Investopedia｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15248,6 +15223,17 @@
       "us_news": [
         {
           "category": "國際市場",
+          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-18T00:25+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-18 08:25 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
           "source": "BigGo Finance",
@@ -15256,17 +15242,6 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-18 07:25 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
-          "source": "Investopedia",
-          "published_at": "2026-11-17T21:46+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-18 05:46 台北時間"
         },
         {
           "category": "國際市場",
@@ -15314,6 +15289,17 @@
         },
         {
           "category": "國際市場",
+          "title": "Stock Market Today, Nov. 17: U.S. Stocks Jittery Ahead of Nvidia Results - TipRanks",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOSkkzeW5HdXBDVmFCQmFaVWhYNUtYZGNZNTNtZkJyTDNST0FWTEZhLVpzSThGVW40a1ZXejFpblh6QVo2RF9FMW83UVNWMkY2T3l3TUJQNThMbDVFNEFSMnZ1dzNmZS1CU0hkajhLSHNUdnozOWlYN056c2RYSlBHMUNNenAzamgzV0ZQQV8wVXFacVlDM3lVUENLTkFnblE?oc=5",
+          "source": "TipRanks",
+          "published_at": "2026-11-17T10:43+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-17 18:43 台北時間"
+        },
+        {
+          "category": "國際市場",
           "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
           "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
           "source": "Reuters",
@@ -15322,22 +15308,11 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-17 07:45 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
-          "source": "Investor's Business Daily",
-          "published_at": "2026-11-16T23:01+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-17 07:01 台北時間"
         }
       ],
       "domestic_news": [],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 547.3 億元。",
+      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 632.1 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {

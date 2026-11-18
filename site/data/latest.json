@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-18T03:09:27+00:00",
+  "generated_at_utc": "2026-11-18T03:43:54+00:00",
   "data_as_of": "2026-11-17",
   "latest_close": 94.0,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.375159,
-      "down_probability": 0.624841,
+      "up_probability": 0.355326,
+      "down_probability": 0.644674,
       "backtest": {
         "accuracy": 0.6982670744138634,
         "balanced_accuracy": 0.6955373800639659,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.721779,
-      "down_probability": 0.278221,
+      "up_probability": 0.721831,
+      "down_probability": 0.278169,
       "backtest": {
         "accuracy": 0.585291113381001,
         "balanced_accuracy": 0.5775968078430043,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.632078,
-      "down_probability": 0.367922,
+      "up_probability": 0.628461,
+      "down_probability": 0.371539,
       "backtest": {
         "accuracy": 0.5373592630501536,
         "balanced_accuracy": 0.5167537604791447,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.35023,
-    "down_probability": 0.64977,
+    "up_probability": 0.327368,
+    "down_probability": 0.672632,
     "backtest": {
       "accuracy": 0.7777777777777778,
       "balanced_accuracy": 0.7759120923097446,
       "up_recall": 0.8104448742746615,
-      "brier_score": 0.14934902882808102,
+      "brier_score": 0.14934902890693502,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25076452599388377,
       "base_rate": 0.527013251783894,
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2342,
       "stored_rows": 220,
-      "updated_at_taipei": "2026-11-18T11:09:35+08:00",
+      "updated_at_taipei": "2026-11-18T11:44:07+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 0.6667,
     "model_probabilities": {
-      "Logistic Regression": 0.7293760631180257,
-      "Random Forest": 0.37515924945955964,
-      "Extra Trees": 0.28725223342047507
+      "Logistic Regression": 0.7427707426138606,
+      "Random Forest": 0.35532586227465,
+      "Extra Trees": 0.28439644252883406
     },
     "historical_balanced_accuracy": 0.6851450059968017,
     "historical_brier_score": 0.19586964956474778,
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.375159,
-    "down_probability": 0.624841,
+    "up_probability": 0.355326,
+    "down_probability": 0.644674,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": 0.002304,
+        "latest_return": 0.004608,
         "tone": "偏多"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.010445,
+        "latest_return": -0.003516,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.000209,
+        "latest_return": -0.000846,
         "tone": "偏空"
       },
       {
@@ -14677,23 +14677,13 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-18T03:10:31+00:00",
+      "generated_at_utc": "2026-11-18T03:44:58+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
         "keyword_score": -2,
-        "article_count": 16,
+        "article_count": 17,
         "items": [
-          {
-            "category": "國際市場",
-            "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
-            "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
-            "source": "Yahoo Finance",
-            "published_at": "2026-11-18T00:25+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
           {
             "category": "國際市場",
             "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
@@ -14706,10 +14696,10 @@
           },
           {
             "category": "國際市場",
-            "title": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings - MarketWatch",
-            "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPczZTVVRjSUFvOVNPdzdRTUxTeEpTamVkdFA5MUFQRUlZZG5LRUdJTXEwVEx5THRyc1hWNkI2VGZmVEZUNHZzM3ZtN0xkTHBDbmtmZFBTSmJJLXAyUzN6ampsS01CZGgtNS1BaHFLbGNxMXBWTEllTmJ3OFlBWEdzaHE0NHd5MEJXc3l1ZENVekk4cnZYeWdqWEQwSWlKNXp3WE9kQ29fazBNUmdFa0QxNUlZT1pJQWx4cHE0SmdFVS0xTVFBVWd1RnpzdFFjUQ?oc=5",
-            "source": "MarketWatch",
-            "published_at": "2026-11-17T23:00+00:00",
+            "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
+            "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
+            "source": "Investopedia",
+            "published_at": "2026-11-17T21:46+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14743,24 +14733,24 @@
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Shaky semiconductor trade faces big week, as investors look for bottom - The Globe and Mail",
+            "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPU3RrNUxBRDFOTVpxMktqTzNIZDd4VnRJLUtvVDBtT2tWX0ZEVkZMdFFMbjlXRXA4b0JmaEhwVW9UUFZYWnBPb0xHeElZZTlOTFRiaWxiSWVxN0p1b3Jtc1FoRjdLOHZOM1REMVlJZlBhUEJ2M081cXFuc0VkRURnZXhlUVpXVW1pb05PclZCRWo2NjJfQnRfUm9tSWM1d2Y3YlNvdHBIMlUyNUNmYU90T1FCQVJOZkRsYlpwTg?oc=5",
+            "source": "The Globe and Mail",
+            "published_at": "2026-11-17T11:37+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           }
         ]
       },
       "domestic": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 2,
+        "article_count": 1,
         "items": [
-          {
-            "category": "台灣市場",
-            "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
-            "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
-            "source": "CMoney",
-            "published_at": "2026-11-17T02:52+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
           {
             "category": "台灣市場",
             "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
@@ -14782,16 +14772,6 @@
       "items": [
         {
           "category": "國際市場",
-          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-18T00:25+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5zNHdsRDQycXp3ZFRWM2VqZW9NeHNEM3dFM3F2X0RDVHNtdDM1blRhUGR1VzZqU19PMmtoNUNOcmxacC05OU5MNE5ta0U5Zkc0dWZCQW9kbE16RkRMVjFJREpHSjEteExJRU9mN29USnQ5Z25uZ1E?oc=5",
           "source": "BigGo Finance",
@@ -14802,10 +14782,10 @@
         },
         {
           "category": "國際市場",
-          "title": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings - MarketWatch",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPczZTVVRjSUFvOVNPdzdRTUxTeEpTamVkdFA5MUFQRUlZZG5LRUdJTXEwVEx5THRyc1hWNkI2VGZmVEZUNHZzM3ZtN0xkTHBDbmtmZFBTSmJJLXAyUzN6ampsS01CZGgtNS1BaHFLbGNxMXBWTEllTmJ3OFlBWEdzaHE0NHd5MEJXc3l1ZENVekk4cnZYeWdqWEQwSWlKNXp3WE9kQ29fazBNUmdFa0QxNUlZT1pJQWx4cHE0SmdFVS0xTVFBVWd1RnpzdFFjUQ?oc=5",
-          "source": "MarketWatch",
-          "published_at": "2026-11-17T23:00+00:00",
+          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
+          "source": "Investopedia",
+          "published_at": "2026-11-17T21:46+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14851,16 +14831,6 @@
           "negative_terms": []
         },
         {
-          "category": "台灣市場",
-          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
-          "source": "CMoney",
-          "published_at": "2026-11-17T02:52+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
           "category": "國際市場",
           "title": "Wall Street ends sharply lower on AI jitters ahead of Nvidia results, Anthropic IPO - Reuters",
           "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZEJobHpHMl90WUdVbnpzSGxLb1l3bi1BczhrN29iVW9rUzBtQWE4aFNuM2ZGS1RIQThLdEZPWmZjeExVaHhRaXBubkdqR3R3TXJYTlRqUmRYcXZxYS1pV1lyRlExUDdEUWJ3cTg4aktJVWcxbkg5UW9oeVRXLXhCZjdRQmFNeFJlLXhpWTRMM1lEUVlodGwxVHNCSE9ONTlnem0yekw1dDNraElYZGc?oc=5",
@@ -14872,10 +14842,10 @@
         },
         {
           "category": "國際市場",
-          "title": "Markets News, Nov. 16, 2026: Stocks Sink at the Start of a Big Week for the AI Trade; Nvidia Sell-Off Intensifies Ahead of Earnings - Investopedia",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWVlTXzFaX2JjLVRyVC1aeUgyZWI0S1lTaE9ybXdac1FtXzd0WVdqVkxjVkVEbnpLVk80YmpvYTRaM0xZdGk4TmRaX2ZiakJSY0hpdE9sTDJuR3ZNYjJsbVhYTUpaN2NyeDlhZ093NFpwUnd0YnRwdVFVanNhRjVNSDNaYzNvM0VlVEJpSXJCWmFRZGtheUM2aVlR?oc=5",
-          "source": "Investopedia",
-          "published_at": "2026-11-16T22:02+00:00",
+          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
+          "source": "Investor's Business Daily",
+          "published_at": "2026-11-16T23:01+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14903,6 +14873,16 @@
           "negative_terms": [
             "war"
           ]
+        },
+        {
+          "category": "國際市場",
+          "title": "U.S. chip stocks slide as traders unwind Nvidia rival bets before earnings - Yahoo Finance",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPeGdqTmxUYkJodWxvTzVSRWtrd1hTSktodGtkazVKOUdQLVMwT3ZjMTVmdG5lX0JOeThKTWtzMFhnZHhVbXhWTE5UV2pNc2lGWmE1OWxOX0lBb3RaRFpVdHZhWWM1dEdPeUp5WXc0cm8yenIzVTVXWGN5YXZPdndUTG5mOEpRQ1hWTEg2VlJvOWlUZnRuNFJ3?oc=5",
+          "source": "Yahoo Finance",
+          "published_at": "2026-11-16T16:06+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14966,6 +14946,16 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "After Tech Sell-Off, Investors Brace for More Market Volatility - The New York Times",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQcnVYZlFEd2dVa0N2SXlxM2xacnZiSXRUcEdPZU4wOHhleVV2MmNYU3ZhbEFFYjJsM3pCWjVkdUhEV0s0dWotM1E2VjZVb3d2TzZYVzlWRjI5Mm1TeENpdTB0RjE0ZzBjR1NPRWpNOFQ3Z1ozUjBPZmNTeDJJSVZQVkNiRHE2Uks3aldGbDRReXUxbnNRYVNsRDlQSVc5OWJDa3ZVUkVNZFB4Rzk4RkQ4OA?oc=5",
+          "source": "The New York Times",
+          "published_at": "2026-11-01T07:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -14976,10 +14966,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-18T03:10:31+00:00",
+      "generated_at_utc": "2026-11-18T03:44:58+00:00",
       "taiwan_data_date": "2026-11-17",
       "us_session_date": "2026-11-17",
-      "us_timezone_checked_at": "2026-11-17T22:10-05:00",
+      "us_timezone_checked_at": "2026-11-17T22:44-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15216,14 +15206,6 @@
         },
         {
           "group": "國際新聞",
-          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
-          "date": "2026-11-18 08:25 台北時間",
-          "tone": "待判讀",
-          "detail": "Yahoo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5"
-        },
-        {
-          "group": "國際新聞",
           "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
           "date": "2026-11-18 07:25 台北時間",
           "tone": "待判讀",
@@ -15232,11 +15214,11 @@
         },
         {
           "group": "國際新聞",
-          "title": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings - MarketWatch",
-          "date": "2026-11-18 07:00 台北時間",
+          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
+          "date": "2026-11-18 05:46 台北時間",
           "tone": "待判讀",
-          "detail": "MarketWatch｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPczZTVVRjSUFvOVNPdzdRTUxTeEpTamVkdFA5MUFQRUlZZG5LRUdJTXEwVEx5THRyc1hWNkI2VGZmVEZUNHZzM3ZtN0xkTHBDbmtmZFBTSmJJLXAyUzN6ampsS01CZGgtNS1BaHFLbGNxMXBWTEllTmJ3OFlBWEdzaHE0NHd5MEJXc3l1ZENVekk4cnZYeWdqWEQwSWlKNXp3WE9kQ29fazBNUmdFa0QxNUlZT1pJQWx4cHE0SmdFVS0xTVFBVWd1RnpzdFFjUQ?oc=5"
+          "detail": "Investopedia｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5"
         },
         {
           "group": "國際新聞",
@@ -15255,26 +15237,15 @@
           "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQSWN3NlR0MUQ4Y0RXTVVVYVV5U0ZScGpiZk4wUFJNcHJxNVMybERrNGNsMElxMFZzSDlDakdvOG9HWDA2SFU1UGx0MEJseHdvYjhHMzRZdUJBZ0VfSUVaa19zd09jTGx5akVUcEJ6YllFZmlwYm5FQ0pGbjd1aVR1Tnh5a1Yyd3ByQnRNRnhwRk9PTDJ4eE5yMFlWbHFNWTlob0J1UXF5X3BkNUtYTW9LR1owbklqcUxpQTlyamFubVB4dHN6ZkE4STR0cEM3QlVJTS1lS21MQ1VNZUZBeUl6M3ZvN3E?oc=5"
         },
         {
-          "group": "台灣新聞",
-          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
-          "date": "2026-11-17T02:52+00:00",
+          "group": "國際新聞",
+          "title": "Stock Indexes Fall as Tech Stocks Retreat Ahead of Nvidia’s Earnings - Barchart.com",
+          "date": "2026-11-18 00:18 台北時間",
           "tone": "待判讀",
-          "detail": "CMoney｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5"
+          "detail": "Barchart.com｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPcGtjZEtza0NiaTlReTdjUGNJX1U0THF3Ql83U1ppMXFzdGViNlVfVW5LbXpwV3poTUVnNUV4X0tiZlBMUEE0NEpaNUlxNFI4NFNucHh0a1o0YXJvX05MRmJ3clBHbzA4SkpOMnk1MmNiLXQyeDRVNENDeGNnNTk1U1JhZ2hKVm5hdHpPRFJFU1E2QkZQYk04QmN6Uk5jM1lWM1Z3Uk13OUc1eWExSk96RA?oc=5"
         }
       ],
       "us_news": [
-        {
-          "category": "國際市場",
-          "title": "S&P 500, Dow, Nasdaq Futures Power Ahead On Nvidia Outlook Beat — NVDA, TSLA, ANT In Focus - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaUZTTlNwYzFaTUJhb0hZSzdMZ1hhOU95V3RLWkFKOEZmSVVVMzUzRk82UjZ5eFFNSFhQZmFfcDBCOWxndmtiSDVBdzZ2ZVM5SUpXMDRiOWxwZkN6VUxtRTRjRlBkejNrZV91ajBZUXc0YXVvTHRhRVo1VDdhRU1aQmJJX0p4aGlvXzA1X0tRelp1eHM?oc=5",
-          "source": "Yahoo Finance",
-          "published_at": "2026-11-18T00:25+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-18 08:25 台北時間"
-        },
         {
           "category": "國際市場",
           "title": "Taiwan Index Futures Night Session Plunges 219 Points Ahead of Nvidia Earnings; TSMC Futures Fall Below 2,130 - BigGo Finance",
@@ -15288,14 +15259,14 @@
         },
         {
           "category": "國際市場",
-          "title": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings - MarketWatch",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPczZTVVRjSUFvOVNPdzdRTUxTeEpTamVkdFA5MUFQRUlZZG5LRUdJTXEwVEx5THRyc1hWNkI2VGZmVEZUNHZzM3ZtN0xkTHBDbmtmZFBTSmJJLXAyUzN6ampsS01CZGgtNS1BaHFLbGNxMXBWTEllTmJ3OFlBWEdzaHE0NHd5MEJXc3l1ZENVekk4cnZYeWdqWEQwSWlKNXp3WE9kQ29fazBNUmdFa0QxNUlZT1pJQWx4cHE0SmdFVS0xTVFBVWd1RnpzdFFjUQ?oc=5",
-          "source": "MarketWatch",
-          "published_at": "2026-11-17T23:00+00:00",
+          "title": "Markets News, Nov. 17, 2026: Dow Drops 850 Points as Investors Brace for Nvidia Earnings; S&P 500, Nasdaq Fall for 4th Straight Day - Investopedia",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNczdfM0pOWTFQUzN4a2EzLUlzbE1oMl90UHdhQXkwcV9QT3U5dFVHZHhXSS1XbjBwNnRWQTRzLVNVZUliYVBRR09MZGRRZEVGU2R5Tm5WaE1Ba1dsZktZdmwzdnNGaG1TdmYwSG0tSjRnY2hXeUlXSERxRGFBb0F5RnRQQ2FxVzlzcGF1SkRnNGliTDcwaWl5MGFn?oc=5",
+          "source": "Investopedia",
+          "published_at": "2026-11-17T21:46+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-18 07:00 台北時間"
+          "published_at_taipei": "2026-11-18 05:46 台北時間"
         },
         {
           "category": "國際市場",
@@ -15351,21 +15322,20 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-17 07:45 台北時間"
-        }
-      ],
-      "domestic_news": [
+        },
         {
-          "category": "台灣市場",
-          "title": "台股跌2635點創史上次低！外資狂砍權值股- 股市爆料同學會 - CMoney",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1PcUtad3FZY3Y0NHVIQi1SUDc4c3RpN3FoeWxtaldrQWxmQUx6YmhqeEtjSURzaUlDcFBmOWFYZkVrY3JzM3paSUFQaHJ6cnREcUxCNE5ENjU4RDM4UnNqWHAwMVdEQXl4ZTJLLTNITHR4SXpOWktVa3Bn?oc=5",
-          "source": "CMoney",
-          "published_at": "2026-11-17T02:52+00:00",
+          "category": "國際市場",
+          "title": "Stock Market Hit Again As Nvidia, Chip Stocks Cast Pall On Nasdaq And AI Trade - Investor's Business Daily",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTGVWOEJrSV9SSGFiWF9TOG0waG9WNGZGNlJDbjBXRmpqSUNLX3NETUE1cE1MVmdZTm5fLXUxbWdKcmltVG51QVlFS19vdWF5UHdSWDd3LXEzQVdhaTU2TUdyd2JFb0FpdnBtcmlCNXgzT0IzcGJPczRkQWJkNS1SSjNuN01aYWNpamlVR2xrWHJhWjAyZjFtS29fYkx1eE02Z2dJWGJld2FxZHp0ZXdv?oc=5",
+          "source": "Investor's Business Daily",
+          "published_at": "2026-11-16T23:01+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-17 10:52 台北時間"
+          "published_at_taipei": "2026-11-17 07:01 台北時間"
         }
       ],
+      "domestic_news": [],
       "industry_news": [],
       "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 547.3 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",

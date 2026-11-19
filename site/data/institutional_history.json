@@ -1385,5 +1385,18 @@
     "0050_total_net_shares": -115083754,
     "0050_flow_source": "TWSE T86",
     "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261118&selectType=ALLBUT0999"
+  },
+  {
+    "date": "2026-11-19",
+    "foreign_net_ntd": -24312208731,
+    "trust_net_ntd": 1512543078,
+    "dealer_net_ntd": -23303184938,
+    "total_net_ntd": -46102850591,
+    "foreign_net_100m": -243.122,
+    "trust_net_100m": 15.125,
+    "dealer_net_100m": -233.032,
+    "total_net_100m": -461.029,
+    "source": "TWSE BFI82U",
+    "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261119&type=day"
   }
 ]

@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-20T02:39:32+00:00",
+  "generated_at_utc": "2026-11-20T03:24:24+00:00",
   "data_as_of": "2026-11-19",
   "latest_close": 90.2,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.109539,
-      "down_probability": 0.890461,
+      "up_probability": 0.110641,
+      "down_probability": 0.889359,
       "backtest": {
         "accuracy": 0.6829765545361876,
         "balanced_accuracy": 0.6801726579157783,
@@ -36,13 +36,13 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.622701,
-      "down_probability": 0.377299,
+      "up_probability": 0.59794,
+      "down_probability": 0.40206,
       "backtest": {
         "accuracy": 0.5832482124616956,
         "balanced_accuracy": 0.5782585673740839,
         "up_recall": 0.6193078324225865,
-        "brier_score": 0.24666952698444866,
+        "brier_score": 0.24666952696296945,
         "majority_baseline_accuracy": 0.5607763023493361,
         "accuracy_lift_vs_baseline": 0.022471910112359494,
         "base_rate": 0.5607763023493361,
@@ -53,13 +53,13 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.624908,
-      "down_probability": 0.375092,
+      "up_probability": 0.62021,
+      "down_probability": 0.37979,
       "backtest": {
         "accuracy": 0.5475946775844421,
         "balanced_accuracy": 0.5259543851520065,
         "up_recall": 0.6678507992895204,
-        "brier_score": 0.25590341651714704,
+        "brier_score": 0.25590341651201487,
         "majority_baseline_accuracy": 0.5762538382804504,
         "accuracy_lift_vs_baseline": -0.028659160696008268,
         "base_rate": 0.5762538382804504,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.097136,
-    "down_probability": 0.902864,
+    "up_probability": 0.096537,
+    "down_probability": 0.903463,
     "backtest": {
       "accuracy": 0.7686034658511722,
       "balanced_accuracy": 0.7665452211031815,
       "up_recall": 0.804642166344294,
-      "brier_score": 0.153310479094255,
+      "brier_score": 0.15331047909422668,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.2415902140672782,
       "base_rate": 0.527013251783894,
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2148,
       "stored_rows": 259,
-      "updated_at_taipei": "2026-11-20T10:39:38+08:00",
+      "updated_at_taipei": "2026-11-20T11:24:35+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.40030425220915083,
-      "Random Forest": 0.18640288049199302,
-      "Extra Trees": 0.10953866757707034
+      "Logistic Regression": 0.3106100464914747,
+      "Random Forest": 0.1868702642214248,
+      "Extra Trees": 0.11064057690182208
     },
     "historical_balanced_accuracy": 0.6811492204157783,
     "historical_brier_score": 0.19789953961777323,
@@ -169,7 +169,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6320081549439348,
         "balanced_accuracy": 0.6310759261727079,
-        "brier_score": 0.22469947954406957,
+        "brier_score": 0.22469947954493716,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5219164118246687
       },
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.109539,
-    "down_probability": 0.890461,
+    "up_probability": 0.110641,
+    "down_probability": 0.889359,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.033333,
+        "latest_return": -0.047619,
         "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": -0.049087,
+        "latest_return": -0.062196,
         "tone": "偏空"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": 0.0014,
+        "latest_return": 0.001734,
         "tone": "偏多"
       },
       {
@@ -14677,11 +14677,11 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-20T02:40:24+00:00",
+      "generated_at_utc": "2026-11-20T03:25:43+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -1,
+        "keyword_score": -2,
         "article_count": 8,
         "items": [
           {
@@ -14718,16 +14718,6 @@
           },
           {
             "category": "國際市場",
-            "title": "那斯達克指數跌0.74%，盤中創近七個月新低，道瓊跌逾800點，晶片股遭拋售 - TradingKey",
-            "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQSWN3NlR0MUQ4Y0RXTVVVYVV5U0ZScGpiZk4wUFJNcHJxNVMybERrNGNsMElxMFZzSDlDakdvOG9HWDA2SFU1UGx0MEJseHdvYjhHMzRZdUJBZ0VfSUVaa19zd09jTGx5akVUcEJ6YllFZmlwYm5FQ0pGbjd1aVR1Tnh5a1Yyd3ByQnRNRnhwRk9PTDJ4eE5yMFlWbHFNWTlob0J1UXF5X3BkNUtYTW9LR1owbklqcUxpQTlyamFubVB4dHN6ZkE4STR0cEM3QlVJTS1lS21MQ1VNZUZBeUl6M3ZvN3E?oc=5",
-            "source": "TradingKey",
-            "published_at": "2026-11-17T21:19+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
             "title": "Daily: Tech sell-off puts AI investment case to the test - UBS",
             "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQdmR2RGxKWEcxdWttNENyMkZnYTdka2xubkVpUmtCMEJDNWFjUWhDSndPdmVfSTJmcFR1elNFaEZadnNVUzlWWFR6Si1mRU1GVDZ3ZU5BeklKVmh6S1VndENTRlphWlhpcElQaG9Fd0M0STVRdXh1NmVfaElZM1FoS2ZUYXhtSjZUeW5aaWFIRl9yaWRsX3lWVGhYYnZPWUVudHNvLWRGeWkzOGxUeWRkVEhxM1c5S0tibnpsU18yVQ?oc=5",
             "source": "UBS",
@@ -14745,13 +14735,23 @@
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "After Tech Sell-Off, Investors Brace for More Market Volatility - The New York Times",
+            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQcnVYZlFEd2dVa0N2SXlxM2xacnZiSXRUcEdPZU4wOHhleVV2MmNYU3ZhbEFFYjJsM3pCWjVkdUhEV0s0dWotM1E2VjZVb3d2TzZYVzlWRjI5Mm1TeENpdTB0RjE0ZzBjR1NPRWpNOFQ3Z1ozUjBPZmNTeDJJSVZQVkNiRHE2Uks3aldGbDRReXUxbnNRYVNsRDlQSVc5OWJDa3ZVUkVNZFB4Rzk4RkQ4OA?oc=5",
+            "source": "The New York Times",
+            "published_at": "2026-11-01T07:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           }
         ]
       },
       "domestic": {
-        "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 4,
+        "tone": "中性或訊號不足",
+        "keyword_score": 0,
+        "article_count": 5,
         "items": [
           {
             "category": "台灣市場",
@@ -14771,6 +14771,18 @@
             "published_at": "2026-11-02T08:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "醒論壇》經濟成長創半世紀新高 台幣為何還再貶？（徐世勳） - 中時新聞網",
+            "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9TZ2NMREhmTjdEbnJwcHZHbWZVTF84YTBsVG1GQTNkQ1NPbjdvX0stRjFqQXJWTFlNYTZkeXlzb1dDR0JqNjJKclVKQTZrSUp0VzRSYkVQaS1maGJMUnlYOXlrMVMwZjg?oc=5",
+            "source": "中時新聞網",
+            "published_at": "2026-11-02T08:00+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "成長"
+            ],
             "negative_terms": []
           },
           {
@@ -14800,7 +14812,7 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 6,
+        "article_count": 5,
         "items": [
           {
             "category": "產業消息",
@@ -14848,16 +14860,6 @@
             "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
             "source": "TechNews 科技新報",
             "published_at": "2026-10-16T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-13T07:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14929,16 +14931,6 @@
         },
         {
           "category": "國際市場",
-          "title": "那斯達克指數跌0.74%，盤中創近七個月新低，道瓊跌逾800點，晶片股遭拋售 - TradingKey",
-          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQSWN3NlR0MUQ4Y0RXTVVVYVV5U0ZScGpiZk4wUFJNcHJxNVMybERrNGNsMElxMFZzSDlDakdvOG9HWDA2SFU1UGx0MEJseHdvYjhHMzRZdUJBZ0VfSUVaa19zd09jTGx5akVUcEJ6YllFZmlwYm5FQ0pGbjd1aVR1Tnh5a1Yyd3ByQnRNRnhwRk9PTDJ4eE5yMFlWbHFNWTlob0J1UXF5X3BkNUtYTW9LR1owbklqcUxpQTlyamFubVB4dHN6ZkE4STR0cEM3QlVJTS1lS21MQ1VNZUZBeUl6M3ZvN3E?oc=5",
-          "source": "TradingKey",
-          "published_at": "2026-11-17T21:19+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "Daily: Tech sell-off puts AI investment case to the test - UBS",
           "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQdmR2RGxKWEcxdWttNENyMkZnYTdka2xubkVpUmtCMEJDNWFjUWhDSndPdmVfSTJmcFR1elNFaEZadnNVUzlWWFR6Si1mRU1GVDZ3ZU5BeklKVmh6S1VndENTRlphWlhpcElQaG9Fd0M0STVRdXh1NmVfaElZM1FoS2ZUYXhtSjZUeW5aaWFIRl9yaWRsX3lWVGhYYnZPWUVudHNvLWRGeWkzOGxUeWRkVEhxM1c5S0tibnpsU18yVQ?oc=5",
           "source": "UBS",
@@ -14975,6 +14967,18 @@
           "published_at": "2026-11-02T08:00+00:00",
           "keyword_score": 0,
           "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "醒論壇》經濟成長創半世紀新高 台幣為何還再貶？（徐世勳） - 中時新聞網",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9TZ2NMREhmTjdEbnJwcHZHbWZVTF84YTBsVG1GQTNkQ1NPbjdvX0stRjFqQXJWTFlNYTZkeXlzb1dDR0JqNjJKclVKQTZrSUp0VzRSYkVQaS1maGJMUnlYOXlrMVMwZjg?oc=5",
+          "source": "中時新聞網",
+          "published_at": "2026-11-02T08:00+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "成長"
+          ],
           "negative_terms": []
         },
         {
@@ -15040,14 +15044,16 @@
           "negative_terms": []
         },
         {
-          "category": "產業消息",
-          "title": "微軟新自研晶片問世衝擊輝達股價，市場關注台積電財報穩定半導體市場 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQ1ZhZUlDLWxBTDVCWW4wNlNTaHE0NzhQNmJoQnIzQW1sZVk4eGxhMmhVVUQtREtoVDJmQ1pMaVJScmI1Um5sMWN2c01rSkdXckJwc0tTQlVHeVBidDRNUTRBRU5yYnlOZkZ1T2JNNnhtN3RhRk03NVdoQXFadWNqUkYtTk16X0VaWjZiWDZEdFpiUk1FUDdzRU1LQ0JuVFdKM3FnZFZXRlFXZFNiNkI1SjdBRkpNbjA?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-13T07:00+00:00",
-          "keyword_score": 0,
+          "category": "國際市場",
+          "title": "美國通膨高於預期引發升息疑慮 美股那斯達克指數重挫 - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYMjJHLXI2QWhlbnBBTHV5VGtwQVdpTV9fUjBHd1ZMYVN1dzB2d2V3MUFYc1ZxLUs4M09zazVEVWY5YlgwV2xuNjlKN0FKb3QyS2pnLXcyRzJXMTZPVERzc0tKN0VEdw?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-10-15T07:00+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "升息"
+          ]
         }
       ],
       "source_errors": [],
@@ -15058,10 +15064,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-20T02:40:24+00:00",
+      "generated_at_utc": "2026-11-20T03:25:43+00:00",
       "taiwan_data_date": "2026-11-19",
       "us_session_date": "2026-11-19",
-      "us_timezone_checked_at": "2026-11-19T21:40-05:00",
+      "us_timezone_checked_at": "2026-11-19T22:25-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",

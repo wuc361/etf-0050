@@ -1,17 +1,17 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-23T02:51:03+00:00",
-  "data_as_of": "2026-11-20",
-  "latest_close": 84.45,
+  "generated_at_utc": "2026-11-23T07:59:30+00:00",
+  "data_as_of": "2026-11-23",
+  "latest_close": 87.0,
   "price_validation": {
-    "date": "2026-11-20",
-    "close": 84.45,
-    "open": 87.25,
-    "high": 88.05,
-    "low": 83.95,
-    "volume": 874056273,
+    "date": "2026-11-23",
+    "close": 87.0,
+    "open": 84.4,
+    "high": 87.5,
+    "low": 83.5,
+    "volume": 510651850,
     "source": "TWSE STOCK_DAY",
-    "yahoo_previous_latest_date": "2026-11-20",
+    "yahoo_previous_latest_date": "2026-11-23",
     "yahoo_latest_date_received": "2026-11-23",
     "yahoo_lag_calendar_days": 0,
     "status": "official_bar_merged"
@@ -19,51 +19,51 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.160046,
-      "down_probability": 0.839954,
+      "up_probability": 0.151386,
+      "down_probability": 0.848614,
       "backtest": {
-        "accuracy": 0.6870540265035678,
-        "balanced_accuracy": 0.6840737810717408,
-        "up_recall": 0.7553816046966731,
-        "brier_score": 0.19521805145366092,
-        "majority_baseline_accuracy": 0.5208970438328236,
-        "accuracy_lift_vs_baseline": 0.1661569826707442,
-        "base_rate": 0.5208970438328236,
-        "n_test": 981
+        "accuracy": 0.6863543788187373,
+        "balanced_accuracy": 0.6833361037234043,
+        "up_recall": 0.75390625,
+        "brier_score": 0.19570735954566817,
+        "majority_baseline_accuracy": 0.5213849287169042,
+        "accuracy_lift_vs_baseline": 0.16496945010183306,
+        "base_rate": 0.5213849287169042,
+        "n_test": 982
       },
       "model_name": "Random Forest",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
       "direction": "DOWN",
-      "up_probability": 0.488927,
-      "down_probability": 0.511073,
+      "up_probability": 0.206997,
+      "down_probability": 0.793003,
       "backtest": {
-        "accuracy": 0.5893769152196119,
-        "balanced_accuracy": 0.5839750921336893,
+        "accuracy": 0.5887755102040816,
+        "balanced_accuracy": 0.5833491815957299,
         "up_recall": 0.6284153005464481,
-        "brier_score": 0.24779037242608723,
-        "majority_baseline_accuracy": 0.5607763023493361,
-        "accuracy_lift_vs_baseline": 0.02860061287027582,
-        "base_rate": 0.5607763023493361,
-        "n_test": 979
+        "brier_score": 0.24811378640625703,
+        "majority_baseline_accuracy": 0.560204081632653,
+        "accuracy_lift_vs_baseline": 0.02857142857142858,
+        "base_rate": 0.560204081632653,
+        "n_test": 980
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 2 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "3d": {
-      "direction": "UP",
-      "up_probability": 0.567764,
-      "down_probability": 0.432236,
+      "direction": "DOWN",
+      "up_probability": 0.486041,
+      "down_probability": 0.513959,
       "backtest": {
-        "accuracy": 0.5383828045035824,
-        "balanced_accuracy": 0.519024139261673,
+        "accuracy": 0.5378323108384458,
+        "balanced_accuracy": 0.5185549548316453,
         "up_recall": 0.6476868327402135,
-        "brier_score": 0.25729876567746396,
-        "majority_baseline_accuracy": 0.5752302968270215,
-        "accuracy_lift_vs_baseline": -0.03684749232343909,
-        "base_rate": 0.5752302968270215,
-        "n_test": 977
+        "brier_score": 0.2574165193706226,
+        "majority_baseline_accuracy": 0.5746421267893661,
+        "accuracy_lift_vs_baseline": -0.036809815950920255,
+        "base_rate": 0.5746421267893661,
+        "n_test": 978
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 3 個台灣交易日收盤方向（不是開盤跳空預測）"
@@ -71,17 +71,17 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.135978,
-    "down_probability": 0.864022,
+    "up_probability": 0.115379,
+    "down_probability": 0.884621,
     "backtest": {
-      "accuracy": 0.7849133537206932,
-      "balanced_accuracy": 0.7834551957580205,
+      "accuracy": 0.785132382892057,
+      "balanced_accuracy": 0.7837170607932447,
       "up_recall": 0.8104448742746615,
-      "brier_score": 0.14928652413714422,
-      "majority_baseline_accuracy": 0.527013251783894,
-      "accuracy_lift_vs_baseline": 0.25790010193679913,
-      "base_rate": 0.527013251783894,
-      "n_test": 981
+      "brier_score": 0.14916630973673814,
+      "majority_baseline_accuracy": 0.5264765784114053,
+      "accuracy_lift_vs_baseline": 0.25865580448065173,
+      "base_rate": 0.5264765784114053,
+      "n_test": 982
     },
     "model_name": "Random Forest",
     "target_definition": "下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
@@ -111,7 +111,7 @@
   },
   "taifex_night": {
     "status": "available",
-    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-20；尚無晚於最近台股收盤日（2026-11-20）的夜盤，暫不提供隔日開盤訊號",
+    "label": "夜盤資料尚未更新：目前最新官方資料為 2026-11-20；尚無晚於最近台股收盤日（2026-11-23）的夜盤，暫不提供隔日開盤訊號",
     "latest": {
       "date": "2026-11-20",
       "contract": "TX",
@@ -136,25 +136,25 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2126,
       "stored_rows": 278,
-      "updated_at_taipei": "2026-11-23T10:51:12+08:00",
+      "updated_at_taipei": "2026-11-23T15:59:40+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
     "attribution_note": "TAIFEX 夜盤交易日歸屬隔日交易日；模型只使用台股開盤前已完成的夜盤資料。"
   },
   "confidence": {
-    "data_quality_score": 1.0,
-    "available_features": 93,
+    "data_quality_score": 0.957,
+    "available_features": 89,
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.34335465657553493,
-      "Random Forest": 0.16004550222550984,
-      "Extra Trees": 0.04865664765580015
+      "Logistic Regression": 0.01936317937032241,
+      "Random Forest": 0.15138631099475575,
+      "Extra Trees": 0.043771094133993514
     },
-    "historical_balanced_accuracy": 0.6913498771703377,
-    "historical_brier_score": 0.19558902639725106,
-    "historical_test_count": 981,
+    "historical_balanced_accuracy": 0.6906083776595744,
+    "historical_brier_score": 0.1960779567143667,
+    "historical_test_count": 982,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
   "model_comparison": {
@@ -167,49 +167,31 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6258919469928644,
-        "balanced_accuracy": 0.6234875296664862,
-        "brier_score": 0.2249656900871054,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6252545824847251,
+        "balanced_accuracy": 0.6228224734042553,
+        "brier_score": 0.22539473799624432,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5213849287169042
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.6941896024464832,
-        "balanced_accuracy": 0.6913498771703377,
-        "brier_score": 0.19558902639725106,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6934826883910387,
+        "balanced_accuracy": 0.6906083776595744,
+        "brier_score": 0.1960779567143667,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5213849287169042
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.6850152905198776,
-        "balanced_accuracy": 0.6822875463213557,
-        "brier_score": 0.19716354967694336,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6843177189409368,
+        "balanced_accuracy": 0.6815575132978724,
+        "brier_score": 0.19790720167008746,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5213849287169042
       }
     ]
   },
   "history": [
-    {
-      "date": "2023-08-08",
-      "open": 32.025001525878906,
-      "high": 32.04999923706055,
-      "low": 31.600000381469727,
-      "close": 31.75,
-      "volume": 42070044.0,
-      "ma5": 32.00249977111817,
-      "ma20": 32.26750001907349,
-      "ma60": 31.88062505722046,
-      "rsi14": 39.16349501044326,
-      "macd": -0.054410423380446105,
-      "macd_signal": 0.015397264868924595,
-      "macd_hist": -0.0698076882493707,
-      "bb_upper": 32.994579577196724,
-      "bb_mid": 32.26750001907349,
-      "bb_lower": 31.540420460950255
-    },
     {
       "date": "2023-08-09",
       "open": 31.700000762939453,
@@ -14577,35 +14559,53 @@
     {
       "date": "2026-11-20",
       "open": 87.25,
-      "high": 88.05,
-      "low": 83.95,
-      "close": 84.45,
-      "volume": 874056273.0,
-      "ma5": 91.83999847412109,
-      "ma20": 99.57749877929687,
-      "ma60": 106.39249997456868,
-      "rsi14": 27.846673616326157,
-      "macd": -4.540922024864557,
-      "macd_signal": -3.313135921187427,
-      "macd_hist": -1.2277861036771296,
-      "bb_upper": 112.27886563852725,
-      "bb_mid": 99.57749877929687,
-      "bb_lower": 86.8761319200665
+      "high": 88.05000305175781,
+      "low": 83.94999694824219,
+      "close": 84.44999694824219,
+      "volume": 792457354.0,
+      "ma5": 91.83999786376953,
+      "ma20": 99.57749862670899,
+      "ma60": 106.39249992370605,
+      "rsi14": 27.846671700174937,
+      "macd": -4.540922268309615,
+      "macd_signal": -3.3131359698764387,
+      "macd_hist": -1.227786298433176,
+      "bb_upper": 112.27886625113618,
+      "bb_mid": 99.57749862670899,
+      "bb_lower": 86.8761310022818
+    },
+    {
+      "date": "2026-11-23",
+      "open": 84.4,
+      "high": 87.5,
+      "low": 83.5,
+      "close": 87.0,
+      "volume": 510651850.0,
+      "ma5": 89.94999847412109,
+      "ma20": 98.58249855041504,
+      "ma60": 106.10249989827474,
+      "rsi14": 34.33179954381848,
+      "macd": -4.887385046169058,
+      "macd_signal": -3.627985785134963,
+      "macd_hist": -1.259399261034095,
+      "bb_upper": 111.96800864809387,
+      "bb_mid": 98.58249855041504,
+      "bb_lower": 85.1969884527362
     }
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.160046,
-    "down_probability": 0.839954,
+    "up_probability": 0.151386,
+    "down_probability": 0.848614,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.6870540265035678,
-    "up_recall": 0.7553816046966731,
+    "accuracy": 0.6863543788187373,
+    "up_recall": 0.75390625,
     "coverage": 1.0,
-    "base_rate": 0.5208970438328236,
-    "n_test": 981
+    "base_rate": 0.5213849287169042,
+    "n_test": 982
   },
   "explanation": {
     "model_interpretation": "量化模型偏向下跌。",
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": -0.0025,
-        "tone": "偏空"
+        "latest_return": 0.015,
+        "tone": "偏多"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.001043,
+        "latest_return": 0.021608,
         "tone": "偏多"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.002583,
+        "latest_return": -0.004854,
         "tone": "偏空"
       },
       {
@@ -14677,12 +14677,12 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-23T02:52:34+00:00",
+      "generated_at_utc": "2026-11-23T08:00:37+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
-        "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 12,
+        "tone": "中性或訊號不足",
+        "keyword_score": 0,
+        "article_count": 10,
         "items": [
           {
             "category": "國際市場",
@@ -14750,7 +14750,7 @@
       },
       "domestic": {
         "tone": "偏空",
-        "keyword_score": -2,
+        "keyword_score": -1,
         "article_count": 5,
         "items": [
           {
@@ -14797,22 +14797,20 @@
           },
           {
             "category": "台灣市場",
-            "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
-            "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
-            "source": "CMoney投資網誌",
-            "published_at": "2026-11-02T08:00+00:00",
-            "keyword_score": -1,
+            "title": "台股血崩創史上第7大跌點！該逃還是該撿？專家「別恐慌交易」盤後示警：外資恐續賣 - Yahoo股市",
+            "url": "https://news.google.com/rss/articles/CBMikANBVV95cUxNZGtmRnVXamQ2RHpCTXpVSTRWRU8yR1FZNl9YejV1T29TQjFUdUVxSHBaak1McDNULVhqVXRndEk0ZGtvMDk0Vko4TnJfUWRidWswM29nN1BlX2tVUHd6SVBsMmppelJ3UjRZVEpJTUppTnVvWlpHRUhZMXVYdzk0NTRZV1BvUUlERjBjN1ZVUkJ2NFc1Mk9tZWh2V3ByR3ZLb0JMVVQ1RkIwVWRTc3V2ZXRqdWh1eHRTVjF5WGRHYWgtdF85ZzhBN2YzY1Vnb2RaV3VPM0l6dnItMUMxdjJGd3lSOXl6U0FpT0hHdGh3NXE4bWtGTThlOWludm1zWGRwNGliSVpyLW14ZUxLczQ2dmFEZGtUZlowYllCcVhZZS0zeW9OZEJJaWM4WlpHUzhuOXppc3ZTUmlMald3VjFDM3hUVGZHUFhDSFpEZERFTUtLUWRiOEthRUg2TWZ2cVM3MmE3Ym5LV0tKamQ1VFJSRWtvM1ZCSmE5TldDbE54cWpRQ25OMlg3Tm1yM0hBdG5L?oc=5",
+            "source": "Yahoo股市",
+            "published_at": "2026-11-03T08:00+00:00",
+            "keyword_score": 0,
             "positive_terms": [],
-            "negative_terms": [
-              "賣超"
-            ]
+            "negative_terms": []
           }
         ]
       },
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 1,
+        "article_count": 3,
         "items": [
           {
             "category": "產業消息",
@@ -14820,6 +14818,26 @@
             "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQRV9UTzlRTE9ka29VM2RXcUhrcV9VSzhmUTdNT1dVcm9hS00tZVdkRjRha2puRmphMm9LV05PMURkR3VsZ2h2WHdwRkNLSmV2bk42bnZpRkh0UDRMc0hqZ2hJMjJRaERrZVQ3X2U4QnZ6cm1VbWMzRmtVUG5aeDNMS1dsOU9zbGZESC1EaUdGb3ZhRy12cEpJdzNuRVRxUQ?oc=5",
             "source": "Yahoo Finance",
             "published_at": "2026-11-18T19:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "產業消息",
+            "title": "[News] NVIDIA’s 1st Earnings Without Huang: Comeback Ruled Out; Memory, Packaging Secured as TSMC Helps Ease Supply Gap - TrendForce",
+            "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOMU1Rb1YxUE91UHZsS2gzVzFoTnVjekoza1lLeWJjXzZuckNKSk9MdS1WUmlidkZydnJPdWJnc3h2QldoQUJqbXE2Z3Q0SGhYVnNnNXVVTEQxT0taV1JZSzJ4cjRpdE0yUEw3MVRjQTRLaEJTSF9OdFkyRHd2aTFBeDl3NzNRRXROc0RFT1ZUWUdXU2FWSTROX0tvRkVDOHRjNU43aUNEb1pWd1JJa0hmTThHYlRVUUd6NUk4em12eTJObXF4TjFsamlKZkNGTk1LSEVOU3N2a2h2VzlQYzVaMkg1amx6T3pIeWtnNXZR?oc=5",
+            "source": "TrendForce",
+            "published_at": "2026-11-18T04:13+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "產業消息",
+            "title": "Forget Nvidia. Here’s the Company Behind the Chips - 24/7 Wall St.",
+            "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPWmxmYzB1b1JfZmM3c01KbGFpTFpxUGxsX29HTlF5X2ZWLXBaLVY5M1dXQVVSaUJfOXRaZmhsUWFjTXNSSUs2UUpoYy1HYUJRVllkbjhTQnRHWHBJSUlNWXduY0VYUVdsSmNnODk5UlBSZ29BTTZWdWlBcF94dFpwRjVFTnFidDhKSlNyb3N3TXpzVUUycEtj?oc=5",
+            "source": "24/7 Wall St.",
+            "published_at": "2026-11-06T08:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14921,28 +14939,6 @@
         },
         {
           "category": "國際市場",
-          "title": "美股遭遇黑色星期五那斯達克抹平今年漲幅進入修正區- 財經新聞 - PChome Online 新聞",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxORWtuQXh5eGw0UzFhYWhKTEtCd3R5NWZsUTh4bkhXU202eEEtQ250bWVVMjJJdlFBSTFfejJ4VFFuVnRpc3Uzb3E4YXB1VG9YakQ1ajh6UWhKZXdXTXBZWWhFWmtNdktXdkFFWlg3SmFSTEgzQjJpc28yT1hJUzJINEEwdlBDd2tUSGJkaw?oc=5",
-          "source": "PChome Online 新聞",
-          "published_at": "2026-11-20T22:54+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq stock market today: 2026 gains erased as Wall Street warns of further losses - Beinsure",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOeVpoZTBJdzBfamJDSm95LWhGRDhzMjJ5dmNBbTFNR2UtTTJYYjBNek94R0tUT1VBVnFlb2V0dlREbjdwUjkxTkd5b3hNRUFMTkFkVElQUVZDSVlyVkoxQmVENy1ySm9aY2tabXF5OTNkenpRVXUtWEluYkRIMW5ULUY4UDRTVi1k?oc=5",
-          "source": "Beinsure",
-          "published_at": "2026-11-20T22:18+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "war"
-          ]
-        },
-        {
-          "category": "國際市場",
           "title": "US Stock Market Today: Dow Jones, S&P 500, Nasdaq 100 sink on AI selloff after Anthropic IPO - Beinsure",
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbmJmUDJ0WXpXTnRmTzBXTHRuYW1OeWFSa2NTUmlzdWxfcE16LTlSckc2SURrSUtTMC1aV28tU2U3WEpCM2w3VmhUSXVDSkFEdEwyTnJUWW9pNnZKVHFMR2QzbC1Ib0FPX3hzbzl2cUdhb00xT0dwbTBYQUlJZUloR09TRXlQZl9pMzVkTGpwLW9ES2l4RXJ5UjBjbmhidw?oc=5",
           "source": "Beinsure",
@@ -14969,6 +14965,16 @@
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQRV9UTzlRTE9ka29VM2RXcUhrcV9VSzhmUTdNT1dVcm9hS00tZVdkRjRha2puRmphMm9LV05PMURkR3VsZ2h2WHdwRkNLSmV2bk42bnZpRkh0UDRMc0hqZ2hJMjJRaERrZVQ3X2U4QnZ6cm1VbWMzRmtVUG5aeDNMS1dsOU9zbGZESC1EaUdGb3ZhRy12cEpJdzNuRVRxUQ?oc=5",
           "source": "Yahoo Finance",
           "published_at": "2026-11-18T19:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "產業消息",
+          "title": "[News] NVIDIA’s 1st Earnings Without Huang: Comeback Ruled Out; Memory, Packaging Secured as TSMC Helps Ease Supply Gap - TrendForce",
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOMU1Rb1YxUE91UHZsS2gzVzFoTnVjekoza1lLeWJjXzZuckNKSk9MdS1WUmlidkZydnJPdWJnc3h2QldoQUJqbXE2Z3Q0SGhYVnNnNXVVTEQxT0taV1JZSzJ4cjRpdE0yUEw3MVRjQTRLaEJTSF9OdFkyRHd2aTFBeDl3NzNRRXROc0RFT1ZUWUdXU2FWSTROX0tvRkVDOHRjNU43aUNEb1pWd1JJa0hmTThHYlRVUUd6NUk4em12eTJObXF4TjFsamlKZkNGTk1LSEVOU3N2a2h2VzlQYzVaMkg1amx6T3pIeWtnNXZR?oc=5",
+          "source": "TrendForce",
+          "published_at": "2026-11-18T04:13+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -15006,16 +15012,24 @@
           "negative_terms": []
         },
         {
-          "category": "台灣市場",
-          "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
-          "source": "CMoney投資網誌",
-          "published_at": "2026-11-02T08:00+00:00",
-          "keyword_score": -1,
+          "category": "產業消息",
+          "title": "Forget Nvidia. Here’s the Company Behind the Chips - 24/7 Wall St.",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPWmxmYzB1b1JfZmM3c01KbGFpTFpxUGxsX29HTlF5X2ZWLXBaLVY5M1dXQVVSaUJfOXRaZmhsUWFjTXNSSUs2UUpoYy1HYUJRVllkbjhTQnRHWHBJSUlNWXduY0VYUVdsSmNnODk5UlBSZ29BTTZWdWlBcF94dFpwRjVFTnFidDhKSlNyb3N3TXpzVUUycEtj?oc=5",
+          "source": "24/7 Wall St.",
+          "published_at": "2026-11-06T08:00+00:00",
+          "keyword_score": 0,
           "positive_terms": [],
-          "negative_terms": [
-            "賣超"
-          ]
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "台股血崩創史上第7大跌點！該逃還是該撿？專家「別恐慌交易」盤後示警：外資恐續賣 - Yahoo股市",
+          "url": "https://news.google.com/rss/articles/CBMikANBVV95cUxNZGtmRnVXamQ2RHpCTXpVSTRWRU8yR1FZNl9YejV1T29TQjFUdUVxSHBaak1McDNULVhqVXRndEk0ZGtvMDk0Vko4TnJfUWRidWswM29nN1BlX2tVUHd6SVBsMmppelJ3UjRZVEpJTUppTnVvWlpHRUhZMXVYdzk0NTRZV1BvUUlERjBjN1ZVUkJ2NFc1Mk9tZWh2V3ByR3ZLb0JMVVQ1RkIwVWRTc3V2ZXRqdWh1eHRTVjF5WGRHYWgtdF85ZzhBN2YzY1Vnb2RaV3VPM0l6dnItMUMxdjJGd3lSOXl6U0FpT0hHdGh3NXE4bWtGTThlOWludm1zWGRwNGliSVpyLW14ZUxLczQ2dmFEZGtUZlowYllCcVhZZS0zeW9OZEJJaWM4WlpHUzhuOXppc3ZTUmlMald3VjFDM3hUVGZHUFhDSFpEZERFTUtLUWRiOEthRUg2TWZ2cVM3MmE3Ym5LV0tKamQ1VFJSRWtvM1ZCSmE5TldDbE54cWpRQ25OMlg3Tm1yM0hBdG5L?oc=5",
+          "source": "Yahoo股市",
+          "published_at": "2026-11-03T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
         }
       ],
       "source_errors": [],
@@ -15026,10 +15040,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-23T02:52:34+00:00",
-      "taiwan_data_date": "2026-11-20",
+      "generated_at_utc": "2026-11-23T08:00:37+00:00",
+      "taiwan_data_date": "2026-11-23",
       "us_session_date": "2026-11-20",
-      "us_timezone_checked_at": "2026-11-22T21:52-05:00",
+      "us_timezone_checked_at": "2026-11-23T03:00-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15177,85 +15191,52 @@
         }
       ],
       "institutional": {
-        "date": "2026-11-20",
-        "foreign_net_ntd": -9413073072,
-        "trust_net_ntd": -8749306916,
-        "dealer_net_ntd": -34083765608,
-        "total_net_ntd": -52246145596,
-        "foreign_net_100m": -94.131,
-        "trust_net_100m": -87.493,
-        "dealer_net_100m": -340.838,
-        "total_net_100m": -522.461,
+        "date": "2026-11-23",
+        "foreign_net_ntd": -28947879995,
+        "trust_net_ntd": -3228263886,
+        "dealer_net_ntd": -19001143162,
+        "total_net_ntd": -51177287043,
+        "foreign_net_100m": -289.479,
+        "trust_net_100m": -32.283,
+        "dealer_net_100m": -190.011,
+        "total_net_100m": -511.773,
         "source": "TWSE BFI82U",
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261120&type=day",
-        "0050_foreign_net_shares": -110454647,
-        "0050_trust_net_shares": 4100000,
-        "0050_dealer_net_shares": -301659289,
-        "0050_total_net_shares": -408013936,
-        "0050_flow_source": "TWSE T86",
-        "0050_flow_source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261120&selectType=ALLBUT0999"
+        "source_url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=html&dayDate=20261123&type=day"
       },
-      "etf_0050_institutional": {
-        "date": "2026-11-20",
-        "foreign_net_shares": -110454647,
-        "trust_net_shares": 4100000,
-        "dealer_net_shares": -301659289,
-        "total_net_shares": -408013936,
-        "source_url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=html&date=20261120&selectType=ALLBUT0999"
-      },
+      "etf_0050_institutional": null,
       "institutional_errors": [
+        "2026-11-23: T86找不到0050資料",
         "2026-10-23: T86找不到0050資料",
         "2026-10-23: BFI82U無資料或非交易日"
       ],
       "events": [
         {
           "group": "台灣法人籌碼",
-          "title": "外資賣超 94.1 億元",
-          "date": "2026-11-20",
+          "title": "外資賣超 289.5 億元",
+          "date": "2026-11-23",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "投信賣超 87.5 億元",
-          "date": "2026-11-20",
+          "title": "投信賣超 32.3 億元",
+          "date": "2026-11-23",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "自營商賣超 340.8 億元",
-          "date": "2026-11-20",
+          "title": "自營商賣超 190.0 億元",
+          "date": "2026-11-23",
           "tone": "偏空",
           "detail": "TWSE 三大法人買賣金額統計表；為全市場金額，不等於0050單一ETF的資金流。"
         },
         {
           "group": "台灣法人籌碼",
-          "title": "三大法人合計賣超 522.5 億元",
-          "date": "2026-11-20",
+          "title": "三大法人合計賣超 511.8 億元",
+          "date": "2026-11-23",
           "tone": "偏空",
           "detail": "外資、投信及自營商合計；自營商自行買賣與避險部位合併計算。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050外資賣超 110,454,647 股",
-          "date": "2026-11-20",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050投信買超 4,100,000 股",
-          "date": "2026-11-20",
-          "tone": "偏多",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
-        },
-        {
-          "group": "0050個別ETF籌碼",
-          "title": "0050自營商賣超 301,659,289 股",
-          "date": "2026-11-20",
-          "tone": "偏空",
-          "detail": "TWSE T86 0050個別證券三大法人買賣超日報；單位為股。"
         },
         {
           "group": "美股前夜",
@@ -15303,14 +15284,6 @@
           "tone": "待判讀",
           "detail": "TradingView｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZjJ6ZHh3Z08xNlJiSGNqQk5acy11bkFsM3NqQVJ4Q2lON2FVejFJMXhJM093MWYzN1J3M0VLd2NMUHotOVhvbThvWXhFSmFMWUlocUo5RXgwLXc0UkpMdlNFUG9idWs1Q1QyNE9Lc3NTZFpwcmVVTzY1QmRaYUhNMUlyaWdqNExaeDlPSjhmMVB5VnRFU2JkYW5faEZLMDhZTlhPTWx2OS16UGFfSno3OTRoY3dLd1dtVEhvNl9GUUVzZllKOE1Ocw?oc=5"
-        },
-        {
-          "group": "台灣新聞",
-          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
-          "date": "2026-11-21T04:36+00:00",
-          "tone": "待判讀",
-          "detail": "TVBS新聞網｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5"
         }
       ],
       "us_news": [
@@ -15381,34 +15354,11 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-21 17:58 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "AI 泡沫還是健康修正？那斯達克重挫、半導體與機器人概念股同步遭殃 - CMoney投資網誌",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNelhXQXJRa0M2elZMOGZ0M25LNUc0Y3JQRjRjUEg4RFNwN3JmZDRMbTJtYm92S3lxRkc5ZVV1cW1RbFBKbVlrbkNwOWIwRmtraW9DUkpMcmVyV3ZXMl9YejA0YUFEN2VNZ1RzOEdRZTlYOElnSWduYTlibEdjb0Q2WDBpc25rdGMxWDZabmZ3?oc=5",
-          "source": "CMoney投資網誌",
-          "published_at": "2026-11-21T06:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-21 14:00 台北時間"
         }
       ],
-      "domestic_news": [
-        {
-          "category": "台灣市場",
-          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
-          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5",
-          "source": "TVBS新聞網",
-          "published_at": "2026-11-21T04:36+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-21 12:36 台北時間"
-        }
-      ],
+      "domestic_news": [],
       "industry_news": [],
-      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 522.5 億元。",
+      "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 511.8 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",
       "sources": [
         {
@@ -15455,7 +15405,7 @@
       0.99
     ],
     "feature_count": 93,
-    "training_rows": 1231
+    "training_rows": 1232
   },
   "data_source": "Yahoo Finance (unofficial; verify independently)",
   "reference_links": [

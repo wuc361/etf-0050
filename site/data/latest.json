@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-23T01:59:49+00:00",
+  "generated_at_utc": "2026-11-23T02:51:03+00:00",
   "data_as_of": "2026-11-20",
   "latest_close": 84.45,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.15088,
-      "down_probability": 0.84912,
+      "up_probability": 0.160046,
+      "down_probability": 0.839954,
       "backtest": {
         "accuracy": 0.6870540265035678,
         "balanced_accuracy": 0.6840737810717408,
@@ -35,9 +35,9 @@
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
-      "direction": "UP",
-      "up_probability": 0.530483,
-      "down_probability": 0.469517,
+      "direction": "DOWN",
+      "up_probability": 0.488927,
+      "down_probability": 0.511073,
       "backtest": {
         "accuracy": 0.5893769152196119,
         "balanced_accuracy": 0.5839750921336893,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.572838,
-      "down_probability": 0.427162,
+      "up_probability": 0.567764,
+      "down_probability": 0.432236,
       "backtest": {
         "accuracy": 0.5383828045035824,
         "balanced_accuracy": 0.519024139261673,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.131891,
-    "down_probability": 0.868109,
+    "up_probability": 0.135978,
+    "down_probability": 0.864022,
     "backtest": {
       "accuracy": 0.7849133537206932,
       "balanced_accuracy": 0.7834551957580205,
       "up_recall": 0.8104448742746615,
-      "brier_score": 0.14928652413811566,
+      "brier_score": 0.14928652413714422,
       "majority_baseline_accuracy": 0.527013251783894,
       "accuracy_lift_vs_baseline": 0.25790010193679913,
       "base_rate": 0.527013251783894,
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2126,
       "stored_rows": 278,
-      "updated_at_taipei": "2026-11-23T10:00:03+08:00",
+      "updated_at_taipei": "2026-11-23T10:51:12+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.38299654680942175,
-      "Random Forest": 0.15088043779750832,
-      "Extra Trees": 0.047887079162211514
+      "Logistic Regression": 0.34335465657553493,
+      "Random Forest": 0.16004550222550984,
+      "Extra Trees": 0.04865664765580015
     },
     "historical_balanced_accuracy": 0.6913498771703377,
     "historical_brier_score": 0.19558902639725106,
@@ -185,7 +185,7 @@
         "name": "Extra Trees",
         "accuracy": 0.6850152905198776,
         "balanced_accuracy": 0.6822875463213557,
-        "brier_score": 0.19716354967694338,
+        "brier_score": 0.19716354967694336,
         "n_test": 981,
         "majority_baseline_accuracy": 0.5208970438328236
       }
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.15088,
-    "down_probability": 0.84912,
+    "up_probability": 0.160046,
+    "down_probability": 0.839954,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14642,12 +14642,12 @@
       },
       {
         "name": "台積電",
-        "latest_return": 0.01,
-        "tone": "偏多"
+        "latest_return": -0.0025,
+        "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.008075,
+        "latest_return": 0.001043,
         "tone": "偏多"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.001341,
+        "latest_return": -0.002583,
         "tone": "偏空"
       },
       {
@@ -14677,12 +14677,12 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-23T02:01:24+00:00",
+      "generated_at_utc": "2026-11-23T02:52:34+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
         "keyword_score": -1,
-        "article_count": 13,
+        "article_count": 12,
         "items": [
           {
             "category": "國際市場",
@@ -14750,29 +14750,61 @@
       },
       "domestic": {
         "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 2,
+        "keyword_score": -2,
+        "article_count": 5,
         "items": [
           {
             "category": "台灣市場",
-            "title": "台股血崩創史上第7大跌點！該逃還是該撿？專家「別恐慌交易」盤後示警：外資恐續賣 - Yahoo股市",
-            "url": "https://news.google.com/rss/articles/CBMikANBVV95cUxNZGtmRnVXamQ2RHpCTXpVSTRWRU8yR1FZNl9YejV1T29TQjFUdUVxSHBaak1McDNULVhqVXRndEk0ZGtvMDk0Vko4TnJfUWRidWswM29nN1BlX2tVUHd6SVBsMmppelJ3UjRZVEpJTUppTnVvWlpHRUhZMXVYdzk0NTRZV1BvUUlERjBjN1ZVUkJ2NFc1Mk9tZWh2V3ByR3ZLb0JMVVQ1RkIwVWRTc3V2ZXRqdWh1eHRTVjF5WGRHYWgtdF85ZzhBN2YzY1Vnb2RaV3VPM0l6dnItMUMxdjJGd3lSOXl6U0FpT0hHdGh3NXE4bWtGTThlOWludm1zWGRwNGliSVpyLW14ZUxLczQ2dmFEZGtUZlowYllCcVhZZS0zeW9OZEJJaWM4WlpHUzhuOXppc3ZTUmlMald3VjFDM3hUVGZHUFhDSFpEZERFTUtLUWRiOEthRUg2TWZ2cVM3MmE3Ym5LV0tKamQ1VFJSRWtvM1ZCSmE5TldDbE54cWpRQ25OMlg3Tm1yM0hBdG5L?oc=5",
-            "source": "Yahoo股市",
-            "published_at": "2026-11-03T08:00+00:00",
+            "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
+            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5",
+            "source": "TVBS新聞網",
+            "published_at": "2026-11-21T04:36+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "台灣市場",
-            "title": "台股為何暴跌千點？專家曝真相：不用自己嚇自己、反攻不遠了 - TVBS新聞網",
-            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE81RmtZX05KY1FTZzlPbDE0N1FaaUFKU1BENGlQamNiRVROaHdLaVVhaGZtR2gzRWZxdFZGeUtqVGpteEFSVE1WQXFnNFRBNDQ?oc=5",
-            "source": "TVBS新聞網",
-            "published_at": "2026-10-31T07:00+00:00",
+            "title": "美期中選舉變天！房貸恐再升？專家揭變數：購屋族進場得再等半年 - 自由時報",
+            "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9yZFZUa0c1N0hMLXUzX09KLW5OQVdURDVKR0RnM3dDU0FHQ3NRalpmeF83LUxHblRJYXhYUVFndWpaSTk2Nkh0Z3ItU2hCMVY2?oc=5",
+            "source": "自由時報",
+            "published_at": "2026-11-17T14:12+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "12月終於要升息了？楊金龍：油電調漲將成關鍵變數，新台幣貶值不是因為利差 | 林彥呈 | 財經 - 風傳媒",
+            "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9aU05NZmRDY2VXX190WGdVelg0TEpqd0lhUHY2N2FQWHFWTnFyQmpHOGVtUXVEcWdZa1JDYkRnSEJKQjdyUTctMDFfWTNzUQ?oc=5",
+            "source": "風傳媒",
+            "published_at": "2026-11-16T02:17+00:00",
             "keyword_score": -1,
             "positive_terms": [],
             "negative_terms": [
-              "暴跌"
+              "升息"
+            ]
+          },
+          {
+            "category": "台灣市場",
+            "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+            "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
+            "source": "三立新聞網SETN.com",
+            "published_at": "2026-11-09T08:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
+            "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
+            "source": "CMoney投資網誌",
+            "published_at": "2026-11-02T08:00+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "賣超"
             ]
           }
         ]
@@ -14780,7 +14812,7 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 3,
+        "article_count": 1,
         "items": [
           {
             "category": "產業消息",
@@ -14788,26 +14820,6 @@
             "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQRV9UTzlRTE9ka29VM2RXcUhrcV9VSzhmUTdNT1dVcm9hS00tZVdkRjRha2puRmphMm9LV05PMURkR3VsZ2h2WHdwRkNLSmV2bk42bnZpRkh0UDRMc0hqZ2hJMjJRaERrZVQ3X2U4QnZ6cm1VbWMzRmtVUG5aeDNMS1dsOU9zbGZESC1EaUdGb3ZhRy12cEpJdzNuRVRxUQ?oc=5",
             "source": "Yahoo Finance",
             "published_at": "2026-11-18T19:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-            "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-            "source": "永豐金證券",
-            "published_at": "2026-10-29T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-16T07:00+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14888,6 +14900,16 @@
           "negative_terms": []
         },
         {
+          "category": "台灣市場",
+          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
+          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5",
+          "source": "TVBS新聞網",
+          "published_at": "2026-11-21T04:36+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "國際市場",
           "title": "US Stock Market Today – Friday, Nov. 20, 2026 - STL.News",
           "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9oalFCX1k4MS0zS0Mya3FXR0ZsV2Y2dmxYZ2lGTEh6MHMzNFkwT3JJZFhVZzVadnZ6SG1wenNDdGc4ck5PUzVmM3c2WEdsOGFRZ2tDQ0JaVEtxVEVJdzNnRVQzOXpDeXg3MUxabHdMQQ?oc=5",
@@ -14953,60 +14975,50 @@
         },
         {
           "category": "台灣市場",
-          "title": "台股血崩創史上第7大跌點！該逃還是該撿？專家「別恐慌交易」盤後示警：外資恐續賣 - Yahoo股市",
-          "url": "https://news.google.com/rss/articles/CBMikANBVV95cUxNZGtmRnVXamQ2RHpCTXpVSTRWRU8yR1FZNl9YejV1T29TQjFUdUVxSHBaak1McDNULVhqVXRndEk0ZGtvMDk0Vko4TnJfUWRidWswM29nN1BlX2tVUHd6SVBsMmppelJ3UjRZVEpJTUppTnVvWlpHRUhZMXVYdzk0NTRZV1BvUUlERjBjN1ZVUkJ2NFc1Mk9tZWh2V3ByR3ZLb0JMVVQ1RkIwVWRTc3V2ZXRqdWh1eHRTVjF5WGRHYWgtdF85ZzhBN2YzY1Vnb2RaV3VPM0l6dnItMUMxdjJGd3lSOXl6U0FpT0hHdGh3NXE4bWtGTThlOWludm1zWGRwNGliSVpyLW14ZUxLczQ2dmFEZGtUZlowYllCcVhZZS0zeW9OZEJJaWM4WlpHUzhuOXppc3ZTUmlMald3VjFDM3hUVGZHUFhDSFpEZERFTUtLUWRiOEthRUg2TWZ2cVM3MmE3Ym5LV0tKamQ1VFJSRWtvM1ZCSmE5TldDbE54cWpRQ25OMlg3Tm1yM0hBdG5L?oc=5",
-          "source": "Yahoo股市",
-          "published_at": "2026-11-03T08:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "After Tech Sell-Off, Investors Brace for More Market Volatility - The New York Times",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQcnVYZlFEd2dVa0N2SXlxM2xacnZiSXRUcEdPZU4wOHhleVV2MmNYU3ZhbEFFYjJsM3pCWjVkdUhEV0s0dWotM1E2VjZVb3d2TzZYVzlWRjI5Mm1TeENpdTB0RjE0ZzBjR1NPRWpNOFQ3Z1ozUjBPZmNTeDJJSVZQVkNiRHE2Uks3aldGbDRReXUxbnNRYVNsRDlQSVc5OWJDa3ZVUkVNZFB4Rzk4RkQ4OA?oc=5",
-          "source": "The New York Times",
-          "published_at": "2026-11-01T07:00+00:00",
+          "title": "美期中選舉變天！房貸恐再升？專家揭變數：購屋族進場得再等半年 - 自由時報",
+          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9yZFZUa0c1N0hMLXUzX09KLW5OQVdURDVKR0RnM3dDU0FHQ3NRalpmeF83LUxHblRJYXhYUVFndWpaSTk2Nkh0Z3ItU2hCMVY2?oc=5",
+          "source": "自由時報",
+          "published_at": "2026-11-17T14:12+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
           "category": "台灣市場",
-          "title": "台股為何暴跌千點？專家曝真相：不用自己嚇自己、反攻不遠了 - TVBS新聞網",
-          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE81RmtZX05KY1FTZzlPbDE0N1FaaUFKU1BENGlQamNiRVROaHdLaVVhaGZtR2gzRWZxdFZGeUtqVGpteEFSVE1WQXFnNFRBNDQ?oc=5",
-          "source": "TVBS新聞網",
-          "published_at": "2026-10-31T07:00+00:00",
+          "title": "12月終於要升息了？楊金龍：油電調漲將成關鍵變數，新台幣貶值不是因為利差 | 林彥呈 | 財經 - 風傳媒",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9aU05NZmRDY2VXX190WGdVelg0TEpqd0lhUHY2N2FQWHFWTnFyQmpHOGVtUXVEcWdZa1JDYkRnSEJKQjdyUTctMDFfWTNzUQ?oc=5",
+          "source": "風傳媒",
+          "published_at": "2026-11-16T02:17+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
-            "暴跌"
+            "升息"
           ]
         },
         {
-          "category": "產業消息",
-          "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-10-29T07:00+00:00",
+          "category": "台灣市場",
+          "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
+          "source": "三立新聞網SETN.com",
+          "published_at": "2026-11-09T08:00+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
-          "category": "產業消息",
-          "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-16T07:00+00:00",
-          "keyword_score": 0,
+          "category": "台灣市場",
+          "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
+          "source": "CMoney投資網誌",
+          "published_at": "2026-11-02T08:00+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
-          "negative_terms": []
+          "negative_terms": [
+            "賣超"
+          ]
         }
       ],
-      "source_errors": [
-        "台灣市場新聞來源讀取失敗：HTTPError"
-      ],
+      "source_errors": [],
       "limitations": [
         "僅分析 RSS 新聞標題，不代表已閱讀全文或核實事件。",
         "關鍵字可能誤判語境、反諷及利多出盡等情況。",
@@ -15014,10 +15026,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-23T02:01:24+00:00",
+      "generated_at_utc": "2026-11-23T02:52:34+00:00",
       "taiwan_data_date": "2026-11-20",
       "us_session_date": "2026-11-20",
-      "us_timezone_checked_at": "2026-11-22T21:01-05:00",
+      "us_timezone_checked_at": "2026-11-22T21:52-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15291,6 +15303,14 @@
           "tone": "待判讀",
           "detail": "TradingView｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZjJ6ZHh3Z08xNlJiSGNqQk5acy11bkFsM3NqQVJ4Q2lON2FVejFJMXhJM093MWYzN1J3M0VLd2NMUHotOVhvbThvWXhFSmFMWUlocUo5RXgwLXc0UkpMdlNFUG9idWs1Q1QyNE9Lc3NTZFpwcmVVTzY1QmRaYUhNMUlyaWdqNExaeDlPSjhmMVB5VnRFU2JkYW5faEZLMDhZTlhPTWx2OS16UGFfSno3OTRoY3dLd1dtVEhvNl9GUUVzZllKOE1Ocw?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
+          "date": "2026-11-21T04:36+00:00",
+          "tone": "待判讀",
+          "detail": "TVBS新聞網｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5"
         }
       ],
       "us_news": [
@@ -15374,7 +15394,19 @@
           "published_at_taipei": "2026-11-21 14:00 台北時間"
         }
       ],
-      "domestic_news": [],
+      "domestic_news": [
+        {
+          "category": "台灣市場",
+          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS新聞網",
+          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE94TEN2MjlHbjRjUnlESTI2T1BKQ29fX0Y2Mm5XbnZIWW5WdGRZcEJvQUZyZm5qczgzRV9Wb0tuNXV4aGs4UjdZNWM0SWxNM1k?oc=5",
+          "source": "TVBS新聞網",
+          "published_at": "2026-11-21T04:36+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-21 12:36 台北時間"
+        }
+      ],
       "industry_news": [],
       "narrative": "美股科技與半導體觀察組合偏弱，可能對台灣電子權值及0050開盤情緒形成壓力；仍需搭配台灣法人籌碼與匯率確認。 前一台灣交易日三大法人合計賣超 522.5 億元。",
       "interpretation_note": "事件清單是可查證資料與規則式提示，不是因果判定；新聞標題關鍵字只供人工閱讀，不直接改寫模型機率。",

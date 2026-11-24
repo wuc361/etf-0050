@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-24T10:14:45+00:00",
+  "generated_at_utc": "2026-11-24T17:51:27+00:00",
   "data_as_of": "2026-11-24",
   "latest_close": 95.7,
   "price_validation": {
@@ -18,9 +18,9 @@
   },
   "forecasts": {
     "1d": {
-      "direction": "UP",
-      "up_probability": 0.863969,
-      "down_probability": 0.136031,
+      "direction": "DOWN",
+      "up_probability": 0.102994,
+      "down_probability": 0.897006,
       "backtest": {
         "accuracy": 0.6843177189409368,
         "balanced_accuracy": 0.6817320478723404,
@@ -35,14 +35,14 @@
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
-      "direction": "UP",
-      "up_probability": 0.841803,
-      "down_probability": 0.158197,
+      "direction": "DOWN",
+      "up_probability": 0.117572,
+      "down_probability": 0.882428,
       "backtest": {
         "accuracy": 0.5785714285714286,
         "balanced_accuracy": 0.5738054968287526,
         "up_recall": 0.6127272727272727,
-        "brier_score": 0.24874038588160055,
+        "brier_score": 0.24874038564506637,
         "majority_baseline_accuracy": 0.5612244897959183,
         "accuracy_lift_vs_baseline": 0.0173469387755103,
         "base_rate": 0.5612244897959183,
@@ -52,14 +52,14 @@
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 2 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "3d": {
-      "direction": "UP",
-      "up_probability": 0.590133,
-      "down_probability": 0.409867,
+      "direction": "DOWN",
+      "up_probability": 0.430453,
+      "down_probability": 0.569547,
       "backtest": {
         "accuracy": 0.5408997955010225,
         "balanced_accuracy": 0.5212239939775527,
         "up_recall": 0.6530249110320284,
-        "brier_score": 0.25720311291895387,
+        "brier_score": 0.2572031142031077,
         "majority_baseline_accuracy": 0.5746421267893661,
         "accuracy_lift_vs_baseline": -0.033742331288343586,
         "base_rate": 0.5746421267893661,
@@ -70,9 +70,9 @@
     }
   },
   "opening_gap_forecast": {
-    "direction": "UP",
-    "up_probability": 0.960375,
-    "down_probability": 0.039625,
+    "direction": "DOWN",
+    "up_probability": 0.08584,
+    "down_probability": 0.91416,
     "backtest": {
       "accuracy": 0.7810590631364562,
       "balanced_accuracy": 0.7794401544401545,
@@ -87,24 +87,24 @@
     "target_definition": "下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
   },
   "market_risk": {
-    "level": "NORMAL",
-    "label": "未觸發核心市場同步重挫條件",
-    "trigger_count": 0,
+    "level": "ELEVATED",
+    "label": "風險升高：三項核心指標中有兩項重挫",
+    "trigger_count": 2,
     "observations": {
       "^SOX": {
-        "return": 0.14026846152023675,
+        "return": -0.07504387531557588,
         "threshold": -0.03,
-        "triggered": false
+        "triggered": true
       },
       "^IXIC": {
-        "return": 0.06507417179449404,
+        "return": -0.015277542990411397,
         "threshold": -0.02,
         "triggered": false
       },
       "TSM": {
-        "return": 0.14084909746158591,
+        "return": -0.04540706680000617,
         "threshold": -0.03,
-        "triggered": false
+        "triggered": true
       }
     },
     "rule": "費半 <= -3%、NASDAQ <= -2%、台積電 ADR <= -3%；任兩項觸發為風險升高，三項同時觸發為高風險"
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2174,
       "stored_rows": 297,
-      "updated_at_taipei": "2026-11-24T18:14:57+08:00",
+      "updated_at_taipei": "2026-11-25T01:51:41+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.5720979170881179,
-      "Random Forest": 0.6800583897862247,
-      "Extra Trees": 0.863969272075839
+      "Logistic Regression": 0.01,
+      "Random Forest": 0.15935868908366715,
+      "Extra Trees": 0.10299394186080095
     },
     "historical_balanced_accuracy": 0.6856382978723404,
     "historical_brier_score": 0.19712122381758743,
@@ -169,7 +169,7 @@
         "name": "Logistic Regression",
         "accuracy": 0.6364562118126272,
         "balanced_accuracy": 0.6340009973404255,
-        "brier_score": 0.22390763755888088,
+        "brier_score": 0.22390763735791608,
         "n_test": 982,
         "majority_baseline_accuracy": 0.5213849287169042
       },
@@ -14594,9 +14594,9 @@
     }
   ],
   "forecast": {
-    "direction": "UP",
-    "up_probability": 0.863969,
-    "down_probability": 0.136031,
+    "direction": "DOWN",
+    "up_probability": 0.102994,
+    "down_probability": 0.897006,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14608,88 +14608,133 @@
     "n_test": 982
   },
   "explanation": {
-    "model_interpretation": "量化模型偏向上漲。",
+    "model_interpretation": "量化模型偏向下跌。",
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": 0.140268,
-        "tone": "偏多"
+        "latest_return": -0.075044,
+        "tone": "偏空"
       },
       {
         "name": "NASDAQ",
-        "latest_return": 0.065074,
-        "tone": "偏多"
+        "latest_return": -0.015278,
+        "tone": "偏空"
       },
       {
         "name": "S&P 500",
-        "latest_return": 0.047288,
-        "tone": "偏多"
+        "latest_return": -0.00545,
+        "tone": "偏空"
       },
       {
         "name": "道瓊指數",
-        "latest_return": 0.030074,
+        "latest_return": 0.007037,
         "tone": "偏多"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": 0.140849,
-        "tone": "偏多"
+        "latest_return": -0.045407,
+        "tone": "偏空"
       },
       {
         "name": "NVIDIA",
-        "latest_return": 0.314825,
-        "tone": "偏多"
+        "latest_return": -0.074687,
+        "tone": "偏空"
       },
       {
         "name": "台積電",
-        "latest_return": 0.098522,
+        "latest_return": 0.015,
         "tone": "偏多"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.089929,
+        "latest_return": 0.021608,
         "tone": "偏多"
       },
       {
         "name": "台灣 ETF",
-        "latest_return": 0.179751,
-        "tone": "偏多"
-      },
-      {
-        "name": "美元兌新台幣",
-        "latest_return": -0.000473,
+        "latest_return": -0.048407,
         "tone": "偏空"
       },
       {
-        "name": "VIX 波動率指數",
-        "latest_return": 0.043576,
+        "name": "美元兌新台幣",
+        "latest_return": 0.000528,
         "tone": "偏多"
+      },
+      {
+        "name": "VIX 波動率指數",
+        "latest_return": -0.003757,
+        "tone": "偏空"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": 0.001222,
-        "tone": "偏多"
+        "latest_return": -0.002033,
+        "tone": "偏空"
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": 0.005743,
-        "tone": "偏多"
+        "latest_return": -0.001481,
+        "tone": "偏空"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-24T10:16:11+00:00",
+      "generated_at_utc": "2026-11-24T17:52:29+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 4,
+        "keyword_score": -2,
+        "article_count": 10,
         "items": [
           {
             "category": "國際市場",
-            "title": "小龍說了11月22日後股市會轉勢，今晚美股為何會反彈，下一時間在何時，可以在系統找到 - 鉅亨號",
-            "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9JaTNXQko2MkJ1VmF4ai03emVoTkNoWGFHYXl6UnlDSnhFRU5pbWFIdVNhdXh6MTZiQWZiVWRfS0I3S2VGOE5sQQ?oc=5",
-            "source": "鉅亨號",
-            "published_at": "2026-11-23T12:40+00:00",
+            "title": "輝達AI漲勢降溫！美股期指全面下挫 那指跌逾2% - 民視財經網",
+            "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE84U0dSbUtaeUliUGNYeVB5QUhVZUtGU2F1ZDNDaWZjdUNiXzdTRDducjFKX3ljM1BMOXBJMGVsZklhLVBhci16V21ncE1ybTB4X1lXWVB5aHhMSnZjaTJmU0ZGZXNNQQ?oc=5",
+            "source": "民視財經網",
+            "published_at": "2026-11-24T14:26+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Bessent Warns Fed Overtightening Could Threaten US Economy Amid December Rate Hike Debate - KuCoin",
+            "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YaHRSTDFRVkFzdTRWVFNrZEVGbVRINUo0QVVkMXpnSUhZRjN6RzNCWVdPWmU4VGtyZ29SRkwtLVZxNFAwZ056NmJfaTRzeGJ6N0tPY2VNS1QwMmZWVHZucGhwRXBpcS1fNXc?oc=5",
+            "source": "KuCoin",
+            "published_at": "2026-11-24T10:23+00:00",
+            "keyword_score": -2,
+            "positive_terms": [],
+            "negative_terms": [
+              "rate hike",
+              "war"
+            ]
+          },
+          {
+            "category": "國際市場",
+            "title": "Will the Fed Raise Interest Rates in December 2026? What to Know Before the Dec. 9 Decision - Around Prague",
+            "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSExVWUhSWUR3VW5lejh6Szk2VFZsb19ZZnFMRzMyQW1YUzU5bDd1dWZoYUpqUlM4bmFyUk1nc2tGOGY0eWNIRXViUmZwLVR0UkMtSmxCVGMweEJ2SXdwMzVxelZROGs3SFZNZktlcmxJRnB0Yks2QUNjVjJIaGE5SWR1bHZZbFBkbHpyWnFqcXo1SHBmbndvb2ZNWmFsV1RSc2M0ZDNabS1kSDlUZHRRZnU5TQ?oc=5",
+            "source": "Around Prague",
+            "published_at": "2026-11-23T23:23+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
+            "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMXJ0ZGNGUGVYTi1oUERuSmloeWttUEo5LVVwLUwtVk9QcVNoSVpxMHRmN0did3lqeHBsOEE2RXZZd3V3ZjRrWHBRVWtrazYwNERueU42NlBtQ1BfcGZhSm51QnU3NVZDYTlQR0NfekRDM01mTDRySm9JTktMajFibU4tR3NUTHQxT0FSZUVacS12WlY5WUx1bDdkdFnSAZwBQVVfeXFMTzFydGRjRlBlWE4taFBEbkppaHlrbVBKOS1VcC1MLVZPUHFTaElacTB0ZjdHYnd5anhwbDhBNkV2WXd1d2Y0a1hwUVVra2s2MDREbnlONjZQbUNQX3BmYUpudUJ1NzVWQ2E5UEdDX3pEQzNNZkw0ckpvSU5LTGoxYm1OLUdzVEx0MU9BUmVFWnEtdlpWOVlMdWw3ZHRZ?oc=5",
+            "source": "Chosunbiz",
+            "published_at": "2026-11-23T01:24+00:00",
+            "keyword_score": 1,
+            "positive_terms": [
+              "rally"
+            ],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "US PCE This Week: What the Inflation Report Means for Gold, Bitcoin and Nasdaq Traders in the UAE - Markets.com",
+            "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxON2x4TDJmUF9kYXlWQkdpdnZVSl9lenB2Qm1QUHRsTElqZ1JZWlZUYzIwMThVeENNM0xVY2V3N1Y5V3hHUFE3MHJOVk83blhjcERfaHptMmpyNjdIQVR1YU5EbXVEQ3RfR21WaGxvQ01YMk5LQ0YtQ1huR2Q4dVhaM2dVU3FwWndmWVMxUXVfeVF2UG9oXzE5ODZBRDR3N2VDUmlJaEdGeGdRc21rbEJVcDNaTXB5QkJ4M0J0clZmZEIxbVZycGc?oc=5",
+            "source": "Markets.com",
+            "published_at": "2026-11-22T16:02+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14697,42 +14742,40 @@
           {
             "category": "國際市場",
             "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
-            "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnR6RVpKLVRnTDdUbFJIRmVLWEl5UmxNZmI1ZHRzX0JsWG9jZmNUNUQ5X19vWll2QjJFekJ5NXhqdjUxc0dxWUM0MjY5SXNRYzlDcURkMXJMZmlyQW1RbTNrQmtESVF3QUlxWGItSjBGdDB4TFVKWW4wZHRTaFZiTU5TOFlyY0t5MVNqQVR0SVRPb3d1VlgxQm9JU1lLY1BPbkxMWDM0eng?oc=5",
+            "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPT21pLWhpR0tjQkhQLWE5NDc4SGNjMjVUdS12eDFpNTZEWEs5UWp3UGxaWVVDVTRSNG5VUi1rWnV5Ymd6MW5NQWNPUXlIWFdOUVF5bzVpWW9XRHJCRFIzR1JkMFhLUEFBMHN3SFREZkRrN1JJX2pSOWRRSkNJVll4SzRPaHZhTjI3LU5ZNVd5akctc09lVnhocThBYw?oc=5",
             "source": "The Financial Express",
             "published_at": "2026-11-22T11:27+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "AI 泡沫還是健康修正？那斯達克重挫、半導體與機器人概念股同步遭殃 - CMoney投資網誌",
-            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNelhXQXJRa0M2elZMOGZ0M25LNUc0Y3JQRjRjUEg4RFNwN3JmZDRMbTJtYm92S3lxRkc5ZVV1cW1RbFBKbVlrbkNwOWIwRmtraW9DUkpMcmVyV3ZXMl9YejA0YUFEN2VNZ1RzOEdRZTlYOElnSWduYTlibEdjb0Q2WDBpc25rdGMxWDZabmZ3?oc=5",
-            "source": "CMoney投資網誌",
-            "published_at": "2026-11-21T06:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Federal Reserve Votes Unanimously to Raise Rates 25 Basis Points to 3.75%-4.00%; Warsh Defies White House Pressure to Launch Tightening Cycle - BigGo Finance",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBiUlVZRmEyWHF1andZbE5mUUV6TmFIX1VZZkVQd0RkbDJDRTlqMGVGRzg5ZV90QjV4dWU2Z012eWhpYkxyYkE3UDdJSFZWcXhnSjMyek5ycVViRVNQZmNtMGh5MF9VQmpTWGhXd1RCUUNGejZ3M0E?oc=5",
-            "source": "BigGo Finance",
-            "published_at": "2026-10-23T07:00+00:00",
-            "keyword_score": -1,
-            "positive_terms": [],
-            "negative_terms": [
-              "war"
-            ]
           }
         ]
       },
       "domestic": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 8,
+        "article_count": 3,
         "items": [
+          {
+            "category": "台灣市場",
+            "title": "GDP飆48年新高，新台幣為何還在貶？看懂出口繁榮與匯率背離的真相 - TNL The News Lens 關鍵評論網",
+            "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5lbksxMjBQbTA5eU81czFLTnhMRi1aSmMta2VyTWk3X25wVXpHWk94UjhuWUd0V0JIakN4YVR6UFQwRVNXUnpiQ2xBZFVYSzZPRVRndA?oc=5",
+            "source": "TNL The News Lens 關鍵評論網",
+            "published_at": "2026-11-23T09:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS",
+            "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9rMkZFc3VObzBTY1djRGN5R04yUTlUS0xNdDM3SkxteXdQTi12MHR0ejdRWk5DMFE2RG52cVp3cUJzREljc2tfaW5kanpaR00?oc=5",
+            "source": "TVBS",
+            "published_at": "2026-11-21T04:36+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
           {
             "category": "台灣市場",
             "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
@@ -14742,67 +14785,13 @@
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
-          },
-          {
-            "category": "台灣市場",
-            "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
-            "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
-            "source": "CMoney投資網誌",
-            "published_at": "2026-11-02T08:00+00:00",
-            "keyword_score": -1,
-            "positive_terms": [],
-            "negative_terms": [
-              "賣超"
-            ]
-          },
-          {
-            "category": "台灣市場",
-            "title": "《農經人語》經濟成長創半世紀新高，臺幣為何還再貶？ - 台灣醒報 Awakening News Network",
-            "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9FTHFLR3A3OXhkczFVRjh0Sm4xeFdZcUdkcWxvUHlLdFpzcHhJRTBUOGxURmI3bzhQNzU0ODFPUWtkZ2FPSXRYU3RtNC1KUm9oVE9zWldodw?oc=5",
-            "source": "台灣醒報 Awakening News Network",
-            "published_at": "2026-11-01T07:00+00:00",
-            "keyword_score": 1,
-            "positive_terms": [
-              "成長"
-            ],
-            "negative_terms": []
-          },
-          {
-            "category": "台灣市場",
-            "title": "TWA00 加權指數- 台股週跌逾兩千點，外資大賣轉進鋼鐵金融股- 股市爆料同學會 - CMoney",
-            "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5sY2UxNndIbDVPNklJeUN1eFFtUXpFanIyNDFETHJVT1lQRTJQdC0tWVpyMXpEbGcyU25tWG5TMDNtTExRak1PNUhsVGx5WHBzRlpkRExTLTE?oc=5",
-            "source": "CMoney",
-            "published_at": "2026-10-17T14:26+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "台灣市場",
-            "title": "外資超配台灣勝過韓國 台股成全球AI首選 00409A帶台灣投資人反向看全球 - 蕃新聞",
-            "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1YTE9MOVBxRlpKX3F4aC04aTVJOXFmbTJyWWRxZjhCUHd6Wmd6T2sxNUl1X2RLOTBla1UtT0VzVEtRTjVyX3ZEU0dTemQ0ZW5uWWc?oc=5",
-            "source": "蕃新聞",
-            "published_at": "2026-10-08T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "台灣市場",
-            "title": "台股今年漲72％稱霸全球、還能繼續贏韓股？外資給「一組數字」揭答案 - 自由財經",
-            "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9pUzdpejV4VEF6LVBHUmtIZEdvUEd5SHJOT09ULVcwQXNiQkdxaW9WbXMzRE5ycFduUU9zZ1ZqbG5KUWtfMW5qS3VETFBQYUJtYWFQcTNsZEJ2TkZkcjJv0gFkQVVfeXFMT3ZLUWpQZTNQa2xBYWZQcDVLZjgtMkxkTzRWQURmYndNalp3aFpJcmx1Z1lTTnl0RHhmR01nMnpuQjR5TGtjS1Z6eFlOQzROQnE5ZHdFZzAtSjVoOFRvcjYyR2hhUg?oc=5",
-            "source": "自由財經",
-            "published_at": "2026-10-07T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
           }
         ]
       },
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 6,
+        "article_count": 5,
         "items": [
           {
             "category": "產業消息",
@@ -14816,10 +14805,20 @@
           },
           {
             "category": "產業消息",
-            "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - Zacks Investment Research",
-            "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTXJxZ0p3M0tMdjVrTEVwd2pPdFp2eDNtTUlhX2VKbUFidmR3NkJVcVc1VWw0d2lyS29BTmRhdXk3Y1hJRWlTNjBqMjhyZ2dDYlEySE9nempnNko2aEhmLWsza2JVSFI2MlhKRUlzSGlmZXNWYWlDSHVZbWtUT2taam5USUFnZmFiWUd6VjFzalpuZGhEMC1RTTVUSExJR3BoTF9XVzIxWkc?oc=5",
-            "source": "Zacks Investment Research",
-            "published_at": "2026-11-18T19:30+00:00",
+            "title": "【23:19 即時新聞】Taiwan Semiconductor Manufacturing (TSM) 跌5%／跟隨AI晶片與半導體族群遭恐慌性賣壓 - CMoney投資網誌",
+            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQy1hd01YR2JUQUNiUUN0SlA3SERjREFDMkg5Znh5WW1KaklEWldLaE1jVU1pSk1VQnZBdllQWmV2WENXLTRTOGtPTlVBTElBdjdMZUdJRndTSkM2UDFxb2FraHZzeXVTV3dSMG84aGdpckQ2dGh5QUd5ZERCVUdmaGM4aWtQaldLVUhKdnRR?oc=5",
+            "source": "CMoney投資網誌",
+            "published_at": "2026-11-20T15:20+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "產業消息",
+            "title": "美國AI晶片管制3台廠不同調！台積電代工加嚴　另2家列白名單 - ETtoday財經雲",
+            "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9EVjNhOTR1MjRKdmwtVEQ1UldhX1BqdkViazk2SEFVZy0yclVvWHlHOU5VNk4tTzNFNXFwdlhvZF9jT0tzdE4wZHVOa0ZCSDBtQ0HSAVBBVV95cUxPQmxLYWxlVXUwQzFNdDVKZUw1SkgycC1fRUVGblo3LWtYWl82RzhZYkJ5SHhraDM5TmNQNkFEck8yMmhUZmhYYzIyc0l2ZzljQw?oc=5",
+            "source": "ETtoday財經雲",
+            "published_at": "2026-11-19T13:36+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14836,30 +14835,10 @@
           },
           {
             "category": "產業消息",
-            "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-            "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-            "source": "永豐金證券",
-            "published_at": "2026-10-29T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-            "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-            "source": "TechNews 科技新報",
-            "published_at": "2026-10-16T07:00+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "產業消息",
-            "title": "NVIDIA、台積電同步創高！台股逼近 5 萬點，AI 熱潮延伸半導體供應鏈 - Grenade 手榴彈",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0yV2J1UHFqOVpzUDQxbl9PR2VFbjJKSnhLdWRFVHVVNmpyZTRNXzFjaXJCR2YwY0pwbGxKZ1RzUHplc3NCVHQ0ZklnMWMwWDBxR1pMSi0zaFpFYkdCeVJ0OUlvbXN5aVlQSmUtQ3oyZzFTcVRjMXc?oc=5",
-            "source": "Grenade 手榴彈",
-            "published_at": "2026-10-06T07:00+00:00",
+            "title": "AI市場波動現端倪：超微與台積電財報揭示關鍵差異- 財經新聞 - PChome Online 新聞",
+            "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOQnFrMUl2aDRvOHVfbWRvZXRCenJvY1VaT044MXNfRi10RWlsN3RxemxNOENSUVNZWFZxYlBFTjJydW9pYzFYblRxTVoybndMN21aTEFUaFJCRmRYMXhnd1Y3TWdQZDRvam54QVJsbFFQZFc3dTk5NEZsQzFOd0ZMUHpWWUl5eWt5TXgyVw?oc=5",
+            "source": "PChome Online 新聞",
+            "published_at": "2026-11-06T01:53+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14867,6 +14846,39 @@
         ]
       },
       "items": [
+        {
+          "category": "國際市場",
+          "title": "輝達AI漲勢降溫！美股期指全面下挫 那指跌逾2% - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE84U0dSbUtaeUliUGNYeVB5QUhVZUtGU2F1ZDNDaWZjdUNiXzdTRDducjFKX3ljM1BMOXBJMGVsZklhLVBhci16V21ncE1ybTB4X1lXWVB5aHhMSnZjaTJmU0ZGZXNNQQ?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-11-24T14:26+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Bessent Warns Fed Overtightening Could Threaten US Economy Amid December Rate Hike Debate - KuCoin",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YaHRSTDFRVkFzdTRWVFNrZEVGbVRINUo0QVVkMXpnSUhZRjN6RzNCWVdPWmU4VGtyZ29SRkwtLVZxNFAwZ056NmJfaTRzeGJ6N0tPY2VNS1QwMmZWVHZucGhwRXBpcS1fNXc?oc=5",
+          "source": "KuCoin",
+          "published_at": "2026-11-24T10:23+00:00",
+          "keyword_score": -2,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike",
+            "war"
+          ]
+        },
+        {
+          "category": "國際市場",
+          "title": "Will the Fed Raise Interest Rates in December 2026? What to Know Before the Dec. 9 Decision - Around Prague",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSExVWUhSWUR3VW5lejh6Szk2VFZsb19ZZnFMRzMyQW1YUzU5bDd1dWZoYUpqUlM4bmFyUk1nc2tGOGY0eWNIRXViUmZwLVR0UkMtSmxCVGMweEJ2SXdwMzVxelZROGs3SFZNZktlcmxJRnB0Yks2QUNjVjJIaGE5SWR1bHZZbFBkbHpyWnFqcXo1SHBmbndvb2ZNWmFsV1RSc2M0ZDNabS1kSDlUZHRRZnU5TQ?oc=5",
+          "source": "Around Prague",
+          "published_at": "2026-11-23T23:23+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
         {
           "category": "產業消息",
           "title": "【22:31 即時新聞】Taiwan Semiconductor Manufacturing (TSM) 飆漲逾20%／受惠AI晶片族群強彈與高層增持加持 - CMoney投資網誌",
@@ -14878,11 +14890,33 @@
           "negative_terms": []
         },
         {
+          "category": "台灣市場",
+          "title": "GDP飆48年新高，新台幣為何還在貶？看懂出口繁榮與匯率背離的真相 - TNL The News Lens 關鍵評論網",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5lbksxMjBQbTA5eU81czFLTnhMRi1aSmMta2VyTWk3X25wVXpHWk94UjhuWUd0V0JIakN4YVR6UFQwRVNXUnpiQ2xBZFVYSzZPRVRndA?oc=5",
+          "source": "TNL The News Lens 關鍵評論網",
+          "published_at": "2026-11-23T09:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "國際市場",
-          "title": "小龍說了11月22日後股市會轉勢，今晚美股為何會反彈，下一時間在何時，可以在系統找到 - 鉅亨號",
-          "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9JaTNXQko2MkJ1VmF4ai03emVoTkNoWGFHYXl6UnlDSnhFRU5pbWFIdVNhdXh6MTZiQWZiVWRfS0I3S2VGOE5sQQ?oc=5",
-          "source": "鉅亨號",
-          "published_at": "2026-11-23T12:40+00:00",
+          "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMXJ0ZGNGUGVYTi1oUERuSmloeWttUEo5LVVwLUwtVk9QcVNoSVpxMHRmN0did3lqeHBsOEE2RXZZd3V3ZjRrWHBRVWtrazYwNERueU42NlBtQ1BfcGZhSm51QnU3NVZDYTlQR0NfekRDM01mTDRySm9JTktMajFibU4tR3NUTHQxT0FSZUVacS12WlY5WUx1bDdkdFnSAZwBQVVfeXFMTzFydGRjRlBlWE4taFBEbkppaHlrbVBKOS1VcC1MLVZPUHFTaElacTB0ZjdHYnd5anhwbDhBNkV2WXd1d2Y0a1hwUVVra2s2MDREbnlONjZQbUNQX3BmYUpudUJ1NzVWQ2E5UEdDX3pEQzNNZkw0ckpvSU5LTGoxYm1OLUdzVEx0MU9BUmVFWnEtdlpWOVlMdWw3ZHRZ?oc=5",
+          "source": "Chosunbiz",
+          "published_at": "2026-11-23T01:24+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "US PCE This Week: What the Inflation Report Means for Gold, Bitcoin and Nasdaq Traders in the UAE - Markets.com",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxON2x4TDJmUF9kYXlWQkdpdnZVSl9lenB2Qm1QUHRsTElqZ1JZWlZUYzIwMThVeENNM0xVY2V3N1Y5V3hHUFE3MHJOVk83blhjcERfaHptMmpyNjdIQVR1YU5EbXVEQ3RfR21WaGxvQ01YMk5LQ0YtQ1huR2Q4dVhaM2dVU3FwWndmWVMxUXVfeVF2UG9oXzE5ODZBRDR3N2VDUmlJaEdGeGdRc21rbEJVcDNaTXB5QkJ4M0J0clZmZEIxbVZycGc?oc=5",
+          "source": "Markets.com",
+          "published_at": "2026-11-22T16:02+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14890,7 +14924,7 @@
         {
           "category": "國際市場",
           "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnR6RVpKLVRnTDdUbFJIRmVLWEl5UmxNZmI1ZHRzX0JsWG9jZmNUNUQ5X19vWll2QjJFekJ5NXhqdjUxc0dxWUM0MjY5SXNRYzlDcURkMXJMZmlyQW1RbTNrQmtESVF3QUlxWGItSjBGdDB4TFVKWW4wZHRTaFZiTU5TOFlyY0t5MVNqQVR0SVRPb3d1VlgxQm9JU1lLY1BPbkxMWDM0eng?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPT21pLWhpR0tjQkhQLWE5NDc4SGNjMjVUdS12eDFpNTZEWEs5UWp3UGxaWVVDVTRSNG5VUi1rWnV5Ymd6MW5NQWNPUXlIWFdOUVF5bzVpWW9XRHJCRFIzR1JkMFhLUEFBMHN3SFREZkRrN1JJX2pSOWRRSkNJVll4SzRPaHZhTjI3LU5ZNVd5akctc09lVnhocThBYw?oc=5",
           "source": "The Financial Express",
           "published_at": "2026-11-22T11:27+00:00",
           "keyword_score": 0,
@@ -14908,11 +14942,53 @@
           "negative_terms": []
         },
         {
+          "category": "台灣市場",
+          "title": "股匯大怒神！新台幣一度貶破33大關 3主因與4大衝擊統整 - TVBS",
+          "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9rMkZFc3VObzBTY1djRGN5R04yUTlUS0xNdDM3SkxteXdQTi12MHR0ejdRWk5DMFE2RG52cVp3cUJzREljc2tfaW5kanpaR00?oc=5",
+          "source": "TVBS",
+          "published_at": "2026-11-21T04:36+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "產業消息",
-          "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - Zacks Investment Research",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTXJxZ0p3M0tMdjVrTEVwd2pPdFp2eDNtTUlhX2VKbUFidmR3NkJVcVc1VWw0d2lyS29BTmRhdXk3Y1hJRWlTNjBqMjhyZ2dDYlEySE9nempnNko2aEhmLWsza2JVSFI2MlhKRUlzSGlmZXNWYWlDSHVZbWtUT2taam5USUFnZmFiWUd6VjFzalpuZGhEMC1RTTVUSExJR3BoTF9XVzIxWkc?oc=5",
-          "source": "Zacks Investment Research",
-          "published_at": "2026-11-18T19:30+00:00",
+          "title": "【23:19 即時新聞】Taiwan Semiconductor Manufacturing (TSM) 跌5%／跟隨AI晶片與半導體族群遭恐慌性賣壓 - CMoney投資網誌",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQy1hd01YR2JUQUNiUUN0SlA3SERjREFDMkg5Znh5WW1KaklEWldLaE1jVU1pSk1VQnZBdllQWmV2WENXLTRTOGtPTlVBTElBdjdMZUdJRndTSkM2UDFxb2FraHZzeXVTV3dSMG84aGdpckQ2dGh5QUd5ZERCVUdmaGM4aWtQaldLVUhKdnRR?oc=5",
+          "source": "CMoney投資網誌",
+          "published_at": "2026-11-20T15:20+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Global Markets Weekly Update - T. Rowe Price",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1qakRVSDU2ME9Gb2RiUFFBNmVuS1BFRHdBVF9hUkF5VzVJQS1FR3lRSmxwaHd5Wjk2VzlHMkxncU1WU0ZjWXA4ZjNjempMWXZGVFpnVnFHSWxKVDF3RjBkXzNSd1FWc1o4RjVqZDNYaklNUUdVckllTl9B?oc=5",
+          "source": "T. Rowe Price",
+          "published_at": "2026-11-20T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Weekly market wrap - Edward Jones",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPeVcxcmtaeVJRVm9kQ2VyWmVQNG9GNDZzWkJpT01xTUFJbVhYdGF6dG1qZndCb2hFaHhCM0I5NFk2RGxhY1drcWRHVnhyNzc0RWJvTU50S0dnWENrRk1UYVQ4S25xVHBtYzJsU1dabkhWeVBCckxzTHRpS3M2dklsOF84LTJRV1RJLVFRVUdGbHh2SE5CbFVPQVpROGtRa2M?oc=5",
+          "source": "Edward Jones",
+          "published_at": "2026-11-20T08:00+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "war"
+          ]
+        },
+        {
+          "category": "產業消息",
+          "title": "美國AI晶片管制3台廠不同調！台積電代工加嚴　另2家列白名單 - ETtoday財經雲",
+          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9EVjNhOTR1MjRKdmwtVEQ1UldhX1BqdkViazk2SEFVZy0yclVvWHlHOU5VNk4tTzNFNXFwdlhvZF9jT0tzdE4wZHVOa0ZCSDBtQ0HSAVBBVV95cUxPQmxLYWxlVXUwQzFNdDVKZUw1SkgycC1fRUVGblo3LWtYWl82RzhZYkJ5SHhraDM5TmNQNkFEck8yMmhUZmhYYzIyc0l2ZzljQw?oc=5",
+          "source": "ETtoday財經雲",
+          "published_at": "2026-11-19T13:36+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14928,6 +15004,16 @@
           "negative_terms": []
         },
         {
+          "category": "國際市場",
+          "title": "Nasdaq opens 1.5% lower as Nvidia earnings and Anthropic IPO weigh on AI stocks - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRnFOTGU1QTVrVy1Sdm9sd0szMmJwSTF6Z1VXR2x1LUQtOGFLUGR1bWQ5Zi1nXzcxMXh5c2ZRM1FLdkNzSk9VMVBSQXA4azN6QWdJc1c4anpTbEJNODlTWFczSGtNOHg1aFJkMGpxb0VNYTA0Y0lsQ3M1V2RHNEVwQ2ltYXpJcWo4NzNVSGpXMHVGZkJTSmJrdkVRZzFua05WeGtlNnBDYWNkOV9hLW5RV1dmcjVKYVllaXJtLTJmUGluamtvR2xxQXF1ajItQnNB?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-16T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "台灣市場",
           "title": "台經院2027年景氣預測 2隱憂成經濟拖累 - 三立新聞網SETN.com",
           "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vbGNZdENlcmZ0U25UNzh6UWNQb3Y5RkpocXJPeWdkUzFNZnZHQnU4ZjJ0cll2cDJ4X2NKdTRZU0dZbXVLZEQ5NzNiVQ?oc=5",
@@ -14938,125 +15024,17 @@
           "negative_terms": []
         },
         {
-          "category": "台灣市場",
-          "title": "最新台股資金輪動！外資創3025億賣超紀錄，避險買盤湧入金融與航運族群-財經焦點情報站 - CMoney投資網誌",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVk5Vbmx1Q2NBRzBaZVNkbWRjNl8tVDNwREV0VGdKUU5HTDhaaUV0SzlmT3BUTWd4U1pIVXhfLS0zVTg2MjZqUm1MMHg5WFllWkFNRTE4dlFjQTQ2OEtiM1pkNzVPNUZJYWI2c2wydkV6Wk45cHEzLVJneE16a0w1VTdR?oc=5",
-          "source": "CMoney投資網誌",
-          "published_at": "2026-11-02T08:00+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "賣超"
-          ]
-        },
-        {
-          "category": "台灣市場",
-          "title": "《農經人語》經濟成長創半世紀新高，臺幣為何還再貶？ - 台灣醒報 Awakening News Network",
-          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9FTHFLR3A3OXhkczFVRjh0Sm4xeFdZcUdkcWxvUHlLdFpzcHhJRTBUOGxURmI3bzhQNzU0ODFPUWtkZ2FPSXRYU3RtNC1KUm9oVE9zWldodw?oc=5",
-          "source": "台灣醒報 Awakening News Network",
-          "published_at": "2026-11-01T07:00+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "成長"
-          ],
-          "negative_terms": []
-        },
-        {
           "category": "產業消息",
-          "title": "2027半導體產能爭奪戰：NVIDIA、AMD、Google 供應鏈資金實力深度解析｜股市話題｜豐雲學堂2026 年 11 月 - 永豐金證券",
-          "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxOVjhCeE5QVU90eURyYXNuSHZTUF9Jd0xoUEo5NXFBX1cxS1hNZG1CdHpJbW9XOHRjTlVFSzZZOHBTUV9May1fb0lHSVJqem5yMVVQSWw2bXJjdXM5X2ZwM0thakhjRHhmMkRLQnN5bnBHeERDTlBDM0NLRnhmakRORGNuU0kwMG92Zng1cU1YWmZCdWs1WlFyekoyOVNLT2xXeER1UDBiNmVpTlV0SjRTVXpfTDJFYjNfZ1VqdFZUVklnLU9nUlIzNVMzYlpwVUNqSW1VRFlPUGJZd2V1MDRQTnQ0elp1MGVvX0VMaTUtMXJISnB5V1VTV0FtVUZtRkVISWV1Z3diLVlBNnNBdW1ZbV9zR0JwOU5EX0J2ZG1VTmZXRlgyVWp2ZUxfU3h5a1hYa2JSenZqZGlaVGRIVmhqMkQ1bGFBSmZKXzM3bFpHQW40ZjlkaURPdmZiaU5fUnVMeVVVR1RtYXd4Z0R4aVN6R25XbEpHakd0d2dHeThZVmkwb2dRMjMzVHFlTWhjZHNkbUE5ZEczMktYLTN5aUtBNy02c0FHQmw3UWZrNkE1bHA?oc=5",
-          "source": "永豐金證券",
-          "published_at": "2026-10-29T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Federal Reserve Votes Unanimously to Raise Rates 25 Basis Points to 3.75%-4.00%; Warsh Defies White House Pressure to Launch Tightening Cycle - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBiUlVZRmEyWHF1andZbE5mUUV6TmFIX1VZZkVQd0RkbDJDRTlqMGVGRzg5ZV90QjV4dWU2Z012eWhpYkxyYkE3UDdJSFZWcXhnSjMyek5ycVViRVNQZmNtMGh5MF9VQmpTWGhXd1RCUUNGejZ3M0E?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-10-23T07:00+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "war"
-          ]
-        },
-        {
-          "category": "台灣市場",
-          "title": "TWA00 加權指數- 台股週跌逾兩千點，外資大賣轉進鋼鐵金融股- 股市爆料同學會 - CMoney",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5sY2UxNndIbDVPNklJeUN1eFFtUXpFanIyNDFETHJVT1lQRTJQdC0tWVpyMXpEbGcyU25tWG5TMDNtTExRak1PNUhsVGx5WHBzRlpkRExTLTE?oc=5",
-          "source": "CMoney",
-          "published_at": "2026-10-17T14:26+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "矽谷晶片新創布局科學運算，Zeus GPU 採台積電製程 - TechNews 科技新報",
-          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSl9uVlpCUndndVB6OUs1T1FQbTlObEhURVdEN2JCQ2tNRUljQ25EWUtVOUN1aEo3Y0tsenIyTjRxazExVVFibjlDdGk4RzRvSkc3elY0ZEdBbjZYNWIyR29QdDRuOXZYYTdIR3Y0OXlrc08xMVA5bDY4QWhnYndXZzlQUTBzY0NkOTJqQjNRQWxoNEJvd3NpbjNITUJwbWFOTV9jNjc1SDdJSkQxck5qem1qR3ljejhvb3c?oc=5",
-          "source": "TechNews 科技新報",
-          "published_at": "2026-10-16T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "台灣市場",
-          "title": "外資超配台灣勝過韓國 台股成全球AI首選 00409A帶台灣投資人反向看全球 - 蕃新聞",
-          "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1YTE9MOVBxRlpKX3F4aC04aTVJOXFmbTJyWWRxZjhCUHd6Wmd6T2sxNUl1X2RLOTBla1UtT0VzVEtRTjVyX3ZEU0dTemQ0ZW5uWWc?oc=5",
-          "source": "蕃新聞",
-          "published_at": "2026-10-08T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "台灣市場",
-          "title": "台股今年漲72％稱霸全球、還能繼續贏韓股？外資給「一組數字」揭答案 - 自由財經",
-          "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9pUzdpejV4VEF6LVBHUmtIZEdvUEd5SHJOT09ULVcwQXNiQkdxaW9WbXMzRE5ycFduUU9zZ1ZqbG5KUWtfMW5qS3VETFBQYUJtYWFQcTNsZEJ2TkZkcjJv0gFkQVVfeXFMT3ZLUWpQZTNQa2xBYWZQcDVLZjgtMkxkTzRWQURmYndNalp3aFpJcmx1Z1lTTnl0RHhmR01nMnpuQjR5TGtjS1Z6eFlOQzROQnE5ZHdFZzAtSjVoOFRvcjYyR2hhUg?oc=5",
-          "source": "自由財經",
-          "published_at": "2026-10-07T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "台灣市場",
-          "title": "AI供應鏈動能猛烈！台股飆漲72%霸榜全球，狠甩南韓成外資首選-財經焦點情報站 - CMoney投資網誌",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPeGIzNzhlVnpueGh5eVhyR2xjak1oeDVkSXBreXotRDNUTmNET05uaFhndl95S25nTlB6Uk1DTWk2S0JCcUtackFPbGl3TUV6aXNNRVFaZTMxRjVVRDdib2xrQjk4TXJleC1BOThzQXhUTkxYamdMRWlJTWlNV3RwVEpR?oc=5",
-          "source": "CMoney投資網誌",
-          "published_at": "2026-10-07T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "台灣市場",
-          "title": "郭恭克專欄》美、台景氣基本面仍強，高利率環境與高股價估值為股市壓力來源 - 信傳媒",
-          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9DTENIMUVZSk1KbzAzT1p4X2NjLXdtRlpHbkt0QWxqQVNQZVVfRHFlS3dNb1hFNUhRVXp5eldmT0NWMVE4Vk54d2tnYXMtbTRCaF9EeExhckI4Zw?oc=5",
-          "source": "信傳媒",
-          "published_at": "2026-10-07T07:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "產業消息",
-          "title": "NVIDIA、台積電同步創高！台股逼近 5 萬點，AI 熱潮延伸半導體供應鏈 - Grenade 手榴彈",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0yV2J1UHFqOVpzUDQxbl9PR2VFbjJKSnhLdWRFVHVVNmpyZTRNXzFjaXJCR2YwY0pwbGxKZ1RzUHplc3NCVHQ0ZklnMWMwWDBxR1pMSi0zaFpFYkdCeVJ0OUlvbXN5aVlQSmUtQ3oyZzFTcVRjMXc?oc=5",
-          "source": "Grenade 手榴彈",
-          "published_at": "2026-10-06T07:00+00:00",
+          "title": "AI市場波動現端倪：超微與台積電財報揭示關鍵差異- 財經新聞 - PChome Online 新聞",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOQnFrMUl2aDRvOHVfbWRvZXRCenJvY1VaT044MXNfRi10RWlsN3RxemxNOENSUVNZWFZxYlBFTjJydW9pYzFYblRxTVoybndMN21aTEFUaFJCRmRYMXhnd1Y3TWdQZDRvam54QVJsbFFQZFc3dTk5NEZsQzFOd0ZMUHpWWUl5eWt5TXgyVw?oc=5",
+          "source": "PChome Online 新聞",
+          "published_at": "2026-11-06T01:53+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         }
       ],
-      "source_errors": [
-        "國際市場新聞來源讀取失敗：HTTPError"
-      ],
+      "source_errors": [],
       "limitations": [
         "僅分析 RSS 新聞標題，不代表已閱讀全文或核實事件。",
         "關鍵字可能誤判語境、反諷及利多出盡等情況。",
@@ -15064,10 +15042,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-24T10:16:11+00:00",
+      "generated_at_utc": "2026-11-24T17:52:29+00:00",
       "taiwan_data_date": "2026-11-24",
       "us_session_date": "2026-11-23",
-      "us_timezone_checked_at": "2026-11-24T05:16-05:00",
+      "us_timezone_checked_at": "2026-11-24T12:52-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15304,19 +15282,43 @@
         },
         {
           "group": "國際新聞",
-          "title": "小龍說了11月22日後股市會轉勢，今晚美股為何會反彈，下一時間在何時，可以在系統找到 - 鉅亨號",
-          "date": "2026-11-23 20:40 台北時間",
+          "title": "輝達AI漲勢降溫！美股期指全面下挫 那指跌逾2% - 民視財經網",
+          "date": "2026-11-24 22:26 台北時間",
           "tone": "待判讀",
-          "detail": "鉅亨號｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9JaTNXQko2MkJ1VmF4ai03emVoTkNoWGFHYXl6UnlDSnhFRU5pbWFIdVNhdXh6MTZiQWZiVWRfS0I3S2VGOE5sQQ?oc=5"
+          "detail": "民視財經網｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE84U0dSbUtaeUliUGNYeVB5QUhVZUtGU2F1ZDNDaWZjdUNiXzdTRDducjFKX3ljM1BMOXBJMGVsZklhLVBhci16V21ncE1ybTB4X1lXWVB5aHhMSnZjaTJmU0ZGZXNNQQ?oc=5"
         },
         {
           "group": "國際新聞",
-          "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
-          "date": "2026-11-22 19:27 台北時間",
+          "title": "Bessent Warns Fed Overtightening Could Threaten US Economy Amid December Rate Hike Debate - KuCoin",
+          "date": "2026-11-24 18:23 台北時間",
+          "tone": "偏空",
+          "detail": "KuCoin｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YaHRSTDFRVkFzdTRWVFNrZEVGbVRINUo0QVVkMXpnSUhZRjN6RzNCWVdPWmU4VGtyZ29SRkwtLVZxNFAwZ056NmJfaTRzeGJ6N0tPY2VNS1QwMmZWVHZucGhwRXBpcS1fNXc?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Will the Fed Raise Interest Rates in December 2026? What to Know Before the Dec. 9 Decision - Around Prague",
+          "date": "2026-11-24 07:23 台北時間",
           "tone": "待判讀",
-          "detail": "The Financial Express｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnR6RVpKLVRnTDdUbFJIRmVLWEl5UmxNZmI1ZHRzX0JsWG9jZmNUNUQ5X19vWll2QjJFekJ5NXhqdjUxc0dxWUM0MjY5SXNRYzlDcURkMXJMZmlyQW1RbTNrQmtESVF3QUlxWGItSjBGdDB4TFVKWW4wZHRTaFZiTU5TOFlyY0t5MVNqQVR0SVRPb3d1VlgxQm9JU1lLY1BPbkxMWDM0eng?oc=5"
+          "detail": "Around Prague｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSExVWUhSWUR3VW5lejh6Szk2VFZsb19ZZnFMRzMyQW1YUzU5bDd1dWZoYUpqUlM4bmFyUk1nc2tGOGY0eWNIRXViUmZwLVR0UkMtSmxCVGMweEJ2SXdwMzVxelZROGs3SFZNZktlcmxJRnB0Yks2QUNjVjJIaGE5SWR1bHZZbFBkbHpyWnFqcXo1SHBmbndvb2ZNWmFsV1RSc2M0ZDNabS1kSDlUZHRRZnU5TQ?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
+          "date": "2026-11-23 09:24 台北時間",
+          "tone": "偏多",
+          "detail": "Chosunbiz｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMXJ0ZGNGUGVYTi1oUERuSmloeWttUEo5LVVwLUwtVk9QcVNoSVpxMHRmN0did3lqeHBsOEE2RXZZd3V3ZjRrWHBRVWtrazYwNERueU42NlBtQ1BfcGZhSm51QnU3NVZDYTlQR0NfekRDM01mTDRySm9JTktMajFibU4tR3NUTHQxT0FSZUVacS12WlY5WUx1bDdkdFnSAZwBQVVfeXFMTzFydGRjRlBlWE4taFBEbkppaHlrbVBKOS1VcC1MLVZPUHFTaElacTB0ZjdHYnd5anhwbDhBNkV2WXd1d2Y0a1hwUVVra2s2MDREbnlONjZQbUNQX3BmYUpudUJ1NzVWQ2E5UEdDX3pEQzNNZkw0ckpvSU5LTGoxYm1OLUdzVEx0MU9BUmVFWnEtdlpWOVlMdWw3ZHRZ?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "GDP飆48年新高，新台幣為何還在貶？看懂出口繁榮與匯率背離的真相 - TNL The News Lens 關鍵評論網",
+          "date": "2026-11-23T09:00+00:00",
+          "tone": "待判讀",
+          "detail": "TNL The News Lens 關鍵評論網｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5lbksxMjBQbTA5eU81czFLTnhMRi1aSmMta2VyTWk3X25wVXpHWk94UjhuWUd0V0JIakN4YVR6UFQwRVNXUnpiQ2xBZFVYSzZPRVRndA?oc=5"
         },
         {
           "group": "產業新聞",
@@ -15330,28 +15332,67 @@
       "us_news": [
         {
           "category": "國際市場",
-          "title": "小龍說了11月22日後股市會轉勢，今晚美股為何會反彈，下一時間在何時，可以在系統找到 - 鉅亨號",
-          "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9JaTNXQko2MkJ1VmF4ai03emVoTkNoWGFHYXl6UnlDSnhFRU5pbWFIdVNhdXh6MTZiQWZiVWRfS0I3S2VGOE5sQQ?oc=5",
-          "source": "鉅亨號",
-          "published_at": "2026-11-23T12:40+00:00",
+          "title": "輝達AI漲勢降溫！美股期指全面下挫 那指跌逾2% - 民視財經網",
+          "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE84U0dSbUtaeUliUGNYeVB5QUhVZUtGU2F1ZDNDaWZjdUNiXzdTRDducjFKX3ljM1BMOXBJMGVsZklhLVBhci16V21ncE1ybTB4X1lXWVB5aHhMSnZjaTJmU0ZGZXNNQQ?oc=5",
+          "source": "民視財經網",
+          "published_at": "2026-11-24T14:26+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-23 20:40 台北時間"
+          "published_at_taipei": "2026-11-24 22:26 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnR6RVpKLVRnTDdUbFJIRmVLWEl5UmxNZmI1ZHRzX0JsWG9jZmNUNUQ5X19vWll2QjJFekJ5NXhqdjUxc0dxWUM0MjY5SXNRYzlDcURkMXJMZmlyQW1RbTNrQmtESVF3QUlxWGItSjBGdDB4TFVKWW4wZHRTaFZiTU5TOFlyY0t5MVNqQVR0SVRPb3d1VlgxQm9JU1lLY1BPbkxMWDM0eng?oc=5",
-          "source": "The Financial Express",
-          "published_at": "2026-11-22T11:27+00:00",
+          "title": "Bessent Warns Fed Overtightening Could Threaten US Economy Amid December Rate Hike Debate - KuCoin",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YaHRSTDFRVkFzdTRWVFNrZEVGbVRINUo0QVVkMXpnSUhZRjN6RzNCWVdPWmU4VGtyZ29SRkwtLVZxNFAwZ056NmJfaTRzeGJ6N0tPY2VNS1QwMmZWVHZucGhwRXBpcS1fNXc?oc=5",
+          "source": "KuCoin",
+          "published_at": "2026-11-24T10:23+00:00",
+          "keyword_score": -2,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike",
+            "war"
+          ],
+          "published_at_taipei": "2026-11-24 18:23 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "Will the Fed Raise Interest Rates in December 2026? What to Know Before the Dec. 9 Decision - Around Prague",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSExVWUhSWUR3VW5lejh6Szk2VFZsb19ZZnFMRzMyQW1YUzU5bDd1dWZoYUpqUlM4bmFyUk1nc2tGOGY0eWNIRXViUmZwLVR0UkMtSmxCVGMweEJ2SXdwMzVxelZROGs3SFZNZktlcmxJRnB0Yks2QUNjVjJIaGE5SWR1bHZZbFBkbHpyWnFqcXo1SHBmbndvb2ZNWmFsV1RSc2M0ZDNabS1kSDlUZHRRZnU5TQ?oc=5",
+          "source": "Around Prague",
+          "published_at": "2026-11-23T23:23+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-22 19:27 台北時間"
+          "published_at_taipei": "2026-11-24 07:23 台北時間"
+        },
+        {
+          "category": "國際市場",
+          "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMXJ0ZGNGUGVYTi1oUERuSmloeWttUEo5LVVwLUwtVk9QcVNoSVpxMHRmN0did3lqeHBsOEE2RXZZd3V3ZjRrWHBRVWtrazYwNERueU42NlBtQ1BfcGZhSm51QnU3NVZDYTlQR0NfekRDM01mTDRySm9JTktMajFibU4tR3NUTHQxT0FSZUVacS12WlY5WUx1bDdkdFnSAZwBQVVfeXFMTzFydGRjRlBlWE4taFBEbkppaHlrbVBKOS1VcC1MLVZPUHFTaElacTB0ZjdHYnd5anhwbDhBNkV2WXd1d2Y0a1hwUVVra2s2MDREbnlONjZQbUNQX3BmYUpudUJ1NzVWQ2E5UEdDX3pEQzNNZkw0ckpvSU5LTGoxYm1OLUdzVEx0MU9BUmVFWnEtdlpWOVlMdWw3ZHRZ?oc=5",
+          "source": "Chosunbiz",
+          "published_at": "2026-11-23T01:24+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-23 09:24 台北時間"
         }
       ],
-      "domestic_news": [],
+      "domestic_news": [
+        {
+          "category": "台灣市場",
+          "title": "GDP飆48年新高，新台幣為何還在貶？看懂出口繁榮與匯率背離的真相 - TNL The News Lens 關鍵評論網",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5lbksxMjBQbTA5eU81czFLTnhMRi1aSmMta2VyTWk3X25wVXpHWk94UjhuWUd0V0JIakN4YVR6UFQwRVNXUnpiQ2xBZFVYSzZPRVRndA?oc=5",
+          "source": "TNL The News Lens 關鍵評論網",
+          "published_at": "2026-11-23T09:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-23 17:00 台北時間"
+        }
+      ],
       "industry_news": [
         {
           "category": "產業消息",

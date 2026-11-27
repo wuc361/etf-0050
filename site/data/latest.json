@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-27T03:49:19+00:00",
+  "generated_at_utc": "2026-11-27T04:18:06+00:00",
   "data_as_of": "2026-11-26",
   "latest_close": 92.85,
   "price_validation": {
@@ -19,8 +19,8 @@
   "forecasts": {
     "1d": {
       "direction": "DOWN",
-      "up_probability": 0.215368,
-      "down_probability": 0.784632,
+      "up_probability": 0.217325,
+      "down_probability": 0.782675,
       "backtest": {
         "accuracy": 0.6901121304791029,
         "balanced_accuracy": 0.6880334762876297,
@@ -36,8 +36,8 @@
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.541605,
-      "down_probability": 0.458395,
+      "up_probability": 0.55261,
+      "down_probability": 0.44739,
       "backtest": {
         "accuracy": 0.5658835546475995,
         "balanced_accuracy": 0.5604603112774569,
@@ -53,8 +53,8 @@
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.590235,
-      "down_probability": 0.409765,
+      "up_probability": 0.593113,
+      "down_probability": 0.406887,
       "backtest": {
         "accuracy": 0.548618219037871,
         "balanced_accuracy": 0.5299088166735226,
@@ -71,13 +71,13 @@
   },
   "opening_gap_forecast": {
     "direction": "DOWN",
-    "up_probability": 0.166498,
-    "down_probability": 0.833502,
+    "up_probability": 0.166769,
+    "down_probability": 0.833231,
     "backtest": {
       "accuracy": 0.7798165137614679,
       "balanced_accuracy": 0.7777462745065338,
       "up_recall": 0.8146718146718147,
-      "brier_score": 0.1495957517997944,
+      "brier_score": 0.14959575180279222,
       "majority_baseline_accuracy": 0.528032619775739,
       "accuracy_lift_vs_baseline": 0.25178389398572887,
       "base_rate": 0.528032619775739,
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2193,
       "stored_rows": 369,
-      "updated_at_taipei": "2026-11-27T11:49:26+08:00",
+      "updated_at_taipei": "2026-11-27T12:18:16+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,9 +148,9 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.24709456878185257,
-      "Random Forest": 0.21536803738049698,
-      "Extra Trees": 0.23061933436287516
+      "Logistic Regression": 0.2533692128243998,
+      "Random Forest": 0.21732530050788115,
+      "Extra Trees": 0.23290711265037456
     },
     "historical_balanced_accuracy": 0.6901611358620977,
     "historical_brier_score": 0.19600090936482015,
@@ -14595,8 +14595,8 @@
   ],
   "forecast": {
     "direction": "DOWN",
-    "up_probability": 0.215368,
-    "down_probability": 0.784632,
+    "up_probability": 0.217325,
+    "down_probability": 0.782675,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
@@ -14647,7 +14647,7 @@
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.005977,
+        "latest_return": 0.004103,
         "tone": "偏多"
       },
       {
@@ -14657,7 +14657,7 @@
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.007412,
+        "latest_return": -0.00684,
         "tone": "偏空"
       },
       {
@@ -14677,12 +14677,12 @@
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-27T03:50:21+00:00",
+      "generated_at_utc": "2026-11-27T04:19:08+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -2,
-        "article_count": 14,
+        "keyword_score": -1,
+        "article_count": 12,
         "items": [
           {
             "category": "國際市場",
@@ -14700,36 +14700,6 @@
           },
           {
             "category": "國際市場",
-            "title": "US PCE inflation due as markets brace for December Fed hike and firmer dollar dynamics - VT Markets",
-            "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZ3pEUDFvRTdtZ0JUbFNqVXhWMVY5alpkY2VTM2gtTkVkQzRrb29FZlRrd3J6YmJoU3JrV3E0YUZEcDJieFVVRGxiYmNWWlZGUEVQaTVENVdYUVJHNHludk1NblF1SjRRNFNnd3QxSVkyZWRHLXN5S0FMRFo5RThQS1hYU0xwV2Y0OFBqZnB3c3JHWkFDMnAzd21Jbkt3RXFqTV9PdzNYWHI2R0lTc3Fqb0FPNUdyYW1UdXRFejRlZWU1UFY4UjA5ZFhhUjVhcTZK?oc=5",
-            "source": "VT Markets",
-            "published_at": "2026-11-26T14:35+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
-            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
-            "source": "cwibc.co.id",
-            "published_at": "2026-11-26T03:03+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
-            "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
-            "source": "Forbes Middle East",
-            "published_at": "2026-11-25T20:33+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
             "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
             "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
             "source": "Seeking Alpha",
@@ -14740,22 +14710,52 @@
           },
           {
             "category": "國際市場",
-            "title": "Fed's preferred gauge of inflation climbs ahead of possible rate hike - ABC News - Breaking News, Latest News and Videos",
-            "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbFd6dlZlV25JVlBjcjRXWWdYUTdqd2ZBeG1WbGI3Z1dGRjhwN0pCWEJteUN2YVBvSHFXbHl2M3VPcS05WU9TTWlQaVpZS3BVTTV1Sk1kVTNDSXQyOWlMLUJOT1ViUnhGUnM0Qkhxc3BGUlFMeUU2aHVBYy1SQTJPNVZDZUJwWkdhLUVUdWZNREdxaHI2R1BROTZlbTliVHZCVFdUWGMzaU02UdIBrwFBVV95cUxPWE1jU1l6LVdTcGhmTWp6aUROSnFNX0tsQVF2Q0FRam85VGs4SS1CNlg3VUpSRF95Y0Z1cnRzdGtGOWM0YWJLUTNhRElWVTNaQzdjVHA3TzYyN25yOTlyMV9qZzhzLTRZNHlDMFF4emdVQU9UbGZnWnktMC1tNTFQUURsN1NxRW05TUhyNW1odXcwbWI0T2xnYXlkdXkyaXNpS0VXMGlVZDVHcGNpamkw?oc=5",
-            "source": "ABC News - Breaking News, Latest News and Videos",
-            "published_at": "2026-11-25T14:23+00:00",
+            "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
+            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5",
+            "source": "BigGo Finance",
+            "published_at": "2026-11-25T10:35+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "US Stock Market Today: 5 Critical Moves as Nasdaq Falls - STL.News",
+            "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVbC1hQ21hMFNOejE4VGdfNHVaN094c2dVYmRLaU5fNm5ERkJaNVduZTVWY3BDV2xNUTVGQ0hoSGxnYUdfbzZzV3otaFRNVDVSYnpka21NRUo1Mk1fYUVIaHFZaWhwX3ZqZ0NXdw?oc=5",
+            "source": "STL.News",
+            "published_at": "2026-11-24T23:14+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "國際市場",
+            "title": "Nasdaq 100 Tumbles as Nvidia Euphoria Fades, New Tariffs Floated - Bloomberg.com",
+            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQcHhkVFpXSmc2SFJ3VEV3WHg5Vm4xYmRlM2l5R3Z2TEx6emJsdVRiQVBJTjJpaDJ3X2NsZFBURUR4anlRVDY4aTl0cHFvUzFTWUw5VUtXcE5pSEt1TzNPTWlXU0xHYV84QjVURk9LV1pFRGloYTQ1aU1iUmJ4TlN1NlVRYXN6QS1ub2Z6Mm1HMlNXS0hYV1YxNzF5SV9MSUNkNUtRTnRqb1phaUlESmRaMUxjcTM0dw?oc=5",
+            "source": "Bloomberg.com",
+            "published_at": "2026-11-24T21:39+00:00",
             "keyword_score": -1,
             "positive_terms": [],
             "negative_terms": [
-              "rate hike"
+              "tariff"
             ]
+          },
+          {
+            "category": "國際市場",
+            "title": "US stock market today: Nasdaq and S&P 500 fall as Nvidia and AI stocks slide, Dow gains - Beinsure",
+            "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPWXhISFVWZllNX2ItSVRiWFVqSDFNQzloY29ZNGJjR04wa2lyRWx5Q1Nibjk1SGEzOHNMN0FrU2RiLV9JNW8yQjdHa25EZWRYLXliQzc2RDh5YWRUUHlWX1FRcHpNZmJySFJXM0t1d0lRd1RsSGNpSWF5NTJjNjV4UHR3?oc=5",
+            "source": "Beinsure",
+            "published_at": "2026-11-24T20:08+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           }
         ]
       },
       "domestic": {
         "tone": "偏空",
         "keyword_score": -4,
-        "article_count": 4,
+        "article_count": 5,
         "items": [
           {
             "category": "台灣市場",
@@ -14804,14 +14804,35 @@
             "negative_terms": [
               "升息"
             ]
+          },
+          {
+            "category": "台灣市場",
+            "title": "台幣匯率升值、貶值對台股有什麼影響？從歷史數據看懂外資動向與受惠股｜豐雲學堂2026 年 11 月 - 永豐金證券",
+            "url": "https://news.google.com/rss/articles/CBMi8gNBVV95cUxOUTBDWGZhZk4zcTlnVnREbGZ5UFplSG9RRl9ISFMyMC1DN0tyWjU3TGpUMTlvTzg5UF9uZjBRYzNBYzY0QXVnQmRydk9NcDhac0VhOGZqZ1UtWkpxVnQzVDJvWXBCeHRBQjlQWjRWZFNGM1pzejd3RDVNaWFwcXVVUXZYYmRhX0FWbjdmbTAzaWlkUThDQzB5MjRvMU93b3hHWElRVU5PNDJiT0oxNDRad3lQdHVuT0xTT19TbnRhZ2hlcXBleFJVQWtsUnExeEdpZXpkRm9QZS1FMnpIODV6cEVJM094Ul80NHFrUXpwdkVvVmlYT043dm8tbXRSRUIwQkJ3MFRCWGQzbnBoeTdlSms0Q0pZa0c2SzdIaW42VGpTeGFZbHVGQU0xaTJzSHVMVHRSeVVHMEVrVExIa0tMT3FMdHE1UE43bFRhNk5FdTZpbkxtc0M5NjhjckZGQWs3R1JGaWQtU2kxMGtsWVg1WWlFLXZ1aDhWc1piUVN4a2ZBUTZvQzlPMzhUc3BrOXluRzZxenZaM09US3dxV1JzSC1zNU52c19qVjd3VnhJYUx0U2JHZkVJYTlUclFobG5BX3BROHFtRGR2cnlMN014c29sRVhPVU03Xzh2cmc5cXJPakZvdkFBSFI5ZGNOQzJoNlE?oc=5",
+            "source": "永豐金證券",
+            "published_at": "2026-11-17T06:35+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
           }
         ]
       },
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 0,
-        "items": []
+        "article_count": 1,
+        "items": [
+          {
+            "category": "產業消息",
+            "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - TradingView",
+            "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOOEFTYXBoeHZhdWRiOE9ySEgtbTZTZ0xOVEZHVFNabjhySHFpaXNDVlNtQVpxQkw3ZGxNUnRwczFkRmNTWU9SSVFYNjNCa3J6TlQ5cU9hUS1LYXJnQ3pZcU1zcEVBXzFyV3lwT2J1MTJCYnh0ejZENHZTb2hMXzhhWnhoc01xRGNRajB3ckttZGN2ZlZVRlB2OGRaUnU2QUR6T1EteVZER3I5akVBTS1xUjhNYzN0TVlZU0pvRWRB?oc=5",
+            "source": "TradingView",
+            "published_at": "2026-11-18T08:00+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          }
+        ]
       },
       "items": [
         {
@@ -14827,16 +14848,6 @@
           "negative_terms": [
             "selloff"
           ]
-        },
-        {
-          "category": "國際市場",
-          "title": "US PCE inflation due as markets brace for December Fed hike and firmer dollar dynamics - VT Markets",
-          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZ3pEUDFvRTdtZ0JUbFNqVXhWMVY5alpkY2VTM2gtTkVkQzRrb29FZlRrd3J6YmJoU3JrV3E0YUZEcDJieFVVRGxiYmNWWlZGUEVQaTVENVdYUVJHNHludk1NblF1SjRRNFNnd3QxSVkyZWRHLXN5S0FMRFo5RThQS1hYU0xwV2Y0OFBqZnB3c3JHWkFDMnAzd21Jbkt3RXFqTV9PdzNYWHI2R0lTc3Fqb0FPNUdyYW1UdXRFejRlZWU1UFY4UjA5ZFhhUjVhcTZK?oc=5",
-          "source": "VT Markets",
-          "published_at": "2026-11-26T14:35+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
         },
         {
           "category": "台灣市場",
@@ -14876,26 +14887,6 @@
         },
         {
           "category": "國際市場",
-          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
-          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
-          "source": "cwibc.co.id",
-          "published_at": "2026-11-26T03:03+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
-          "source": "Forbes Middle East",
-          "published_at": "2026-11-25T20:33+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
           "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
           "source": "Seeking Alpha",
@@ -14903,18 +14894,6 @@
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Fed's preferred gauge of inflation climbs ahead of possible rate hike - ABC News - Breaking News, Latest News and Videos",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbFd6dlZlV25JVlBjcjRXWWdYUTdqd2ZBeG1WbGI3Z1dGRjhwN0pCWEJteUN2YVBvSHFXbHl2M3VPcS05WU9TTWlQaVpZS3BVTTV1Sk1kVTNDSXQyOWlMLUJOT1ViUnhGUnM0Qkhxc3BGUlFMeUU2aHVBYy1SQTJPNVZDZUJwWkdhLUVUdWZNREdxaHI2R1BROTZlbTliVHZCVFdUWGMzaU02UdIBrwFBVV95cUxPWE1jU1l6LVdTcGhmTWp6aUROSnFNX0tsQVF2Q0FRam85VGs4SS1CNlg3VUpSRF95Y0Z1cnRzdGtGOWM0YWJLUTNhRElWVTNaQzdjVHA3TzYyN25yOTlyMV9qZzhzLTRZNHlDMFF4emdVQU9UbGZnWnktMC1tNTFQUURsN1NxRW05TUhyNW1odXcwbWI0T2xnYXlkdXkyaXNpS0VXMGlVZDVHcGNpamkw?oc=5",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "published_at": "2026-11-25T14:23+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ]
         },
         {
           "category": "台灣市場",
@@ -14940,30 +14919,10 @@
         },
         {
           "category": "國際市場",
-          "title": "US PCE Inflation Data and Q3 GDP Due Today; Key Numbers to Watch Ahead of December Fed Rate Decision - Kotak Neo",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNMzRJdVRHRFk5NjA5c2FRRVkwZzllSzFiODNwbHhjeVZTaDk5R3pnR1dOVmpncTNlRmRubnVyd1lJRndqMy1GVC1LODNTMm9nVTF3U0FhTkw3aHFfcWk5U1gteV9JZl90WG1xMzVlSkM1SmkxaXplQ0FmRDdfcGplMUxrMjl4MDZFZnVzUFBIekhqTzBoM29mdURqampfaEFsaklKVWdfUlBMOVF5ZkE3VjJraXduZUtKWnk5cV83Y1U3a3lUaUE?oc=5",
-          "source": "Kotak Neo",
-          "published_at": "2026-11-25T05:09+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
           "title": "US Stock Market Today: 5 Critical Moves as Nasdaq Falls - STL.News",
           "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVbC1hQ21hMFNOejE4VGdfNHVaN094c2dVYmRLaU5fNm5ERkJaNVduZTVWY3BDV2xNUTVGQ0hoSGxnYUdfbzZzV3otaFRNVDVSYnpka21NRUo1Mk1fYUVIaHFZaWhwX3ZqZ0NXdw?oc=5",
           "source": "STL.News",
           "published_at": "2026-11-24T23:14+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "US PCE preview: inflation seen near 3.8% in the Fed's last read before a December hike - investingLive",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVWtwTkZnMzg2RE9pRG9ENm5iNzNwZ2lRSXVXbVhQMHlfVk92LW05ZURYUTBLY08wbkFxTUlFS2s5N2MtVFQ1Z1hyRFcyOVBIX0RsMzBZVlcteGgtRTJwWjBGWFF2aVMyWURfeG1LU2tJSUFvXzh1MDdscm5STkl4dlNTUGozaHFsUVZGTE93ZUtuODBTbUFvX1dCUG5YSzg4WG5obnpHUndPQnBtYmc3LWNWV29mYUFEV0FPYzhDMG9rU0E?oc=5",
-          "source": "investingLive",
-          "published_at": "2026-11-24T22:47+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -14992,28 +14951,86 @@
         },
         {
           "category": "國際市場",
-          "title": "Bessent Warns Fed Overtightening Could Threaten US Economy Amid December Rate Hike Debate - KuCoin",
-          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1YaHRSTDFRVkFzdTRWVFNrZEVGbVRINUo0QVVkMXpnSUhZRjN6RzNCWVdPWmU4VGtyZ29SRkwtLVZxNFAwZ056NmJfaTRzeGJ6N0tPY2VNS1QwMmZWVHZucGhwRXBpcS1fNXc?oc=5",
-          "source": "KuCoin",
-          "published_at": "2026-11-24T10:23+00:00",
-          "keyword_score": -2,
+          "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNWWRBbXlkYjVPc2dHRHhPR1lxUk9mb0xMbm1lTkdqY3dtaG5YYnNxcThhV2loTzh5aEJrbUdIRzdnTzZCektHUFRvOXdRSThaNGdueHRJODNvcmNIVWtrMXZuNGF4QXY2dTM3TWFrWUpUNUU4dVIxZzhSRFhjVUg4WV9GcGZFV0Jq0gGcAUFVX3lxTE8xcnRkY0ZQZVhOLWhQRG5KaWh5a21QSjktVXAtTC1WT1BxU2hJWnEwdGY3R2J3eWp4cGw4QTZFdll3dXdmNGtYcFFVa2trNjA0RG55TjY2UG1DUF9wZmFKbnVCdTc1VkNhOVBHQ196REMzTWZMNHJKb0lOS0xqMWJtTi1Hc1RMdDFPQVJlRVpxLXZaVjlZTHVsN2R0WQ?oc=5",
+          "source": "Chosunbiz",
+          "published_at": "2026-11-23T01:24+00:00",
+          "keyword_score": 1,
+          "positive_terms": [
+            "rally"
+          ],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
+          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPT21pLWhpR0tjQkhQLWE5NDc4SGNjMjVUdS12eDFpNTZEWEs5UWp3UGxaWVVDVTRSNG5VUi1rWnV5Ymd6MW5NQWNPUXlIWFdOUVF5bzVpWW9XRHJCRFIzR1JkMFhLUEFBMHN3SFREZkRrN1JJX2pSOWRRSkNJVll4SzRPaHZhTjI3LU5ZNVd5akctc09lVnhocThBYw?oc=5",
+          "source": "The Financial Express",
+          "published_at": "2026-11-22T11:27+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "CBOE Volatility Index (VIX) forecast: US stock market fear signals a possible bottom - Beinsure",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNX2VsN2tRUFVVV2tNRktWbThwcGtMUExwNGpWbXZLN3dnLXpmT0JWNHVRUlNaV05wLTBBSC1rYWJxSDVla1pIcEp3cnFMR2lmMzNZZEdza3Rrd292SHYzR1R6d1NkSWhYOXdKV01nTjZnVmtqaUhQMFhBWTg3VU5xTkxqTUdhQnFoWUN4ZGZ2dDI1d2hVRjBhT084VDZsc2RMbVRVZVpqaXFOMjha?oc=5",
+          "source": "Beinsure",
+          "published_at": "2026-11-20T18:28+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Global Markets Weekly Update - T. Rowe Price",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1qakRVSDU2ME9Gb2RiUFFBNmVuS1BFRHdBVF9hUkF5VzVJQS1FR3lRSmxwaHd5Wjk2VzlHMkxncU1WU0ZjWXA4ZjNjempMWXZGVFpnVnFHSWxKVDF3RjBkXzNSd1FWc1o4RjVqZDNYaklNUUdVckllTl9B?oc=5",
+          "source": "T. Rowe Price",
+          "published_at": "2026-11-20T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Weekly market wrap - Edward Jones",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPeVcxcmtaeVJRVm9kQ2VyWmVQNG9GNDZzWkJpT01xTUFJbVhYdGF6dG1qZndCb2hFaHhCM0I5NFk2RGxhY1drcWRHVnhyNzc0RWJvTU50S0dnWENrRk1UYVQ4S25xVHBtYzJsU1dabkhWeVBCckxzTHRpS3M2dklsOF84LTJRV1RJLVFRVUdGbHh2SE5CbFVPQVpROGtRa2M?oc=5",
+          "source": "Edward Jones",
+          "published_at": "2026-11-20T08:00+00:00",
+          "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
-            "rate hike",
             "war"
           ]
         },
         {
+          "category": "產業消息",
+          "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOOEFTYXBoeHZhdWRiOE9ySEgtbTZTZ0xOVEZHVFNabjhySHFpaXNDVlNtQVpxQkw3ZGxNUnRwczFkRmNTWU9SSVFYNjNCa3J6TlQ5cU9hUS1LYXJnQ3pZcU1zcEVBXzFyV3lwT2J1MTJCYnh0ejZENHZTb2hMXzhhWnhoc01xRGNRajB3ckttZGN2ZlZVRlB2OGRaUnU2QUR6T1EteVZER3I5akVBTS1xUjhNYzN0TVlZU0pvRWRB?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-18T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "台幣匯率升值、貶值對台股有什麼影響？從歷史數據看懂外資動向與受惠股｜豐雲學堂2026 年 11 月 - 永豐金證券",
+          "url": "https://news.google.com/rss/articles/CBMi8gNBVV95cUxOUTBDWGZhZk4zcTlnVnREbGZ5UFplSG9RRl9ISFMyMC1DN0tyWjU3TGpUMTlvTzg5UF9uZjBRYzNBYzY0QXVnQmRydk9NcDhac0VhOGZqZ1UtWkpxVnQzVDJvWXBCeHRBQjlQWjRWZFNGM1pzejd3RDVNaWFwcXVVUXZYYmRhX0FWbjdmbTAzaWlkUThDQzB5MjRvMU93b3hHWElRVU5PNDJiT0oxNDRad3lQdHVuT0xTT19TbnRhZ2hlcXBleFJVQWtsUnExeEdpZXpkRm9QZS1FMnpIODV6cEVJM094Ul80NHFrUXpwdkVvVmlYT043dm8tbXRSRUIwQkJ3MFRCWGQzbnBoeTdlSms0Q0pZa0c2SzdIaW42VGpTeGFZbHVGQU0xaTJzSHVMVHRSeVVHMEVrVExIa0tMT3FMdHE1UE43bFRhNk5FdTZpbkxtc0M5NjhjckZGQWs3R1JGaWQtU2kxMGtsWVg1WWlFLXZ1aDhWc1piUVN4a2ZBUTZvQzlPMzhUc3BrOXluRzZxenZaM09US3dxV1JzSC1zNU52c19qVjd3VnhJYUx0U2JHZkVJYTlUclFobG5BX3BROHFtRGR2cnlMN014c29sRVhPVU03Xzh2cmc5cXJPakZvdkFBSFI5ZGNOQzJoNlE?oc=5",
+          "source": "永豐金證券",
+          "published_at": "2026-11-17T06:35+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
           "category": "國際市場",
-          "title": "Stocks Surge as Nvidia Sets Off Tech Rally - The New York Times",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNXRXMlFUQkJfcnJPMGVlaWZRejZzSnVuRWJiV1E3TUM3c3pkWkxSSGZJaGtCcEc0Uzdja0xzbFFNcWRIZEtZNlFHMHNDclAzVzJqUHU2Z2lFRE51V3AwSWV1cnRoamFsbDVleTdVUFVhSElYMEhXTlhiNkhQNWtSZlRGT1FYQURPeE9RTA?oc=5",
-          "source": "The New York Times",
-          "published_at": "2026-11-24T05:31+00:00",
-          "keyword_score": 2,
-          "positive_terms": [
-            "rally",
-            "surge"
-          ],
+          "title": "Nasdaq opens 1.5% lower as Nvidia earnings and Anthropic IPO weigh on AI stocks - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRnFOTGU1QTVrVy1Sdm9sd0szMmJwSTF6Z1VXR2x1LUQtOGFLUGR1bWQ5Zi1nXzcxMXh5c2ZRM1FLdkNzSk9VMVBSQXA4azN6QWdJc1c4anpTbEJNODlTWFczSGtNOHg1aFJkMGpxb0VNYTA0Y0lsQ3M1V2RHNEVwQ2ltYXpJcWo4NzNVSGpXMHVGZkJTSmJrdkVRZzFua05WeGtlNnBDYWNkOV9hLW5RV1dmcjVKYVllaXJtLTJmUGluamtvR2xxQXF1ajItQnNB?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-16T08:00+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
           "negative_terms": []
         }
       ],
@@ -15025,10 +15042,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-27T03:50:21+00:00",
+      "generated_at_utc": "2026-11-27T04:19:08+00:00",
       "taiwan_data_date": "2026-11-26",
       "us_session_date": "2026-11-26",
-      "us_timezone_checked_at": "2026-11-26T22:50-05:00",
+      "us_timezone_checked_at": "2026-11-26T23:19-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15273,35 +15290,19 @@
         },
         {
           "group": "國際新聞",
-          "title": "US PCE inflation due as markets brace for December Fed hike and firmer dollar dynamics - VT Markets",
-          "date": "2026-11-26 22:35 台北時間",
-          "tone": "待判讀",
-          "detail": "VT Markets｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZ3pEUDFvRTdtZ0JUbFNqVXhWMVY5alpkY2VTM2gtTkVkQzRrb29FZlRrd3J6YmJoU3JrV3E0YUZEcDJieFVVRGxiYmNWWlZGUEVQaTVENVdYUVJHNHludk1NblF1SjRRNFNnd3QxSVkyZWRHLXN5S0FMRFo5RThQS1hYU0xwV2Y0OFBqZnB3c3JHWkFDMnAzd21Jbkt3RXFqTV9PdzNYWHI2R0lTc3Fqb0FPNUdyYW1UdXRFejRlZWU1UFY4UjA5ZFhhUjVhcTZK?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
-          "date": "2026-11-26 11:03 台北時間",
-          "tone": "待判讀",
-          "detail": "cwibc.co.id｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
-          "date": "2026-11-26 04:33 台北時間",
-          "tone": "待判讀",
-          "detail": "Forbes Middle East｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5"
-        },
-        {
-          "group": "國際新聞",
           "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
           "date": "2026-11-25 23:59 台北時間",
           "tone": "待判讀",
           "detail": "Seeking Alpha｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5"
+        },
+        {
+          "group": "國際新聞",
+          "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
+          "date": "2026-11-25 18:35 台北時間",
+          "tone": "待判讀",
+          "detail": "BigGo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5"
         },
         {
           "group": "台灣新聞",
@@ -15354,39 +15355,6 @@
         },
         {
           "category": "國際市場",
-          "title": "US PCE inflation due as markets brace for December Fed hike and firmer dollar dynamics - VT Markets",
-          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZ3pEUDFvRTdtZ0JUbFNqVXhWMVY5alpkY2VTM2gtTkVkQzRrb29FZlRrd3J6YmJoU3JrV3E0YUZEcDJieFVVRGxiYmNWWlZGUEVQaTVENVdYUVJHNHludk1NblF1SjRRNFNnd3QxSVkyZWRHLXN5S0FMRFo5RThQS1hYU0xwV2Y0OFBqZnB3c3JHWkFDMnAzd21Jbkt3RXFqTV9PdzNYWHI2R0lTc3Fqb0FPNUdyYW1UdXRFejRlZWU1UFY4UjA5ZFhhUjVhcTZK?oc=5",
-          "source": "VT Markets",
-          "published_at": "2026-11-26T14:35+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-26 22:35 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
-          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
-          "source": "cwibc.co.id",
-          "published_at": "2026-11-26T03:03+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-26 11:03 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
-          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
-          "source": "Forbes Middle East",
-          "published_at": "2026-11-25T20:33+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-26 04:33 台北時間"
-        },
-        {
-          "category": "國際市場",
           "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
           "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
           "source": "Seeking Alpha",
@@ -15398,19 +15366,6 @@
         },
         {
           "category": "國際市場",
-          "title": "Fed's preferred gauge of inflation climbs ahead of possible rate hike - ABC News - Breaking News, Latest News and Videos",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbFd6dlZlV25JVlBjcjRXWWdYUTdqd2ZBeG1WbGI3Z1dGRjhwN0pCWEJteUN2YVBvSHFXbHl2M3VPcS05WU9TTWlQaVpZS3BVTTV1Sk1kVTNDSXQyOWlMLUJOT1ViUnhGUnM0Qkhxc3BGUlFMeUU2aHVBYy1SQTJPNVZDZUJwWkdhLUVUdWZNREdxaHI2R1BROTZlbTliVHZCVFdUWGMzaU02UdIBrwFBVV95cUxPWE1jU1l6LVdTcGhmTWp6aUROSnFNX0tsQVF2Q0FRam85VGs4SS1CNlg3VUpSRF95Y0Z1cnRzdGtGOWM0YWJLUTNhRElWVTNaQzdjVHA3TzYyN25yOTlyMV9qZzhzLTRZNHlDMFF4emdVQU9UbGZnWnktMC1tNTFQUURsN1NxRW05TUhyNW1odXcwbWI0T2xnYXlkdXkyaXNpS0VXMGlVZDVHcGNpamkw?oc=5",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "published_at": "2026-11-25T14:23+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "rate hike"
-          ],
-          "published_at_taipei": "2026-11-25 22:23 台北時間"
-        },
-        {
-          "category": "國際市場",
           "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
           "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5",
           "source": "BigGo Finance",
@@ -15419,17 +15374,6 @@
           "positive_terms": [],
           "negative_terms": [],
           "published_at_taipei": "2026-11-25 18:35 台北時間"
-        },
-        {
-          "category": "國際市場",
-          "title": "US PCE Inflation Data and Q3 GDP Due Today; Key Numbers to Watch Ahead of December Fed Rate Decision - Kotak Neo",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNMzRJdVRHRFk5NjA5c2FRRVkwZzllSzFiODNwbHhjeVZTaDk5R3pnR1dOVmpncTNlRmRubnVyd1lJRndqMy1GVC1LODNTMm9nVTF3U0FhTkw3aHFfcWk5U1gteV9JZl90WG1xMzVlSkM1SmkxaXplQ0FmRDdfcGplMUxrMjl4MDZFZnVzUFBIekhqTzBoM29mdURqampfaEFsaklKVWdfUlBMOVF5ZkE3VjJraXduZUtKWnk5cV83Y1U3a3lUaUE?oc=5",
-          "source": "Kotak Neo",
-          "published_at": "2026-11-25T05:09+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": [],
-          "published_at_taipei": "2026-11-25 13:09 台北時間"
         }
       ],
       "domestic_news": [

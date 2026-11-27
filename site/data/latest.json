@@ -1,6 +1,6 @@
 {
   "project": "0050 AI Forecast",
-  "generated_at_utc": "2026-11-27T08:55:13+00:00",
+  "generated_at_utc": "2026-11-27T16:44:11+00:00",
   "data_as_of": "2026-11-27",
   "latest_close": 92.4,
   "price_validation": {
@@ -18,70 +18,70 @@
   },
   "forecasts": {
     "1d": {
-      "direction": "DOWN",
-      "up_probability": 0.219629,
-      "down_probability": 0.780371,
+      "direction": "UP",
+      "up_probability": 0.73923,
+      "down_probability": 0.26077,
       "backtest": {
-        "accuracy": 0.6901121304791029,
-        "balanced_accuracy": 0.6880334762876297,
+        "accuracy": 0.6904276985743381,
+        "balanced_accuracy": 0.6884174488223,
         "up_recall": 0.7377690802348337,
-        "brier_score": 0.19665491957902215,
-        "majority_baseline_accuracy": 0.5208970438328236,
-        "accuracy_lift_vs_baseline": 0.16921508664627927,
-        "base_rate": 0.5208970438328236,
-        "n_test": 981
+        "brier_score": 0.19664546247942458,
+        "majority_baseline_accuracy": 0.5203665987780041,
+        "accuracy_lift_vs_baseline": 0.170061099796334,
+        "base_rate": 0.5203665987780041,
+        "n_test": 982
       },
       "model_name": "Random Forest",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 1 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "2d": {
       "direction": "UP",
-      "up_probability": 0.528669,
-      "down_probability": 0.471331,
+      "up_probability": 0.771147,
+      "down_probability": 0.228853,
       "backtest": {
-        "accuracy": 0.5658835546475995,
-        "balanced_accuracy": 0.5604603112774569,
-        "up_recall": 0.6058394160583942,
-        "brier_score": 0.24717135902018467,
-        "majority_baseline_accuracy": 0.5597548518896833,
-        "accuracy_lift_vs_baseline": 0.006128702757916216,
-        "base_rate": 0.5597548518896833,
-        "n_test": 979
+        "accuracy": 0.5653061224489796,
+        "balanced_accuracy": 0.5599085449604638,
+        "up_recall": 0.604735883424408,
+        "brier_score": 0.24732234637694808,
+        "majority_baseline_accuracy": 0.560204081632653,
+        "accuracy_lift_vs_baseline": 0.005102040816326592,
+        "base_rate": 0.560204081632653,
+        "n_test": 980
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 2 個台灣交易日收盤方向（不是開盤跳空預測）"
     },
     "3d": {
       "direction": "UP",
-      "up_probability": 0.598446,
-      "down_probability": 0.401554,
+      "up_probability": 0.628568,
+      "down_probability": 0.371432,
       "backtest": {
-        "accuracy": 0.548618219037871,
-        "balanced_accuracy": 0.5299088166735226,
+        "accuracy": 0.549079754601227,
+        "balanced_accuracy": 0.530623629438695,
         "up_recall": 0.6559714795008913,
-        "brier_score": 0.2555173640811234,
-        "majority_baseline_accuracy": 0.5742067553735927,
-        "accuracy_lift_vs_baseline": -0.025588536335721668,
-        "base_rate": 0.5742067553735927,
-        "n_test": 977
+        "brier_score": 0.2554630525999847,
+        "majority_baseline_accuracy": 0.5736196319018405,
+        "accuracy_lift_vs_baseline": -0.024539877300613466,
+        "base_rate": 0.5736196319018405,
+        "n_test": 978
       },
       "model_name": "Logistic Regression",
       "target_definition": "相對最近一個台灣交易日收盤價，未來第 3 個台灣交易日收盤方向（不是開盤跳空預測）"
     }
   },
   "opening_gap_forecast": {
-    "direction": "DOWN",
-    "up_probability": 0.168175,
-    "down_probability": 0.831825,
+    "direction": "UP",
+    "up_probability": 0.845508,
+    "down_probability": 0.154492,
     "backtest": {
-      "accuracy": 0.7798165137614679,
-      "balanced_accuracy": 0.7777462745065338,
+      "accuracy": 0.780040733197556,
+      "balanced_accuracy": 0.7780255625083212,
       "up_recall": 0.8146718146718147,
-      "brier_score": 0.14941373448653494,
-      "majority_baseline_accuracy": 0.528032619775739,
-      "accuracy_lift_vs_baseline": 0.25178389398572887,
-      "base_rate": 0.528032619775739,
-      "n_test": 981
+      "brier_score": 0.1494799585856739,
+      "majority_baseline_accuracy": 0.5274949083503055,
+      "accuracy_lift_vs_baseline": 0.2525458248472504,
+      "base_rate": 0.5274949083503055,
+      "n_test": 982
     },
     "model_name": "Random Forest",
     "target_definition": "下一台灣交易日開盤價相對最近一個台灣交易日收盤價的漲跌方向"
@@ -92,17 +92,17 @@
     "trigger_count": 0,
     "observations": {
       "^SOX": {
-        "return": -0.006525858866402445,
+        "return": 0.03397935130066276,
         "threshold": -0.03,
         "triggered": false
       },
       "^IXIC": {
-        "return": -0.0062248736212895395,
+        "return": 0.017278834839221435,
         "threshold": -0.02,
         "triggered": false
       },
       "TSM": {
-        "return": -0.019644947392136736,
+        "return": 0.026114396614593804,
         "threshold": -0.03,
         "triggered": false
       }
@@ -136,7 +136,7 @@
       "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
       "fetched_rows": 2193,
       "stored_rows": 369,
-      "updated_at_taipei": "2026-11-27T16:55:20+08:00",
+      "updated_at_taipei": "2026-11-28T00:44:19+08:00",
       "errors": []
     },
     "source": "https://openapi.taifex.com.tw/v1/DailyMarketReportFut",
@@ -148,13 +148,13 @@
     "total_features": 93,
     "signal_consensus": 1.0,
     "model_probabilities": {
-      "Logistic Regression": 0.3486378918690262,
-      "Random Forest": 0.21962930826822843,
-      "Extra Trees": 0.24125103977642343
+      "Logistic Regression": 0.6051421529122172,
+      "Random Forest": 0.739230266474836,
+      "Extra Trees": 0.7718604348500577
     },
-    "historical_balanced_accuracy": 0.6901611358620977,
-    "historical_brier_score": 0.19585403660508385,
-    "historical_test_count": 981,
+    "historical_balanced_accuracy": 0.6905405910728308,
+    "historical_brier_score": 0.1958453950685962,
+    "historical_test_count": 982,
     "label": "可信度需搭配資料品質、模型一致性及樣本外回測解讀；非獲利保證"
   },
   "model_comparison": {
@@ -167,49 +167,31 @@
     "models": [
       {
         "name": "Logistic Regression",
-        "accuracy": 0.6238532110091743,
-        "balanced_accuracy": 0.6239205562726402,
-        "brier_score": 0.22534430477212494,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6242362525458248,
+        "balanced_accuracy": 0.6243180807791225,
+        "brier_score": 0.2251856680435207,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       },
       {
         "name": "Random Forest",
-        "accuracy": 0.6921508664627931,
-        "balanced_accuracy": 0.6901611358620977,
-        "brier_score": 0.19585403660508385,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6924643584521385,
+        "balanced_accuracy": 0.6905405910728308,
+        "brier_score": 0.1958453950685962,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       },
       {
         "name": "Extra Trees",
-        "accuracy": 0.691131498470948,
-        "balanced_accuracy": 0.689011949868843,
-        "brier_score": 0.1969399552006757,
-        "n_test": 981,
-        "majority_baseline_accuracy": 0.5208970438328236
+        "accuracy": 0.6914460285132383,
+        "balanced_accuracy": 0.6893959224035133,
+        "brier_score": 0.19685077662346878,
+        "n_test": 982,
+        "majority_baseline_accuracy": 0.5203665987780041
       }
     ]
   },
   "history": [
-    {
-      "date": "2023-08-14",
-      "open": 31.412500381469727,
-      "high": 31.424999237060547,
-      "low": 31.024999618530273,
-      "close": 31.125,
-      "volume": 90266740.0,
-      "ma5": 31.570000076293944,
-      "ma20": 32.05000019073486,
-      "ma60": 32.00916674931844,
-      "rsi14": 38.68312188701709,
-      "macd": -0.1833343752008858,
-      "macd_signal": -0.07208407972011799,
-      "macd_hist": -0.11125029548076781,
-      "bb_upper": 32.86595970285975,
-      "bb_mid": 32.05000019073486,
-      "bb_lower": 31.234040678609976
-    },
     {
       "date": "2023-08-15",
       "open": 31.3125,
@@ -14575,115 +14557,145 @@
       "bb_lower": 84.81200428296722
     },
     {
+      "date": "2026-11-26",
+      "open": 91.5999984741211,
+      "high": 93.19999694824219,
+      "low": 90.80000305175781,
+      "close": 92.8499984741211,
+      "volume": 237455382.0,
+      "ma5": 90.05999908447265,
+      "ma20": 96.39999847412109,
+      "ma60": 105.43499984741212,
+      "rsi14": 50.336860968317964,
+      "macd": -4.165748990246286,
+      "macd_signal": -3.961433845291043,
+      "macd_hist": -0.20431514495524272,
+      "bb_upper": 107.86904058345043,
+      "bb_mid": 96.39999847412109,
+      "bb_lower": 84.93095636479175
+    },
+    {
       "date": "2026-11-27",
       "open": 92.8,
       "high": 93.0,
       "low": 91.6,
       "close": 92.4,
       "volume": 111385656.0,
-      "ma5": 89.96999938964844,
-      "ma20": 96.37749855041504,
-      "ma60": 105.42749987284341,
-      "rsi14": 49.902912604099775,
-      "macd": -4.201646304421189,
-      "macd_signal": -3.9686133081260238,
-      "macd_hist": -0.23303299629516516,
-      "bb_upper": 107.87758793828814,
-      "bb_mid": 96.37749855041504,
-      "bb_lower": 84.87740916254194
+      "ma5": 91.64999969482422,
+      "ma20": 95.772498626709,
+      "ma60": 105.20416651407876,
+      "rsi14": 44.67861125119329,
+      "macd": -3.9589481114072527,
+      "macd_signal": -3.960936698514285,
+      "macd_hist": 0.0019885871070322025,
+      "bb_upper": 106.62880696035259,
+      "bb_mid": 95.772498626709,
+      "bb_lower": 84.9161902930654
     }
   ],
   "forecast": {
-    "direction": "DOWN",
-    "up_probability": 0.219629,
-    "down_probability": 0.780371,
+    "direction": "UP",
+    "up_probability": 0.73923,
+    "down_probability": 0.26077,
     "target_session": "下一個台灣交易日（未接官方交易日曆）"
   },
   "backtest": {
     "method": "purged expanding-window walk-forward",
-    "accuracy": 0.6901121304791029,
+    "accuracy": 0.6904276985743381,
     "up_recall": 0.7377690802348337,
     "coverage": 1.0,
-    "base_rate": 0.5208970438328236,
-    "n_test": 981
+    "base_rate": 0.5203665987780041,
+    "n_test": 982
   },
   "explanation": {
-    "model_interpretation": "量化模型偏向下跌。",
+    "model_interpretation": "量化模型偏向上漲。",
     "market_factors": [
       {
         "name": "費城半導體指數",
-        "latest_return": -0.006526,
-        "tone": "偏空"
+        "latest_return": 0.033979,
+        "tone": "偏多"
       },
       {
         "name": "NASDAQ",
-        "latest_return": -0.006225,
-        "tone": "偏空"
+        "latest_return": 0.017279,
+        "tone": "偏多"
       },
       {
         "name": "S&P 500",
-        "latest_return": -0.002543,
-        "tone": "偏空"
+        "latest_return": 0.012917,
+        "tone": "偏多"
       },
       {
         "name": "道瓊指數",
-        "latest_return": 0.003284,
+        "latest_return": 0.010948,
         "tone": "偏多"
       },
       {
         "name": "台積電 ADR",
-        "latest_return": -0.019645,
-        "tone": "偏空"
+        "latest_return": 0.026114,
+        "tone": "偏多"
       },
       {
         "name": "NVIDIA",
-        "latest_return": -0.03913,
+        "latest_return": -0.003617,
         "tone": "偏空"
       },
       {
         "name": "台積電",
-        "latest_return": 0.016317,
-        "tone": "偏多"
+        "latest_return": -0.002326,
+        "tone": "偏空"
       },
       {
         "name": "台灣加權指數",
-        "latest_return": 0.003991,
+        "latest_return": 0.025039,
         "tone": "偏多"
       },
       {
         "name": "台灣 ETF",
-        "latest_return": -0.012655,
-        "tone": "偏空"
+        "latest_return": 0.03426,
+        "tone": "偏多"
       },
       {
         "name": "美元兌新台幣",
-        "latest_return": -0.007864,
+        "latest_return": -0.006779,
         "tone": "偏空"
       },
       {
         "name": "VIX 波動率指數",
-        "latest_return": -0.071642,
+        "latest_return": -0.060075,
         "tone": "偏空"
       },
       {
         "name": "美國10年期公債殖利率",
-        "latest_return": -0.011419,
-        "tone": "偏空"
+        "latest_return": 0.015677,
+        "tone": "偏多"
       },
       {
         "name": "美國5年期公債殖利率",
-        "latest_return": -0.011036,
-        "tone": "偏空"
+        "latest_return": 0.014163,
+        "tone": "偏多"
       }
     ],
     "news": {
-      "generated_at_utc": "2026-11-27T08:56:16+00:00",
+      "generated_at_utc": "2026-11-27T16:45:15+00:00",
       "method": "Google News RSS 標題關鍵字初步分類；非語意模型、非投資建議",
       "international": {
         "tone": "偏空",
-        "keyword_score": -1,
-        "article_count": 13,
+        "keyword_score": -2,
+        "article_count": 11,
         "items": [
+          {
+            "category": "國際市場",
+            "title": "【美股盤前1127】關稅擔憂過度？那斯達克一度重挫後收斂跌幅！｜豐雲學堂 2026 年 11 月 - 永豐金證券",
+            "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQS01XbjgtdHhOQkVpUV84Zk1XR2phZUg4dUtkRmZtYkpBVFhZaDNuOW14TGswcVZ1OXlpc0g2clotemFRaUo5WlJMdDlzSWJTei13SUc2aVN2TXdkMWNveTZ2ZkRxa1FuNVBCUEVVRDFmRjN2cU9JYWNDWVM4RnRWekExNU1NVEduSFp3QVNfaFdiR2pHQVhtdEVBbURsRU1BME55NE9ZOXlONXh2UHVfaUN6WV9PZHd3dXp1OXRjb3F5Qkk3Zm1WU2RXV3pZanlGTXNfTzNyRXl1dkcyTlRqYTItWlFyNy1RdmFqZ0VqN1FpV3ZNS3NnY29KQVJMUUVVbjhrV05EOUlud0VZeDM0dnkwRnhNVWtnVHJKRk40QjEzckdYbDNtOHc1X3JNLVBkbU9Rc2hlQnNWMVU4NUNuWThkU1U2WHpSeFZLTnZ6cGU3eVJrSlJValdlUTR2R2MyS29rSV9zSkZiSzhUMTNuWjFkX29VZFdYWWVNa0xFQnBJSGFYRU1qNVA5WnFBVEs5VnNPem1CeUFPQUtSTnZ3Ql9ZRQ?oc=5",
+            "source": "永豐金證券",
+            "published_at": "2026-11-27T08:12+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "關稅"
+            ]
+          },
           {
             "category": "國際市場",
             "title": "The Part of Inflation Cheaper Oil Cannot Reach - IndraStra Global",
@@ -14710,40 +14722,30 @@
           },
           {
             "category": "國際市場",
-            "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
-            "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
-            "source": "Seeking Alpha",
-            "published_at": "2026-11-25T15:59+00:00",
+            "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
+            "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
+            "source": "cwibc.co.id",
+            "published_at": "2026-11-26T03:03+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "US PCE Report Tests Inflation Outlook Before December Fed Decision - Limapagi",
-            "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WQ0xvT05PV0gxNWJzcDJ5cnk1NFNScFJOZXJoN2M1R2pDbWFvMEFXTldTTDdNcFAyclJ3ckRsQVNYSzlZTE41SnBpN1dyaUpWbnBaLUw0TkFwQUE0MWVaS2dsUFJzWGM?oc=5",
-            "source": "Limapagi",
-            "published_at": "2026-11-25T13:33+00:00",
+            "title": "TradingKey 每日市場簡報：標普、那指兩連跌，輝達再跌近4%；美國核心PCE升至3.3%；黃金跌破3500美元 - TradingKey",
+            "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOVnR5bk9zWjEyRldldGl6R0dxU1Q2NUMwQlVBMXo2V001TlowU1cyRDBMQjk5QTMtYklQNG5rRjdtanZUZ205b3ZzMjFESTFiUUs0aUY4cUxlTHJYdXo4ckZ4Uk9aOU42b3dfdGo2QXpFNVhwZjhidVFSVjB3VDNzZ25uZXFFUkF6UU5lZm9yT1AtMWxDekthd0phLU1UNmJxZHhLYnhHeDJ5U3JQSkFzUWZNODByYVQzYmdVMHgxWGpKU1RiaDFUY2w5QQ?oc=5",
+            "source": "TradingKey",
+            "published_at": "2026-11-26T01:39+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
           },
           {
             "category": "國際市場",
-            "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
-            "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5",
-            "source": "BigGo Finance",
-            "published_at": "2026-11-25T10:35+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          },
-          {
-            "category": "國際市場",
-            "title": "US Stock Market Today: 5 Critical Moves as Nasdaq Falls - STL.News",
-            "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVbC1hQ21hMFNOejE4VGdfNHVaN094c2dVYmRLaU5fNm5ERkJaNVduZTVWY3BDV2xNUTVGQ0hoSGxnYUdfbzZzV3otaFRNVDVSYnpka21NRUo1Mk1fYUVIaHFZaWhwX3ZqZ0NXdw?oc=5",
-            "source": "STL.News",
-            "published_at": "2026-11-24T23:14+00:00",
+            "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
+            "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
+            "source": "Forbes Middle East",
+            "published_at": "2026-11-25T20:33+00:00",
             "keyword_score": 0,
             "positive_terms": [],
             "negative_terms": []
@@ -14752,19 +14754,41 @@
       },
       "domestic": {
         "tone": "偏空",
-        "keyword_score": -4,
-        "article_count": 4,
+        "keyword_score": -5,
+        "article_count": 7,
         "items": [
           {
             "category": "台灣市場",
-            "title": "〈華南金法說〉央行不排除年底前升息！蕭玉美看AI與出口支撐動能 台幣震盪偏升 - TradingView",
-            "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rUzBEVmVHTmp0em5xOHRHVlN4R3liWmxkTlBCcnMyRjh0RGxGZ0VxQ0VPQ0M1bFZxeldFT1pmdk9rS014dzJ2RVV3UXZoQkx0UVVJeHdRa0xVRjhESTlYREJydHM?oc=5",
+            "title": "〈第一金法說〉央行年底升息？一銀估台灣按兵不動 惟Fed明年Q1前有望升息2次 - TradingView",
+            "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFByRzJ1VGRBUG5wSjJtS2ppZlNWUmIyd1Vob19LNXZOc1NfWkxwYWFlWUpTVk5SWWc2azdEV2RBS3BTa3dwajY2WTVoM3FKbGtIUGZMdjVpZ0xLbU01WWpZeW5xNkw?oc=5",
             "source": "TradingView",
-            "published_at": "2026-11-26T12:21+00:00",
+            "published_at": "2026-11-27T11:44+00:00",
             "keyword_score": -1,
             "positive_terms": [],
             "negative_terms": [
               "升息"
+            ]
+          },
+          {
+            "category": "台灣市場",
+            "title": "TWA00 加權指數- 11／27 台股盤後籌碼快報，外資連10賣‼️‼️ - 股市爆料同學會 - CMoney",
+            "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBJSXliNlUycENnbFZCMnByeko4S0ZBMnN0empfYjZ6b2ZDLWo0dG5tVEFYV3NRTzlNaG1wRUxJOVdFTGF0RmdERUMtUE1HMWJBNEZCbENwQ2o?oc=5",
+            "source": "CMoney",
+            "published_at": "2026-11-27T08:03+00:00",
+            "keyword_score": 0,
+            "positive_terms": [],
+            "negative_terms": []
+          },
+          {
+            "category": "台灣市場",
+            "title": "TWA00 加權指數- 台股選前量縮外資續砍296億、三大法人賣超213.04億元- 股市爆料同學會 - CMoney",
+            "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBic1VudHRtcWQ0VjlSTm9lWWZCYUdheEZfbmVhaktGRE8xTjZnb0MwelZIMWhMSWhFVFNmc29jZ2pVZ3laeVBuOTYzWU5PRFRRSFVJenVNSlg?oc=5",
+            "source": "CMoney",
+            "published_at": "2026-11-27T07:15+00:00",
+            "keyword_score": -1,
+            "positive_terms": [],
+            "negative_terms": [
+              "賣超"
             ]
           },
           {
@@ -14793,10 +14817,10 @@
           },
           {
             "category": "台灣市場",
-            "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 | 中央廣播電臺 - LINE TODAY",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5tTHlUUUE5QzFlekVpUHpHbC1lZ25Ea1pQLXlBMXdWQzdGYUxiTnF5RTd6RmZhWHNxVENiM1Z2NEhYcWFmUDZsWUh4YllKVmdpS0dlUURB?oc=5",
-            "source": "LINE TODAY",
-            "published_at": "2026-11-25T10:44+00:00",
+            "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 - Rti 中央廣播電臺",
+            "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1jUHMtdVc2RGlxNDVhTUFFUjBhTFpabUh3QnFPUlMxdHIwU082ZFVOckZ2MnNkWEhySmoxYW9QM0ZOUXFJU2I2NHplblgteTVFeUE3c0d0U0w?oc=5",
+            "source": "Rti 中央廣播電臺",
+            "published_at": "2026-11-25T09:53+00:00",
             "keyword_score": -1,
             "positive_terms": [],
             "negative_terms": [
@@ -14808,21 +14832,56 @@
       "industry": {
         "tone": "中性或訊號不足",
         "keyword_score": 0,
-        "article_count": 1,
-        "items": [
-          {
-            "category": "產業消息",
-            "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - Zacks Investment Research",
-            "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTXJxZ0p3M0tMdjVrTEVwd2pPdFp2eDNtTUlhX2VKbUFidmR3NkJVcVc1VWw0d2lyS29BTmRhdXk3Y1hJRWlTNjBqMjhyZ2dDYlEySE9nempnNko2aEhmLWsza2JVSFI2MlhKRUlzSGlmZXNWYWlDSHVZbWtUT2taam5USUFnZmFiWUd6VjFzalpuZGhEMC1RTTVUSExJR3BoTF9XVzIxWkc?oc=5",
-            "source": "Zacks Investment Research",
-            "published_at": "2026-11-18T19:30+00:00",
-            "keyword_score": 0,
-            "positive_terms": [],
-            "negative_terms": []
-          }
-        ]
+        "article_count": 0,
+        "items": []
       },
       "items": [
+        {
+          "category": "台灣市場",
+          "title": "〈第一金法說〉央行年底升息？一銀估台灣按兵不動 惟Fed明年Q1前有望升息2次 - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFByRzJ1VGRBUG5wSjJtS2ppZlNWUmIyd1Vob19LNXZOc1NfWkxwYWFlWUpTVk5SWWc2azdEV2RBS3BTa3dwajY2WTVoM3FKbGtIUGZMdjVpZ0xLbU01WWpZeW5xNkw?oc=5",
+          "source": "TradingView",
+          "published_at": "2026-11-27T11:44+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "升息"
+          ]
+        },
+        {
+          "category": "國際市場",
+          "title": "【美股盤前1127】關稅擔憂過度？那斯達克一度重挫後收斂跌幅！｜豐雲學堂 2026 年 11 月 - 永豐金證券",
+          "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQS01XbjgtdHhOQkVpUV84Zk1XR2phZUg4dUtkRmZtYkpBVFhZaDNuOW14TGswcVZ1OXlpc0g2clotemFRaUo5WlJMdDlzSWJTei13SUc2aVN2TXdkMWNveTZ2ZkRxa1FuNVBCUEVVRDFmRjN2cU9JYWNDWVM4RnRWekExNU1NVEduSFp3QVNfaFdiR2pHQVhtdEVBbURsRU1BME55NE9ZOXlONXh2UHVfaUN6WV9PZHd3dXp1OXRjb3F5Qkk3Zm1WU2RXV3pZanlGTXNfTzNyRXl1dkcyTlRqYTItWlFyNy1RdmFqZ0VqN1FpV3ZNS3NnY29KQVJMUUVVbjhrV05EOUlud0VZeDM0dnkwRnhNVWtnVHJKRk40QjEzckdYbDNtOHc1X3JNLVBkbU9Rc2hlQnNWMVU4NUNuWThkU1U2WHpSeFZLTnZ6cGU3eVJrSlJValdlUTR2R2MyS29rSV9zSkZiSzhUMTNuWjFkX29VZFdYWWVNa0xFQnBJSGFYRU1qNVA5WnFBVEs5VnNPem1CeUFPQUtSTnZ3Ql9ZRQ?oc=5",
+          "source": "永豐金證券",
+          "published_at": "2026-11-27T08:12+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "關稅"
+          ]
+        },
+        {
+          "category": "台灣市場",
+          "title": "TWA00 加權指數- 11／27 台股盤後籌碼快報，外資連10賣‼️‼️ - 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBJSXliNlUycENnbFZCMnByeko4S0ZBMnN0empfYjZ6b2ZDLWo0dG5tVEFYV3NRTzlNaG1wRUxJOVdFTGF0RmdERUMtUE1HMWJBNEZCbENwQ2o?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-27T08:03+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "台灣市場",
+          "title": "TWA00 加權指數- 台股選前量縮外資續砍296億、三大法人賣超213.04億元- 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBic1VudHRtcWQ0VjlSTm9lWWZCYUdheEZfbmVhaktGRE8xTjZnb0MwelZIMWhMSWhFVFNmc29jZ2pVZ3laeVBuOTYzWU5PRFRRSFVJenVNSlg?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-27T07:15+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "賣超"
+          ]
+        },
         {
           "category": "國際市場",
           "title": "The Part of Inflation Cheaper Oil Cannot Reach - IndraStra Global",
@@ -14845,18 +14904,6 @@
           ],
           "negative_terms": [
             "selloff"
-          ]
-        },
-        {
-          "category": "台灣市場",
-          "title": "〈華南金法說〉央行不排除年底前升息！蕭玉美看AI與出口支撐動能 台幣震盪偏升 - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rUzBEVmVHTmp0em5xOHRHVlN4R3liWmxkTlBCcnMyRjh0RGxGZ0VxQ0VPQ0M1bFZxeldFT1pmdk9rS014dzJ2RVV3UXZoQkx0UVVJeHdRa0xVRjhESTlYREJydHM?oc=5",
-          "source": "TradingView",
-          "published_at": "2026-11-26T12:21+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "升息"
           ]
         },
         {
@@ -14885,6 +14932,36 @@
         },
         {
           "category": "國際市場",
+          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
+          "source": "cwibc.co.id",
+          "published_at": "2026-11-26T03:03+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "TradingKey 每日市場簡報：標普、那指兩連跌，輝達再跌近4%；美國核心PCE升至3.3%；黃金跌破3500美元 - TradingKey",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOVnR5bk9zWjEyRldldGl6R0dxU1Q2NUMwQlVBMXo2V001TlowU1cyRDBMQjk5QTMtYklQNG5rRjdtanZUZ205b3ZzMjFESTFiUUs0aUY4cUxlTHJYdXo4ckZ4Uk9aOU42b3dfdGo2QXpFNVhwZjhidVFSVjB3VDNzZ25uZXFFUkF6UU5lZm9yT1AtMWxDekthd0phLU1UNmJxZHhLYnhHeDJ5U3JQSkFzUWZNODByYVQzYmdVMHgxWGpKU1RiaDFUY2w5QQ?oc=5",
+          "source": "TradingKey",
+          "published_at": "2026-11-26T01:39+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
+          "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
+          "source": "Forbes Middle East",
+          "published_at": "2026-11-25T20:33+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": []
+        },
+        {
+          "category": "國際市場",
           "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
           "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
           "source": "Seeking Alpha",
@@ -14895,25 +14972,35 @@
         },
         {
           "category": "國際市場",
-          "title": "US PCE Report Tests Inflation Outlook Before December Fed Decision - Limapagi",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WQ0xvT05PV0gxNWJzcDJ5cnk1NFNScFJOZXJoN2M1R2pDbWFvMEFXTldTTDdNcFAyclJ3ckRsQVNYSzlZTE41SnBpN1dyaUpWbnBaLUw0TkFwQUE0MWVaS2dsUFJzWGM?oc=5",
-          "source": "Limapagi",
-          "published_at": "2026-11-25T13:33+00:00",
+          "title": "Fed's preferred gauge of inflation climbs ahead of possible rate hike - ABC News - Breaking News, Latest News and Videos",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbFd6dlZlV25JVlBjcjRXWWdYUTdqd2ZBeG1WbGI3Z1dGRjhwN0pCWEJteUN2YVBvSHFXbHl2M3VPcS05WU9TTWlQaVpZS3BVTTV1Sk1kVTNDSXQyOWlMLUJOT1ViUnhGUnM0Qkhxc3BGUlFMeUU2aHVBYy1SQTJPNVZDZUJwWkdhLUVUdWZNREdxaHI2R1BROTZlbTliVHZCVFdUWGMzaU02UdIBrwFBVV95cUxPWE1jU1l6LVdTcGhmTWp6aUROSnFNX0tsQVF2Q0FRam85VGs4SS1CNlg3VUpSRF95Y0Z1cnRzdGtGOWM0YWJLUTNhRElWVTNaQzdjVHA3TzYyN25yOTlyMV9qZzhzLTRZNHlDMFF4emdVQU9UbGZnWnktMC1tNTFQUURsN1NxRW05TUhyNW1odXcwbWI0T2xnYXlkdXkyaXNpS0VXMGlVZDVHcGNpamkw?oc=5",
+          "source": "ABC News - Breaking News, Latest News and Videos",
+          "published_at": "2026-11-25T14:23+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "rate hike"
+          ]
+        },
+        {
+          "category": "國際市場",
+          "title": "US October PCE Tests Fed Rate Outlook Before December Decision - Demokratis.co.id",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9WWGVRd25fVDBVWkY3X0V6M2I1dER6SzBvMjNOekFkYmtjVkRrZGdGVjFCX3ZOeDFDNU1UTjAzMDRJMld0MVpSNzcwemF4NFIzaHM0TldXdmxPZ0VISGZuWWZuOHU?oc=5",
+          "source": "Demokratis.co.id",
+          "published_at": "2026-11-25T13:29+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
         },
         {
-          "category": "台灣市場",
-          "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 | 中央廣播電臺 - LINE TODAY",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5tTHlUUUE5QzFlekVpUHpHbC1lZ25Ea1pQLXlBMXdWQzdGYUxiTnF5RTd6RmZhWHNxVENiM1Z2NEhYcWFmUDZsWUh4YllKVmdpS0dlUURB?oc=5",
-          "source": "LINE TODAY",
-          "published_at": "2026-11-25T10:44+00:00",
-          "keyword_score": -1,
+          "category": "國際市場",
+          "title": "US Inflation Hits 3.8%: Will the Fed Raise Interest Rates Again in December? - Coinpedia",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUXRDdlU0dy00Q0kzZ08wenpmOVJlMHRqWUxnbUxwUkZiTUl3WmRLeXFpQjAzbnBGM0tTUV96d0FVTExqMlBLdXpCbTRNZE1BMDh6MmUyVldUNHlqN3FzNTh3V2xGVTg2eENkbi04bGpvM2JRUU5aUllJcnF0OUsxMmI0LVJGUTlvOGFQeEJ6UWRXcTM3d1lBNnRMd1h6dmlmZmxZMHVuTjNGQUt0eDZTb2tQdDDSAboBQVVfeXFMTTNmQVlRNFNVaFdxVHVtcGZmajBNSnQxYXhIS1EwUktCQloyOWs1TWRIanVZS3Rvako5S0xNdXk3T3lRaEdEYXdsZUt2VDNMTmczN2NEaDB1dWhXLWZ6eEFaS0dLdXpIZlVyZ3dkcUpHWFR5OXIzNmNLTmZTaVM0bHlUTjZtOUVsWi1iODBMZmdmcUhSMzV4WldFa29wc2RMc3lVYzhtbm9uVG5WVUZScXlKa0hFdkViV0Z3?oc=5",
+          "source": "Coinpedia",
+          "published_at": "2026-11-25T10:39+00:00",
+          "keyword_score": 0,
           "positive_terms": [],
-          "negative_terms": [
-            "升息"
-          ]
+          "negative_terms": []
         },
         {
           "category": "國際市場",
@@ -14926,97 +15013,23 @@
           "negative_terms": []
         },
         {
-          "category": "國際市場",
-          "title": "US Stock Market Today: 5 Critical Moves as Nasdaq Falls - STL.News",
-          "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVbC1hQ21hMFNOejE4VGdfNHVaN094c2dVYmRLaU5fNm5ERkJaNVduZTVWY3BDV2xNUTVGQ0hoSGxnYUdfbzZzV3otaFRNVDVSYnpka21NRUo1Mk1fYUVIaHFZaWhwX3ZqZ0NXdw?oc=5",
-          "source": "STL.News",
-          "published_at": "2026-11-24T23:14+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Nasdaq 100 Tumbles as Nvidia Euphoria Fades, New Tariffs Floated - Bloomberg.com",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQcHhkVFpXSmc2SFJ3VEV3WHg5Vm4xYmRlM2l5R3Z2TEx6emJsdVRiQVBJTjJpaDJ3X2NsZFBURUR4anlRVDY4aTl0cHFvUzFTWUw5VUtXcE5pSEt1TzNPTWlXU0xHYV84QjVURk9LV1pFRGloYTQ1aU1iUmJ4TlN1NlVRYXN6QS1ub2Z6Mm1HMlNXS0hYV1YxNzF5SV9MSUNkNUtRTnRqb1phaUlESmRaMUxjcTM0dw?oc=5",
-          "source": "Bloomberg.com",
-          "published_at": "2026-11-24T21:39+00:00",
+          "category": "台灣市場",
+          "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 - Rti 中央廣播電臺",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1jUHMtdVc2RGlxNDVhTUFFUjBhTFpabUh3QnFPUlMxdHIwU082ZFVOckZ2MnNkWEhySmoxYW9QM0ZOUXFJU2I2NHplblgteTVFeUE3c0d0U0w?oc=5",
+          "source": "Rti 中央廣播電臺",
+          "published_at": "2026-11-25T09:53+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
-            "tariff"
+            "升息"
           ]
         },
         {
-          "category": "國際市場",
-          "title": "US stock market today: Nasdaq and S&P 500 fall as Nvidia and AI stocks slide, Dow gains - Beinsure",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPWXhISFVWZllNX2ItSVRiWFVqSDFNQzloY29ZNGJjR04wa2lyRWx5Q1Nibjk1SGEzOHNMN0FrU2RiLV9JNW8yQjdHa25EZWRYLXliQzc2RDh5YWRUUHlWX1FRcHpNZmJySFJXM0t1d0lRd1RsSGNpSWF5NTJjNjV4UHR3?oc=5",
-          "source": "Beinsure",
-          "published_at": "2026-11-24T20:08+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "AI doubts and rate pressures shake US stock market rally - Chosunbiz",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNWWRBbXlkYjVPc2dHRHhPR1lxUk9mb0xMbm1lTkdqY3dtaG5YYnNxcThhV2loTzh5aEJrbUdIRzdnTzZCektHUFRvOXdRSThaNGdueHRJODNvcmNIVWtrMXZuNGF4QXY2dTM3TWFrWUpUNUU4dVIxZzhSRFhjVUg4WV9GcGZFV0Jq0gGcAUFVX3lxTE8xcnRkY0ZQZVhOLWhQRG5KaWh5a21QSjktVXAtTC1WT1BxU2hJWnEwdGY3R2J3eWp4cGw4QTZFdll3dXdmNGtYcFFVa2trNjA0RG55TjY2UG1DUF9wZmFKbnVCdTc1VkNhOVBHQ196REMzTWZMNHJKb0lOS0xqMWJtTi1Hc1RMdDFPQVJlRVpxLXZaVjlZTHVsN2R0WQ?oc=5",
-          "source": "Chosunbiz",
-          "published_at": "2026-11-23T01:24+00:00",
-          "keyword_score": 1,
-          "positive_terms": [
-            "rally"
-          ],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPT21pLWhpR0tjQkhQLWE5NDc4SGNjMjVUdS12eDFpNTZEWEs5UWp3UGxaWVVDVTRSNG5VUi1rWnV5Ymd6MW5NQWNPUXlIWFdOUVF5bzVpWW9XRHJCRFIzR1JkMFhLUEFBMHN3SFREZkRrN1JJX2pSOWRRSkNJVll4SzRPaHZhTjI3LU5ZNVd5akctc09lVnhocThBYw?oc=5",
-          "source": "The Financial Express",
-          "published_at": "2026-11-22T11:27+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "CBOE Volatility Index (VIX) forecast: US stock market fear signals a possible bottom - Beinsure",
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNX2VsN2tRUFVVV2tNRktWbThwcGtMUExwNGpWbXZLN3dnLXpmT0JWNHVRUlNaV05wLTBBSC1rYWJxSDVla1pIcEp3cnFMR2lmMzNZZEdza3Rrd292SHYzR1R6d1NkSWhYOXdKV01nTjZnVmtqaUhQMFhBWTg3VU5xTkxqTUdhQnFoWUN4ZGZ2dDI1d2hVRjBhT084VDZsc2RMbVRVZVpqaXFOMjha?oc=5",
-          "source": "Beinsure",
-          "published_at": "2026-11-20T18:28+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Global Markets Weekly Update - T. Rowe Price",
-          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1qakRVSDU2ME9Gb2RiUFFBNmVuS1BFRHdBVF9hUkF5VzVJQS1FR3lRSmxwaHd5Wjk2VzlHMkxncU1WU0ZjWXA4ZjNjempMWXZGVFpnVnFHSWxKVDF3RjBkXzNSd1FWc1o4RjVqZDNYaklNUUdVckllTl9B?oc=5",
-          "source": "T. Rowe Price",
-          "published_at": "2026-11-20T08:00+00:00",
-          "keyword_score": 0,
-          "positive_terms": [],
-          "negative_terms": []
-        },
-        {
-          "category": "國際市場",
-          "title": "Weekly market wrap - Edward Jones",
-          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPeVcxcmtaeVJRVm9kQ2VyWmVQNG9GNDZzWkJpT01xTUFJbVhYdGF6dG1qZndCb2hFaHhCM0I5NFk2RGxhY1drcWRHVnhyNzc0RWJvTU50S0dnWENrRk1UYVQ4S25xVHBtYzJsU1dabkhWeVBCckxzTHRpS3M2dklsOF84LTJRV1RJLVFRVUdGbHh2SE5CbFVPQVpROGtRa2M?oc=5",
-          "source": "Edward Jones",
-          "published_at": "2026-11-20T08:00+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "war"
-          ]
-        },
-        {
-          "category": "產業消息",
-          "title": "NVIDIA's Leadership Woes: Buy TSMC & ASML Despite Supply-Chain Risks? - Zacks Investment Research",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTXJxZ0p3M0tMdjVrTEVwd2pPdFp2eDNtTUlhX2VKbUFidmR3NkJVcVc1VWw0d2lyS29BTmRhdXk3Y1hJRWlTNjBqMjhyZ2dDYlEySE9nempnNko2aEhmLWsza2JVSFI2MlhKRUlzSGlmZXNWYWlDSHVZbWtUT2taam5USUFnZmFiWUd6VjFzalpuZGhEMC1RTTVUSExJR3BoTF9XVzIxWkc?oc=5",
-          "source": "Zacks Investment Research",
-          "published_at": "2026-11-18T19:30+00:00",
+          "category": "台灣市場",
+          "title": "加權指數重挫 1,926 點，創歷史第 6 大紀錄！股災 3 大潛在原因、重災區與避風港一次看｜股市話題 - 永豐金證券",
+          "url": "https://news.google.com/rss/articles/CBMitwRBVV95cUxQVERtdnRSd0NLY0RscnhJcnZCcFhNeVVoRW1TOTZKLWRDWVRZbFdMV2lxWmJfMGJzZnNoNHlJQ3ZXR1VqY2RodG5BQ2dZNDktc0ZoRXFlT2Z3ZU82TmFpOEZnNVVLTGN2X05xZjYtWTY3MW9CMzJjX2o0VEpwZE04WUlBdW5qUkFTQnhCNnd0SVY0WTdIU00xcmp4MUwzb21ITnN4OVNUbDBlTlNQSEVCUlV2T0htcmNHbGxkd2FuQjVaOGFBMFppUTl1YTk4bm5aNUszQnlwT0dIQnlOcy04NmZMbnVMSVhmZWRBWEZIaERxVGxPcGMzcXZtMDdDVUdsLTZ5MnBqODcySmZkcXBmSDhrQi1kUDlaVzRMMHlaOVIteWdwUVZId191dFhBYXZGbHIwejR6V1dJbmJFQnF1elJwNngxd1Q2MGV4WkpsYzFvVjc3b2xXaGVFOE1BQ2tacFNQRmVfY0tQRUVxTEhJZjQ5ZGZ3LVJBXzBWckZTT0syS2hDLUFNMHIwWWNsd3VWQXh1bi1qQ216MEJiaWtfZkE5bXRDMEU0NGEzWXA4X0VCNFNZZVlBMDhQLTZMNEd3WUs1dEJLRWdoRzdSZjZESE9yVnAwS0V1cFZsQnQ3YzZHLXVVb213cTFtdks4SGl4dHNZRmdaeDdVOTlVVnBaVzRyZlliX1pyM1VzTUNaajNnYTlFZEtpTFpOaHo1TkF4RV9RRmVvZzk1NGdmc2VGOEZrYl9BVDg?oc=5",
+          "source": "永豐金證券",
+          "published_at": "2026-11-25T08:00+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": []
@@ -15030,10 +15043,10 @@
       ]
     },
     "market_briefing": {
-      "generated_at_utc": "2026-11-27T08:56:16+00:00",
+      "generated_at_utc": "2026-11-27T16:45:15+00:00",
       "taiwan_data_date": "2026-11-27",
       "us_session_date": "2026-11-26",
-      "us_timezone_checked_at": "2026-11-27T03:56-05:00",
+      "us_timezone_checked_at": "2026-11-27T11:45-05:00",
       "us_market": [
         {
           "ticker": "^GSPC",
@@ -15270,6 +15283,14 @@
         },
         {
           "group": "國際新聞",
+          "title": "【美股盤前1127】關稅擔憂過度？那斯達克一度重挫後收斂跌幅！｜豐雲學堂 2026 年 11 月 - 永豐金證券",
+          "date": "2026-11-27 16:12 台北時間",
+          "tone": "偏空",
+          "detail": "永豐金證券｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQS01XbjgtdHhOQkVpUV84Zk1XR2phZUg4dUtkRmZtYkpBVFhZaDNuOW14TGswcVZ1OXlpc0g2clotemFRaUo5WlJMdDlzSWJTei13SUc2aVN2TXdkMWNveTZ2ZkRxa1FuNVBCUEVVRDFmRjN2cU9JYWNDWVM4RnRWekExNU1NVEduSFp3QVNfaFdiR2pHQVhtdEVBbURsRU1BME55NE9ZOXlONXh2UHVfaUN6WV9PZHd3dXp1OXRjb3F5Qkk3Zm1WU2RXV3pZanlGTXNfTzNyRXl1dkcyTlRqYTItWlFyNy1RdmFqZ0VqN1FpV3ZNS3NnY29KQVJMUUVVbjhrV05EOUlud0VZeDM0dnkwRnhNVWtnVHJKRk40QjEzckdYbDNtOHc1X3JNLVBkbU9Rc2hlQnNWMVU4NUNuWThkU1U2WHpSeFZLTnZ6cGU3eVJrSlJValdlUTR2R2MyS29rSV9zSkZiSzhUMTNuWjFkX29VZFdYWWVNa0xFQnBJSGFYRU1qNVA5WnFBVEs5VnNPem1CeUFPQUtSTnZ3Ql9ZRQ?oc=5"
+        },
+        {
+          "group": "國際新聞",
           "title": "The Part of Inflation Cheaper Oil Cannot Reach - IndraStra Global",
           "date": "2026-11-27 12:32 台北時間",
           "tone": "待判讀",
@@ -15286,35 +15307,43 @@
         },
         {
           "group": "國際新聞",
-          "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
-          "date": "2026-11-25 23:59 台北時間",
+          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
+          "date": "2026-11-26 11:03 台北時間",
           "tone": "待判讀",
-          "detail": "Seeking Alpha｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5"
+          "detail": "cwibc.co.id｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5"
         },
         {
           "group": "國際新聞",
-          "title": "US PCE Report Tests Inflation Outlook Before December Fed Decision - Limapagi",
-          "date": "2026-11-25 21:33 台北時間",
+          "title": "TradingKey 每日市場簡報：標普、那指兩連跌，輝達再跌近4%；美國核心PCE升至3.3%；黃金跌破3500美元 - TradingKey",
+          "date": "2026-11-26 09:39 台北時間",
           "tone": "待判讀",
-          "detail": "Limapagi｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WQ0xvT05PV0gxNWJzcDJ5cnk1NFNScFJOZXJoN2M1R2pDbWFvMEFXTldTTDdNcFAyclJ3ckRsQVNYSzlZTE41SnBpN1dyaUpWbnBaLUw0TkFwQUE0MWVaS2dsUFJzWGM?oc=5"
-        },
-        {
-          "group": "國際新聞",
-          "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
-          "date": "2026-11-25 18:35 台北時間",
-          "tone": "待判讀",
-          "detail": "BigGo Finance｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5"
+          "detail": "TradingKey｜可能影響：美股風險偏好、利率預期與科技股估值；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOVnR5bk9zWjEyRldldGl6R0dxU1Q2NUMwQlVBMXo2V001TlowU1cyRDBMQjk5QTMtYklQNG5rRjdtanZUZ205b3ZzMjFESTFiUUs0aUY4cUxlTHJYdXo4ckZ4Uk9aOU42b3dfdGo2QXpFNVhwZjhidVFSVjB3VDNzZ25uZXFFUkF6UU5lZm9yT1AtMWxDekthd0phLU1UNmJxZHhLYnhHeDJ5U3JQSkFzUWZNODByYVQzYmdVMHgxWGpKU1RiaDFUY2w5QQ?oc=5"
         },
         {
           "group": "台灣新聞",
-          "title": "〈華南金法說〉央行不排除年底前升息！蕭玉美看AI與出口支撐動能 台幣震盪偏升 - TradingView",
-          "date": "2026-11-26T12:21+00:00",
+          "title": "〈第一金法說〉央行年底升息？一銀估台灣按兵不動 惟Fed明年Q1前有望升息2次 - TradingView",
+          "date": "2026-11-27T11:44+00:00",
           "tone": "偏空",
           "detail": "TradingView｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rUzBEVmVHTmp0em5xOHRHVlN4R3liWmxkTlBCcnMyRjh0RGxGZ0VxQ0VPQ0M1bFZxeldFT1pmdk9rS014dzJ2RVV3UXZoQkx0UVVJeHdRa0xVRjhESTlYREJydHM?oc=5"
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFByRzJ1VGRBUG5wSjJtS2ppZlNWUmIyd1Vob19LNXZOc1NfWkxwYWFlWUpTVk5SWWc2azdEV2RBS3BTa3dwajY2WTVoM3FKbGtIUGZMdjVpZ0xLbU01WWpZeW5xNkw?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "TWA00 加權指數- 11／27 台股盤後籌碼快報，外資連10賣‼️‼️ - 股市爆料同學會 - CMoney",
+          "date": "2026-11-27T08:03+00:00",
+          "tone": "待判讀",
+          "detail": "CMoney｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBJSXliNlUycENnbFZCMnByeko4S0ZBMnN0empfYjZ6b2ZDLWo0dG5tVEFYV3NRTzlNaG1wRUxJOVdFTGF0RmdERUMtUE1HMWJBNEZCbENwQ2o?oc=5"
+        },
+        {
+          "group": "台灣新聞",
+          "title": "TWA00 加權指數- 台股選前量縮外資續砍296億、三大法人賣超213.04億元- 股市爆料同學會 - CMoney",
+          "date": "2026-11-27T07:15+00:00",
+          "tone": "偏空",
+          "detail": "CMoney｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBic1VudHRtcWQ0VjlSTm9lWWZCYUdheEZfbmVhaktGRE8xTjZnb0MwelZIMWhMSWhFVFNmc29jZ2pVZ3laeVBuOTYzWU5PRFRRSFVJenVNSlg?oc=5"
         },
         {
           "group": "台灣新聞",
@@ -15323,25 +15352,22 @@
           "tone": "偏空",
           "detail": "鉅亨網｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
           "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBCS1JkYUYxMks5VXdKRWpIUzRTS21JZmVkUUE1bF92dzU1bFFLMTRTWTZ0emFrOVZLd2VSa3ZETnFpTUt0Vk9XTVJVYzhUX0k?oc=5"
-        },
-        {
-          "group": "台灣新聞",
-          "title": "華南金看央行12月可能預防性升息半碼、新台幣震盪偏升 - 自由財經",
-          "date": "2026-11-26T08:43+00:00",
-          "tone": "偏空",
-          "detail": "自由財經｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9DTFpQdUxMWDFqYjlpNFN5OHFlT0E0YjROSGgzbjBLSi0zRjZmUEJiREp6c1JlNXBNakV0WkllcE43WUdkNFBEamtCUVJZZFZmbEFBOTVuZ2RIdS1lNmdEUkZZSTjSAWRBVV95cUxPQ0xaUHVMTFgxamI5aTRTeThxZU9BNGI0TkhoM24wS0otM0Y2ZlBCYkRKenNSZTVwTWpFdFpJZXBON1lHZDRQRGprQlFSWWRWZmxBQTk1bmdkSHUtZTZnRFJGWUk4?oc=5"
-        },
-        {
-          "group": "台灣新聞",
-          "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 | 中央廣播電臺 - LINE TODAY",
-          "date": "2026-11-25T10:44+00:00",
-          "tone": "偏空",
-          "detail": "LINE TODAY｜可能影響：台灣政策、匯率、資金面及本地市場風險偏好；請點開全文核對。",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5tTHlUUUE5QzFlekVpUHpHbC1lZ25Ea1pQLXlBMXdWQzdGYUxiTnF5RTd6RmZhWHNxVENiM1Z2NEhYcWFmUDZsWUh4YllKVmdpS0dlUURB?oc=5"
         }
       ],
       "us_news": [
+        {
+          "category": "國際市場",
+          "title": "【美股盤前1127】關稅擔憂過度？那斯達克一度重挫後收斂跌幅！｜豐雲學堂 2026 年 11 月 - 永豐金證券",
+          "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQS01XbjgtdHhOQkVpUV84Zk1XR2phZUg4dUtkRmZtYkpBVFhZaDNuOW14TGswcVZ1OXlpc0g2clotemFRaUo5WlJMdDlzSWJTei13SUc2aVN2TXdkMWNveTZ2ZkRxa1FuNVBCUEVVRDFmRjN2cU9JYWNDWVM4RnRWekExNU1NVEduSFp3QVNfaFdiR2pHQVhtdEVBbURsRU1BME55NE9ZOXlONXh2UHVfaUN6WV9PZHd3dXp1OXRjb3F5Qkk3Zm1WU2RXV3pZanlGTXNfTzNyRXl1dkcyTlRqYTItWlFyNy1RdmFqZ0VqN1FpV3ZNS3NnY29KQVJMUUVVbjhrV05EOUlud0VZeDM0dnkwRnhNVWtnVHJKRk40QjEzckdYbDNtOHc1X3JNLVBkbU9Rc2hlQnNWMVU4NUNuWThkU1U2WHpSeFZLTnZ6cGU3eVJrSlJValdlUTR2R2MyS29rSV9zSkZiSzhUMTNuWjFkX29VZFdYWWVNa0xFQnBJSGFYRU1qNVA5WnFBVEs5VnNPem1CeUFPQUtSTnZ3Ql9ZRQ?oc=5",
+          "source": "永豐金證券",
+          "published_at": "2026-11-27T08:12+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "關稅"
+          ],
+          "published_at_taipei": "2026-11-27 16:12 台北時間"
+        },
         {
           "category": "國際市場",
           "title": "The Part of Inflation Cheaper Oil Cannot Reach - IndraStra Global",
@@ -15370,51 +15396,75 @@
         },
         {
           "category": "國際市場",
-          "title": "Looking Past The Correction, Earnings Estimates Are Rising - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNDJkNk82ZEpDclJXS0NoVHZpd09BTEt6TkhaejZVeWRnNVA2NHNKY0t4djNCdEl5M1pvVE1VaUtoY25OVXFjbGVKOWFweEJVeS11QVk4Wml4SlF1aTRUVVdvNXdrQ1lwWm01bVdYSmxRdHFOckowanJGTURvLVlGMWJHNXNfaHJkV0pKcmFyeXFmQ3FYSmhPeU1n?oc=5",
-          "source": "Seeking Alpha",
-          "published_at": "2026-11-25T15:59+00:00",
+          "title": "US Inflation Climbs to 3.8% as Fed Faces Rate Decision - cwibc.co.id",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5hMzhkOEVfSlFkdUF5azI4LWxqUWs4dms2endEUUtXV2REUV9rVnZFbG44RGtKbWduaFBudmZSVlE5bzBqd3RKaXFNQmtCX0hJYVhoSVZYYmtHZllKNDUybEZMdw?oc=5",
+          "source": "cwibc.co.id",
+          "published_at": "2026-11-26T03:03+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-25 23:59 台北時間"
+          "published_at_taipei": "2026-11-26 11:03 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "US PCE Report Tests Inflation Outlook Before December Fed Decision - Limapagi",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WQ0xvT05PV0gxNWJzcDJ5cnk1NFNScFJOZXJoN2M1R2pDbWFvMEFXTldTTDdNcFAyclJ3ckRsQVNYSzlZTE41SnBpN1dyaUpWbnBaLUw0TkFwQUE0MWVaS2dsUFJzWGM?oc=5",
-          "source": "Limapagi",
-          "published_at": "2026-11-25T13:33+00:00",
+          "title": "TradingKey 每日市場簡報：標普、那指兩連跌，輝達再跌近4%；美國核心PCE升至3.3%；黃金跌破3500美元 - TradingKey",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOVnR5bk9zWjEyRldldGl6R0dxU1Q2NUMwQlVBMXo2V001TlowU1cyRDBMQjk5QTMtYklQNG5rRjdtanZUZ205b3ZzMjFESTFiUUs0aUY4cUxlTHJYdXo4ckZ4Uk9aOU42b3dfdGo2QXpFNVhwZjhidVFSVjB3VDNzZ25uZXFFUkF6UU5lZm9yT1AtMWxDekthd0phLU1UNmJxZHhLYnhHeDJ5U3JQSkFzUWZNODByYVQzYmdVMHgxWGpKU1RiaDFUY2w5QQ?oc=5",
+          "source": "TradingKey",
+          "published_at": "2026-11-26T01:39+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-25 21:33 台北時間"
+          "published_at_taipei": "2026-11-26 09:39 台北時間"
         },
         {
           "category": "國際市場",
-          "title": "Final PCE Report Before Fed's December Meeting Due Tonight; Core Inflation Seen Rising to 3.2% - BigGo Finance",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZNmxfM2hJQXZzaDlzbzRHNlEybzhSZUJuckhtRXMyVkR2OFRxQXN5WkdHQU5jSUE2NmEyYWQ2eUwxaWNrZ0JnRE1uUW1tLVlZMXY2aDRUSjUtcVp0bExaUmxKQ1lMaDNCVmZDdndEcV9LWkhQSXc?oc=5",
-          "source": "BigGo Finance",
-          "published_at": "2026-11-25T10:35+00:00",
+          "title": "Nasdaq, S&P 500 Fall As Nvidia Leads Renewed AI Stock Sell-Off - Forbes Middle East",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbEhWOGFZVTNnSDBWbUdWejlaYll4cTVKUGdCZkFEejY2M3NvZ1IyVjFEdFZzeWdMekN2ZnlydTMxNDhQNnhoYTNqSFhIQTM0ay1VX3IxSkNYNkhnbXhndl9QWHhWS181OVJVMkR3OUZhM0gzRXpNRFF4aXB2bjFyXzlfaGVBTWlYNFJxanh2dVJocVdtQ2wtOW9KLWZVMmZ4QXZRd0FiSWU2dEE?oc=5",
+          "source": "Forbes Middle East",
+          "published_at": "2026-11-25T20:33+00:00",
           "keyword_score": 0,
           "positive_terms": [],
           "negative_terms": [],
-          "published_at_taipei": "2026-11-25 18:35 台北時間"
+          "published_at_taipei": "2026-11-26 04:33 台北時間"
         }
       ],
       "domestic_news": [
         {
           "category": "台灣市場",
-          "title": "〈華南金法說〉央行不排除年底前升息！蕭玉美看AI與出口支撐動能 台幣震盪偏升 - TradingView",
-          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rUzBEVmVHTmp0em5xOHRHVlN4R3liWmxkTlBCcnMyRjh0RGxGZ0VxQ0VPQ0M1bFZxeldFT1pmdk9rS014dzJ2RVV3UXZoQkx0UVVJeHdRa0xVRjhESTlYREJydHM?oc=5",
+          "title": "〈第一金法說〉央行年底升息？一銀估台灣按兵不動 惟Fed明年Q1前有望升息2次 - TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFByRzJ1VGRBUG5wSjJtS2ppZlNWUmIyd1Vob19LNXZOc1NfWkxwYWFlWUpTVk5SWWc2azdEV2RBS3BTa3dwajY2WTVoM3FKbGtIUGZMdjVpZ0xLbU01WWpZeW5xNkw?oc=5",
           "source": "TradingView",
-          "published_at": "2026-11-26T12:21+00:00",
+          "published_at": "2026-11-27T11:44+00:00",
           "keyword_score": -1,
           "positive_terms": [],
           "negative_terms": [
             "升息"
           ],
-          "published_at_taipei": "2026-11-26 20:21 台北時間"
+          "published_at_taipei": "2026-11-27 19:44 台北時間"
+        },
+        {
+          "category": "台灣市場",
+          "title": "TWA00 加權指數- 11／27 台股盤後籌碼快報，外資連10賣‼️‼️ - 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBJSXliNlUycENnbFZCMnByeko4S0ZBMnN0empfYjZ6b2ZDLWo0dG5tVEFYV3NRTzlNaG1wRUxJOVdFTGF0RmdERUMtUE1HMWJBNEZCbENwQ2o?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-27T08:03+00:00",
+          "keyword_score": 0,
+          "positive_terms": [],
+          "negative_terms": [],
+          "published_at_taipei": "2026-11-27 16:03 台北時間"
+        },
+        {
+          "category": "台灣市場",
+          "title": "TWA00 加權指數- 台股選前量縮外資續砍296億、三大法人賣超213.04億元- 股市爆料同學會 - CMoney",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBic1VudHRtcWQ0VjlSTm9lWWZCYUdheEZfbmVhaktGRE8xTjZnb0MwelZIMWhMSWhFVFNmc29jZ2pVZ3laeVBuOTYzWU5PRFRRSFVJenVNSlg?oc=5",
+          "source": "CMoney",
+          "published_at": "2026-11-27T07:15+00:00",
+          "keyword_score": -1,
+          "positive_terms": [],
+          "negative_terms": [
+            "賣超"
+          ],
+          "published_at_taipei": "2026-11-27 15:15 台北時間"
         },
         {
           "category": "台灣市場",
@@ -15441,19 +15491,6 @@
             "升息"
           ],
           "published_at_taipei": "2026-11-26 16:43 台北時間"
-        },
-        {
-          "category": "台灣市場",
-          "title": "台美利差牽動12月利率決策 張建一估央行若升息可能僅半碼 | 中央廣播電臺 - LINE TODAY",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5tTHlUUUE5QzFlekVpUHpHbC1lZ25Ea1pQLXlBMXdWQzdGYUxiTnF5RTd6RmZhWHNxVENiM1Z2NEhYcWFmUDZsWUh4YllKVmdpS0dlUURB?oc=5",
-          "source": "LINE TODAY",
-          "published_at": "2026-11-25T10:44+00:00",
-          "keyword_score": -1,
-          "positive_terms": [],
-          "negative_terms": [
-            "升息"
-          ],
-          "published_at_taipei": "2026-11-25 18:44 台北時間"
         }
       ],
       "industry_news": [],
@@ -15504,7 +15541,7 @@
       0.99
     ],
     "feature_count": 93,
-    "training_rows": 1231
+    "training_rows": 1232
   },
   "data_source": "Yahoo Finance (unofficial; verify independently)",
   "reference_links": [
